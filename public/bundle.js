@@ -10,13 +10,83 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/components/App.jsx":
+/*!********************************!*\
+  !*** ./src/components/App.jsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ App)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _related_products_rp_index_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./related_products/rp_index.jsx */ \"./src/components/related_products/rp_index.jsx\");\n/* harmony import */ var _ratings_reviews_RRIndex_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ratings_reviews/RRIndex.jsx */ \"./src/components/ratings_reviews/RRIndex.jsx\");\n/* harmony import */ var _qa_qa_index_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qa/qa_index.jsx */ \"./src/components/qa/qa_index.jsx\");\n/* harmony import */ var _overview_Oindex_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./overview/Oindex.jsx */ \"./src/components/overview/Oindex.jsx\");\n\n\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"All Our Components\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_overview_Oindex_jsx__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_related_products_rp_index_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_qa_qa_index_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ratings_reviews_RRIndex_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n}\n\n//# sourceURL=webpack://FEC/./src/components/App.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/overview/Oindex.jsx":
+/*!********************************************!*\
+  !*** ./src/components/overview/Oindex.jsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar OIndex = function OIndex() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"OIndex Component\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Oindex);\n\n//# sourceURL=webpack://FEC/./src/components/overview/Oindex.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/qa/qa_index.jsx":
+/*!****************************************!*\
+  !*** ./src/components/qa/qa_index.jsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar QA = function QA() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Questions and Answers\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QA);\n\n//# sourceURL=webpack://FEC/./src/components/qa/qa_index.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/RRIndex.jsx":
+/*!****************************************************!*\
+  !*** ./src/components/ratings_reviews/RRIndex.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar RRIndex = function RRIndex() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"RRIndex Component\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RRIndex);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/RRIndex.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/related_products/ProductCard.jsx":
+/*!*********************************************************!*\
+  !*** ./src/components/related_products/ProductCard.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ProductCard)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction ProductCard(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"section\", {\n    className: \"related-product\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Product Card Component\"));\n}\n\n//# sourceURL=webpack://FEC/./src/components/related_products/ProductCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/related_products/ProductCarousel.jsx":
+/*!*************************************************************!*\
+  !*** ./src/components/related_products/ProductCarousel.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ProductCarousel)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction ProductCarousel(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"section\", {\n    className: \"related-product\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Carousel Component\"), props.children);\n}\n\n//# sourceURL=webpack://FEC/./src/components/related_products/ProductCarousel.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/related_products/rp_index.jsx":
+/*!******************************************************!*\
+  !*** ./src/components/related_products/rp_index.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RelatedProducts)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ProductCarousel_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductCarousel.jsx */ \"./src/components/related_products/ProductCarousel.jsx\");\n/* harmony import */ var _ProductCard_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProductCard.jsx */ \"./src/components/related_products/ProductCard.jsx\");\n\n\n\nfunction RelatedProducts(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"section\", {\n    className: \"related-product\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Related Products Component\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Carousel, null, _ProductCard_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"]));\n}\n\n//# sourceURL=webpack://FEC/./src/components/related_products/rp_index.jsx?");
+
+/***/ }),
+
 /***/ "./src/index.jsx":
 /*!***********************!*\
   !*** ./src/index.jsx ***!
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n// Bring React in to build a component.\n\n// Import from react-dom the ability to create a root render\n\n// create the root of the app by selection where the app should be mounted in the dom\nvar root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById(\"root\"));\n\n// Here is out base App component.\n// Notice we are NOT using jsx here. This is because we have not set up babel yet.\nvar App = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Hello World\");\n\n// render the root element with the provided component\nroot.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null));\n\n//# sourceURL=webpack://FEC/./src/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App.jsx */ \"./src/components/App.jsx\");\n\n\n\nvar root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.getElementById(\"root\"));\nroot.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_App_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n\n//# sourceURL=webpack://FEC/./src/index.jsx?");
 
 /***/ }),
 
