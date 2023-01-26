@@ -120,13 +120,133 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/ratings_reviews/reviews_list/ActionButtons.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ActionButtons.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ActionButtons = function ActionButtons() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"ActionButtons\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", null, \"More Reviews\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", null, \"Add A Review\"));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ActionButtons);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ActionButtons.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/HelpfulButton.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/HelpfulButton.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar HelpfulButton = function HelpfulButton() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, \"Helpful?\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", null, \"Yes(#votes)\"));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HelpfulButton);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/HelpfulButton.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/RecommendCheck.jsx":
+/*!************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/RecommendCheck.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar RecommendCheck = function RecommendCheck() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"(Optional) RecommendCheck Statement (conditional render)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RecommendCheck);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/RecommendCheck.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReportButton.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReportButton.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReportButton = function ReportButton() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", null, \"Report\"));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReportButton);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReportButton.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReviewCard.jsx":
+/*!********************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReviewCard.jsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _StarMeter_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StarMeter.jsx */ \"./src/components/ratings_reviews/reviews_list/StarMeter.jsx\");\n/* harmony import */ var _UserDateInfo_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserDateInfo.jsx */ \"./src/components/ratings_reviews/reviews_list/UserDateInfo.jsx\");\n/* harmony import */ var _ReviewCardText_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReviewCardText.jsx */ \"./src/components/ratings_reviews/reviews_list/ReviewCardText.jsx\");\n/* harmony import */ var _RecommendCheck_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RecommendCheck.jsx */ \"./src/components/ratings_reviews/reviews_list/RecommendCheck.jsx\");\n/* harmony import */ var _SellerResponse_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SellerResponse.jsx */ \"./src/components/ratings_reviews/reviews_list/SellerResponse.jsx\");\n/* harmony import */ var _ReviewCardPhotos_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ReviewCardPhotos.jsx */ \"./src/components/ratings_reviews/reviews_list/ReviewCardPhotos.jsx\");\n/* harmony import */ var _HelpfulButton_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./HelpfulButton.jsx */ \"./src/components/ratings_reviews/reviews_list/HelpfulButton.jsx\");\n/* harmony import */ var _ReportButton_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ReportButton.jsx */ \"./src/components/ratings_reviews/reviews_list/ReportButton.jsx\");\n\n\n\n\n\n\n\n\n\nvar ReviewCard = function ReviewCard() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h5\", null, \"ReviewCard (Individual Review Card)\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, \" \", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StarMeter_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), \" \"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, \" \", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UserDateInfo_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), \" \")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewCardText_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecommendCheck_jsx__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SellerResponse_jsx__WEBPACK_IMPORTED_MODULE_5__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewCardPhotos_jsx__WEBPACK_IMPORTED_MODULE_6__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Inner Card Buttons:\", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HelpfulButton_jsx__WEBPACK_IMPORTED_MODULE_7__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReportButton_jsx__WEBPACK_IMPORTED_MODULE_8__[\"default\"], null)));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewCard);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReviewCardPhotos.jsx":
+/*!**************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReviewCardPhotos.jsx ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReviewCardPhotos = function ReviewCardPhotos() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"(Optional) ReviewCardPhotos -If they attach pictures- (conditional render)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewCardPhotos);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewCardPhotos.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReviewCardText.jsx":
+/*!************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReviewCardText.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReviewCardText = function ReviewCardText() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Review Card Text\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Summary\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Content\"));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewCardText);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewCardText.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReviewsCardList.jsx":
+/*!*************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReviewsCardList.jsx ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewCard.jsx */ \"./src/components/ratings_reviews/reviews_list/ReviewCard.jsx\");\n/* harmony import */ var _ActionButtons_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ActionButtons.jsx */ \"./src/components/ratings_reviews/reviews_list/ActionButtons.jsx\");\n\n\n\nvar ReviewsCardList = function ReviewsCardList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"ReviewsCardList (List of Review Cards)\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"br\", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ActionButtons_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsCardList);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewsCardList.jsx?");
+
+/***/ }),
+
 /***/ "./src/components/ratings_reviews/reviews_list/ReviewsList.jsx":
 /*!*********************************************************************!*\
   !*** ./src/components/ratings_reviews/reviews_list/ReviewsList.jsx ***!
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReviewsList = function ReviewsList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h2\", null, \"Reviews List (Right Container)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsList);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewsList.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ReviewsSortMenu_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewsSortMenu.jsx */ \"./src/components/ratings_reviews/reviews_list/ReviewsSortMenu.jsx\");\n/* harmony import */ var _ReviewsCardList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewsCardList.jsx */ \"./src/components/ratings_reviews/reviews_list/ReviewsCardList.jsx\");\n\n\n\nvar ReviewsList = function ReviewsList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h2\", null, \"Reviews List (Right Container)\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewsSortMenu_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewsCardList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsList);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewsList.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/ReviewsSortMenu.jsx":
+/*!*************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/ReviewsSortMenu.jsx ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReviewsSortMenu = function ReviewsSortMenu() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"ReviewsSortMenu (Number of reviews & dropdown menu to sort reviews by)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsSortMenu);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/ReviewsSortMenu.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/SellerResponse.jsx":
+/*!************************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/SellerResponse.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar SellerResponse = function SellerResponse() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"(Optional) SellerResponse Statement (conditional render)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SellerResponse);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/SellerResponse.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/StarMeter.jsx":
+/*!*******************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/StarMeter.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar StarMeter = function StarMeter() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, \"StarMeter (3.5/5 Stars)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarMeter);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/StarMeter.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/ratings_reviews/reviews_list/UserDateInfo.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/components/ratings_reviews/reviews_list/UserDateInfo.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar UserDateInfo = function UserDateInfo() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"span\", null, \"UserDateInfo (by Username, DATE)\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserDateInfo);\n\n//# sourceURL=webpack://FEC/./src/components/ratings_reviews/reviews_list/UserDateInfo.jsx?");
 
 /***/ }),
 
