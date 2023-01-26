@@ -4,8 +4,8 @@ const Nav = () => {
 
   return (
     <>
-      <div>LOGO</div>
-      <form>
+      <div key='logo' >LOGO</div>
+      <form key='search '>
         <input type='text' placeholder='Search...'></input>
       </form>
     </>
