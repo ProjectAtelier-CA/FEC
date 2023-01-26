@@ -1,3 +1,8 @@
 .env
 node_modules
+<<<<<<< HEAD
 public/*
+=======
+public/bundle.js
+public/*
+>>>>>>> 57c275fb502b25cd3669f582f91f4ccb7dd1f53f
