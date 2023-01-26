@@ -1,10 +1,7 @@
-import { createRoot } from "react-dom/client";
-const root = createRoot(document.getElementById("root"));
+import { createRoot } from 'react-dom/client';
 import React from 'react';
+import App from './components/App.jsx';
 
-// Huzzah for jsx!
-const App = () => {
-  return <h1>Hello World</h1>
-}
+const root = createRoot(document.getElementById("root"));
 
 root.render(<App />);
