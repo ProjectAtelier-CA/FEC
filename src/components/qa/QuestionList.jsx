@@ -5,7 +5,7 @@ const QuestionList = (props) => {
 
   return (
     <section id='question-list'>
-      Question List
+      Question List 
       <QuestionListItem/>
     </section>
   )
