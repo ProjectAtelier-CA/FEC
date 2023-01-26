@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedProducts from './related_products/rp_index.jsx';
+import RelatedProducts from './related_products/RelatedProducts.jsx';
 import RatingsReviews from './ratings_reviews/RatingsReviews.jsx';
 import QuestionsAnswers from './qa/QuestionsAnswers.jsx';
 import Overview from './overview/Overview.jsx';
