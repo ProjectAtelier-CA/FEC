@@ -1,5 +1,6 @@
+// Now this is the index.jsx for related_products folder
 import React, {useState, useEffect} from 'react';
-import Carousel from './Carousel.jsx';
+import ProductCarousel from './ProductCarousel.jsx';
 import ProductCard from './ProductCard.jsx';
 
 export default function RelatedProducts(props) {
