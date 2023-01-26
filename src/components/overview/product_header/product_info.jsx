@@ -2,20 +2,20 @@ import React, {useState, useEffect} from 'react';
 
 const ProductInfo = ({product}) => {
 
-  product = product || {stars: 5, category: 'Category', name: 'T-Shirt'}
+  product = product || {id: 1, stars: 5, category: 'Category', name: 'T-Shirt'}
 
   return (
-    <>
-      <div>
+    <div key={product.id}>
+      <div key='rating'>
         {product.stars} Stars <a href='http://www.google.com/'>Reviews...</a>
       </div>
-      <div>
+      <div key='category'>
         <h3>{product.category}</h3>
       </div>
-      <div>
+      <div key='name'>
         <h1>{product.name}</h1>
         </div>
-    </>
+    </div>
   )
 
 }
