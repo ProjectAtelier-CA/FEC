@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-const root = createRoot(document.getElementById("root"));
 import React from 'react';
+const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
