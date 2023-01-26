@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OIndex =  () => {
+const OIndex = () => {
 
   return (
     <h1>
