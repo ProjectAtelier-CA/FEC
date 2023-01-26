@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Overview = () => {
+const OIndex = () => {
 
   return (
     <h1>
@@ -9,4 +9,4 @@ const Overview = () => {
   );
 }
 
-export default Overview;
+export default Oindex;
