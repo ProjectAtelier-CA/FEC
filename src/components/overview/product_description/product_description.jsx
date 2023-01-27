@@ -13,13 +13,13 @@ export default function Description() {
   const [currentProduct, setProduct] = useState(product);
 
   return (
-    <div key={currentProduct.id}>
+    <div>
       <h3>{currentProduct.title}</h3>
       <p>{currentProduct.description}</p>
       <span>-------------------------</span>
       {
         product.attributes.map((att) => (
-          <div>
+          <div key={currentProduct.id}>
             ✓
             {att}
           </div>

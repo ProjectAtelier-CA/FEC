@@ -14,7 +14,7 @@ export default function ProductInfo() {
         Stars
         <a href="http://www.google.com/">Reviews...</a>
       </div>
-      <div key="category">
+      <div className="category" key="category">
         <h3>{product.category}</h3>
       </div>
       <div key="name">

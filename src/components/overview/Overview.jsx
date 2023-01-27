@@ -21,6 +21,7 @@ import Buttons from './buttons/buttons';
 
 // DESCRIPTION
 import Description from './product_description/product_description';
+import '../../styles/overviewStyles/overview.scss';
 
 export default function Overview() {
   return (

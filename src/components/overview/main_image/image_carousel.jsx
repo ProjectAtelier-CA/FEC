@@ -1,25 +1,35 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 
 export default function ImageCarousel() {
   const images = [{
     id: 1,
-    url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png',
+    url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
   },
   {
     id: 2,
-    // eslint-disable-next-line comma-dangle
-    url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png'
+    url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
   }];
 
   return (
 
-    <div>
-      <div>
-        <img alt="carousel_image" key={images[0].id} className="carousel_image" src={images[0].url} width="200px" height="100px" />
-      </div>
-      <button type="button" key="rightNav" className="carousel_nav">Right</button>
-      <button type="button" key="leftNav" className="carousel_nav">Left</button>
-      <button type="button" key="expand" className="image_expand">Expand</button>
+    <div className="carousel-div">
+      <section>
+        <div className="carousel">
+          <button type="button" key="leftNav" className="carousel-button carousel-left">{'<'}</button>
+          <button type="button" key="rightNav" className="carousel-button carousel-right">{'>'}</button>
+          <button type="button" key="expand" className="image_expand">Expand</button>
+          <ul>
+            {
+              images.map((image) => (
+                <li key={image.id} className="slide">
+                  <img src={image.url} alt="Carousel Slide" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }
