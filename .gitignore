@@ -2,3 +2,5 @@
 node_modules
 public/bundle.js
 public/*
+yarn.lock
+.eslintrc.json
