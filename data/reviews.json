@@ -1,0 +1,58 @@
+[
+  {
+  "product": "37319",
+  "page": 0,
+  "count": 10,
+  "results": [
+        {
+            "review_id": 1278006,
+            "rating": 4,
+            "summary": "this product qwas amazing",
+            "recommend": true,
+            "response": null,
+            "body": "ldksjafplkjsdaldfjdsa[ijf[adjsf[ojf;cjasldfjqpjf[ijqew",
+            "date": "2022-12-16T00:00:00.000Z",
+            "reviewer_name": "jasmine",
+            "helpfulness": 8,
+            "photos": [
+                {
+                    "id": 2456905,
+                    "url": "https://res.cloudinary.com/dhjvvkko0/image/upload/v1671208662/tx5teryc38z5kzq0wl5n.webp"
+                }
+            ]
+        }
+    ]
+  },
+  {
+    "product_id": "37319",
+    "ratings": {
+        "1": "3",
+        "2": "2",
+        "3": "9",
+        "4": "25",
+        "5": "13"
+    },
+    "recommended": {
+        "false": "17",
+        "true": "35"
+    },
+    "characteristics": {
+        "Size": {
+            "id": 125060,
+            "value": "1.8644067796610169"
+        },
+        "Width": {
+            "id": 125061,
+            "value": "1.9473684210526316"
+        },
+        "Comfort": {
+            "id": 125062,
+            "value": "1.8800000000000000"
+        },
+        "Quality": {
+            "id": 125063,
+            "value": "2.1428571428571429"
+        }
+    }
+  }
+]
