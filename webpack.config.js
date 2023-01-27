@@ -19,9 +19,10 @@ module.exports = {
       },
       // Second rule is to check for css files and load them with the following loaders
       {
-        test: /\.css$/,
-        use: ['style-loader','css-loader']
+        test: /\.(s(a|c)ss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
+  resolve: { extensions: ['.js', '.jsx'] },
 }

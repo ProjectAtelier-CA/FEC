@@ -1,11 +1,10 @@
 import React from 'react';
-import StarRepresentation from './StarRepresentation.jsx';
-import RecommendPercentage from './RecommendPercentage.jsx';
-import StarBreakdownList from './StarBreakdownList.jsx';
-import ProductBreakdownList from './ProductBreakdownList.jsx';
+import StarRepresentation from './StarRepresentation';
+import RecommendPercentage from './RecommendPercentage';
+import StarBreakdownList from './StarBreakdownList';
+import ProductBreakdownList from './ProductBreakdownList';
 
-const RatingsBreakdown = () => {
-
+export default function RatingsBreakdown() {
   return (
     <div>
       <h2>RatingsBreakdown (Left Container)</h2>
@@ -17,5 +16,3 @@ const RatingsBreakdown = () => {
     </div>
   );
 }
-
-export default RatingsBreakdown;
