@@ -20,7 +20,7 @@ module.exports = {
       // Second rule is to check for css files and load them with the following loaders
       {
         test: /\.(s(a|c)ss)$/,
-        use: ['style-loader','sass-loader', 'css-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
