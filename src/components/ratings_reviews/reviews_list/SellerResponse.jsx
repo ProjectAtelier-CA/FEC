@@ -1,10 +1,7 @@
 import React from 'react';
 
-const SellerResponse = () => {
-
+export default function SellerResponse() {
   return (
     <div>(Optional) SellerResponse Statement (conditional render)</div>
   );
 }
-
-export default SellerResponse;

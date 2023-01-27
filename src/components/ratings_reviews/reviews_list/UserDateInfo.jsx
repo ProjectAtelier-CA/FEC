@@ -1,12 +1,9 @@
 import React from 'react';
 
-const UserDateInfo = () => {
-
+export default function UserDateInfo() {
   return (
     <span>
       UserDateInfo (by Username, DATE)
     </span>
   );
 }
-
-export default UserDateInfo;

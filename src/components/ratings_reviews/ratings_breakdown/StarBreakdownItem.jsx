@@ -1,12 +1,9 @@
 import React from 'react';
 
-const StarBreakdownItem = () => {
-
+export default function StarBreakdownItem() {
   return (
     <div>
       StarBreakdownItem (Individual Star)
     </div>
   );
 }
-
-export default StarBreakdownItem;
