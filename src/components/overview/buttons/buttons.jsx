@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 
 export default function Buttons() {
   return (
-    <>
-      <button type="button" className="sizeSelect">Select Size</button>
-      <button type="button" className="quantitySelect">Quantity</button>
-      <button type="button" className="addToBag">Add to Bag</button>
-      <button type="button" className="favorite">☆</button>
-    </>
+    <div className="all-buttons">
+      <div className="top-buttons">
+        <button type="button" className="button sizeSelect">Select Size</button>
+        <button type="button" className="button quantitySelect">Quantity</button>
+      </div>
+      <div className="bottom-buttons">
+        <button type="button" className="button addToBag">Add to Bag</button>
+        <button type="button" className="button favorite">☆</button>
+      </div>
+    </div>
   );
 }
 

@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import Thumbnails from './thumbnails';
 
 export default function ImageCarousel() {
   const images = [{
@@ -28,6 +29,7 @@ export default function ImageCarousel() {
               ))
             }
           </ul>
+          <Thumbnails />
         </div>
       </section>
     </div>

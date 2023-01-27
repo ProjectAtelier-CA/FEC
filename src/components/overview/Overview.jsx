@@ -27,15 +27,15 @@ export default function Overview() {
   return (
     <>
       <Nav />
-      <h1>
-        Overview Component
-      </h1>
       <Banner />
-      <ImageCarousel />
-      <Thumbnails />
-      <ProductInfo />
-      <Styles />
-      <Buttons />
+      <div className="image-and-info">
+        <ImageCarousel />
+        <div className="product-info">
+          <ProductInfo />
+          <Styles />
+          <Buttons />
+        </div>
+      </div>
       <Description />
     </>
   );
