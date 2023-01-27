@@ -1,12 +1,9 @@
 import React from 'react';
 
-const ReportButton = () => {
-
+export default function ReportButton() {
   return (
     <span>
-      <button>Report</button>
+      <button type="button">Report</button>
     </span>
   );
 }
-
-export default ReportButton;

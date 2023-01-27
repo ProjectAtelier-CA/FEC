@@ -15,13 +15,12 @@ import Thumbnails from './main_image/thumbnails';
 import ProductInfo from './product_header/product_info';
 
 // STYLES
+// eslint-disable-next-line import/no-named-as-default
 import Styles from './styles/styles';
 import Buttons from './buttons/buttons';
 
 // DESCRIPTION
 import Description from './product_description/product_description';
-
-import './overview.scss';
 
 export default function Overview() {
   return (

@@ -1,21 +1,24 @@
 import React from 'react';
-import StarMeter from './StarMeter.jsx';
-import UserDateInfo from './UserDateInfo.jsx';
-import ReviewCardText from './ReviewCardText.jsx';
-import RecommendCheck from './RecommendCheck.jsx';
-import SellerResponse from './SellerResponse.jsx';
-import ReviewCardPhotos from './ReviewCardPhotos.jsx';
-import HelpfulButton from './HelpfulButton.jsx';
-import ReportButton from './ReportButton.jsx';
+import StarMeter from './StarMeter';
+import UserDateInfo from './UserDateInfo';
+import ReviewCardText from './ReviewCardText';
+import RecommendCheck from './RecommendCheck';
+import SellerResponse from './SellerResponse';
+import ReviewCardPhotos from './ReviewCardPhotos';
+import HelpfulButton from './HelpfulButton';
+import ReportButton from './ReportButton';
 
-const ReviewCard = () => {
-
+export default function ReviewCard() {
   return (
     <>
       <h5>ReviewCard (Individual Review Card)</h5>
       <div>
-        <span> <StarMeter /> </span>
-        <span> <UserDateInfo /> </span>
+        <span>
+          <StarMeter />
+        </span>
+        <span>
+          <UserDateInfo />
+        </span>
       </div>
       <ReviewCardText />
       <RecommendCheck />
@@ -29,5 +32,3 @@ const ReviewCard = () => {
     </>
   );
 }
-
-export default ReviewCard;
