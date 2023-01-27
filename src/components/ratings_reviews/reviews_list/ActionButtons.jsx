@@ -1,14 +1,11 @@
 import React from 'react';
 
-const ActionButtons = () => {
-
+export default function ActionButtons() {
   return (
     <div>
       <div>ActionButtons</div>
-      <button>More Reviews</button>
-      <button>Add A Review</button>
+      <button type="button">More Reviews</button>
+      <button type="button">Add A Review</button>
     </div>
   );
 }
-
-export default ActionButtons;

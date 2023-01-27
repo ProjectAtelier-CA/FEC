@@ -1,13 +1,10 @@
 import React from 'react';
 
-const HelpfulButton = () => {
-
+export default function HelpfulButton() {
   return (
     <span>
       <span>Helpful?</span>
-      <button>Yes(#votes)</button>
+      <button type="button">Yes(#votes)</button>
     </span>
   );
 }
-
-export default HelpfulButton;

@@ -1,8 +1,7 @@
 import React from 'react';
-import ProductBreakdownItem from './ProductBreakdownItem.jsx';
+import ProductBreakdownItem from './ProductBreakdownItem';
 
-const ProductBreakdownList = () => {
-
+export default function ProductBreakdownList() {
   return (
     <div>
       <h4>ProductBreakdownList (List of bars of characteristics (size) (comfort))</h4>
@@ -12,5 +11,3 @@ const ProductBreakdownList = () => {
     </div>
   );
 }
-
-export default ProductBreakdownList;
