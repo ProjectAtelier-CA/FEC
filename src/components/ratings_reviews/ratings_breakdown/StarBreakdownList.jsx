@@ -1,8 +1,7 @@
 import React from 'react';
-import StarBreakdownItem from './StarBreakdownItem.jsx';
+import StarBreakdownItem from './StarBreakdownItem';
 
-const StarBreakdownList = () => {
-
+export default function StarBreakdownList() {
   return (
     <div>
       <h4>StarBreakdownList (Filterable Stars)</h4>
@@ -14,5 +13,3 @@ const StarBreakdownList = () => {
     </div>
   );
 }
-
-export default StarBreakdownList;

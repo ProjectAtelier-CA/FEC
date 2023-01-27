@@ -1,18 +1,15 @@
 import React from 'react';
-import ReviewCard from './ReviewCard.jsx';
-import ActionButtons from './ActionButtons.jsx';
+import ReviewCard from './ReviewCard';
+import ActionButtons from './ActionButtons';
 
-const ReviewsCardList = () => {
-
+export default function ReviewsCardList() {
   return (
     <>
       <h4>ReviewsCardList (List of Review Cards)</h4>
       <ReviewCard />
       <ReviewCard />
-      <br/>
+      <br />
       <ActionButtons />
     </>
   );
 }
-
-export default ReviewsCardList;
