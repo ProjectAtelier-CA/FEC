@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
 
-const Buttons = ({style}) => {
-
+export default function Buttons() {
   return (
     <>
-      <button className='sizeSelect'>Select Size</button>
-      <button className='quantitySelect'>Quantity</button>
-      <button className='addToBag'>Add to Bag</button>
-      <button className='favorite'>☆</button>
+      <button type="button" className="sizeSelect">Select Size</button>
+      <button type="button" className="quantitySelect">Quantity</button>
+      <button type="button" className="addToBag">Add to Bag</button>
+      <button type="button" className="favorite">☆</button>
     </>
-  )
-
+  );
 }
 
-export default Buttons;
+Buttons.propTypes = {
+  // props: PropTypes.object.isRequired,
+};

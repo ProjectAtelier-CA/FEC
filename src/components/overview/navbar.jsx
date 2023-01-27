@@ -1,16 +1,13 @@
-import React, {useState, useEffect} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
 
-const Nav = () => {
-
+export default function Nav() {
   return (
     <>
-      <div key='logo' >LOGO</div>
-      <form key='search '>
-        <input type='text' placeholder='Search...'></input>
+      <div key="logo">LOGO</div>
+      <form key="search ">
+        <input type="text" placeholder="Search..." />
       </form>
     </>
-  )
-
+  );
 }
-
-export default Nav;
