@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
+
+import React, { useState, useEffect } from 'react';
 import QuestionListItem from './QuestionListItem.jsx';
 
-const QuestionList = (props) => {
-
+export default function QuestionList(props) {
   return (
-    <section id='question-list'>
-      Question List 
-      <QuestionListItem/>
+    <section style={{ border: '2px solid' }} className="question-list">
+      Question List
+      <QuestionListItem />
     </section>
-  )
+  );
 }
-
-export default QuestionList;
