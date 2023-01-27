@@ -15,6 +15,7 @@ import ProductInfo from './product_header/product_info.jsx'
 
 // STYLES
 import Styles from './styles/styles.jsx'
+import Buttons from './buttons/buttons.jsx'
 
 // DESCRIPTION
 import Description from './product_description/product_description.jsx'
@@ -32,6 +33,7 @@ const Overview = () => {
       <Thumbnails />
       <ProductInfo />
       <Styles />
+      <Buttons />
       <Description />
     </>
   );
