@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
 
-const Description = ({product}) => {
-
-  product = product || {
+export default function Description() {
+  const product = {
     id: 1,
     description: 'Blurb about a product...',
     title: 'Catchy phrase about a product...',
-    attributes: ['Gluten free', 'No carbs', 'Smells good']
+    attributes: ['Gluten free', 'No carbs', 'Smells good'],
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [currentProduct, setProduct] = useState(product);
 
   return (
@@ -17,15 +18,18 @@ const Description = ({product}) => {
       <p>{currentProduct.description}</p>
       <span>-------------------------</span>
       {
-        product.attributes.map((att) => {
-          return (
-            <div>✓ {att}</div>
-          )
-        })
+        product.attributes.map((att) => (
+          <div>
+            ✓
+            {att}
+          </div>
+        ))
       }
     </div>
 
-  )
-};
+  );
+}
 
-export default Description;
+Description.propTypes = {
+  // images: PropTypes.array.isRequired
+};
