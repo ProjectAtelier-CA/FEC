@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function ReviewCardText() {
+export default function ReviewCardText({ content, summary }) {
   return (
     <>
       <div>Review Card Text</div>
-      <div>Summary</div>
-      <div>Content</div>
+      <div>Sumary: {summary}</div>
+      <div>Content: {content}</div>
     </>
   );
 }

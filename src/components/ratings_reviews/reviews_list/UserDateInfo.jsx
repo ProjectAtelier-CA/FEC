@@ -1,9 +1,12 @@
 import React from 'react';
 
-export default function UserDateInfo() {
+export default function UserDateInfo({ user, date }) {
   return (
     <span>
-      UserDateInfo (by Username, DATE)
+      UserDateInfo by Username:
+      {user}
+      Date:
+      {date}
     </span>
   );
 }

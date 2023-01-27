@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <h1>All Our Components</h1>
-      <Overview />
+      {/* <Overview /> */}
       <RelatedProducts />
       <QuestionsAnswers />
       <RatingsReviews />
