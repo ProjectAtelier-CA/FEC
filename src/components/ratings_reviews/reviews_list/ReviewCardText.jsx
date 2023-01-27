@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ReviewCardText = () => {
-
+export default function ReviewCardText() {
   return (
     <>
       <div>Review Card Text</div>
@@ -10,5 +9,3 @@ const ReviewCardText = () => {
     </>
   );
 }
-
-export default ReviewCardText;

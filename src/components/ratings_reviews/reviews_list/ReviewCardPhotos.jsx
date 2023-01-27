@@ -1,10 +1,7 @@
 import React from 'react';
 
-const ReviewCardPhotos = () => {
-
+export default function ReviewCardPhotos() {
   return (
     <div>(Optional) ReviewCardPhotos -If they attach pictures- (conditional render)</div>
   );
 }
-
-export default ReviewCardPhotos;
