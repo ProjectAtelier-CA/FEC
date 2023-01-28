@@ -6,7 +6,7 @@ import ReviewErrorMessage from './ReviewErrorMessage';
 // Todo: Submitting will do a POST request to the api endpoint
 // Todo: Upload photo functionality
 
-export default function ReviewModal() {
+export default function ReviewModal({ setShowReviewModal }) {
   const [recommended, setRecommended] = useState(true);
   const [size, setSize] = useState(0);
   const [width, setWidth] = useState(0);
@@ -17,7 +17,7 @@ export default function ReviewModal() {
   const [reviewText, setReviewText] = useState('');
   const [reviewTextValid, setReviewTextValid] = useState(false);
   const [showErrorMsg, setShowErrorMsg] = useState(false);
-  const bodyRef = useRef(null);
+  const errorRef = useRef(null);
 
   useEffect(() => {
     if (reviewText.length >= 50) {
@@ -26,6 +26,12 @@ export default function ReviewModal() {
       setReviewTextValid(false);
     }
   }, [reviewText]);
+
+  useEffect(() => {
+    if (showErrorMsg) {
+      errorRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showErrorMsg]);
 
   const handleSizeChange = (num) => {
     setSize(num);
@@ -54,11 +60,10 @@ export default function ReviewModal() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!reviewTextValid) {
-      bodyRef.current.scrollIntoView({ behavior: 'smooth' });
-      console.log('i am here');
       setShowErrorMsg(true);
     } else {
       setShowErrorMsg(false);
+      setShowReviewModal(false);
       console.log('Valid submission');
     }
   };
@@ -109,7 +114,7 @@ export default function ReviewModal() {
               <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" />
             </div>
           </div>
-          <div ref={bodyRef}>
+          <div>
             <h5>Review Body (mandatory)</h5>
             <div>
               <div>Review Body Text Input (also using text area 1000 chars limit):</div>
@@ -141,7 +146,9 @@ export default function ReviewModal() {
           </div>
           <br />
           <button type="submit">Submit</button>
-          {showErrorMsg ? <ReviewErrorMessage /> : null}
+          <div ref={errorRef}>
+            {showErrorMsg ? <ReviewErrorMessage /> : null}
+          </div>
         </form>
       </div>
     </div>
