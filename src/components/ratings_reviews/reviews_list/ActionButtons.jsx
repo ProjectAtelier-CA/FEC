@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function ActionButtons() {
+export default function ActionButtons({ handleMoreClick, totalReviews, reviewIndex }) {
+  const [showMore, setShowMore] = useState(true);
+
+  useEffect(() => {
+    if (reviewIndex >= totalReviews) {
+      setShowMore(false);
+    }
+  }, [reviewIndex]);
+
   return (
     <div>
       <div>ActionButtons</div>
-      <button type="button">More Reviews</button>
+      {showMore ? <button type="button" onClick={handleMoreClick}>More Reviews</button> : null}
       <button type="button">Add A Review</button>
     </div>
   );

@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function SellerResponse() {
+export default function SellerResponse({ response }) {
   return (
-    <div>(Optional) SellerResponse Statement (conditional render)</div>
+    <div>
+      (Optional) SellerResponse Statement (conditional render)
+      {response}
+    </div>
   );
 }

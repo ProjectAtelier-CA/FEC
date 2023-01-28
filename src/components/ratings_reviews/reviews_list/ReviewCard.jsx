@@ -8,27 +8,28 @@ import ReviewCardPhotos from './ReviewCardPhotos';
 import HelpfulButton from './HelpfulButton';
 import ReportButton from './ReportButton';
 
-export default function ReviewCard() {
+export default function ReviewCard({ review }) {
+  // console.log(review);
   return (
-    <>
+    <div className="review-card">
       <h5>ReviewCard (Individual Review Card)</h5>
       <div>
         <span>
-          <StarMeter />
+          <StarMeter rating={review.rating} />
         </span>
         <span>
-          <UserDateInfo />
+          <UserDateInfo date={review.date} user={review.reviewer_name} />
         </span>
       </div>
-      <ReviewCardText />
-      <RecommendCheck />
-      <SellerResponse />
-      <ReviewCardPhotos />
+      <ReviewCardText content={review.body} summary={review.summary} />
+      { review.recommend ? <RecommendCheck /> : null }
+      { review.response ? <SellerResponse response={review.response} /> : null }
+      <ReviewCardPhotos photos={review.photos} />
       <div>
         Inner Card Buttons:
-        <HelpfulButton />
+        <HelpfulButton helpfulness={review.helpfulness} />
         <ReportButton />
       </div>
-    </>
+    </div>
   );
 }
