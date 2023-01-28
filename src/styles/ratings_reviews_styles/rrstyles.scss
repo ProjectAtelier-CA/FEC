@@ -1,9 +1,16 @@
 
 .review-card {
-  border: 2px solid purple;
+  // border: 2px solid purple;
 
   .review-photo {
     width: 50px;
     height: 50px;
   }
+
+}
+
+.review-scroll {
+  // border: 2px solid blue;
+  overflow-y: auto;
+  height: min(600px, 800px);
 }
