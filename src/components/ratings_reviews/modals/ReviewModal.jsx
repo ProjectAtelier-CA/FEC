@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Characteristic from './Characteristic';
+import ReviewErrorMessage from './ReviewErrorMessage';
+
+// Todo: Validation for form inputs (half complete)
+// Todo: Submitting will do a POST request to the api endpoint
+// Todo: Upload photo functionality
 
 export default function ReviewModal() {
   const [recommended, setRecommended] = useState(true);
@@ -9,6 +14,18 @@ export default function ReviewModal() {
   const [quality, setQuality] = useState(0);
   const [length, setLength] = useState(0);
   const [fit, setFit] = useState(0);
+  const [reviewText, setReviewText] = useState('');
+  const [reviewTextValid, setReviewTextValid] = useState(false);
+  const [showErrorMsg, setShowErrorMsg] = useState(false);
+  const bodyRef = useRef(null);
+
+  useEffect(() => {
+    if (reviewText.length >= 50) {
+      setReviewTextValid(true);
+    } else if (reviewText.length < 50) {
+      setReviewTextValid(false);
+    }
+  }, [reviewText]);
 
   const handleSizeChange = (num) => {
     setSize(num);
@@ -34,6 +51,18 @@ export default function ReviewModal() {
     setFit(num);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!reviewTextValid) {
+      bodyRef.current.scrollIntoView({ behavior: 'smooth' });
+      console.log('i am here');
+      setShowErrorMsg(true);
+    } else {
+      setShowErrorMsg(false);
+      console.log('Valid submission');
+    }
+  };
+
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
   const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
@@ -44,19 +73,25 @@ export default function ReviewModal() {
   return (
     <div>
       <h4>Review Modal Component</h4>
-      <div>Write Your Review</div>
-      <div>About the [Product Name Here]</div>
       <div>
-        <form>
+        <div>Write Your Review</div>
+        <div>About the [Product Name Here]</div>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
           <div>
-            Overall Rating (Stars clickable here) (mandatory)
+            <h5>Overall Rating (Stars clickable here) (mandatory)</h5>
           </div>
           <div>
-            Do you recommend this product? (mandatory)
-            Yes:
-            <input type="radio" name="recommended" onChange={() => setRecommended(true)} />
-            No:
-            <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+            <h5>Do you recommend this product? (mandatory)</h5>
+            <label>
+              Yes:
+              <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+            </label>
+            <label>
+              No:
+              <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+            </label>
           </div>
           <div>
             <h5>Characteristics (mandatory)</h5>
@@ -67,6 +102,46 @@ export default function ReviewModal() {
             <Characteristic handleChange={handleLengthChange} selectionNames={lengthSelections} charType="Length" />
             <Characteristic handleChange={handleFitChange} selectionNames={fitSelections} charType="Fit" />
           </div>
+          <div>
+            <h5>Review Summary</h5>
+            <div>
+              <div>Review Summary Text input (using text area 60 chars limit):</div>
+              <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" />
+            </div>
+          </div>
+          <div ref={bodyRef}>
+            <h5>Review Body (mandatory)</h5>
+            <div>
+              <div>Review Body Text Input (also using text area 1000 chars limit):</div>
+              <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+              <div>
+                {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached' }
+              </div>
+            </div>
+          </div>
+          <div>
+            <h5>Upload your photos (5 photos max)</h5>
+            <div>
+              <button type="button">Add a photo</button>
+            </div>
+          </div>
+          <div>
+            <h5>What is your nickname (mandatory)</h5>
+            <div>
+              <input required type="text" placeholder="Example: jackson11!" />
+              <div>For privacy reasons, do not use your full name or email address</div>
+            </div>
+          </div>
+          <div>
+            <h5>Your email (mandatory)</h5>
+            <div>
+              <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" />
+              <div>For authentication reasons, you will not be emailed</div>
+            </div>
+          </div>
+          <br />
+          <button type="submit">Submit</button>
+          {showErrorMsg ? <ReviewErrorMessage /> : null}
         </form>
       </div>
     </div>
