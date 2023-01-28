@@ -1,0 +1,41 @@
+.thumbnails {
+  display: flex;
+  flex-flow: column nowrap;
+  // border: solid;
+  // border-color: green;
+  width: 4vw;
+  justify-content: flex-start;
+  inset: 0;
+  z-index: 4;
+  position: absolute;
+  align-items: center;
+  height: fit-content;
+
+  border: solid;
+  border-color: green;
+}
+
+.thumbnail-images {
+  position: relative;
+  inset: 0;
+  list-style-type: none;
+  padding-left: .5vw;
+  transform: translate(-5%);
+}
+
+.thumbnail-div {
+  inset: 0;
+}
+
+.thumbnail-image {
+  inset: 0;
+}
+
+.down-nav {
+  background-color: rgba(255,255,255,.8);
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  width: fit-content;
+  align-self: center;
+}

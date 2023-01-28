@@ -1,0 +1,55 @@
+.image-and-info {
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+// Product info
+.product-info {
+  padding-left: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-flow: column;
+  width: 40vw;
+  height: 60vh;
+  border: solid;
+  border-color: green;
+}
+
+.category {
+  font-size: .8em;
+  font-family: 'Inter', sans-serif;
+  font-weight: light;
+}
+
+.product-name {
+  font-size: 1.5em;
+  font-family: 'Inter', sans-serif;
+  width: fit-content;
+  height: fit-content;
+  font-weight: light;
+  border: solid;
+  border-color: green;
+  padding: 0;
+}
+
+// styles
+.styles {
+  border: solid;
+  border-color: green;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  height: fit-content;
+  justify-content: start;
+}
+
+.price {
+  border: solid;
+  border-color: green;
+}
+
+.style {
+  border: solid;
+  border-color: green;
+}
