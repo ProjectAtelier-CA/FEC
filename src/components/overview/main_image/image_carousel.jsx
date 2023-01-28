@@ -14,16 +14,16 @@ export default function ImageCarousel() {
 
   return (
 
-    <div className="carousel-div">
+    <div className="o-carousel-div">
       <section>
-        <div className="carousel">
-          <button type="button" key="leftNav" className="carousel-button carousel-left">{'<'}</button>
-          <button type="button" key="rightNav" className="carousel-button carousel-right">{'>'}</button>
+        <div className="o-carousel">
+          <button type="button" key="leftNav" className="o-carousel-button carousel-left">{'<'}</button>
+          <button type="button" key="rightNav" className="o-carousel-button carousel-right">{'>'}</button>
           <button type="button" key="expand" className="image_expand">Expand</button>
           <ul>
             {
               images.map((image) => (
-                <li key={image.id} className="slide">
+                <li key={image.id} className="o-slide">
                   <img src={image.url} alt="Carousel Slide" />
                 </li>
               ))

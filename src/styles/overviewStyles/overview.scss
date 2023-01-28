@@ -12,7 +12,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  opacity: .7;
+  opacity: .9;
   justify-content: space-between;
   z-index: 10;
 }
@@ -20,6 +20,7 @@
 .logo {
   padding: 10px 5px;
   padding-left: 20px;
+  font-size: 2em;
   position: relative;
   align-self: center;
 }
@@ -27,10 +28,10 @@
 .searchWrapper {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-flow: row nowrap;
   min-width: 250px;
-  padding: 20px;
+  padding: 20px 0px;
   padding-right: 20px;
 }
 
@@ -73,13 +74,13 @@ body {
   margin: 0;
 }
 
-.carousel {
+.o-carousel {
   width: 60vw;
   height: 60vh;
   position: relative;
 }
 
-.slide {
+.o-slide {
   position: absolute;
   inset: 0;
   opacity: 1;
@@ -89,16 +90,19 @@ body {
 // //   opacity: 1;
 // // }
 
-.slide > img {
+.o-slide > img {
   display: cover;
   width: 100%;
   height: 100%;
   object-fit: contain;
   background: #463F3A;
   object-position: center;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
-.carousel-button {
+.o-carousel-button {
   position: absolute;
   background: none;
   border: none;
@@ -113,23 +117,23 @@ body {
   background-color: rgba(0,0,0,.1);
 }
 
-.carousel-button:hover,
-.carousel-button:focus {
+.o-carousel-button:hover,
+.o-carousel-button:focus {
   color: white;
   background-color: rgba(0,0,0,.2);
 }
 
-.carousel-button.carousel-left {
+.o-carousel-button.carousel-left {
   left: 4rem;
   // bottom: 50%;
 }
 
-.carousel-button.carousel-right {
+.o-carousel-button.carousel-right {
   right: 1rem;
   // bottom: 50%;
 }
 
-.carousel > ul {
+.o-carousel > ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -155,6 +159,10 @@ body {
   z-index: 4;
   position: absolute;
   align-items: center;
+  height: fit-content;
+
+  border: solid;
+  border-color: green;
 }
 
 .thumbnail-images {
@@ -202,7 +210,7 @@ body {
 }
 
 .category {
-  font-size: 1em;
+  font-size: .8em;
   font-family: 'Inter', sans-serif;
   font-weight: light;
 }
@@ -211,12 +219,34 @@ body {
   font-size: 1.5em;
   font-family: 'Inter', sans-serif;
   width: fit-content;
-  height: fit-content();
+  height: fit-content;
   font-weight: light;
   border: solid;
   border-color: green;
   padding: 0;
 }
+
+// styles
+.styles {
+  border: solid;
+  border-color: green;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  height: fit-content;
+  justify-content: start;
+}
+
+.price {
+  border: solid;
+  border-color: green;
+}
+
+.style {
+  border: solid;
+  border-color: green;
+}
+
 
 .top-buttons {
   display: flex;
@@ -252,4 +282,63 @@ body {
 
 .button:hover {
   background-color: #463F3A;
+}
+
+
+// Description
+
+.o-description {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px
+}
+
+.description-content {
+  font-family: 'Inter', sans-serif;
+  padding-right: 50px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: start;
+  height:fit-content;
+  // justify-content: space-between;
+  height: fit-content;
+  // margin: 0px;
+  // padding: 0px;
+  // height: 100%;
+
+  border: solid;
+  border-color: green;
+}
+
+.o-title {
+  font-size: 1em;
+  border: solid;
+  border-color: green;
+}
+
+.o-body {
+  font-size: .8em;
+  border: solid;
+  border-color: green;
+}
+
+.divider {
+  height: 80px;
+  border-left: 1px solid;
+}
+
+.attributes {
+  padding-left: 50px;
+}
+
+.o-attribute {
+  font-family: 'Inter', sans-serif;
+  font-size: .8em;
+  padding: 2px 0px;
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+  align-items: center;
 }

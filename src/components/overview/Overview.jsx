@@ -9,7 +9,6 @@ import Banner from './announcement';
 
 // MAIN IMAGE
 import ImageCarousel from './main_image/image_carousel';
-import Thumbnails from './main_image/thumbnails';
 
 // PRODUCT INFO
 import ProductInfo from './product_header/product_info';

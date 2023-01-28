@@ -13,12 +13,12 @@ export default function Styles() {
   const [currentStyle, setStyle] = useState(styles[0]);
 
   return (
-    <>
-      <h4>
+    <div className="styles">
+      <h4 className="price">
         $
         {currentStyle.price}
       </h4>
-      <h2>
+      <h2 className="style">
         STYLE
         {'>'}
         {' '}
@@ -27,12 +27,12 @@ export default function Styles() {
       <ul>
         {
           styles.map((style) => (
-            <div key={style.id} >
+            <div key={style.id}>
               <img alt="style_thumbnail" key={style.id} className="style_thumbnail" src={style.url} width="50px" height="50px" />
             </div>
           ))
         }
       </ul>
-    </>
+    </div>
   );
 }

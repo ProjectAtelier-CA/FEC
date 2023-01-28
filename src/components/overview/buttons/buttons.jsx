@@ -10,7 +10,7 @@ export default function Buttons() {
       </div>
       <div className="bottom-buttons">
         <button type="button" className="button addToBag">Add to Bag</button>
-        <button type="button" className="button favorite">☆</button>
+        <button type="button" className="button favorite">&#9734;</button>
       </div>
     </div>
   );
