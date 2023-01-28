@@ -19,6 +19,9 @@ export default function ReviewsCardList({ productReviews, setShowReviewModal }) 
       <div className="review-scroll">
         {reviewElements.slice(0, reviewIndex)}
       </div>
+      <div className="review-scroll">
+        {reviewElements.slice(0, reviewIndex)}
+      </div>
       <br />
       <ActionButtons
         handleMoreClick={handleMoreClick}
