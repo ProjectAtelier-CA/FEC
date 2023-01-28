@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 
 export default function Thumbnails() {
@@ -12,18 +13,18 @@ export default function Thumbnails() {
 
   return (
 
-    <>
-      <ul>
+    <div className="thumbnails">
+      <ul className="thumbnail-images">
         {
         images.map((image) => (
-          <div>
-            <img alt="thumbnail" key={image.id} className="thumbnail_image" src={image.url} width="40px" height="40px" />
-          </div>
+          <li key={image.id} className="thumbnail-div">
+            <img alt="thumbnail" className="thumbnail-image" src={image.url} width="40px" height="40px" />
+          </li>
         ))
       }
       </ul>
-      <button type="button" key="downNav" className="down_nav">Down</button>
-    </>
+      <button type="button" key="downNav" className="down-nav">&#8615;</button>
+    </div>
 
   );
 }

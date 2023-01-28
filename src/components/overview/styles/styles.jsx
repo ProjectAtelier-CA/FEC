@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function Styles() {
   const styles = [{
+    id: 1,
     url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png',
     price: 120,
     name: 'Merlin',
@@ -12,12 +13,12 @@ export default function Styles() {
   const [currentStyle, setStyle] = useState(styles[0]);
 
   return (
-    <>
-      <h4>
+    <div className="styles">
+      <h4 className="price">
         $
         {currentStyle.price}
       </h4>
-      <h2>
+      <h2 className="style">
         STYLE
         {'>'}
         {' '}
@@ -26,12 +27,12 @@ export default function Styles() {
       <ul>
         {
           styles.map((style) => (
-            <div>
-              <img alt="style_thumbnail" className="style_thumbnail" src={style.url} width="50px" height="50px" />
+            <div key={style.id}>
+              <img alt="style_thumbnail" key={style.id} className="style_thumbnail" src={style.url} width="50px" height="50px" />
             </div>
           ))
         }
       </ul>
-    </>
+    </div>
   );
 }

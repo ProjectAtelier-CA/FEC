@@ -3,23 +3,23 @@ import React, { useState, useEffect } from 'react';
 
 export default function ProductInfo() {
   const product = {
-    id: 1, stars: 5, category: 'Category', name: 'T-Shirt',
+    id: 1, stars: 5, category: 'CATEGORY', name: 'T-Shirt',
   };
 
   return (
     <div key={product.id}>
-      <div key="rating">
+      <div className="rating" key="rating">
         {product.stars}
         {' '}
         Stars
         <a href="http://www.google.com/">Reviews...</a>
       </div>
-      <div key="category">
-        <h3>{product.category}</h3>
-      </div>
-      <div key="name">
-        <h1>{product.name}</h1>
-      </div>
+      <h3 className="category">{product.category}</h3>
+      {/* <div className="category" key="category">
+      </div> */}
+      <h1 className="product-name">{product.name}</h1>
+      {/* <div className="product-name" key="name"> */}
+      {/* </div> */}
     </div>
   );
 }

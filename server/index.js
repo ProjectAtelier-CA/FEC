@@ -32,5 +32,36 @@ app.get('/reviews', (req, res) => {
     .catch(() => res.send('Error occurred when getting reviews from /reviews'));
 });
 
+app.get('/questions', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+    params: {
+      product_id: 37319,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.json(data);
+    })
+    .catch(() => res.send('Error occurred when getting reviews from /qa/questions'));
+});
+app.get('/answers', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.question_id}}/answers`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+    params: {
+      product_id: 37319,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.json(data);
+    })
+    .catch(() => res.send('Error occurred when getting reviews from /qa/questions/answers'));
+});
+
 app.listen(8081);
 console.log('Listening at http://localhost:8081');
