@@ -4,3 +4,4 @@ public/bundle.js
 public/*
 yarn.lock
 .eslintrc.json
+# .DS_Store
