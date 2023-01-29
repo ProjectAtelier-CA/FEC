@@ -30,6 +30,7 @@ export default function RatingsBreakdown({ reviewMetaData }) {
   const [averageRating, setAverageRating] = useState(5);
   const [percentRec, setPercentRec] = useState(100);
   const [ratings, setRatings] = useState({});
+  const [chars, setChars] = useState({});
   // console.log(reviewMetaData);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function RatingsBreakdown({ reviewMetaData }) {
       setTotalVotes(calcRatings.totalVotes);
       setPercentRec(calcRecommended(reviewMetaData.recommended) * 100);
       setRatings(reviewMetaData.ratings);
+      setChars(reviewMetaData.characteristics);
     }
   }, [reviewMetaData]);
 
@@ -49,7 +51,7 @@ export default function RatingsBreakdown({ reviewMetaData }) {
       <StarRepresentation averageRating={averageRating} />
       <RecommendPercentage percentRec={percentRec} />
       <StarBreakdownList totalVotes={totalVotes} ratings={ratings} />
-      <ProductBreakdownList />
+      <ProductBreakdownList chars={chars} />
     </div>
   );
 }

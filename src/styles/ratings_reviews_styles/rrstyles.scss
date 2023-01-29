@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 .review-card {
   border: 2px solid purple;
   width: 600px;
@@ -83,5 +85,37 @@
       height: 10px;
     }
   }
+}
 
+.char-bar-container {
+  display: flex;
+  width: 300px;
+  gap: 5px;
+}
+
+.char-bar-traits {
+  display: flex;
+  width: 300px;
+}
+
+.char-bar {
+  background-color: gray;
+  width: 100px;
+  height: 10px;
+}
+
+.trait-container-left {
+  display: flex;
+  justify-content: flex-start;
+  width: 100px;
+}
+.trait-container-middle {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+.trait-container-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100px;
 }
