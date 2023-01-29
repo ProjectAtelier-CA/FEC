@@ -1,10 +1,12 @@
 import React from 'react';
+import { IoTriangle } from 'react-icons/io5';
 
-export default function ComfortBar() {
+export default function ComfortBar({ position }) {
   return (
     <div>
       <div>Comfort</div>
       <div className="char-bar-container">
+        <div className="char-triangle" style={{ marginLeft: position }}>{IoTriangle()}</div>
         <div className="char-bar" />
         <div className="char-bar" />
         <div className="char-bar" />

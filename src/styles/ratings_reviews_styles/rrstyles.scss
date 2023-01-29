@@ -90,6 +90,7 @@
 .char-bar-container {
   display: flex;
   width: 300px;
+  margin-bottom: 5px;
   gap: 5px;
 }
 
@@ -99,9 +100,18 @@
 }
 
 .char-bar {
+  margin-top: 3px;
   background-color: gray;
   width: 100px;
   height: 10px;
+}
+
+.char-triangle {
+  position:absolute;
+  font-size: 1.1em;
+  height: 10px;
+  transform: rotate(180deg);
+  margin-top: 9px;
 }
 
 .trait-container-left {

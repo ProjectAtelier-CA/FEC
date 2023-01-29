@@ -1,10 +1,12 @@
 import React from 'react';
+import { IoTriangle } from 'react-icons/io5';
 
-export default function QualityBar() {
+export default function QualityBar({ position }) {
   return (
     <div>
       <div>Quality</div>
       <div className="char-bar-container">
+        <div className="char-triangle" style={{ marginLeft: position }}>{IoTriangle()}</div>
         <div className="char-bar" />
         <div className="char-bar" />
         <div className="char-bar" />

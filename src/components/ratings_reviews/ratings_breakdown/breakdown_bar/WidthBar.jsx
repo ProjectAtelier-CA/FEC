@@ -1,10 +1,13 @@
 import React from 'react';
+import { IoTriangle } from 'react-icons/io5';
 
-export default function WidthBar() {
+
+export default function WidthBar({ position }) {
   return (
     <div>
       <div>Width</div>
       <div className="char-bar-container">
+        <div className="char-triangle" style={{ marginLeft: position }}>{IoTriangle()}</div>
         <div className="char-bar" />
         <div className="char-bar" />
         <div className="char-bar" />
