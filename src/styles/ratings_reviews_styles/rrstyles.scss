@@ -39,3 +39,49 @@
 .review-error-message {
   border: 2px solid red;
 }
+
+.ratings-breakdown {
+  border: 2px solid palevioletred;
+}
+
+.star-representation {
+  border: 2px solid purple;
+  display: flex;
+  gap: 10px;
+
+  .average-rating {
+    border: 2px solid green;
+    font-size: 3rem;
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.star-breakdown-item {
+  border: 2px solid olivedrab;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+
+  span {
+    border: 2px solid orange;
+  }
+  .break-down-bar {
+    display: flex;
+    align-items: center;
+
+    .gray-bar {
+      // border: 2px solid cyan;
+      background-color: rgba(102, 102, 102, 0.472);
+      width: 200px;
+      height: 10px;
+      position: absolute;
+    }
+
+    .green-bar {
+      background-color: rgb(9, 246, 9);
+      height: 10px;
+    }
+  }
+
+}

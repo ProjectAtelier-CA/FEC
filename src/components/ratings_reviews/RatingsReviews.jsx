@@ -6,7 +6,7 @@ import '../../styles/ratings_reviews_styles/rrstyles.scss';
 
 export default function RatingsReviews({ productID }) {
   const [productReviews, setProductReviews] = useState([]);
-  // console.log(productReviews);
+  const [reviewMetaData, setReviewMetaData] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews').then(({ data }) => {
@@ -16,10 +16,16 @@ export default function RatingsReviews({ productID }) {
     });
   }, []);
 
+  useEffect(() => {
+    axios.get('http://localhost:8081/reviews/meta').then(({ data }) => {
+      setReviewMetaData(data);
+    });
+  }, []);
+
   return (
     <>
       <h1>RatingsReviews Component</h1>
-      <RatingsBreakdown />
+      <RatingsBreakdown reviewMetaData={reviewMetaData} />
       { productReviews.length ? <ReviewsList productReviews={productReviews} /> : null }
     </>
   );
