@@ -1,13 +1,21 @@
-// Now this is the index.jsx for related_products folder
 import React from 'react';
 import ProductCarousel from './ProductCarousel';
-import ProductCard from './ProductCard';
 
-export default function RelatedProducts(props) {
+// you may want to make this url context and also the id;
+// const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/';
+// const id = null;
+
+export default function RelatedProducts() {
   return (
-    <section className="related-product">
-      <h1>Related Products Component</h1>
-      <ProductCarousel>{ <ProductCard /> }</ProductCarousel>
-    </section>
+    < >
+      <h1>Related Products</h1>
+      <div className="product__related">
+        <ProductCarousel />
+      </div>
+      {/* <div className="product__outfit">
+        <h1>My Outfit</h1>
+        <ProductCarousel />
+      </div> */}
+    </>
   );
-}
+};
