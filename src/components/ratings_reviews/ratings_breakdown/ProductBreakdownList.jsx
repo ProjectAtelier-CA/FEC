@@ -59,9 +59,9 @@ export default function ProductBreakdownList({ chars }) {
   useEffect(() => {
     const currChars = Object.keys(chars); // List of characteristics for product
     if (currChars.length) {
-      setTriPositions(calcTrianglePosition(chars));
+      setTriPositions(calcTrianglePosition(chars)); // Set triangle position
       currChars.forEach((char) => {
-        renderCharBars(char);
+        renderCharBars(char); // Set render state of each characteristic
       });
     }
   }, [chars]);
