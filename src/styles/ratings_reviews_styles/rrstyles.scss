@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 .review-card {
   border: 2px solid purple;
   width: 600px;
@@ -38,4 +40,92 @@
 
 .review-error-message {
   border: 2px solid red;
+}
+
+.ratings-breakdown {
+  border: 2px solid palevioletred;
+}
+
+.star-representation {
+  border: 2px solid purple;
+  display: flex;
+  gap: 10px;
+
+  .average-rating {
+    border: 2px solid green;
+    font-size: 3rem;
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.star-breakdown-item {
+  border: 2px solid olivedrab;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+
+  span {
+    border: 2px solid orange;
+  }
+  .break-down-bar {
+    display: flex;
+    align-items: center;
+
+    .gray-bar {
+      // border: 2px solid cyan;
+      background-color: rgba(102, 102, 102, 0.472);
+      width: 200px;
+      height: 10px;
+      position: absolute;
+    }
+
+    .green-bar {
+      background-color: rgb(9, 246, 9);
+      height: 10px;
+    }
+  }
+}
+
+.char-bar-container {
+  display: flex;
+  width: 300px;
+  margin-bottom: 5px;
+  gap: 5px;
+}
+
+.char-bar-traits {
+  display: flex;
+  width: 300px;
+}
+
+.char-bar {
+  margin-top: 3px;
+  background-color: gray;
+  width: 100px;
+  height: 10px;
+}
+
+.char-triangle {
+  position:absolute;
+  font-size: 1.1em;
+  height: 10px;
+  transform: rotate(180deg);
+  margin-top: 9px;
+}
+
+.trait-container-left {
+  display: flex;
+  justify-content: flex-start;
+  width: 100px;
+}
+.trait-container-middle {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+.trait-container-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100px;
 }
