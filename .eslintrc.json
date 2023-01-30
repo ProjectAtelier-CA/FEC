@@ -19,7 +19,9 @@
   "rules": {
       "react/prop-types": "off",
       "jsx-a11y/label-has-associated-control" : "off",
-      "import/no-extraneous-dependencies": "off"
+      "import/no-extraneous-dependencies": "off",
+      "guard-for-in" : "off",
+      "no-restricted-syntax": "off"
   },
   "ignorePatterns": []
 }
