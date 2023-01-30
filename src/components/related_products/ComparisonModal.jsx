@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-export default function ComparisonModal(props) {
+export default function ComparisonModal() {
   return (
-    <section className='related-product'>
+    <section className="related-product">
       <h1>Comparison Modal Component</h1>
     </section>
   );
