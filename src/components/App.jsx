@@ -12,9 +12,9 @@ export default function App() {
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <h1>All Our Components</h1>
-      {/* <Overview /> */}
-      {/* <RelatedProducts /> */}
-      {/* <QuestionsAnswers /> */}
+      <Overview />
+      <RelatedProducts />
+      <QuestionsAnswers />
       <RatingsReviews />
     </>
   );
