@@ -31,8 +31,8 @@ export default function Overview() {
         <ImageCarousel />
         <div className="product-info">
           <ProductInfo />
-          <Styles />
-          <Buttons />
+          {/* <Styles /> */}
+          {/* <Buttons /> */}
         </div>
       </div>
       <Description />
