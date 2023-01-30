@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import Styles from '../styles/styles';
+import Buttons from '../buttons/buttons';
 
 export default function ProductInfo() {
   const product = {
@@ -7,7 +9,7 @@ export default function ProductInfo() {
   };
 
   return (
-    <div key={product.id}>
+    <div className="info" key={product.id}>
       <div className="rating" key="rating">
         {product.stars}
         {' '}
@@ -20,6 +22,8 @@ export default function ProductInfo() {
       <h1 className="product-name">{product.name}</h1>
       {/* <div className="product-name" key="name"> */}
       {/* </div> */}
+      <Styles />
+      <Buttons />
     </div>
   );
 }
