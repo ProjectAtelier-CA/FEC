@@ -34,6 +34,24 @@ app.get('/reviews', (req, res) => {
     .catch(() => res.send('Error occurred when getting reviews from /reviews'));
 });
 
+app.get('/reviews/meta', (req, res) => {
+  console.log('GET request received from /reviews/meta');
+
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+    params: {
+      product_id: 37323,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.json(data);
+    })
+    .catch(() => res.send('Error occurred when getting reviews from /reviews/meta'));
+});
+
 app.get('/questions', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', {
     headers: {
