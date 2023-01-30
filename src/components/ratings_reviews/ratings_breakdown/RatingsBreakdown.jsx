@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import StarRepresentation from './StarRepresentation';
 import RecommendPercentage from './RecommendPercentage';
 import StarBreakdownList from './StarBreakdownList';
@@ -9,11 +8,11 @@ const calcAverageRating = (ratings) => {
   let sum = 0;
   let totalVotes = 0;
 
-  Object.keys(ratings).forEach((key) => {
+  for (const key in ratings) {
     const value = Number(key);
     sum += value * ratings[key];
     totalVotes += Number(ratings[key]);
-  });
+  }
 
   const averageScore = sum / totalVotes;
   return { averageScore, totalVotes };
