@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AnswerList from './AnswerList.jsx';
+import AnswerList from './AnswerList';
+import HelpfulButton from './HelpfulButton';
 
 export default function QuestionListItem({ q }) {
   const [allAnswers, setAns] = useState([]);
@@ -24,6 +22,7 @@ export default function QuestionListItem({ q }) {
       <div className="question-body">
         Q:
         {q.question_body}
+        <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
         <AnswerList answers={allAnswers} />
       </div>
     );

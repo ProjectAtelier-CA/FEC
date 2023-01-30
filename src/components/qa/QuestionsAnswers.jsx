@@ -6,6 +6,8 @@ import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
 import Search from './Search.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
+import ShowMoreQuestions from './ShowMoreQuestions';
+import AddQuestions from './AddQuestion';
 
 export default function QuestionsAnswers() {
   const [productId, setId] = useState('37311');
@@ -32,7 +34,7 @@ export default function QuestionsAnswers() {
         !loading
           ? <QuestionList productIdData={questions} />
           : null
-}
+         }
       </section>
     );
   }

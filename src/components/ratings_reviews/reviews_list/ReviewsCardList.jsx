@@ -10,6 +10,7 @@ const makeStarFilters = (starFilter) => {
     }
   }
   return filter;
+<<<<<<< HEAD
 };
 
 export default function ReviewsCardList({
@@ -20,6 +21,16 @@ export default function ReviewsCardList({
 
   useEffect(() => {
     // Should menu collaspe when we are switching our sort by filter?
+=======
+}
+
+export default function ReviewsCardList({ productReviews, setShowReviewModal, starFilter }) {
+  const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
+  const [filterBy, setFilterBy] = useState([]);
+  // console.log(filterBy);
+
+  useEffect(() => {
+>>>>>>> 363465351a00b523abe621a0bebcc72f1641de57
     setFilterBy(makeStarFilters(starFilter));
     setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
   }, [starFilter]);
