@@ -1,21 +1,11 @@
 
 @import "_thumbnails";
 
-.o-carousel {
-  width: 60vw;
-  height: 60vh;
-  position: relative;
-}
-
 .o-slide {
   position: absolute;
   inset: 0;
   opacity: 1;
 }
-
-// // .slide[data-active] {
-// //   opacity: 1;
-// // }
 
 .o-slide > img {
   display: cover;
@@ -27,6 +17,26 @@
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
+}
+
+.active {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.expanded {
+  width: 100vw;
+  height: 60vh;
+  position: relative;
+}
+
+.normal {
+  width: 60vw;
+  height: 60vh;
+  position: relative;
 }
 
 .o-carousel-button {
@@ -58,6 +68,28 @@
 .o-carousel-button.carousel-right {
   right: 1rem;
   // bottom: 50%;
+}
+
+.o-image-expand {
+  z-index: 10;
+  opacity: 1;
+  right: 2%;
+  top: 5%;
+  border: solid;
+  border-color: green;
+
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  z-index: 2;
+  transform: translate(0,50%);
+  bottom: 98%;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  border-radius: .05rem;
+  padding: 0 .5rem;
+  background-color: rgba(0,0,0,.1);
 }
 
 .o-carousel > ul {
