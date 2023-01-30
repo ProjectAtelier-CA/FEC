@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReviewsSortMenu from './ReviewsSortMenu';
 import ReviewsCardList from './ReviewsCardList';
 import ReviewModal from '../modals/ReviewModal';
 
 export default function ReviewsList({ productReviews, starFilter, handleSortClick, sortBy }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
+  const reviewListTopRef = useRef(null);
 
   return (
     <div className="reviews-list">
@@ -13,11 +14,14 @@ export default function ReviewsList({ productReviews, starFilter, handleSortClic
         handleSortClick={handleSortClick}
         numReviews={productReviews.length}
         sortBy={sortBy}
+        reviewListTopRef={reviewListTopRef}
       />
       <ReviewsCardList
         productReviews={productReviews}
         setShowReviewModal={setShowReviewModal}
         starFilter={starFilter}
+        sortBy={sortBy}
+        reviewListTopRef={reviewListTopRef}
       />
       {showReviewModal ? <ReviewModal setShowReviewModal={setShowReviewModal} /> : null}
     </div>

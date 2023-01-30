@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy }) {
+export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy, reviewListTopRef }) {
   const [open, setOpen] = useState(false);
 
   // console.log(numberOfReviews);
@@ -8,6 +8,7 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy })
   const handleClick = (e) => {
     handleSortClick(e);
     setOpen(false);
+    reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
   };
 
   return (
