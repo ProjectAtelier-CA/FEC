@@ -2,10 +2,37 @@ import React, { useState, useEffect } from 'react';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
 
-export default function ReviewsCardList({ productReviews, setShowReviewModal }) {
-  const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
+const makeStarFilters = (starFilter) => {
+  const filter = [];
+  for (const key in starFilter) {
+    if (starFilter[key]) {
+      filter.push(key);
+    }
+  }
+  return filter;
+}
 
-  const reviewElements = productReviews.map((review) => (
+export default function ReviewsCardList({ productReviews, setShowReviewModal, starFilter }) {
+  const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
+  const [filterBy, setFilterBy] = useState([]);
+  // console.log(filterBy);
+
+  useEffect(() => {
+    setFilterBy(makeStarFilters(starFilter));
+    setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
+  }, [starFilter]);
+
+  let filteredProductReviews = [];
+
+  if (filterBy.length === 0) {
+    filteredProductReviews = productReviews;
+  } else {
+    filteredProductReviews = productReviews.filter((productReview) => (
+      filterBy.includes(productReview.rating.toString())
+    ));
+  }
+
+  const reviewElements = filteredProductReviews.map((review) => (
     <ReviewCard key={review.review_id} review={review} />
   ));
 
@@ -23,7 +50,7 @@ export default function ReviewsCardList({ productReviews, setShowReviewModal }) 
       <ActionButtons
         handleMoreClick={handleMoreClick}
         setShowReviewModal={setShowReviewModal}
-        totalReviews={productReviews.length}
+        totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
       />
     </>

@@ -4,12 +4,15 @@ export default function ActionButtons({
   handleMoreClick, totalReviews, reviewIndex, setShowReviewModal,
 }) {
   const [showMore, setShowMore] = useState(true);
+  console.log(reviewIndex);
 
   useEffect(() => {
     if (reviewIndex >= totalReviews) {
       setShowMore(false);
+    } else if (reviewIndex < totalReviews) {
+      setShowMore(true);
     }
-  }, [reviewIndex]);
+  }, [reviewIndex, totalReviews]);
 
   return (
     <div>

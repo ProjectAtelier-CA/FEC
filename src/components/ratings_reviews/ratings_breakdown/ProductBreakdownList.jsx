@@ -15,22 +15,6 @@ const calcTrianglePosition = (chars) => {
   return positions;
 };
 
-// const renderCharBars = (currChar) => {
-//   if (currChar === 'Size') {
-//     setShowSize(true);
-//   } else if (currChar === 'Width') {
-//     setShowWidth(true);
-//   } else if (currChar === 'Comfort') {
-//     setShowComfort(true);
-//   } else if (currChar === 'Quality') {
-//     setShowQuality(true);
-//   } else if (currChar === 'Length') {
-//     setShowLength(true);
-//   } else if (currChar === 'Fit') {
-//     setShowFit(true);
-//   }
-// };
-
 export default function ProductBreakdownList({ chars }) {
   const [showSize, setShowSize] = useState(false);
   const [showWidth, setShowWidth] = useState(false);
