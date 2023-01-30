@@ -70,7 +70,6 @@ app.get('/questions', (req, res) => {
 });
 
 app.get('/answers', (req, res) => {
-  console.log('this is answers', req.query.question_id);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.question_id}/answers`, {
     headers: {
       Authorization: process.env.AUTH_SECRET,
