@@ -7,6 +7,7 @@ import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 
 export default function QuestionListItem({ q }) {
+
   const [allAnswers, setAns] = useState([]);
   const [loading, setLoad] = useState(true);
   const { question_id } = q;
@@ -28,4 +29,4 @@ export default function QuestionListItem({ q }) {
       </div>
     );
   }
-}
+  }

@@ -23,7 +23,7 @@ app.get('/reviews', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37319,
+      product_id: 37323,
     },
   })
     .then(({ data }) => {
@@ -47,9 +47,12 @@ app.get('/questions', (req, res) => {
       res.status(200);
       res.json(data);
       res.end();
+
+
     })
     .catch(() => res.send('Error occurred when getting reviews from /qa/questions'));
 });
+
 app.get('/answers', (req, res) => {
   console.log('this is answers',req.query.question_id);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.question_id}/answers`, {

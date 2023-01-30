@@ -1,0 +1,93 @@
+@use '../shared/_utils' as *;
+
+@mixin button--formless {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+// styling for Product Card component
+.product__card {
+  border: $small-margin solid $main-color;
+  width: 10rem;
+  position: relative;
+
+  * { margin: 0 }
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  button {
+    @include button--formless;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+
+    svg {
+      width: 1rem;
+      stroke: white;
+      stroke-width: 0.5rem;
+    }
+  }
+
+  section {
+    @include flex(column, space-between, flex-start);
+    height: 5rem;
+    padding: 0.25rem;
+
+    // this should be enforced in index.scss
+    p {
+      font-size: 0.5rem;
+
+      &:first-child {
+        text-transform: uppercase;
+      }
+    }
+
+    // all headline 1 to 6 should also be map to differen rem in index.scss
+    h2 { font-size: 0.7rem }
+  }
+
+  // hover effect on the whole card
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.3rem 0.1rem black;
+  }
+}
+
+.product__related {
+  @include flex;
+  gap: 0.5rem;
+
+  & > button  {
+    @include button--formless;
+    font-size: 2rem;
+
+    &.invisible {
+      visibility: hidden;
+    }
+  }
+}
+
+// ProductCarousel Component
+.product__carousel {
+  //outline: 2px solid black;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  overflow: hidden;
+  // min width -- one card wide
+  min-width: 12rem;
+  width: 70%;
+
+  &__scroller {
+    display: flex;
+    gap: 2rem;
+    transition: translate 1s;
+  }
+
+}

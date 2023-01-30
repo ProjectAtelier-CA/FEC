@@ -32,7 +32,6 @@ export default function QuestionsAnswers() {
         !loading
           ? <QuestionList productIdData={questions} />
           : null
-}
       </section>
     );
   }

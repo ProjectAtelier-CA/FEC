@@ -1,4 +1,41 @@
 
-.test {
+.review-card {
   border: 2px solid purple;
+  width: 600px;
+
+  .review-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+}
+
+.review-scroll {
+  // border: 2px solid blue;
+  overflow-y: auto;
+  height: min(600px, 800px);
+}
+
+.reviews-list {
+  // border: 2px solid cyan;
+}
+
+.characteristics {
+    // border: 2px solid blue;
+    display: flex;
+    justify-content: space-between;
+
+    .selections {
+      font-size: .5em; //need to change according to our root font size
+      border: 2px solid darkgoldenrod;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+    }
+}
+
+.review-error-message {
+  border: 2px solid red;
 }
