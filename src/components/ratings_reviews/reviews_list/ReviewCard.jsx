@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRating from '../../shared/StarRating';
-import UserDateInfo from './UserDateInfo';
+import UserDateInfo from '../../shared/UserDateInfo';
 import ReviewCardText from './ReviewCardText';
 import RecommendCheck from './RecommendCheck';
 import SellerResponse from './SellerResponse';
