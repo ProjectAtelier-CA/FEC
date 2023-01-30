@@ -18,7 +18,6 @@ export default function ReviewsCardList({
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
 
-
   useEffect(() => {
     // Should menu collaspe when we are switching our sort by filter?
     setFilterBy(makeStarFilters(starFilter));
