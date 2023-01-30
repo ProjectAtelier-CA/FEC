@@ -22,7 +22,7 @@ app.get('/reviews', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37319,
+      product_id: 37323,
     },
   })
     .then(({ data }) => {

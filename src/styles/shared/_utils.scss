@@ -1,0 +1,18 @@
+// This _utils.scss hold all mixin, function, variables that should be shared globally
+
+
+// flexbox mixin for convenience
+@mixin flex($direction: row, $main-axis: center, $cross-axis: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+// these are just some random variables, for testing purposes only, subject to later refactor
+$star-size: 2rem;
+$star-color: black;
+$main-color: black;
+$small-margin: 0.02rem;
+$medium-font: 0.7rem;
+$small-font: 0.5rem;

@@ -1,3 +1,8 @@
+// think of these statement as [import * from '...'] in JavaScript module
+@use 'shared/_utils' as *;
+@use 'shared/_stars' as *;
+@use 'relatedProducts/_related-products' as *;
+
 // $main-color: #463F3A;
 // $heading-font-family: Inter, sans-serif;
 

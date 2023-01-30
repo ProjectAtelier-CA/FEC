@@ -6,12 +6,13 @@ import '../../styles/ratings_reviews_styles/rrstyles.scss';
 
 export default function RatingsReviews({ productID }) {
   const [productReviews, setProductReviews] = useState([]);
+  // console.log(productReviews);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews').then(({ data }) => {
       const reviews = data.results;
       // reviews will be an array of objects
-      setProductReviews(...productReviews, ...reviews);
+      setProductReviews([...productReviews, ...reviews]);
     });
   }, []);
 
@@ -19,7 +20,7 @@ export default function RatingsReviews({ productID }) {
     <>
       <h1>RatingsReviews Component</h1>
       <RatingsBreakdown />
-      <ReviewsList />
+      { productReviews.length ? <ReviewsList productReviews={productReviews} /> : null }
     </>
   );
 }
