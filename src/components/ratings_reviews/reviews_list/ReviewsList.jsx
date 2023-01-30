@@ -5,7 +5,6 @@ import ReviewModal from '../modals/ReviewModal';
 
 export default function ReviewsList({ productReviews, starFilter }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
-  // console.log(starFilter);
 
   return (
     <div className="reviews-list">

@@ -46,7 +46,3 @@ export default function RatingsReviews({ productID }) {
     </>
   );
 }
-
-// RatingsReviews.propTypes = {
-//   productID: PropTypes.number,
-// }

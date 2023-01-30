@@ -4,9 +4,10 @@ export default function ActionButtons({
   handleMoreClick, totalReviews, reviewIndex, setShowReviewModal,
 }) {
   const [showMore, setShowMore] = useState(true);
-  console.log(reviewIndex);
 
   useEffect(() => {
+    // Conditional check for our show more button
+    // According to both reviewIndex and our current totalReviews (changes on filter)
     if (reviewIndex >= totalReviews) {
       setShowMore(false);
     } else if (reviewIndex < totalReviews) {
