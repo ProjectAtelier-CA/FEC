@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 export default function Banner() {
   return (
-    <div key="banner">
-      Insert banner announcement or sale here and
-      <a href="http://www.google.com">check out the item</a>
+    <div className="banner">
+      <em>SITE-WIDE ANNOUNCEMENT MESSAGE! </em>
+      -- SALE / DISCOUNT
+      <b> OFFER</b>
+      --
+      <a href="http://www.google.com">CHECK OUT THE ITEM</a>
     </div>
   );
 }

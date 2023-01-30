@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default function StarMeter() {
+export default function StarMeter({ rating }) {
   return (
     <span>
-      StarMeter (3.5/5 Stars)
+      StarMeter(
+      {rating}
+      /5 Stars)
     </span>
   );
 }
