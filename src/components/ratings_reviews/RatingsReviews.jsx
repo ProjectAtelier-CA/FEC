@@ -17,15 +17,19 @@ export default function RatingsReviews({ productID }) {
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
   const [sortBy, setSortBy] = useState('relevance');
-  console.log(sortBy);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews').then(({ data }) => {
-      const reviews = data.results;
-      // reviews will be an array of objects
-      setProductReviews([...productReviews, ...reviews]);
-    });
-  }, []);
+    axios.get('http://localhost:8081/reviews', {
+      params: {
+        sort: sortBy,
+      },
+    })
+      .then(({ data }) => {
+        const reviews = data.results;
+        // reviews will be an array of objects
+        setProductReviews([...reviews]);
+      });
+  }, [sortBy]);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews/meta').then(({ data }) => {
@@ -51,6 +55,7 @@ export default function RatingsReviews({ productID }) {
             productReviews={productReviews}
             starFilter={starFilter}
             handleSortClick={handleSortClick}
+            sortBy={sortBy}
           />
         )}
     </>

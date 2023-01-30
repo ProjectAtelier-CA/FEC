@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-export default function ReviewsSortMenu({ handleSortClick }) {
+export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy }) {
   const [open, setOpen] = useState(false);
+
+  // console.log(numberOfReviews);
 
   const handleClick = (e) => {
     handleSortClick(e);
@@ -12,9 +14,12 @@ export default function ReviewsSortMenu({ handleSortClick }) {
     <div className="reviews-sort-menu">
       <h4>ReviewsSortMenu</h4>
       <div>
-        <div>Sorted by:</div>
         <div>
-          <button type="button" onClick={() => setOpen(!open)}>Dropdown Selection</button>
+          {numReviews}
+          Reviews Sorted by:
+        </div>
+        <div>
+          <button type="button" onClick={() => setOpen(!open)}>{sortBy}</button>
           {open && (
             <div>
               <ul className="sort-menu-item">
