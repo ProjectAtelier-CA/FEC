@@ -75,81 +75,90 @@ export default function ReviewModal({ setShowReviewModal }) {
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
 
+  const handleModalOutsideClick = () => {
+
+  }
+
   return (
-    <div>
-      <h4>Review Modal Component</h4>
-      <div>
-        <div>Write Your Review</div>
-        <div>About the [Product Name Here]</div>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <h5>Overall Rating (Stars clickable here) (mandatory)</h5>
-          </div>
-          <div>
-            <h5>Do you recommend this product? (mandatory)</h5>
-            <label>
-              Yes:
-              <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
-            </label>
-            <label>
-              No:
-              <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
-            </label>
-          </div>
-          <div>
-            <h5>Characteristics (mandatory)</h5>
-            <Characteristic handleChange={handleSizeChange} selectionNames={sizeSelections} charType="Size" />
-            <Characteristic handleChange={handleWidthChange} selectionNames={widthSelections} charType="Width" />
-            <Characteristic handleChange={handleComfortChange} selectionNames={comfortSelections} charType="Comfort" />
-            <Characteristic handleChange={handleQualityChange} selectionNames={qualitySelections} charType="Quality" />
-            <Characteristic handleChange={handleLengthChange} selectionNames={lengthSelections} charType="Length" />
-            <Characteristic handleChange={handleFitChange} selectionNames={fitSelections} charType="Fit" />
-          </div>
-          <div>
-            <h5>Review Summary</h5>
+    <div
+      className="review-modal-container"
+      onClick={() => setShowReviewModal(false)}
+    >
+      <div className="review-modal-content">
+        <h4>Review Modal Component</h4>
+        <div>
+          <div>Write Your Review</div>
+          <div>About the [Product Name Here]</div>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit}>
             <div>
-              <div>Review Summary Text input (using text area 60 chars limit):</div>
-              <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" />
+              <h5>Overall Rating (Stars clickable here) (mandatory)</h5>
             </div>
-          </div>
-          <div>
-            <h5>Review Body (mandatory)</h5>
             <div>
-              <div>Review Body Text Input (also using text area 1000 chars limit):</div>
-              <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+              <h5>Do you recommend this product? (mandatory)</h5>
+              <label>
+                Yes:
+                <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+              </label>
+              <label>
+                No:
+                <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+              </label>
+            </div>
+            <div>
+              <h5>Characteristics (mandatory)</h5>
+              <Characteristic handleChange={handleSizeChange} selectionNames={sizeSelections} charType="Size" />
+              <Characteristic handleChange={handleWidthChange} selectionNames={widthSelections} charType="Width" />
+              <Characteristic handleChange={handleComfortChange} selectionNames={comfortSelections} charType="Comfort" />
+              <Characteristic handleChange={handleQualityChange} selectionNames={qualitySelections} charType="Quality" />
+              <Characteristic handleChange={handleLengthChange} selectionNames={lengthSelections} charType="Length" />
+              <Characteristic handleChange={handleFitChange} selectionNames={fitSelections} charType="Fit" />
+            </div>
+            <div>
+              <h5>Review Summary</h5>
               <div>
-                {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached' }
+                <div>Review Summary Text input (using text area 60 chars limit):</div>
+                <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" />
               </div>
             </div>
-          </div>
-          <div>
-            <h5>Upload your photos (5 photos max)</h5>
             <div>
-              <button type="button">Add a photo</button>
+              <h5>Review Body (mandatory)</h5>
+              <div>
+                <div>Review Body Text Input (also using text area 1000 chars limit):</div>
+                <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+                <div>
+                  {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached' }
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <h5>What is your nickname (mandatory)</h5>
             <div>
-              <input required type="text" placeholder="Example: jackson11!" />
-              <div>For privacy reasons, do not use your full name or email address</div>
+              <h5>Upload your photos (5 photos max)</h5>
+              <div>
+                <button type="button">Add a photo</button>
+              </div>
             </div>
-          </div>
-          <div>
-            <h5>Your email (mandatory)</h5>
             <div>
-              <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" />
-              <div>For authentication reasons, you will not be emailed</div>
+              <h5>What is your nickname (mandatory)</h5>
+              <div>
+                <input required type="text" placeholder="Example: jackson11!" />
+                <div>For privacy reasons, do not use your full name or email address</div>
+              </div>
             </div>
-          </div>
-          <br />
-          <button type="submit">Submit</button>
-          <div ref={errorRef}>
-            {showErrorMsg ? <ReviewErrorMessage /> : null}
-          </div>
-        </form>
+            <div>
+              <h5>Your email (mandatory)</h5>
+              <div>
+                <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" />
+                <div>For authentication reasons, you will not be emailed</div>
+              </div>
+            </div>
+            <br />
+            <button type="submit">Submit</button>
+            <div ref={errorRef}>
+              {showErrorMsg ? <ReviewErrorMessage /> : null}
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
