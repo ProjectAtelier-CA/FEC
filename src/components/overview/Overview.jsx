@@ -9,7 +9,6 @@ import Banner from './announcement';
 
 // MAIN IMAGE
 import ImageCarousel from './main_image/image_carousel';
-import Thumbnails from './main_image/thumbnails';
 
 // PRODUCT INFO
 import ProductInfo from './product_header/product_info';
@@ -21,20 +20,21 @@ import Buttons from './buttons/buttons';
 
 // DESCRIPTION
 import Description from './product_description/product_description';
+import '../../styles/overviewStyles/overview.scss';
 
 export default function Overview() {
   return (
     <>
       <Nav />
-      <h1>
-        Overview Component
-      </h1>
       <Banner />
-      <ImageCarousel />
-      <Thumbnails />
-      <ProductInfo />
-      <Styles />
-      <Buttons />
+      <div className="image-and-info">
+        <ImageCarousel />
+        <div className="product-info">
+          <ProductInfo />
+          <Styles />
+          <Buttons />
+        </div>
+      </div>
       <Description />
     </>
   );
