@@ -1,0 +1,11 @@
+@import "_buttons";
+@import "_navbar";
+@import "_banner";
+@import "_main_image";
+@import "_product_info";
+@import "_description.scss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+

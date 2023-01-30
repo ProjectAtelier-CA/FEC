@@ -3,7 +3,7 @@ import ReviewsSortMenu from './ReviewsSortMenu';
 import ReviewsCardList from './ReviewsCardList';
 import ReviewModal from '../modals/ReviewModal';
 
-export default function ReviewsList({ productReviews }) {
+export default function ReviewsList({ productReviews, starFilter }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
 
   return (
@@ -13,6 +13,7 @@ export default function ReviewsList({ productReviews }) {
       <ReviewsCardList
         productReviews={productReviews}
         setShowReviewModal={setShowReviewModal}
+        starFilter={starFilter}
       />
       {showReviewModal ? <ReviewModal setShowReviewModal={setShowReviewModal} /> : null}
     </div>

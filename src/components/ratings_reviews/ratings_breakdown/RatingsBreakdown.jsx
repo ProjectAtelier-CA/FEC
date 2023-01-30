@@ -24,7 +24,7 @@ const calcRecommended = (recommended) => {
   return trueCount / totalCount;
 };
 
-export default function RatingsBreakdown({ reviewMetaData }) {
+export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [averageRating, setAverageRating] = useState(5);
   const [percentRec, setPercentRec] = useState(100);
@@ -49,7 +49,11 @@ export default function RatingsBreakdown({ reviewMetaData }) {
       <h4>Ratings and Review</h4>
       <StarRepresentation averageRating={averageRating} />
       <RecommendPercentage percentRec={percentRec} />
-      <StarBreakdownList totalVotes={totalVotes} ratings={ratings} />
+      <StarBreakdownList
+        totalVotes={totalVotes}
+        ratings={ratings}
+        handleStarClick={handleStarClick}
+      />
       <ProductBreakdownList chars={chars} />
     </div>
   );
