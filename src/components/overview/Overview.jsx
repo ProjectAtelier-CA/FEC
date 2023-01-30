@@ -15,12 +15,12 @@ import ProductInfo from './product_header/product_info';
 
 // STYLES
 // eslint-disable-next-line import/no-named-as-default
-import Styles from './styles/styles';
-import Buttons from './buttons/buttons';
+// import Styles from './styles/styles';
+// import Buttons from './buttons/buttons';
 
 // DESCRIPTION
 import Description from './product_description/product_description';
-import '../../styles/overviewStyles/overview.scss';
+import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview() {
   return (
@@ -31,8 +31,8 @@ export default function Overview() {
         <ImageCarousel />
         <div className="product-info">
           <ProductInfo />
-          <Styles />
-          <Buttons />
+          {/* <Styles /> */}
+          {/* <Buttons /> */}
         </div>
       </div>
       <Description />

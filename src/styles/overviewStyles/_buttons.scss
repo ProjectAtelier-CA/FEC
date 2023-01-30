@@ -1,0 +1,36 @@
+
+.top-buttons {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.top-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  // justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.bottom-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  // justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.button {
+  border-radius: 0;
+  border: solid;
+  border-width: .5px;
+  border-color: #463F3A;
+  outline: none;
+  background-color: #D0B8AC;
+  padding-left: 10px;
+  padding: 10px;
+  text-align: left;
+  font-family: Inter, sans-serif;
+}
+
+.button:hover {
+  background-color: #463F3A;
+}
