@@ -79,7 +79,20 @@ app.get('/answers', (req, res) => {
       res.status(200);
       res.json(data);
     })
-    .catch(() => res.send('Error occurred when getting reviews from /qa/questions/answers'));
+    .catch(() => res.send('Error occurred when getting questions from /qa/questions/answers'));
+});
+
+app.post('/helpful', (req, res) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/${req.query.type}/${req.query.id}/helpful`, null, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('done');
+      res.status(200);
+    })
+    .catch(() => res.send('Error occurred when updating helpfulness'));
 });
 
 app.listen(8081);

@@ -1,11 +1,13 @@
+$small: 10px;
+
 .question-body {
-  color: red;
+  color: darkblue;
   font-weight: 900
 }
 
 .answer-body {
   font-weight: 900;
-  color:green;
+  color:darkorchid;
 }
 
 .image-answer {
@@ -15,9 +17,10 @@
 
 .helpful-button {
   background: none;
-	color: pink;
+	color: black;
 	border: none;
 	padding: 0;
+  font-size: $small;
 };
 
 .report-button {
@@ -25,5 +28,19 @@
 	color: red;
 	border: none;
 	padding: 0;
+  font-size: $small;
 
+}
+
+.reported-qa {
+  color:red;
+  border: 10rem;
+  font-weight: 900px;
+
+}
+
+.answerer-info {
+  font-size: $small;
+  color: grey;
+  opacity: .5;
 }

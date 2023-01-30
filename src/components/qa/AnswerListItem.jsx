@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import React, { useState, useEffect } from 'react';
@@ -26,7 +27,7 @@ export default function AnswerListItem({ ans }) {
         {' '}
         {ans.date}
         {' '}
-        <HelpfulButton helpfulness={ans.helpfulness} />
+        <HelpfulButton helpfulness={ans.helpfulness} id={ans.answer_id} type="answers" />
         {' '}
         |
         {' '}
