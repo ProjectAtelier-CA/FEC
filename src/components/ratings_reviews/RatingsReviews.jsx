@@ -16,7 +16,8 @@ export default function RatingsReviews({ productID }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
-  // console.log(starFilter);
+  const [sortBy, setSortBy] = useState('relevance');
+  console.log(sortBy);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews').then(({ data }) => {
@@ -36,13 +37,22 @@ export default function RatingsReviews({ productID }) {
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
   };
 
+  const handleSortClick = (e) => {
+    setSortBy(e.target.value);
+  };
+
   return (
     <>
       <h1>RatingsReviews Component</h1>
       <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
       { productReviews.length
-        ? <ReviewsList productReviews={productReviews} starFilter={starFilter} />
-        : null }
+        && (
+          <ReviewsList
+            productReviews={productReviews}
+            starFilter={starFilter}
+            handleSortClick={handleSortClick}
+          />
+        )}
     </>
   );
 }
