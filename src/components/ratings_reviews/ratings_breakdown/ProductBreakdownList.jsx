@@ -12,9 +12,24 @@ const calcTrianglePosition = (chars) => {
   Object.keys(chars).forEach((char) => {
     positions[char] = (chars[char].value / 5) * 285;
   });
-  console.log(positions);
   return positions;
 };
+
+// const renderCharBars = (currChar) => {
+//   if (currChar === 'Size') {
+//     setShowSize(true);
+//   } else if (currChar === 'Width') {
+//     setShowWidth(true);
+//   } else if (currChar === 'Comfort') {
+//     setShowComfort(true);
+//   } else if (currChar === 'Quality') {
+//     setShowQuality(true);
+//   } else if (currChar === 'Length') {
+//     setShowLength(true);
+//   } else if (currChar === 'Fit') {
+//     setShowFit(true);
+//   }
+// };
 
 export default function ProductBreakdownList({ chars }) {
   const [showSize, setShowSize] = useState(false);
@@ -24,23 +39,42 @@ export default function ProductBreakdownList({ chars }) {
   const [showLength, setShowLength] = useState(false);
   const [showFit, setShowFit] = useState(false);
   const [triPositions, setTriPositions] = useState({});
-  console.log(triPositions);
+
+  const renderCharBars = (currChar) => {
+    if (currChar === 'Size') {
+      setShowSize(true);
+    } else if (currChar === 'Width') {
+      setShowWidth(true);
+    } else if (currChar === 'Comfort') {
+      setShowComfort(true);
+    } else if (currChar === 'Quality') {
+      setShowQuality(true);
+    } else if (currChar === 'Length') {
+      setShowLength(true);
+    } else if (currChar === 'Fit') {
+      setShowFit(true);
+    }
+  };
 
   useEffect(() => {
-    if (Object.keys(chars).length) {
+    const currChars = Object.keys(chars); // List of characteristics for product
+    if (currChars.length) {
       setTriPositions(calcTrianglePosition(chars));
+      currChars.forEach((char) => {
+        renderCharBars(char);
+      });
     }
   }, [chars]);
 
   return (
     <div>
       <h4>ProductBreakdownList (List of bars of characteristics (size) (comfort))</h4>
-      <SizeBar position={triPositions.Size} />
-      <WidthBar position={triPositions.Width} />
-      <ComfortBar position={triPositions.Comfort} />
-      <QualityBar position={triPositions.Quality} />
-      <LengthBar position={triPositions.Length} />
-      <FitBar position={triPositions.Fit} />
+      { showSize ? <SizeBar position={triPositions.Size} /> : null }
+      { showWidth ? <WidthBar position={triPositions.Width} /> : null }
+      { showComfort ? <ComfortBar position={triPositions.Comfort} /> : null }
+      { showQuality ? <QualityBar position={triPositions.Quality} /> : null }
+      { showLength ? <LengthBar position={triPositions.Length} /> : null }
+      { showFit ? <FitBar position={triPositions.Fit} /> : null }
     </div>
   );
 }
