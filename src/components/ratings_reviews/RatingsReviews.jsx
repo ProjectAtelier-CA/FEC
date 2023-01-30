@@ -48,16 +48,18 @@ export default function RatingsReviews({ productID }) {
   return (
     <>
       <h1>RatingsReviews Component</h1>
-      <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
-      { productReviews.length
-        && (
-          <ReviewsList
-            productReviews={productReviews}
-            starFilter={starFilter}
-            handleSortClick={handleSortClick}
-            sortBy={sortBy}
-          />
-        )}
+      <div className="ratings-reviews-container">
+        <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
+        { productReviews.length
+          && (
+            <ReviewsList
+              productReviews={productReviews}
+              starFilter={starFilter}
+              handleSortClick={handleSortClick}
+              sortBy={sortBy}
+            />
+          )}
+      </div>
     </>
   );
 }

@@ -1,9 +1,18 @@
 * {
   box-sizing: border-box;
 }
+
+.ratings-reviews-container {
+  border: 2px solid yellow;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
 .review-card {
   border: 2px solid purple;
   width: 600px;
+  padding: 20px;
 
   .review-photo {
     width: 50px;
@@ -18,32 +27,41 @@
   height: min(600px, 800px);
 }
 
+// Right Container
 .reviews-list {
-  // border: 2px solid cyan;
+  border: 2px solid dodgerblue;
+  padding: 20px;
 }
 
-.characteristics {
-    // border: 2px solid blue;
-    display: flex;
-    justify-content: space-between;
+.reviews-sort-menu {
+  border: 2px solid cyan;
+  display: flex;
+  align-items: flex-end;
 
-    .selections {
-      font-size: .5em; //need to change according to our root font size
-      border: 2px solid darkgoldenrod;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 150px;
-    }
+  .number-of-reviews {
+    font-size: 2rem;
+    transform: translate(0px, 5px);
+  }
+
+  div {
+    margin-right: 5px;
+  }
+
+}
+
+.sort-menu-item {
+  list-style: none;
+  position: absolute;
 }
 
 .review-error-message {
   border: 2px solid red;
 }
 
+// Left Container
 .ratings-breakdown {
   border: 2px solid palevioletred;
+  padding: 20px;
 }
 
 .star-representation {
@@ -84,6 +102,22 @@
       background-color: rgb(9, 246, 9);
       height: 10px;
     }
+  }
+}
+
+.characteristics {
+  // border: 2px solid blue;
+  display: flex;
+  justify-content: space-between;
+
+  .selections {
+    font-size: .5em; //need to change according to our root font size
+    border: 2px solid darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
   }
 }
 
@@ -128,13 +162,4 @@
   display: flex;
   justify-content: flex-end;
   width: 100px;
-}
-
-.reviews-sort-menu {
-  border: 2px solid cyan;
-}
-
-.sort-menu-item {
-  list-style: none;
-  position: absolute;
 }

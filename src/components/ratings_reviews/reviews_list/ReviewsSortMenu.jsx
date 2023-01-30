@@ -11,12 +11,14 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy })
   };
 
   return (
-    <div className="reviews-sort-menu">
+    <div>
       <h4>ReviewsSortMenu</h4>
-      <div>
-        <div>
+      <div className="reviews-sort-menu">
+        <div className="number-of-reviews">
           {numReviews}
-          Reviews Sorted by:
+        </div>
+        <div>
+          Reviews sorted by:
         </div>
         <div>
           <button type="button" onClick={() => setOpen(!open)}>{sortBy}</button>
