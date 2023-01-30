@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
 app.get('/reviews', (req, res) => {
@@ -47,14 +47,12 @@ app.get('/questions', (req, res) => {
       res.status(200);
       res.json(data);
       res.end();
-
-
     })
     .catch(() => res.send('Error occurred when getting reviews from /qa/questions'));
 });
 
 app.get('/answers', (req, res) => {
-  console.log('this is answers',req.query.question_id);
+  console.log('this is answers', req.query.question_id);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.question_id}/answers`, {
     headers: {
       Authorization: process.env.AUTH_SECRET,
