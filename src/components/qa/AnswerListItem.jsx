@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import PhotoList from './PhotoList';
 import ReportButton from './ReportButton';
 import HelpfulButton from './HelpfulButton';
+import UserDateInfo from '../shared/UserDateInfo.jsx';
 
 export default function AnswerListItem({ ans }) {
   // if there are pictures map them
@@ -22,10 +23,7 @@ export default function AnswerListItem({ ans }) {
       <div className="answerer-info">
         by
         {' '}
-        {ans.answerer_name}
-        ,
-        {' '}
-        {ans.date}
+        <UserDateInfo user={ans.answerer_name} date={ans.date} />
         {' '}
         <HelpfulButton helpfulness={ans.helpfulness} id={ans.answer_id} type="answers" />
         {' '}
