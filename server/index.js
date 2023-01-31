@@ -55,6 +55,28 @@ app.get('/reviews/meta', (req, res) => {
     .catch(() => res.send('Error occurred when getting reviews from /reviews/meta'));
 });
 
+app.post('/reviews/:review_id/helpful', (req, res) => {
+  console.log('POST request received from /reviews/:review_id/helpful');
+  const { review_id } = req.params;
+  // console.log(review_id);
+
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${review_id}/helpful`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('Helpful vote successfully counted');
+      res.status(200);
+      res.end();
+    })
+    .catch((err) => {
+      // console.log(err);
+      console.log('Error occured with PUT request')
+      res.end();
+    });
+});
+
 app.get('/questions', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', {
     headers: {

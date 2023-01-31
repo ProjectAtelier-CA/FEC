@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
 import ImageModal from '../../shared/ImageModal';
@@ -42,6 +43,15 @@ export default function ReviewsCardList({
     setShowModal(false);
   };
 
+  const handleHelpfulClick = (reviewID) => {
+    // Not sure why its giving unauthorized in axios but not postman
+    // axios.post(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
+    //   console.log('request sent');
+    // }).catch(() => {
+    //   console.log('error occurred sending put request');
+    // });
+  };
+
   let filteredProductReviews = [];
 
   if (filterBy.length === 0) {
@@ -53,7 +63,12 @@ export default function ReviewsCardList({
   }
 
   const reviewElements = filteredProductReviews.map((review) => (
-    <ReviewCard key={review.review_id} review={review} handleImageClick={handleImageClick} />
+    <ReviewCard
+      key={review.review_id}
+      review={review}
+      handleImageClick={handleImageClick}
+      handleHelpfulClick={handleHelpfulClick}
+    />
   ));
 
   return (
