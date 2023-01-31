@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import PhotoList from './PhotoList';
 import ReportButton from './ReportButton';
 import HelpfulButton from './HelpfulButton';
-import UserDateInfo from '../shared/UserDateInfo.jsx';
+import UserDateInfo from '../shared/UserDateInfo';
 
 export default function AnswerListItem({ ans }) {
   // if there are pictures map them

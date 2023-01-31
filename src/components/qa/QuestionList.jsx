@@ -41,7 +41,6 @@ export default function QuestionList({ productIdData }) {
     <section>
       {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} q={question} />))}
       { showMore ? <button type="button" onClick={loadQuestions}> Load More Questions </button> : null }
-      {console.log(sortedQuestions)}
       {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
     </section>
   );

@@ -23,6 +23,10 @@ export default function QuestionListItem({ q }) {
         Q:
         {q.question_body}
         <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
+        {' '}
+        |
+        {' '}
+        <button type="button" className="add-answer-button"> Add Answer</button>
         <AnswerList answers={allAnswers} />
       </div>
     );

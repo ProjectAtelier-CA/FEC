@@ -23,12 +23,13 @@ $small: 10px;
   font-size: $small;
 };
 
-.report-button {
+.report-button, .helpful-button-yes, .add-answer-button {
   background: none;
-	color: red;
+	color: darkgrey;
 	border: none;
 	padding: 0;
   font-size: $small;
+  text-decoration: underline;
 
 }
 
@@ -44,3 +45,4 @@ $small: 10px;
   color: grey;
   opacity: .5;
 }
+
