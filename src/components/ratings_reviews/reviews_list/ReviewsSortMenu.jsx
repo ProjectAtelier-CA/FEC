@@ -8,7 +8,10 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy, r
   const handleClick = (e) => {
     handleSortClick(e);
     setOpen(false);
-    reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    // setTimeout helps prevent laggy stutter look
+    setTimeout(() => {
+      reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }, 125);
   };
 
   return (

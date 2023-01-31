@@ -14,11 +14,16 @@ export default function StarRating({ score }) {
   }
 
   // for each scale, reference a star from StarReference Component
-  const starList = scales.map((scale, index) => (
-    <svg viewBox="0 0 100 100" key={index}>
-      <use href="#star" fill={`url('#star__fill--${scale * 100}')`} />
-    </svg>
-  ));
+  const starList = scales.map((scale, index) => {
+    if (scale === 0.25) scale += 0.1;
+    if (scale === 0.75) scale -= 0.1;
+
+    return (
+      <svg viewBox="0 0 100 100" key={index}>
+        <use href="#star" fill={`url('#star__fill--${scale * 100}')`} />
+      </svg>
+    );
+  });
 
   // return a DIV of 5 SVG stars
   return <div className="star__rating">{starList}</div>;
