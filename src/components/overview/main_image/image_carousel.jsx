@@ -2,23 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './thumbnails';
 
-export default function ImageCarousel() {
-  const images = [{
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-  },
-  {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
-  },
-  {
-    id: 3,
-    url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
-  }];
+export default function ImageCarousel({
+  imageIndex, setIndex, setStyle, imgToStyle, styles,
+}) {
+  const images = styles.map((style) => style.photos).flat();
 
-  const [imageIndex, setIndex] = useState(0);
+  // const [imageIndex, setIndex] = useState(0);
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
+  // const [thumbnailIndex, setThumbnail] = useState(imageIndex);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -65,12 +57,14 @@ export default function ImageCarousel() {
   function handleNav() {
     let newIndex;
     // eslint-disable-next-line no-restricted-globals
-    if (event.target.classname === 'o-carousel-button carousel-left') {
-      newIndex = getIndex(imageIndex + 1);
-    } else {
+    if (event.target.className === 'o-carousel-button carousel-left') {
       newIndex = getIndex(imageIndex - 1);
+    } else {
+      newIndex = getIndex(imageIndex + 1);
     }
+
     setIndex(newIndex);
+    setStyle(imgToStyle[newIndex]);
   }
 
   function handleExpand() {
@@ -83,7 +77,13 @@ export default function ImageCarousel() {
       <section>
         <div className={isExpanded ? 'expanded' : 'normal'}>
           <div className="o-carousel">
-            <Thumbnails />
+            <Thumbnails
+              imageIndex={imageIndex}
+              setIndex={setIndex}
+              imgToStyle={imgToStyle}
+              setStyle={setStyle}
+              styles={styles}
+            />
             <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleNav}>{'<'}</button>
             <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}>{'>'}</button>
             <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}>Expand</button>
@@ -92,7 +92,7 @@ export default function ImageCarousel() {
                 images.map((image) => (
                   // eslint-disable-next-line max-len
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
-                  <li key={image.id} className="o-slide" onClick={handleExpand}>
+                  <li key={image.url} className="o-slide" onClick={handleExpand}>
                     <img
                       style={{ transformOrigin: `${mousePos.x}% ${mousePos.y}%` }}
                       className={
@@ -107,14 +107,9 @@ export default function ImageCarousel() {
                 ))
               }
             </ul>
-            {/* <Thumbnails /> */}
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-ImageCarousel.propTypes = {
-
-};

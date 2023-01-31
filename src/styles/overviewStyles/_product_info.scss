@@ -25,6 +25,16 @@
 
 }
 
+.sale-price {
+  color: red;
+}
+
+.original-price {
+  color: black;
+  opacity: .5;
+  text-decoration: line-through;
+}
+
 .category {
   font-size: .8em;
   font-family: 'Inter', sans-serif;
@@ -51,6 +61,41 @@
   align-items: flex-start;
   height: fit-content;
   justify-content: start;
+  // inset: 0;
+}
+
+.style-list {
+  inset: 0;
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  width: 36vh;
+  gap: 1vh;
+
+  margin: 0;
+  padding: 0;
+  // list-style-position: outside;
+
+
+
+  border: solid;
+  border-color: green;
+}
+
+.style-thumbnail {
+  inset: 0;
+  height: 8vh;
+  width: 8vh;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.style-thumbnail:hover {
+  border: solid red;
+}
+
+.style-active {
+  border: solid black;
 }
 
 .price {

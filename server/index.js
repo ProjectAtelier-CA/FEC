@@ -34,7 +34,6 @@ app.get('/styles', (req, res) => {
     .catch(() => res.send('Failed to get styles'));
 });
 
-
 app.get('/reviews', (req, res) => {
   console.log('GET request received from /reviews');
   const { sort } = req.query;
