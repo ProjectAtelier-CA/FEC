@@ -16,15 +16,20 @@ export default function RatingsReviews({ productID }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
-  // console.log(starFilter);
+  const [sortBy, setSortBy] = useState('relevance');
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews').then(({ data }) => {
-      const reviews = data.results;
-      // reviews will be an array of objects
-      setProductReviews([...productReviews, ...reviews]);
-    });
-  }, []);
+    axios.get('http://localhost:8081/reviews', {
+      params: {
+        sort: sortBy,
+      },
+    })
+      .then(({ data }) => {
+        const reviews = data.results;
+        // reviews will be an array of objects
+        setProductReviews([...reviews]);
+      });
+  }, [sortBy]);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews/meta').then(({ data }) => {
@@ -36,13 +41,25 @@ export default function RatingsReviews({ productID }) {
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
   };
 
+  const handleSortClick = (e) => {
+    setSortBy(e.target.value);
+  };
+
   return (
     <>
       <h1>RatingsReviews Component</h1>
-      <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
-      { productReviews.length
-        ? <ReviewsList productReviews={productReviews} starFilter={starFilter} />
-        : null }
+      <div className="ratings-reviews-container">
+        <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
+        { productReviews.length
+          && (
+            <ReviewsList
+              productReviews={productReviews}
+              starFilter={starFilter}
+              handleSortClick={handleSortClick}
+              sortBy={sortBy}
+            />
+          )}
+      </div>
     </>
   );
 }
