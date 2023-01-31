@@ -41,7 +41,6 @@ export default function HelpfulButton({ helpfulness, id, type }) {
           )
         </button>
       ) : null}
-
     </>
   );
 }
