@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 
