@@ -3,7 +3,7 @@
 // styling for individual star
 #star {
   // same color schem for 5 different fill-types
-  $types: 0, 25, 50, 75, 100;
+  $types: 0, 35, 50, 65, 100;
   @each $type in $types {
     &__fill--#{$type} {
       stop:first-child { stop-color: black; }

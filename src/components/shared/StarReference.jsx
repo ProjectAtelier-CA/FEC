@@ -21,7 +21,7 @@ const starPathGenerator = () => {
 // and only rendered once for reference only
 export default function StarReference() {
   // 5 different SVG fill rules based on 5 different star scale
-  const starFillDefs = [0, 25, 50, 75, 100].map((scale) => {
+  const starFillDefs = [0, 35, 50, 65, 100].map((scale) => {
     const props = {
       key: scale,
       id: `star__fill--${scale}`,
