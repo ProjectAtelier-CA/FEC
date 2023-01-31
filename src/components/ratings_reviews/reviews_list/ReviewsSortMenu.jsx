@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewListTopRef }) {
   const handleClick = (e) => {
-    console.log(e);
     handleSortClick(e);
     setTimeout(() => {
+      // Sometimes the reviews list jumps when clicking by sort. Figure out why.
+      console.log('i happened');
       reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, 200);
   };
