@@ -18,7 +18,7 @@ export default function RatingsReviews({ productID, productName }) {
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
   const [sortBy, setSortBy] = useState('relevance');
-  console.log(productReviews);
+  // console.log(productReviews);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {
