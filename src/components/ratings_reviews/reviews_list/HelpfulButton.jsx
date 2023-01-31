@@ -5,6 +5,7 @@ export default function HelpfulButton({ helpfulness, handleHelpfulClick, reviewI
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
+    console.log('I clicked the helpful button');
     setHelpfulCount((prevCount) => prevCount + 1);
     setIsClicked(true);
     handleHelpfulClick(reviewID);
