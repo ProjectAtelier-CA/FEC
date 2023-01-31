@@ -33,6 +33,7 @@ export default function QuestionList({ productIdData }) {
   };
   const unloadQuestions = () => {
     setLog(2);
+    setMore(true);
     renderQuestions = sortedQuestions.slice(0, questionLog);
     setLess(false);
   };
@@ -40,8 +41,11 @@ export default function QuestionList({ productIdData }) {
   return (
     <section>
       {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} q={question} />))}
-      { showMore ? <button type="button" onClick={loadQuestions}> Load More Questions </button> : null }
-      {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
+      <div className="bottom-buttons">
+        { showMore ? <button type="button" onClick={loadQuestions}> More Answered Questions</button> : null }
+        {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
+        <button type="button"> Add a Question</button>
+      </div>
     </section>
   );
 }

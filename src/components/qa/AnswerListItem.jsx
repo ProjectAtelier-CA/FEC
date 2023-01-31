@@ -15,10 +15,12 @@ export default function AnswerListItem({ ans }) {
 
   return (
     <>
-      <div className="answer-body">
+      <div className="answer-body" key={ans.answer_id}>
         A:
         {ans.body}
-        {ans.photos.map((photo) => (<PhotoList key={ans.answer_id} photo={photo} />))}
+        <div className="image-answer-list">
+          {ans.photos.map((photo) => (<PhotoList photo={photo} />))}
+        </div>
       </div>
       <div className="answerer-info">
         by

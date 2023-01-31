@@ -8,6 +8,7 @@ export default function AnswerList({ answers }) {
 // map the props.answers
 // use some state to render
   const [showMore, setMore] = useState(true);
+  const [showLess, setLess] = useState(false);
   const [sortedAnswers, setSorted] = useState([]);
   const [answerLog, setLog] = useState(2);
   const answerLength = answers.length;
@@ -17,9 +18,14 @@ export default function AnswerList({ answers }) {
   useEffect(() => {
     if (answerLog >= answerLength) {
       setMore(false);
+      setLess(true);
     }
   });
-
+  useEffect(() => {
+    if (answerLength < 2) {
+      setLess(false);
+    }
+  });
   useEffect(() => {
     setSorted(answers.sort((a1, a2) => ((a1.helpfulness < a2.helpfulness) ? 1 : (a1.helpfulness > a2.helpfulness) ? -1 : 0)));
   });
@@ -28,10 +34,18 @@ export default function AnswerList({ answers }) {
     setLog(answerLog + 2);
     renderAnswer = sortedAnswers.slice(0, answerLog);
   };
+
+  const unloadAnswers = () => {
+    setMore(true);
+    setLess(false);
+    setLog(2);
+    renderAnswer = sortedAnswers.slice(0, answerLog);
+  };
   return (
-    <section>
+    <section className="answer-list">
       {renderAnswer.map((answer) => (<AnswerListItem key={answer.answer_id} ans={answer} />))}
-      { showMore ? <button type="button" onClick={loadAnswers}> Load More Answers </button> : null }
+      { showMore ? <button type="button" onClick={loadAnswers}> See more answers</button> : null }
+      {showLess ? <button type="button" onClick={unloadAnswers}>See Less </button> : null}
     </section>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AnswerList from './AnswerList';
 import HelpfulButton from './HelpfulButton';
+import App from './AddAnswer';
 
 export default function QuestionListItem({ q }) {
   const [allAnswers, setAns] = useState([]);
@@ -19,14 +20,14 @@ export default function QuestionListItem({ q }) {
 
   if (!loading) {
     return (
-      <div className="question-body">
+      <div className="question-body" key={question_id}>
         Q:
         {q.question_body}
         <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
         {' '}
         |
         {' '}
-        <button type="button" className="add-answer-button"> Add Answer</button>
+        <App />
         <AnswerList answers={allAnswers} />
       </div>
     );

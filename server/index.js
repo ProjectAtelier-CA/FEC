@@ -61,10 +61,12 @@ app.get('/questions', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37319,
+      product_id: req.query.productId,
+      count: 100,
     },
   })
     .then(({ data }) => {
+      console.log('Got Questions List');
       res.status(200);
       res.json(data);
       res.end();

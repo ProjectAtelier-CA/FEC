@@ -1,5 +1,15 @@
 $small: 10px;
 
+
+.question-answers {
+  display: flex;
+  justify-content:center;
+}
+.bottom-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .question-body {
   color: darkblue;
   font-weight: 900
@@ -9,7 +19,27 @@ $small: 10px;
   font-weight: 900;
   color:darkorchid;
 }
-
+.answer-list {
+  overflow-y: auto;
+}
+.image-answer-list {
+  display: flex;
+  flex-direction: row;
+}
+.add-answer-input {
+  height:100px;
+  width: 100%;
+  padding: 15px 20px;
+  margin: 8px 0;
+}
+.add-answer-modal {
+  padding: 15px 20px;
+  width: 35%;
+  height: 30px;
+}
+.label-answer-modal {
+  opacity:50%;
+}
 .image-answer {
   height: 50px;
   width:80px;
@@ -33,16 +63,8 @@ $small: 10px;
 
 }
 
-.reported-qa {
-  color:red;
-  border: 10rem;
-  font-weight: 900px;
-
-}
-
 .answerer-info {
   font-size: $small;
   color: grey;
   opacity: .5;
 }
-
