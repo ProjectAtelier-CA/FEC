@@ -10,28 +10,39 @@ export default function ImageCarousel({
   // const [imageIndex, setIndex] = useState(0);
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
+  const [isClicked, setClick] = useState(false);
   // const [thumbnailIndex, setThumbnail] = useState(imageIndex);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (isExpanded) {
+    if (isExpanded && isClicked && mousePos !== null) {
       const mouseMove = (event) => {
         const x = event.clientX;
         const y = event.clientY;
         const X = window.innerWidth;
         // const Y = window.innerHeight;
-
         // const ratio = event.target.naturalHeight / event.target.naturalWidth;
 
         const height = event.target.offsetHeight;
         // const width = height / ratio;
         // const marginX = Math.max((X - width) / 2, 0);
-        const margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
+        // eslint-disable-next-line max-len
+        let margin = 0;
+        try {
+          margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
+        } catch (error) {
+          margin = null;
+        }
+        let pos;
+        if (margin === null) {
+          pos = mousePos;
+        } else {
+          pos = {
+            x: (x / X) * 100,
+            y: ((y - margin) / height) * 100,
+          };
+        }
 
-        const pos = {
-          x: (x / X) * 100,
-          y: ((y - margin) / height) * 100,
-        };
         setPos(pos);
       };
 
@@ -67,6 +78,15 @@ export default function ImageCarousel({
     setStyle(imgToStyle[newIndex]);
   }
 
+  function handleImageClick() {
+    if (isExpanded) {
+      setClick(!isClicked);
+    }
+    if (!isExpanded) {
+      setExpand(!isExpanded);
+    }
+  }
+
   function handleExpand() {
     setExpand(!isExpanded);
   }
@@ -92,12 +112,13 @@ export default function ImageCarousel({
                 images.map((image) => (
                   // eslint-disable-next-line max-len
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
-                  <li key={image.url} className="o-slide" onClick={handleExpand}>
+                  <li key={image.url} className="o-slide" onClick={handleImageClick}>
                     <img
                       style={{ transformOrigin: `${mousePos.x}% ${mousePos.y}%` }}
                       className={
                       `image
-                        ${isExpanded ? 'zoom' : ''}
+                        ${isExpanded || (mousePos === null) ? 'zoom' : ''}
+                        ${isClicked && isExpanded ? 'zoom_clicked' : ''}
                         ${image === images[imageIndex] ? 'active' : 'hidden'}`
                       }
                       src={image.url}

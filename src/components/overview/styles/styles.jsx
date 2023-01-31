@@ -7,19 +7,13 @@ import React, { useState, useEffect } from 'react';
 export default function Styles({
   setIndex, styles, currentStyle, setStyle,
 }) {
-  // const [currentStyle, setStyle] = useState(0);
-
   const indeces = [0];
   styles.forEach((style) => {
     const N = indeces.length;
     indeces.push(indeces[N - 1] + style.photos.length);
   });
-  // eslint-disable-next-line no-unused-vars
-  // const [styles[imageIndex], setStyle] = useState(styles[0]);
-  // const style = styles[imageIndex];
 
   function handleClick(event) {
-    console.log(indeces[event.target.id]);
     setStyle(event.target.id);
     setIndex(indeces[event.target.id]);
   }
@@ -50,6 +44,7 @@ export default function Styles({
       </h4>
       <h2 className="style">
         STYLE
+        {' '}
         {'>'}
         {' '}
         {styles[currentStyle].name}
@@ -57,7 +52,10 @@ export default function Styles({
       <ul className="style-list">
         {
           styles.map((style, index) => (
-            <div key={style.style_id}>
+            <div key={style.style_id} className="style-container">
+              {
+                style === styles[currentStyle] ? (<span className="style-checkmark">✓</span>) : null
+              }
               <img
                 alt="style-thumbnail"
                 key={style.style_id}
