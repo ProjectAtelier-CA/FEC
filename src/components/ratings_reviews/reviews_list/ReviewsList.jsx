@@ -3,7 +3,9 @@ import ReviewsSortMenu from './ReviewsSortMenu';
 import ReviewsCardList from './ReviewsCardList';
 import ReviewModal from '../modals/ReviewModal';
 
-export default function ReviewsList({ productReviews, starFilter, handleSortClick, sortBy }) {
+export default function ReviewsList({
+  productReviews, starFilter, handleSortClick, sortBy, reviewMetaData, setRerender,
+}) {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const reviewListTopRef = useRef(null);
 
@@ -23,7 +25,14 @@ export default function ReviewsList({ productReviews, starFilter, handleSortClic
         sortBy={sortBy}
         reviewListTopRef={reviewListTopRef}
       />
-      {showReviewModal ? <ReviewModal setShowReviewModal={setShowReviewModal} /> : null}
+      {showReviewModal
+      && (
+        <ReviewModal
+          setShowReviewModal={setShowReviewModal}
+          reviewMetaData={reviewMetaData}
+          setRerender={setRerender}
+        />
+      )}
     </div>
   );
 }

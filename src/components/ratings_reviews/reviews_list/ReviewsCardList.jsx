@@ -45,11 +45,11 @@ export default function ReviewsCardList({
 
   const handleHelpfulClick = (reviewID) => {
     // Not sure why its giving unauthorized in axios but not postman
-    // axios.post(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
-    //   console.log('request sent');
-    // }).catch(() => {
-    //   console.log('error occurred sending put request');
-    // });
+    axios.post(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
+      console.log('request sent');
+    }).catch(() => {
+      console.log('error occurred sending put request');
+    });
   };
 
   let filteredProductReviews = [];

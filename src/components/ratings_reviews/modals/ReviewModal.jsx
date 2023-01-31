@@ -3,31 +3,25 @@ import axios from 'axios';
 import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 
-// Todo: Validation for form inputs (half complete)
-// Todo: Submitting will do a POST request to the api endpoint
 // Todo: Upload photo functionality
+// Todo: Validating photo urls
+// Todo: Setting star rating
 
-export default function ReviewModal({ setShowReviewModal }) {
+export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRerender }) {
+  // console.log(reviewMetaData);
+  const [starRating, setStarRating] = useState(0); // Star rating for product
+  const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
+  const [reviewText, setReviewText] = useState(''); // Review Body
   const [recommended, setRecommended] = useState(true);
-  const [size, setSize] = useState(0);
-  const [width, setWidth] = useState(0);
-  const [comfort, setComfort] = useState(0);
-  const [quality, setQuality] = useState(0);
-  const [length, setLength] = useState(0);
-  const [fit, setFit] = useState(0);
-  const [reviewText, setReviewText] = useState('');
-  const [reviewTextValid, setReviewTextValid] = useState(false);
-  const [showErrorMsg, setShowErrorMsg] = useState(false);
-  const errorRef = useRef(null);
+  const [username, setUsername] = useState(''); // Username
+  const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]); // Array of photo urls
+  const [charRatings, setCharRatings] = useState({}); // Object of char ratings
+
+  const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
+  const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
 
-  useEffect(() => {
-    if (reviewText.length >= 50) {
-      setReviewTextValid(true);
-    } else if (reviewText.length < 50) {
-      setReviewTextValid(false);
-    }
-  }, [reviewText]);
 
   useEffect(() => {
     if (showErrorMsg) {
@@ -35,40 +29,52 @@ export default function ReviewModal({ setShowReviewModal }) {
     }
   }, [showErrorMsg]);
 
-  const handleSizeChange = (num) => {
-    setSize(num);
-  };
-
-  const handleWidthChange = (num) => {
-    setWidth(num);
-  };
-
-  const handleComfortChange = (num) => {
-    setComfort(num);
-  };
-
-  const handleQualityChange = (num) => {
-    setQuality(num);
-  };
-
-  const handleLengthChange = (num) => {
-    setLength(num);
-  };
-
-  const handleFitChange = (num) => {
-    setFit(num);
+  const handleRatingClick = (num, id) => {
+    setCharRatings({ ...charRatings, [id]: num });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!reviewTextValid) {
+    if (reviewText.length < 50) {
       setShowErrorMsg(true);
     } else {
       setShowErrorMsg(false);
       setShowReviewModal(false);
       console.log('Valid submission');
+      axios.post('http://localhost:8081/reviews', {
+        data: {
+          product_id: Number(reviewMetaData.product_id),
+          rating: 5,
+          summary: reviewSummary,
+          body: reviewText,
+          recommend: recommended,
+          name: username,
+          email,
+          photos,
+          characteristics: charRatings,
+        },
+      }).then(() => {
+        setRerender([]);
+      });
     }
   };
+
+  // { this is test data, will remove later
+  //   "product_id": 37331,
+  //   "rating": 5,
+  //   "summary": "Test summary2",
+  //   "body": "Test body2",
+  //   "recommend": false,
+  //   "name": "Andrew",
+  //   "email": "andrew@andrew.com",
+  //   "photos": [],
+  //   "characteristics": {
+  //       "125098": 5,
+  //       "125096": 5,
+  //       "125097": 5,
+  //       "125099": 5
+  //   }
+  // }
 
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
@@ -76,6 +82,27 @@ export default function ReviewModal({ setShowReviewModal }) {
   const qualitySelections = ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'];
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
+
+  const currChars = Object.keys(reviewMetaData.characteristics);
+  const charForms = currChars.map((char) => {
+    const currKey = reviewMetaData.characteristics[char].id;
+    // console.log(char);
+    let currCharForm;
+    if (char === 'Size') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={sizeSelections} charType="Size" charID={currKey} />;
+    } else if (char === 'Width') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={widthSelections} charType="Width" charID={currKey} />;
+    } else if (char === 'Comfort') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={comfortSelections} charType="Comfort" charID={currKey} />;
+    } else if (char === 'Quality') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={qualitySelections} charType="Quality" charID={currKey} />;
+    } else if (char === 'Length') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={lengthSelections} charType="Length" charID={currKey} />;
+    } else if (char === 'Fit') {
+      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={fitSelections} charType="Fit" charID={currKey} />;
+    }
+    return currCharForm;
+  });
 
   const handleModalOutsideClick = (e) => {
     if (e.target === outsideModalRef.current) {
@@ -113,18 +140,13 @@ export default function ReviewModal({ setShowReviewModal }) {
             </div>
             <div>
               <h5>Characteristics (mandatory)</h5>
-              <Characteristic handleChange={handleSizeChange} selectionNames={sizeSelections} charType="Size" />
-              <Characteristic handleChange={handleWidthChange} selectionNames={widthSelections} charType="Width" />
-              <Characteristic handleChange={handleComfortChange} selectionNames={comfortSelections} charType="Comfort" />
-              <Characteristic handleChange={handleQualityChange} selectionNames={qualitySelections} charType="Quality" />
-              <Characteristic handleChange={handleLengthChange} selectionNames={lengthSelections} charType="Length" />
-              <Characteristic handleChange={handleFitChange} selectionNames={fitSelections} charType="Fit" />
+              {charForms}
             </div>
             <div>
               <h5>Review Summary</h5>
               <div>
                 <div>Review Summary Text input (using text area 60 chars limit):</div>
-                <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" />
+                <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
               </div>
             </div>
             <div>
@@ -146,14 +168,14 @@ export default function ReviewModal({ setShowReviewModal }) {
             <div>
               <h5>What is your nickname (mandatory)</h5>
               <div>
-                <input required type="text" placeholder="Example: jackson11!" />
+                <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <div>For privacy reasons, do not use your full name or email address</div>
               </div>
             </div>
             <div>
               <h5>Your email (mandatory)</h5>
               <div>
-                <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" />
+                <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <div>For authentication reasons, you will not be emailed</div>
               </div>
             </div>
