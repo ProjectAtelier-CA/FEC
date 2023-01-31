@@ -1,9 +1,19 @@
 import React from 'react';
+import StarRating from '../../shared/StarRating';
 
-export default function StarRepresentation() {
+export default function StarRepresentation({ averageRating }) {
+  const roundedRating = Math.round(averageRating * 10) / 10
   return (
-    <h4>
-      StarRepresentation (3.5 Stars / 5.0 Stars)
-    </h4>
+    <>
+      <h4>StarRepresentation</h4>
+      <div className="star-representation">
+        <div className="average-rating">
+          {roundedRating}
+        </div>
+        <div>
+          <StarRating score={roundedRating} />
+        </div>
+      </div>
+    </>
   );
 }

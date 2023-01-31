@@ -12,24 +12,61 @@ export default function ImageCarousel() {
     url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
   }];
 
+  const N = images.length;
+
+  const getIndex = (index) => {
+    if (index < 0) {
+      return N - 1;
+    } if (index > N - 1) {
+      return 0;
+    }
+    return index;
+  };
+
+  const [imageIndex, setIndex] = useState(0);
+  const [isExpanded, setExpand] = useState(false);
+
+  function handleNav() {
+    let newIndex;
+    // eslint-disable-next-line no-restricted-globals
+    if (event.target.classname === 'o-carousel-button carousel-left') {
+      newIndex = getIndex(imageIndex + 1);
+    } else {
+      newIndex = getIndex(imageIndex - 1);
+    }
+    setIndex(newIndex);
+  }
+
+  function handleExpand() {
+    setExpand(!isExpanded);
+  }
+
   return (
 
     <div className="o-carousel-div">
       <section>
-        <div className="o-carousel">
-          <button type="button" key="leftNav" className="o-carousel-button carousel-left">{'<'}</button>
-          <button type="button" key="rightNav" className="o-carousel-button carousel-right">{'>'}</button>
-          <button type="button" key="expand" className="image_expand">Expand</button>
-          <ul>
-            {
-              images.map((image) => (
-                <li key={image.id} className="o-slide">
-                  <img src={image.url} alt="Carousel Slide" />
-                </li>
-              ))
-            }
-          </ul>
-          <Thumbnails />
+        <div className={isExpanded ? 'expanded' : 'normal'}>
+          <div className="o-carousel">
+            <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleNav}>{'<'}</button>
+            <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}>{'>'}</button>
+            <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}>Expand</button>
+            <ul>
+              {
+                images.map((image) => (
+                  <li key={image.id} className="o-slide">
+                    <img
+                      className={
+                      image === images[imageIndex] ? 'active' : 'hidden'
+                    }
+                      src={image.url}
+                      alt="Carousel Slide"
+                    />
+                  </li>
+                ))
+              }
+            </ul>
+            <Thumbnails />
+          </div>
         </div>
       </section>
     </div>

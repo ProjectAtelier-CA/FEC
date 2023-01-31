@@ -1,24 +1,30 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
-import AnswerList from './AnswerList.jsx';
+import axios from 'axios';
+import AnswerList from './AnswerList';
+import HelpfulButton from './HelpfulButton';
 
 export default function QuestionListItem({ q }) {
-  console.log('this is question in questionlist items', q);
-  return (
-    <div className="question-body">
-      Q:
-      {q.question_body}
-      <AnswerList answer={q.answers} />
-    </div>
-  );
-  // return (
-  //   <section style={{ border: 'Orange 2px solid' }} className="question-list-items">
-  //     <div> Q: the question will go here with Helpful button and Add answer</div>
-  //     <AnswerList />
-  //     <div />
-  //   </section>
-  // );
+  const [allAnswers, setAns] = useState([]);
+  const [loading, setLoad] = useState(true);
+  const { question_id } = q;
+
+  useEffect(() => {
+    axios.get('http://localhost:8081/answers', { params: { question_id } }).then(({ data }) => {
+      const result = data.results;
+      setAns(result);
+      setLoad(false);
+    });
+  }, []);
+
+  if (!loading) {
+    return (
+      <div className="question-body">
+        Q:
+        {q.question_body}
+        <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
+        <AnswerList answers={allAnswers} />
+      </div>
+    );
+  }
 }
