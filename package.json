@@ -19,10 +19,7 @@
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-=======
     "react-icons": "^4.7.1",
->>>>>>> a65ba54a463ed383fb2cd5ed94e7af04ecf2d0f4
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0"
   },
