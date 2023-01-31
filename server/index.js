@@ -17,13 +17,16 @@ app.use(express.urlencoded({ extended: true }));
 // ----- Routes ----- //
 app.get('/reviews', (req, res) => {
   console.log('GET request received from /reviews');
+  const { sort } = req.query;
 
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37323,
+      product_id: 37331,
+      sort,
+      count: '100',
     },
   })
     .then(({ data }) => {
@@ -42,7 +45,7 @@ app.get('/reviews/meta', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37323,
+      product_id: 37331,
     },
   })
     .then(({ data }) => {
