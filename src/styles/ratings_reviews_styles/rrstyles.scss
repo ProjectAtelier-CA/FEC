@@ -54,6 +54,12 @@
 
 }
 
+.recommend-check-container {
+  // border: 2px solid blue;
+  display: flex;
+  gap: 5px;
+}
+
 .sort-menu-item {
   list-style: none;
   position: absolute;

@@ -9,6 +9,8 @@ import HelpfulButton from './HelpfulButton';
 import ReportButton from './ReportButton';
 
 export default function ReviewCard({ review, handleImageClick, handleHelpfulClick }) {
+  // console.log(review);
+
   return (
     <div className="review-card">
       <h5>ReviewCard (Individual Review Card)</h5>
