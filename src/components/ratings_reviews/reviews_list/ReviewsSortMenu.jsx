@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 
-export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy, reviewListTopRef }) {
-  const [open, setOpen] = useState(false);
-
-  // console.log(numberOfReviews);
-
+export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewListTopRef }) {
   const handleClick = (e) => {
+    console.log(e);
     handleSortClick(e);
-    setOpen(false);
-    // setTimeout helps prevent laggy stutter look
     setTimeout(() => {
       reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    }, 125);
+    }, 200);
   };
 
   return (
@@ -25,22 +20,11 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, sortBy, r
           Reviews sorted by:
         </div>
         <div>
-          <button type="button" onClick={() => setOpen(!open)}>{sortBy}</button>
-          {open && (
-            <div>
-              <ul className="sort-menu-item">
-                <li>
-                  <button type="button" value="relevance" onClick={(e) => handleClick(e)}>relevance</button>
-                </li>
-                <li>
-                  <button type="button" value="newest" onClick={(e) => handleClick(e)}>newest</button>
-                </li>
-                <li>
-                  <button type="button" value="helpful" onClick={(e) => handleClick(e)}>helpful</button>
-                </li>
-              </ul>
-            </div>
-          )}
+          <select onChange={(e) => handleClick(e)}>
+            <option value="relevance">relevance</option>
+            <option value="newest">newest</option>
+            <option value="helpful">helpful</option>
+          </select>
         </div>
       </div>
     </div>
