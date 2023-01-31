@@ -72,8 +72,8 @@ app.get('/reviews/meta', (req, res) => {
     .catch(() => res.send('Error occurred when getting reviews from /reviews/meta'));
 });
 
-app.post('/reviews/:review_id/helpful', (req, res) => {
-  console.log('POST request received from /reviews/:review_id/helpful');
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  console.log('PUT request received from /reviews/:review_id/helpful');
   const { review_id } = req.params;
   // console.log(review_id);
 
@@ -95,7 +95,7 @@ app.post('/reviews/:review_id/helpful', (req, res) => {
 });
 
 app.put('/reviews/:review_id/report', (req, res) => {
-  console.log('POST request received from /reviews/:review_id/report');
+  console.log('PUT request received from /reviews/:review_id/report');
   const { review_id } = req.params;
   // console.log(review_id);
 

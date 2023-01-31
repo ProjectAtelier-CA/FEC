@@ -24,6 +24,7 @@ export default function ReviewsList({
         starFilter={starFilter}
         sortBy={sortBy}
         reviewListTopRef={reviewListTopRef}
+        setRerender={setRerender}
       />
       {showReviewModal
       && (

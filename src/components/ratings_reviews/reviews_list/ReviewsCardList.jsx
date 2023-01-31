@@ -15,7 +15,7 @@ const makeStarFilters = (starFilter) => {
 };
 
 export default function ReviewsCardList({
-  productReviews, setShowReviewModal, starFilter, reviewListTopRef,
+  productReviews, setShowReviewModal, starFilter, reviewListTopRef, setRerender,
 }) {
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
@@ -45,8 +45,18 @@ export default function ReviewsCardList({
 
   const handleHelpfulClick = (reviewID) => {
     // Not sure why its giving unauthorized in axios but not postman
-    axios.post(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
+    axios.put(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
       console.log('request sent');
+    }).catch(() => {
+      console.log('error occurred sending put request');
+    });
+  };
+
+  const handleReportClick = (reviewID) => {
+    axios.put(`http://localhost:8081/reviews/${reviewID}/report`).then(() => {
+      console.log('request sent');
+    }).then(() => {
+      setRerender([]);
     }).catch(() => {
       console.log('error occurred sending put request');
     });
@@ -68,6 +78,7 @@ export default function ReviewsCardList({
       review={review}
       handleImageClick={handleImageClick}
       handleHelpfulClick={handleHelpfulClick}
+      handleReportClick={handleReportClick}
     />
   ));
 

@@ -8,7 +8,9 @@ import ReviewCardPhotos from './ReviewCardPhotos';
 import HelpfulButton from './HelpfulButton';
 import ReportButton from './ReportButton';
 
-export default function ReviewCard({ review, handleImageClick, handleHelpfulClick }) {
+export default function ReviewCard({
+  review, handleImageClick, handleHelpfulClick, handleReportClick,
+}) {
   // console.log(review);
 
   return (
@@ -33,7 +35,7 @@ export default function ReviewCard({ review, handleImageClick, handleHelpfulClic
           handleHelpfulClick={handleHelpfulClick}
           reviewID={review.review_id}
         />
-        <ReportButton />
+        <ReportButton reviewID={review.review_id} handleReportClick={handleReportClick} />
       </div>
     </div>
   );
