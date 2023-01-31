@@ -18,6 +18,7 @@ export default function ReviewModal({ setShowReviewModal }) {
   const [reviewTextValid, setReviewTextValid] = useState(false);
   const [showErrorMsg, setShowErrorMsg] = useState(false);
   const errorRef = useRef(null);
+  const outsideModalRef = useRef(null);
 
   useEffect(() => {
     if (reviewText.length >= 50) {
@@ -75,14 +76,17 @@ export default function ReviewModal({ setShowReviewModal }) {
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
 
-  const handleModalOutsideClick = () => {
-
-  }
+  const handleModalOutsideClick = (e) => {
+    if (e.target === outsideModalRef.current) {
+      setShowReviewModal(false);
+    }
+  };
 
   return (
     <div
       className="review-modal-container"
-      onClick={() => setShowReviewModal(false)}
+      onClick={(e) => handleModalOutsideClick(e)}
+      ref={outsideModalRef}
     >
       <div className="review-modal-content">
         <h4>Review Modal Component</h4>
