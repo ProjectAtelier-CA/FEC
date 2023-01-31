@@ -6,10 +6,14 @@ export default function ActionButtons({
   const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {
+    // Conditional check for our show more button
+    // According to both reviewIndex and our current totalReviews (changes on filter)
     if (reviewIndex >= totalReviews) {
       setShowMore(false);
+    } else if (reviewIndex < totalReviews) {
+      setShowMore(true);
     }
-  }, [reviewIndex]);
+  }, [reviewIndex, totalReviews]);
 
   return (
     <div>

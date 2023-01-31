@@ -1,31 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
+import ImageModal from '../../shared/ImageModal';
 
-export default function ReviewsCardList({ productReviews, setShowReviewModal }) {
+const makeStarFilters = (starFilter) => {
+  const filter = [];
+  for (const key in starFilter) {
+    if (starFilter[key]) {
+      filter.push(key);
+    }
+  }
+  return filter;
+};
+
+export default function ReviewsCardList({
+  productReviews, setShowReviewModal, starFilter, reviewListTopRef,
+}) {
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
+  const [filterBy, setFilterBy] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalImageURL, setModalImageURL] = useState('');
 
-  const reviewElements = productReviews.map((review) => (
-    <ReviewCard key={review.review_id} review={review} />
-  ));
+  useEffect(() => {
+    // Should menu collaspe when we are switching our sort by filter?
+    setFilterBy(makeStarFilters(starFilter));
+    setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
+  }, [starFilter]);
 
   const handleMoreClick = () => {
     setReviewIndex(reviewIndex + 2);
   };
 
+  const handleImageClick = (e) => {
+    if (e.target.src) {
+      setModalImageURL(e.target.src);
+      setShowModal(true);
+    }
+  };
+
+  const handleModalClick = () => {
+    setShowModal(false);
+  };
+
+  let filteredProductReviews = [];
+
+  if (filterBy.length === 0) {
+    filteredProductReviews = productReviews;
+  } else {
+    filteredProductReviews = productReviews.filter((productReview) => (
+      filterBy.includes(productReview.rating.toString())
+    ));
+  }
+
+  const reviewElements = filteredProductReviews.map((review) => (
+    <ReviewCard key={review.review_id} review={review} handleImageClick={handleImageClick} />
+  ));
+
   return (
     <>
       <h4>ReviewsCardList (List of Review Cards)</h4>
       <div className="review-scroll">
-        {reviewElements.slice(0, reviewIndex)}
+        <div ref={reviewListTopRef} />
+        <div>
+          {reviewElements.slice(0, reviewIndex)}
+        </div>
       </div>
       <br />
       <ActionButtons
         handleMoreClick={handleMoreClick}
         setShowReviewModal={setShowReviewModal}
-        totalReviews={productReviews.length}
+        totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
       />
+      {showModal && (
+        <ImageModal
+          url={modalImageURL}
+          onClick={handleModalClick}
+        />
+      )}
     </>
   );
 }
