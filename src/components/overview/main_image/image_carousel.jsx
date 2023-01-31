@@ -27,29 +27,20 @@ export default function ImageCarousel() {
         const x = event.clientX;
         const y = event.clientY;
         const X = window.innerWidth;
-        const Y = window.innerHeight;
+        // const Y = window.innerHeight;
 
-        const ratio = event.target.naturalHeight / event.target.naturalWidth;
+        // const ratio = event.target.naturalHeight / event.target.naturalWidth;
 
         const height = event.target.offsetHeight;
-        const width = height / ratio;
-        const marginX = Math.max((X - width) / 2, 0);
+        // const width = height / ratio;
+        // const marginX = Math.max((X - width) / 2, 0);
         const margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
 
-        let xScale = (x - marginX) / width * 100;
-        if (xScale > 100) {
-          xScale = 100;
-        }
-        if (xScale < 0) {
-          xScale = 0;
-        }
-
         const pos = {
-          x: xScale,//(x - marginX) / width * 100,
+          x: (x / X) * 100,
           y: (y - margin) / height * 100,
         };
         setPos(pos);
-        console.log(pos.x, width, x);
       };
 
       window.addEventListener('mousemove', mouseMove);

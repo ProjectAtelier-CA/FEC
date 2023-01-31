@@ -30,11 +30,8 @@
   cursor: zoom-in;
   position: relative;
 
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transition: transform 0.5s ease-out;
   overflow: hidden;
+  transition: 800ms transform;
 }
 
 .active {
@@ -46,8 +43,14 @@
 
 .zoom:hover {
   transform: scale(2.5);
-  transition: 800ms transform;
+  transition: 800ms transform ease-out;
   cursor: crosshair;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  // object-fit: none;
+
   // overflow: hidden;
 }
 
