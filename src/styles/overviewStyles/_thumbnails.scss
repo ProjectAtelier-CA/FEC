@@ -10,8 +10,9 @@
   align-items: center;
   height: fit-content;
 
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
+
   overflow: hidden;
 }
 
@@ -26,8 +27,10 @@
   width: fit-content;
 
   // transform: translate(-5%);
-  border: solid;
-  border-color: green;
+
+  // border: solid;
+  // border-color: green;
+
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;

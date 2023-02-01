@@ -32,7 +32,6 @@
 .zoom:hover {
   cursor: crosshair;
   transition: 800ms transform ease-out;
-  cursor: -webkit-zoom-out;
   // overflow: hidden;
 }
 
@@ -117,7 +116,7 @@
   z-index: 2;
   transform: translate(0,50%);
   bottom: 98%;
-  color: rgba(255,255,255,.5);
+  color: black;//rgba(255,255,255,.5);
   cursor: pointer;
   border-radius: .05rem;
   padding: 0 .5rem;

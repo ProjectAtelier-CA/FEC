@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // eslint-disable-next-line no-unused-vars
@@ -67,39 +69,59 @@ export default function Buttons() {
   const { skus } = style;
   const [currentSKU, setSKU] = useState(Object.keys(skus)[0]);
   const [size, setSize] = useState('XL');
+  const [sizeOpened, openSize] = useState(false);
+  const [quantityOpened, openQuantity] = useState(false);
 
   function selectSize(event) {
     setSize(event.target.value);
+    setSKU(event.target.id);
+  }
+
+  function sizeClick() {
+    openSize(!sizeOpened);
+  }
+
+  function quantityClick() {
+    openQuantity(!quantityOpened);
   }
 
   return (
     <div className="all-buttons">
       <div className="top-buttons">
         {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
-        <div className="dropdown">
+        <div className="dropdown" onClick={sizeClick}>
           <span>Size</span>
           {
-          Object.keys(skus).map((sku) => {
-            console.log(sku);
-            return (
-              <div className="dropdown-content">
-                <p id={sku} onClick={selectSize}>{skus[sku].size}</p>
-              </div>
-            );
-          })
+            sizeOpened
+              ? (Object.keys(skus).map((sku) => (
+                <div className="dropdown-content">
+                  <button
+                    id={sku}
+                    type="button"
+                    onClick={selectSize}
+                    value={skus[sku].size}
+                  >
+                    {skus[sku].size}
+
+                  </button>
+                </div>
+              ))
+              ) : null
         }
         </div>
         {/* <button type="button" className="button quantitySelect">Quantity</button> */}
-        <div className="dropdown">
+        <div className="dropdown" onClick={quantityClick}>
           <span>Quantity</span>
           {
-            // skus[currentSKU][size]
-          // eslint-disable-next-line array-callback-return
-          [...Array(skus[currentSKU].quantity).keys()].map((key) => key + 1).map((option) => (
-            <div className="dropdown-content">
-              <p>{option}</p>
-            </div>
-          ))
+            quantityOpened
+              ? (
+                // eslint-disable-next-line max-len
+                [...Array(Math.min(skus[currentSKU].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
+                  <div className="dropdown-content">
+                    <p>{option}</p>
+                  </div>
+                ))
+              ) : null
         }
         </div>
       </div>
@@ -110,7 +132,3 @@ export default function Buttons() {
     </div>
   );
 }
-
-Buttons.propTypes = {
-  // props: PropTypes.object.isRequired,
-};

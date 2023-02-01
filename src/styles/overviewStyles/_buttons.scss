@@ -41,7 +41,7 @@
 }
 
 .dropdown-content {
-  display: none;
+  display: block;
   position: relative;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -50,6 +50,11 @@
   z-index: 1;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+
+.dropdown-content:hover {
+  background-color: gray;
 }
+
+// .dropdown:hover .dropdown-content {
+//   display: block;
+// }

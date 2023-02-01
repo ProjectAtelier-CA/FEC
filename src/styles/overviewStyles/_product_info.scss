@@ -17,8 +17,8 @@
   height: 60vh;
   // padding: 0;
 
-  border: solid;
-  border-color: rgb(13, 0, 128);
+  // border: solid;
+  // border-color: rgb(13, 0, 128);
 }
 
 .info {
@@ -53,16 +53,16 @@
   width: fit-content;
   height: fit-content;
   font-weight: light;
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
   padding: 0;
 }
 
 // styles
 .styles {
   padding: 0;
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
 
   display: flex;
   flex-flow: column nowrap;
@@ -128,7 +128,8 @@
 }
 
 .style-thumbnail:hover {
-  border: solid red;
+  border: solid #D0B8AC;
+  transition: border 100ms ease-in-out;
 }
 
 .style-active {
@@ -136,6 +137,6 @@
 }
 
 .price {
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
 }
