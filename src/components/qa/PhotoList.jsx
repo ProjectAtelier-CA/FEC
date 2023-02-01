@@ -5,6 +5,7 @@ export default function PhotoList({ photo }) {
   return (
     <div>
       <img className="image-answer" alt="img-answer" src={photo.url} />
+      {' '}
     </div>
   );
 }
