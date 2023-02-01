@@ -169,10 +169,12 @@ $color6: #EE6C4D;
     align-items: center;
     justify-content: center;
     width: 100%;
+    min-width: 80px;
     min-height: 40px;
     gap: 3px;
 
     span {
+      white-space: pre;
       text-align: center;
     }
 
