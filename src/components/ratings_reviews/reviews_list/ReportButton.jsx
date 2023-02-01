@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function ReportButton({ reviewID, handleReportClick }) {
   return (
-    <span>
+    <div className="report">
       <button type="button" onClick={() => handleReportClick(reviewID)}>Report</button>
-    </span>
+    </div>
   );
 }

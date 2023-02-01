@@ -12,13 +12,14 @@ export default function HelpfulButton({ helpfulness, handleHelpfulClick, reviewI
   };
 
   return (
-    <span>
+    <div className="helpful">
       <span>Helpful?</span>
-      <button type="button" onClick={!isClicked ? handleClick : null}>
-        Yes (
-        {helpfulCount}
-        )
-      </button>
-    </span>
+      <div>
+        <button type="button" onClick={!isClicked ? handleClick : null}>
+          <span>Yes</span>
+        </button>
+        <span>({helpfulCount})</span>
+      </div>
+    </div>
   );
 }

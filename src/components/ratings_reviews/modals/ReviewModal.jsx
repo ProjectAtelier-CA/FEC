@@ -124,7 +124,7 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
           <div>About the [Product Name Here]</div>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="review-form">
             <div className="star-name-container">
               <div className="star-rec-container">
                 <div>
@@ -136,14 +136,18 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
                 </div>
                 <div className="modal-recommend">
                   <div>Do you recommend this product? *</div>
-                  <div>
+                  <div className="modal-rec-selection">
                     <label>
-                      Yes:
-                      <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      <span>Yes:</span>
+                      <div>
+                        <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      </div>
                     </label>
                     <label>
-                      No:
-                      <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      <span>No:</span>
+                      <div>
+                        <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      </div>
                     </label>
                   </div>
                 </div>
