@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 const questionStyles = {
   content: {
@@ -15,7 +17,7 @@ const questionStyles = {
   },
 };
 
-export default function App() {
+export default function App({ product_id }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [newQuestion, setQuestion] = useState('');
@@ -29,6 +31,15 @@ export default function App() {
   };
   const nicknameInformation = (e) => {
     setNickname(e.target.value);
+  };
+
+  const submitQuestion = () => {
+    axios.post('http://localhost:8081/questions', {
+      body: newQuestion,
+      name: nickname,
+      email,
+      product_id,
+    });
   };
 
   return (
@@ -72,7 +83,7 @@ export default function App() {
           <br />
           <label className="label-answer-modal"> For authentication reasons, you will not be emailed</label>
           <br />
-          <input type="submit" />
+          <input type="submit" onClick={submitQuestion} />
         </form>
       </Modal>
     </span>

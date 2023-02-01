@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -8,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import QuestionListItem from './QuestionListItem.jsx';
 import App from './AddQuestion';
 
-export default function QuestionList({ productIdData }) {
+export default function QuestionList({ productIdData, product_id }) {
   const [showMore, setMore] = useState(true);
   const [showLess, setLess] = useState(false);
   const [questionLog, setLog] = useState(2);
@@ -45,7 +46,7 @@ export default function QuestionList({ productIdData }) {
       <div className="bottom-buttons">
         { showMore ? <button type="button" onClick={loadQuestions}> More Answered Questions</button> : null }
         {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
-        <App/>
+        <App product_id={product_id} />
       </div>
     </section>
   );

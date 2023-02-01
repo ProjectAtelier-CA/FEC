@@ -19,7 +19,7 @@ export default function App() {
   const [email, setEmail] = useState('');
   const [newAnswer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
-  const [photos, setPhotos] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   const emailInformation = (e) => {
     setEmail(e.target.value);
