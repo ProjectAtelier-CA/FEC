@@ -8,7 +8,12 @@ import ReviewCardPhotos from './ReviewCardPhotos';
 import HelpfulButton from './HelpfulButton';
 import ReportButton from './ReportButton';
 
-export default function ReviewCard({ review, handleImageClick }) {
+export default function ReviewCard({
+  review, handleImageClick, handleHelpfulClick, handleReportClick,
+}) {
+  // console.log(review);
+  // console.log(review);
+
   return (
     <div className="review-card">
       <h5>ReviewCard (Individual Review Card)</h5>
@@ -23,11 +28,15 @@ export default function ReviewCard({ review, handleImageClick }) {
       <ReviewCardText content={review.body} summary={review.summary} />
       { review.recommend ? <RecommendCheck /> : null }
       { review.response ? <SellerResponse response={review.response} /> : null }
-      <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick} />
+      { review.photos.length ? <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick}/> : null }
       <div>
         Inner Card Buttons:
-        <HelpfulButton helpfulness={review.helpfulness} />
-        <ReportButton />
+        <HelpfulButton
+          helpfulness={review.helpfulness}
+          handleHelpfulClick={handleHelpfulClick}
+          reviewID={review.review_id}
+        />
+        <ReportButton reviewID={review.review_id} handleReportClick={handleReportClick} />
       </div>
     </div>
   );

@@ -37,6 +37,23 @@ app.get('/reviews', (req, res) => {
     .catch(() => res.send('Error occurred when getting reviews from /reviews'));
 });
 
+app.post('/reviews', (req, res) => {
+  console.log('POST request received from /reviews');
+  const { data } = req.body;
+
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', data, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  }).then(() => {
+    console.log('Successful post!');
+    res.end();
+  }).catch(() => {
+    console.log('Error posting review to API endpoint');
+    res.end();
+  });
+});
+
 app.get('/reviews/meta', (req, res) => {
   console.log('GET request received from /reviews/meta');
 
@@ -53,6 +70,49 @@ app.get('/reviews/meta', (req, res) => {
       res.json(data);
     })
     .catch(() => res.send('Error occurred when getting reviews from /reviews/meta'));
+});
+
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  console.log('PUT request received from /reviews/:review_id/helpful');
+  const { review_id } = req.params;
+  // console.log(review_id);
+
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${review_id}/helpful`, null, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('Helpful vote successfully counted');
+      res.status(200);
+      res.end();
+    })
+    .catch((err) => {
+      // console.log(err);
+      console.log('Error occured with PUT request')
+      res.end();
+    });
+});
+
+app.put('/reviews/:review_id/report', (req, res) => {
+  console.log('PUT request received from /reviews/:review_id/report');
+  const { review_id } = req.params;
+  // console.log(review_id);
+
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${review_id}/report`, null, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('Review successfully reported and taken off');
+      res.status(200);
+      res.end();
+    })
+    .catch(() => {
+      console.log('Error occured with PUT request for reporting post');
+      res.end();
+    });
 });
 
 app.get('/questions', (req, res) => {
