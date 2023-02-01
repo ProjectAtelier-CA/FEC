@@ -19,12 +19,12 @@ export default function HelpfulButton({ helpfulness, id, type }) {
 
   return (
     <>
-      <span className="helpful-button">
+      <span className="helpful-button" data-testid="test-question">
         Helpful?
         {' '}
         {' '}
         {!clicked ? (
-          <button className="helpful-button-yes" onClick={upVote} type="button">
+          <button data-testid="helpful-button" className="helpful-button-yes" onClick={upVote} type="button">
             {' '}
             Yes(
             {help}

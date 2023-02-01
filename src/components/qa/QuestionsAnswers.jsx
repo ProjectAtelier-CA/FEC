@@ -31,7 +31,7 @@ export default function QuestionsAnswers() {
         <Search />
         {
         !loading
-          ? <QuestionList productIdData={questions} />
+          ? <QuestionList product_id={productId} productIdData={questions} />
           : null
          }
       </section>
