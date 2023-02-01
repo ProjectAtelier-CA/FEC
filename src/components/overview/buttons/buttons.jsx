@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -110,7 +111,7 @@ export default function Buttons() {
         }
         </div>
         {/* <button type="button" className="button quantitySelect">Quantity</button> */}
-        <div className="dropdown" onClick={quantityClick}>
+        <div className="dropdown" onClick={quantityClick} data-testid="test">
           <span>Quantity</span>
           {
             quantityOpened
@@ -126,7 +127,7 @@ export default function Buttons() {
         </div>
       </div>
       <div className="bottom-buttons">
-        <button type="button" className="button addToBag">Add to Bag</button>
+        <button type="button" className="button addToBag">Add to bag</button>
         <button type="button" className="button favorite">&#9734;</button>
       </div>
     </div>
