@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import PhotoList from './PhotoList';
 import ReportButton from './ReportButton';
 import HelpfulButton from './HelpfulButton';
+import UserDateInfo from '../shared/UserDateInfo';
 
 export default function AnswerListItem({ ans }) {
   // if there are pictures map them
@@ -14,18 +15,17 @@ export default function AnswerListItem({ ans }) {
 
   return (
     <>
-      <div className="answer-body">
+      <div className="answer-body" key={ans.answer_id}>
         A:
         {ans.body}
-        {ans.photos.map((photo) => (<PhotoList key={ans.answer_id} photo={photo} />))}
+        <div className="image-answer-list">
+          {ans.photos.map((photo) => (<PhotoList photo={photo} />))}
+        </div>
       </div>
       <div className="answerer-info">
         by
         {' '}
-        {ans.answerer_name}
-        ,
-        {' '}
-        {ans.date}
+        <UserDateInfo user={ans.answerer_name} date={ans.date} />
         {' '}
         <HelpfulButton helpfulness={ans.helpfulness} id={ans.answer_id} type="answers" />
         {' '}

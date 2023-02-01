@@ -22,10 +22,9 @@ export default function HelpfulButton({ helpfulness, id, type }) {
       <span className="helpful-button">
         Helpful?
         {' '}
-        |
         {' '}
         {!clicked ? (
-          <button className="helpful-button" onClick={upVote} type="button">
+          <button className="helpful-button-yes" onClick={upVote} type="button">
             {' '}
             Yes(
             {help}
