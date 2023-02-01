@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
+import StarRatingReview from './StarRatingReview';
+import StarMeaning from './StarMeaning';
 
 // Todo: Upload photo functionality
 // Todo: Validating photo urls
@@ -35,7 +37,7 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (reviewText.length < 50) {
+    if (reviewText.length < 50 || !starRating) {
       setShowErrorMsg(true);
     } else {
       setShowErrorMsg(false);
@@ -117,66 +119,80 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       ref={outsideModalRef}
     >
       <div className="review-modal-content">
-        <h4>Review Modal Component</h4>
-        <div>
+        <div className="review-header">
           <div>Write Your Review</div>
           <div>About the [Product Name Here]</div>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
-            <div>
-              <h5>Overall Rating (Stars clickable here) (mandatory)</h5>
-            </div>
-            <div>
-              <h5>Do you recommend this product? (mandatory)</h5>
-              <label>
-                Yes:
-                <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
-              </label>
-              <label>
-                No:
-                <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
-              </label>
-            </div>
-            <div>
-              <h5>Characteristics (mandatory)</h5>
-              {charForms}
-            </div>
-            <div>
-              <h5>Review Summary</h5>
-              <div>
-                <div>Review Summary Text input (using text area 60 chars limit):</div>
-                <textarea maxLength="60" rows="2" cols="30" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
-              </div>
-            </div>
-            <div>
-              <h5>Review Body (mandatory)</h5>
-              <div>
-                <div>Review Body Text Input (also using text area 1000 chars limit):</div>
-                <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+            <div className="star-name-container">
+              <div className="star-rec-container">
                 <div>
-                  {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached' }
+                  <div className="star-rating">
+                    <div>Rate the product *</div>
+                    <StarRatingReview score={starRating} setStarRating={setStarRating} />
+                    <StarMeaning score={starRating} />
+                  </div>
+                </div>
+                <div className="modal-recommend">
+                  <div>Do you recommend this product? *</div>
+                  <div>
+                    <label>
+                      Yes:
+                      <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                    </label>
+                    <label>
+                      No:
+                      <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                    </label>
+                  </div>
+                </div>
+                <div className="photo-container">
+                  <div className="upload">
+                    <span>Upload your photos (5 photos max)</span>
+                    <button type="button">Add a photo</button>
+                  </div>
+                  <div className="photos">
+                    <div className="individual-photo">1</div>
+                    <div className="individual-photo">2</div>
+                    <div className="individual-photo">3</div>
+                    <div className="individual-photo">4</div>
+                    <div className="individual-photo">5</div>
+                  </div>
+                </div>
+              </div>
+              <div className="name-email-container">
+                <div className="username">
+                  <div>What is your nickname *</div>
+                  <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
+                </div>
+                <div className="email">
+                  <div>Your email *</div>
+                  <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <div className="privacy-notice">For authentication reasons, you will not be emailed</div>
                 </div>
               </div>
             </div>
             <div>
-              <h5>Upload your photos (5 photos max)</h5>
-              <div>
-                <button type="button">Add a photo</button>
+              <div className="review-summary-text">
+                <div>Review Summary Text</div>
+                <input maxLength="60" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
               </div>
             </div>
             <div>
-              <h5>What is your nickname (mandatory)</h5>
-              <div>
-                <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <div>For privacy reasons, do not use your full name or email address</div>
+              <div className="review-body-text">
+                <div className="text-header">Review Body Text Input *</div>
+                <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+                <div className="text-footer">
+                  {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached'}
+                </div>
               </div>
             </div>
-            <div>
-              <h5>Your email (mandatory)</h5>
-              <div>
-                <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <div>For authentication reasons, you will not be emailed</div>
+            <div className="char-container">
+              <div>Characteristics *</div>
+              <div className="char-forms">
+                {charForms}
               </div>
             </div>
             <br />

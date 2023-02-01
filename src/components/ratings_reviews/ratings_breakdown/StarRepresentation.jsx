@@ -10,7 +10,7 @@ export default function StarRepresentation({ averageRating }) {
         <div className="average-rating">
           {roundedRating}
         </div>
-        <div>
+        <div className="star-rating">
           <StarRating score={roundedRating} />
         </div>
       </div>

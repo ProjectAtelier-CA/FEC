@@ -5,7 +5,6 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewLis
     handleSortClick(e);
     setTimeout(() => {
       // Sometimes the reviews list jumps when clicking by sort. Figure out why.
-      console.log('i happened');
       reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, 200);
   };

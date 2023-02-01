@@ -12,6 +12,7 @@ export default function ReviewCard({
   review, handleImageClick, handleHelpfulClick, handleReportClick,
 }) {
   // console.log(review);
+  // console.log(review);
 
   return (
     <div className="review-card">
@@ -27,7 +28,7 @@ export default function ReviewCard({
       <ReviewCardText content={review.body} summary={review.summary} />
       { review.recommend ? <RecommendCheck /> : null }
       { review.response ? <SellerResponse response={review.response} /> : null }
-      <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick} />
+      { review.photos.length ? <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick}/> : null }
       <div>
         Inner Card Buttons:
         <HelpfulButton

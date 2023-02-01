@@ -8,7 +8,7 @@ export default function Characteristic({ handleChange, selectionNames, charType,
   // handleChange should be the function that will change the state for the selection
   return (
     <div className="characteristics">
-      <div className="selections">{charType}</div>
+      <div className="selection-type">{charType}</div>
       <label className="selections">
         <div>{selectionNames[0]}</div>
         <div>
