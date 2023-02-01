@@ -6,3 +6,4 @@ yarn.lock
 .eslintrc.json
 # .DS_Store
 coverage
+yarn-error.log
