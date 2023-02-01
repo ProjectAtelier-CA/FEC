@@ -1,24 +1,37 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 
-export default function Thumbnails() {
-  const images = [{
-    id: 1,
-    url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png',
-  },
-  {
-    id: 2,
-    url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png',
-  }];
+export default function Thumbnails({
+  imageIndex, setIndex, setStyle, imgToStyle, styles,
+}) {
+  const photos = styles.map((style) => style.photos).flat();
+
+  function handleClick(event) {
+    setIndex(event.target.id);
+    setStyle(imgToStyle[event.target.id]);
+  }
 
   return (
 
     <div className="thumbnails">
       <ul className="thumbnail-images">
         {
-        images.map((image) => (
-          <li key={image.id} className="thumbnail-div">
-            <img alt="thumbnail" className="thumbnail-image" src={image.url} width="40px" height="40px" />
+        photos.map((image, index) => (
+          <li key={image.url} className="thumbnail-div">
+            <img
+              id={index}
+              alt="thumbnail"
+              className={
+                `thumbnail-image
+                 ${image === photos[imageIndex] ? 'thumbnail-active' : ''}`
+              }
+              src={image.thumbnail_url}
+              onClick={handleClick}
+              width="40px"
+              height="40px"
+            />
           </li>
         ))
       }
@@ -28,7 +41,3 @@ export default function Thumbnails() {
 
   );
 }
-
-Thumbnails.propTypes = {
-  // images: PropTypes.array.isRequired,
-};
