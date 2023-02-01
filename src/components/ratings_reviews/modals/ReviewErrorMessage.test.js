@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@testing-library/react';
-import ReviewErrorMessage from './ratings_reviews/modals/ReviewErrorMessage';
+import ReviewErrorMessage from './ReviewErrorMessage';
 
 describe('Jest', function() {
   const user = userEvent.setup();
