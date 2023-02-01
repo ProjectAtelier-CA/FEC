@@ -6,16 +6,15 @@ import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
 import Search from './Search.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
-import ShowMoreQuestions from './ShowMoreQuestions';
 import AddQuestions from './AddQuestion';
 
 export default function QuestionsAnswers() {
-  const [productId, setId] = useState('37311');
+  const [productId, setId] = useState('37316');
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/questions').then(({ data }) => {
+    axios.get('http://localhost:8081/questions', { params: { productId } }).then(({ data }) => {
       const result = data.results;
       setLoading(false);
       // reviews will be an array of objects
