@@ -21,6 +21,16 @@ export default function App() {
   const [newQuestion, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
 
+  const emailInformation = (e) => {
+    setEmail(e.target.value);
+  };
+  const questionInformation = (e) => {
+    setQuestion(e.target.value);
+  };
+  const nicknameInformation = (e) => {
+    setNickname(e.target.value);
+  };
+
   return (
     <span>
       <button className="add-question-button" type="button" onClick={setOpen}> Add Question +</button>
@@ -35,29 +45,35 @@ export default function App() {
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
-          <input className="add-answer-input" value={newQuestion} placeholder="max:1000chars" />
+          <input className="add-answer-input" value={newQuestion} placeholder="max:1000chars" onChange={questionInformation} required />
           {' '}
           <br />
           <label> Enter Nickname</label>
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
-          <input className="add-answer-modal" value={nickname} placeholder="Example: jack1234" required />
+          <input
+            className="add-answer-modal"
+            value={nickname}
+            placeholder="Example: jack1234"
+            onChange={nicknameInformation}
+            required
+          />
           {' '}
           <br />
           <label className="label-answer-modal">For privacy reasons, do not use your full name or email address</label>
           {' '}
           <br />
-          <label>Enter Email</label>
+          <label htmlFor="email">Enter Email</label>
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
-          <input className="add-answer-modal" value={email} placeholder="jack@email.com" />
+          <input className="add-answer-modal" value={email} placeholder="jack@email.com" onChange={emailInformation} required />
           <br />
           <label className="label-answer-modal"> For authentication reasons, you will not be emailed</label>
           <br />
+          <input type="submit" />
         </form>
-        <button type="button" onClick={() => setOpen(false)}>Submit</button>
       </Modal>
     </span>
   );
