@@ -150,7 +150,28 @@ app.get('/questions', (req, res) => {
       res.json(data);
       res.end();
     })
-    .catch(() => res.send('Error occurred when getting reviews from /qa/questions'));
+    .catch(() => res.send('Error occurred when getting questions from /qa/questions'));
+});
+
+app.post('/questions', (req, res) => {
+  console.log(`"${req.body.body}"`);
+  axios({
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
+    headers: { Authorization: process.env.AUTH_SECRET },
+    data: {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      product_id: Number(req.body.product_id),
+    },
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get('/answers', (req, res) => {
