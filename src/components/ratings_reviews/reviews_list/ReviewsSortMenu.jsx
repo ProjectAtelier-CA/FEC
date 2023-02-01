@@ -11,15 +11,15 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewLis
 
   return (
     <div>
-      <h4>ReviewsSortMenu</h4>
+      {/* <h4>ReviewsSortMenu</h4> */}
       <div className="reviews-sort-menu">
         <div className="number-of-reviews">
           {numReviews}
         </div>
         <div>
-          Reviews sorted by:
+          reviews sorted by
         </div>
-        <div>
+        <div className="sort-selections">
           <select onChange={(e) => handleClick(e)}>
             <option value="relevance">relevance</option>
             <option value="newest">newest</option>

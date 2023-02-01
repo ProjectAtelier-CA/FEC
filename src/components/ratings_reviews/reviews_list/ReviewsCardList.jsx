@@ -84,14 +84,12 @@ export default function ReviewsCardList({
 
   return (
     <>
-      <h4>ReviewsCardList (List of Review Cards)</h4>
       <div className="review-scroll">
         <div ref={reviewListTopRef} />
-        <div>
+        <div className="review-scroll-item">
           {reviewElements.slice(0, reviewIndex)}
         </div>
       </div>
-      <br />
       <ActionButtons
         handleMoreClick={handleMoreClick}
         setShowReviewModal={setShowReviewModal}
