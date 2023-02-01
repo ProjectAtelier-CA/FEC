@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675219044493" clover="3.2.0">
-  <project timestamp="1675219044493" name="All files">
+<coverage generated="1675219237689" clover="3.2.0">
+  <project timestamp="1675219237689" name="All files">
     <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="2" coveredelements="2" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
     <file name="ReviewErrorMessage.jsx" path="/Users/andrew/Desktop/Hack Reactor/FEC/src/components/ratings_reviews/modals/ReviewErrorMessage.jsx">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
