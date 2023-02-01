@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './thumbnails';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdOutlineFullscreen } from 'react-icons/md';
 
 export default function ImageCarousel({
   imageIndex, setIndex, setStyle, imgToStyle, styles,
@@ -65,10 +66,16 @@ export default function ImageCarousel({
     return index;
   };
 
-  function handleNav() {
+  function handleLeft(event) {
+    const newIndex = getIndex(imageIndex - 1);
+    setIndex(newIndex);
+    setStyle(imgToStyle[newIndex]);
+  }
+
+  function handleNav(event) {
     let newIndex;
     // eslint-disable-next-line no-restricted-globals
-    if (event.target.className === 'o-carousel-button carousel-left') {
+    if (event.target.data === 'left') {
       newIndex = getIndex(imageIndex - 1);
     } else {
       newIndex = getIndex(imageIndex + 1);
@@ -104,9 +111,9 @@ export default function ImageCarousel({
               setStyle={setStyle}
               styles={styles}
             />
-            <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleNav}>{'<'}</button>
-            <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}>{'>'}</button>
-            <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}>Expand</button>
+            <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleLeft}><MdKeyboardArrowLeft /></button>
+            <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}><MdKeyboardArrowRight /></button>
+            <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}><MdOutlineFullscreen /></button>
             <ul>
               {
                 images.map((image) => (

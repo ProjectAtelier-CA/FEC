@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Styles from '../styles/styles';
 import Buttons from '../buttons/buttons';
+import Share from '../buttons/share';
 
 export default function ProductInfo({
   imageIndex, setIndex, styles, currentStyle, setStyle,
@@ -32,6 +33,7 @@ export default function ProductInfo({
         setStyle={setStyle}
       />
       <Buttons />
+      <Share />
     </div>
   );
 }

@@ -110,14 +110,18 @@
 }
 
 .style-checkmark {
-  border-radius: 10px;
-  background-color: gray;
+  scale: 1.2;
   z-index: 2;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 2px;
+  right: 2px;
+
 
 }
+
+// .testMe:hover {
+
+// }
 
 .style-thumbnail {
   inset: 0;
@@ -130,6 +134,7 @@
 .style-thumbnail:hover {
   border: solid #D0B8AC;
   transition: border 100ms ease-in-out;
+
 }
 
 .style-active {

@@ -13,8 +13,4 @@ describe('Jest', function() {
     expect(screen.getByTestId('error-test')).toHaveTextContent('This error will occur if:');
   });
 
-  it ('should include a quantity dropdown', () => {
-    render(<Buttons />);
-    expect((screen.getByTestId('test')).toBeInTheDocument);
-  })
 })

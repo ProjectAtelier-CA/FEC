@@ -23,7 +23,7 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   padding-left: .5vw;
-  height: 28vh;
+  height: 37vh;
   width: fit-content;
 
   // transform: translate(-5%);
@@ -55,7 +55,7 @@
 }
 
 .thumbnail-active {
-  border: rgba(255, 255, 255, 0.8) solid;
+  border: rgba(0, 0, 0, 0.8) solid;
   border-width: 2px;
 }
 
@@ -67,6 +67,10 @@
   width: fit-content;
   align-self: center;
   align-items: center;
+}
+
+.down-nav:hover {
+  border: solid green;
 }
 
 .thumbnail-image:hover {
