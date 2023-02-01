@@ -1,3 +1,10 @@
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+
+
 * {
   box-sizing: border-box;
 }
@@ -54,6 +61,12 @@
 
 }
 
+.recommend-check-container {
+  // border: 2px solid blue;
+  display: flex;
+  gap: 5px;
+}
+
 .sort-menu-item {
   list-style: none;
   position: absolute;
@@ -62,6 +75,19 @@
 .review-error-message {
   border: 2px solid red;
 }
+
+.review-modal-star {
+  display: flex;
+  gap: 0.1rem;
+  width: 6rem;
+  stroke: black;
+  stroke-width: 0.35rem;
+
+  svg:hover {
+    stroke: darkorange;
+  }
+}
+
 
 // Left Container
 .ratings-breakdown {
@@ -72,13 +98,20 @@
 .star-representation {
   border: 2px solid purple;
   display: flex;
-  gap: 10px;
+  // gap: 10px;
 
   .average-rating {
     border: 2px solid green;
     font-size: 3rem;
     height: 80px;
     width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .star-rating{
+    padding-top: 22px;
   }
 }
 
@@ -111,18 +144,29 @@
 }
 
 .characteristics {
-  // border: 2px solid blue;
   display: flex;
-  justify-content: space-between;
+  border: 2px solid $color1;
+
+  .selection-type {
+    // border: 2px solid $color1;
+    background-color: $color2;
+    font-size: 1em;
+    min-width: 100px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .selections {
-    font-size: .5em; //need to change according to our root font size
-    border: 2px solid darkgoldenrod;
+    font-size: .7em; //need to change according to our root font size
+    // border: 2px solid $color1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    width: 100%;
+    min-height: 40px;
   }
 }
 
@@ -185,18 +229,174 @@
 
 .review-modal-content {
   border: 2px solid coral;
-  background-color: white;
+  background-color: $color4;
+  padding: 20px;
   position: fixed;
-  top: 10%;
-  left: 25%;
-  right: 25%;
-  bottom: 10%;
+  width: 800px;
   overflow-y: auto;
+
+  .star-name-container {
+    // border: 2px solid darkgreen;
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    height: 160px;
+  }
+
+  .star-rec-container {
+    // border: 2px solid blue;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    .photo-container {
+      height: 100px;
+      // border: 2px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .upload {
+        display: flex;
+        gap: 10px;
+      }
+
+      .photos {
+        display: flex;
+        gap: 5px;
+      }
+
+      .individual-photo {
+        border: 2px solid green;
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  .name-email-container {
+    // border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .username {
+      // border: 2px solid blue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 220px;
+
+
+      input {
+        width: 200px;
+      }
+
+      .privacy-notice {
+        width: 150px;
+        font-size: .7rem;
+        text-align: center;
+      }
+    }
+
+    .email {
+      // border: 2px solid blue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 220px;
+
+      input {
+        width: 200px;
+      }
+
+      .privacy-notice {
+        width: 150px;
+        font-size: .7rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .review-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .star-rating {
+    display: flex;
+    gap: 5px;
+  }
+
+  .modal-recommend {
+    display: flex;
+    gap: 5px;
+  }
+
+  .char-container {
+    display: flex;
+    flex-direction: column;
+    // width: 600px;
+
+    .char-forms {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .review-summary-text {
+    margin-top: 5px;
+    // border: 2px solid red;
+
+    div {
+      // border: 2px solid blue;
+      width: 300px;
+    }
+
+    input {
+      // border: 2px solid blue;
+      width: 400px;
+      resize: none;
+    }
+  }
+
+  .review-body-text {
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .text-header {
+      text-align: start;
+    }
+
+    .text-footer {
+      // border: 2px solid blue;
+      text-align: end;
+    }
+
+    div {
+      // border: 2px solid blue;
+      width: 100%;
+    }
+
+    textarea {
+      background-color: $color5;
+      width: 100%;
+      height: 200px;
+      resize: none;
+    }
+  }
 }
 
 .image-modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  border: 2px solid blue;
+  // border: 2px solid blue;
   width: 100vw;
   height: 100vh;
   position: fixed;
