@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
-const customStyles = {
+const answersStyles= {
   content: {
     top: '50%',
     left: '50%',
@@ -27,12 +27,12 @@ export default function App() {
       <Modal
         isOpen={open}
         onRequestClose={() => setOpen(false)}
-        style={customStyles}
+        style={answersStyles}
       >
-        <div>Add Answer</div>
+        <div>Complete Information Below </div>
         <form>
           <label> Your Answer </label>
-          <label className="label-answer-modal">(mandatory)</label>
+          <label className="label-answer-modal">*</label>
           <label>:</label><br></br>
           <input className="add-answer-input" value={newAnswer} placeholder="max:1000chars" /> <br></br>
           <label> Enter Nickname</label>
@@ -48,7 +48,6 @@ export default function App() {
           <button type="button">Upload Images</button>
         </form>
         <button type="button" onClick={() => setOpen(false)}>Submit</button>
-        <button type="button" onClick={() => setOpen(false)}> Close</button>
       </Modal>
     </span>
   );

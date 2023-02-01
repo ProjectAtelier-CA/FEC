@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import QuestionListItem from './QuestionListItem.jsx';
+import App from './AddQuestion';
 
 export default function QuestionList({ productIdData }) {
   const [showMore, setMore] = useState(true);
@@ -44,7 +45,7 @@ export default function QuestionList({ productIdData }) {
       <div className="bottom-buttons">
         { showMore ? <button type="button" onClick={loadQuestions}> More Answered Questions</button> : null }
         {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
-        <button type="button"> Add a Question</button>
+        <App/>
       </div>
     </section>
   );

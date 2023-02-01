@@ -1,10 +1,7 @@
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
 import ModalImage from 'react-modal-image';
+import React from 'react';
 
 export default function PhotoList({ photo }) {
-  const [open, setOpen] = useState(false);
-
   //   return (
   //     <span>
   // <Modal
