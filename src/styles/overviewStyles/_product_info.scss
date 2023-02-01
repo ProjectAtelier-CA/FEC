@@ -4,6 +4,9 @@
 
 }
 
+* {
+  font-family: 'Inter', sans-serif;
+}
 // Product info
 .product-info {
   padding-left: 20px;
@@ -12,8 +15,10 @@
   flex-flow: column nowrap;
   width: 40vw;
   height: 60vh;
-  border: solid;
-  border-color: green;
+  // padding: 0;
+
+  // border: solid;
+  // border-color: rgb(13, 0, 128);
 }
 
 .info {
@@ -22,43 +27,116 @@
   height: 100%;
   // overflow: auto;
   flex-shrink: inherit;
+  position: relative;
 
 }
 
+.sale-price {
+  color: red;
+}
+
+.original-price {
+  color: black;
+  opacity: .5;
+  text-decoration: line-through;
+}
+
 .category {
-  font-size: .8em;
+  font-size: min(2vh, 2vw);
   font-family: 'Inter', sans-serif;
   font-weight: light;
 }
 
 .product-name {
-  font-size: 1.5em;
+  font-size: min(2.5vh, 2.5vw);
   font-family: 'Inter', sans-serif;
   width: fit-content;
   height: fit-content;
   font-weight: light;
-  border: solid;
-  border-color: green;
+  // border: solid;
+  // border-color: green;
   padding: 0;
 }
 
 // styles
 .styles {
-  border: solid;
-  border-color: green;
+  padding: 0;
+  // border: solid;
+  // border-color: green;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
-  height: fit-content;
-  justify-content: start;
-}
 
-.price {
-  border: solid;
-  border-color: green;
+  h4 {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  // align-items: flex-start;
+  // height: fit-content;
+  // justify-content: start;
+  // inset: 0;
 }
 
 .style {
-  border: solid;
-  border-color: green;
+
+  font-size: min(3vh, 3vw);
+}
+
+.style-list {
+  inset: 0;
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  width: 36vh;
+  gap: 1vh;
+
+  margin: 0;
+  padding: 0;
+
+
+
+  // border: solid;
+  // border-color: green;
+}
+
+.style-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.style-checkmark {
+  border-radius: 10px;
+  background-color: gray;
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+}
+
+.style-thumbnail {
+  inset: 0;
+  height: 8vh;
+  width: 8vh;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.style-thumbnail:hover {
+  border: solid #D0B8AC;
+  transition: border 100ms ease-in-out;
+}
+
+.style-active {
+  border: solid black;
+}
+
+.price {
+  // border: solid;
+  // border-color: green;
 }

@@ -1,34 +1,69 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-no-comment-textnodes */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 
-export default function Styles() {
-  const styles = [{
-    id: 1,
-    url: 'https://i.ibb.co/fk6j21y/b4fc2a8a-8367-4be9-b009-71eaa48f882c-d41d8cd98f00b204e9800998ecf8427e-1.png',
-    price: 120,
-    name: 'Merlin',
-  }];
+export default function Styles({
+  setIndex, styles, currentStyle, setStyle,
+}) {
+  const indeces = [0];
+  styles.forEach((style) => {
+    const N = indeces.length;
+    indeces.push(indeces[N - 1] + style.photos.length);
+  });
 
-  // eslint-disable-next-line no-unused-vars
-  const [currentStyle, setStyle] = useState(styles[0]);
+  function handleClick(event) {
+    setStyle(event.target.id);
+    setIndex(indeces[event.target.id]);
+  }
 
   return (
     <div className="styles">
       <h4 className="price">
-        $
-        {currentStyle.price}
+        {styles[currentStyle].sale_price === null
+          ? (
+            <span>
+              $
+              {styles[currentStyle].original_price}
+            </span>
+          )
+          : (
+            <div>
+              <span className="sale-price">
+                $
+                {styles[currentStyle].sale_price}
+                {' '}
+                <span className="original-price">
+                  $
+                  {styles[currentStyle].original_price}
+                </span>
+              </span>
+            </div>
+          )}
       </h4>
       <h2 className="style">
         STYLE
+        {' '}
         {'>'}
         {' '}
-        {currentStyle.name}
+        {styles[currentStyle].name}
       </h2>
-      <ul>
+      <ul className="style-list">
         {
-          styles.map((style) => (
-            <div key={style.id}>
-              <img alt="style_thumbnail" key={style.id} className="style_thumbnail" src={style.url} width="50px" height="50px" />
+          styles.map((style, index) => (
+            <div key={style.style_id} className="style-container">
+              {
+                style === styles[currentStyle] ? (<span className="style-checkmark">✓</span>) : null
+              }
+              <img
+                alt="style-thumbnail"
+                key={style.style_id}
+                id={index}
+                onClick={handleClick}
+                className={`style-thumbnail ${style === styles[currentStyle] ? 'style-active' : ''}`}
+                src={style.photos[0].thumbnail_url}
+              />
             </div>
           ))
         }
