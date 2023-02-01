@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import {
+  MdKeyboardArrowLeft, MdKeyboardArrowRight, MdOutlineFullscreen, MdOutlineFullscreenExit,
+} from 'react-icons/md';
 import Thumbnails from './thumbnails';
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdOutlineFullscreen } from 'react-icons/md';
 
 export default function ImageCarousel({
   imageIndex, setIndex, setStyle, imgToStyle, styles,
@@ -21,12 +23,12 @@ export default function ImageCarousel({
         const x = event.clientX;
         const y = event.clientY;
         const X = window.innerWidth;
-        // const Y = window.innerHeight;
-        // const ratio = event.target.naturalHeight / event.target.naturalWidth;
+        const ratio = event.target.naturalHeight / event.target.naturalWidth;
 
         const height = event.target.offsetHeight;
-        // const width = height / ratio;
-        // const marginX = Math.max((X - width) / 2, 0);
+        const width = height / ratio;
+        const startX = Math.max((X - width) / 2, 0);
+        const endX = X - startX;
         // eslint-disable-next-line max-len
         let margin = 0;
         try {
@@ -38,9 +40,13 @@ export default function ImageCarousel({
         if (margin === null) {
           pos = mousePos;
         } else {
+          let newX = x;
+          if (newX < startX || newX > endX) {
+            newX = mousePos.x;
+          }
           pos = {
-            x: (x / X) * 100,
-            y: ((y - margin) / height) * 100,
+            x: newX,
+            y: y - margin,
           };
         }
 
@@ -66,7 +72,7 @@ export default function ImageCarousel({
     return index;
   };
 
-  function handleLeft(event) {
+  function handleLeft() {
     const newIndex = getIndex(imageIndex - 1);
     setIndex(newIndex);
     setStyle(imgToStyle[newIndex]);
@@ -111,9 +117,34 @@ export default function ImageCarousel({
               setStyle={setStyle}
               styles={styles}
             />
-            <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleLeft}><MdKeyboardArrowLeft /></button>
-            <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}><MdKeyboardArrowRight /></button>
-            <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}><MdOutlineFullscreen /></button>
+            <button
+              type="button"
+              key="leftNav"
+              className="o-carousel-button carousel-left"
+              onClick={handleLeft}
+            >
+              <MdKeyboardArrowLeft />
+
+            </button>
+            <button
+              type="button"
+              key="rightNav"
+              className="o-carousel-button carousel-right"
+              onClick={handleNav}
+            >
+              <MdKeyboardArrowRight />
+
+            </button>
+            <button
+              type="button"
+              key="expand"
+              className="o-image-expand"
+              onClick={handleExpand}
+            >
+              {
+                isExpanded ? (<MdOutlineFullscreenExit />) : (<MdOutlineFullscreen />)
+              }
+            </button>
             <ul>
               {
                 images.map((image) => (
@@ -121,7 +152,7 @@ export default function ImageCarousel({
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
                   <li key={image.url} className="o-slide" onClick={handleImageClick}>
                     <img
-                      style={{ transformOrigin: `${mousePos.x}% ${mousePos.y}%` }}
+                      style={{ transformOrigin: `${mousePos.x}px ${mousePos.y}px` }}
                       className={
                       `image
                         ${isExpanded || (mousePos === null) ? 'zoom' : ''}

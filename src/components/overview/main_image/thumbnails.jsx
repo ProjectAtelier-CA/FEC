@@ -12,6 +12,7 @@ export default function Thumbnails({
   const [showUp, setUp] = useState(false);
   const [height, setHeight] = useState(0);
   const [mouseOut, setMouse] = useState(true);
+  const [scroll, setScroll] = useState(0);
 
   const photos = styles.map((style) => style.photos).flat();
   const N = photos.length;
@@ -20,19 +21,27 @@ export default function Thumbnails({
   useEffect(() => {
     const element = document.querySelector('ul#scroll-container');
     const scroller = (event) => {
-      if (!mouseOut) {
-        setStart(Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N));
-      }
+      const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
+      // setScroll(scrollTo);
+      // setScroll(scrollTo);
+      setTimeout(() => setScroll(scrollTo), 50);
     };
 
-    element.addEventListener('mouseenter', (event) => setMouse(false));
-    element.addEventListener('mouseleave', (event) => setMouse(true));
+    const mouseLeave = (event) => {
+      const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
+      setStart(scrollTo);
+    };
+
+    element.addEventListener('mouseenter', () => { setMouse(false); });
+    // element.addEventListener('mouseover', mouseLeave);
+    element.addEventListener('mouseleave', mouseLeave); //console.log('LEAVING'); setMouse(true);
     element.addEventListener('scroll', scroller);
 
     return () => {
       element.removeEventListener('scroll', scroller);
-      element.removeEventListener('mouseenter', (event) => setMouse(false));
-      element.removeEventListener('mouseleave', (event) => setMouse(true));
+      element.removeEventListener('mouseenter', () => setMouse(false));
+      // element.removeEventListener('mouseover', mouseLeave);
+      element.removeEventListener('mouseleave', mouseLeave);
     };
   });
 
@@ -43,14 +52,16 @@ export default function Thumbnails({
 
   useEffect(() => {
     containerRef.current.children[displayStart].scrollIntoView({
-      behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
+      top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
     });
   }, [displayStart]);
 
   useEffect(() => {
     containerRef.current.children[imageIndex].scrollIntoView({
-      behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
+      top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
     });
+    // eslint-disable-next-line no-unused-vars
+    setStart((state) => (imageIndex));
   }, [imageIndex]);
 
   const scrollDown = () => {
@@ -77,7 +88,7 @@ export default function Thumbnails({
 
     <div className="thumbnails">
       {
-        displayStart > 0 ? (
+        (displayStart > 0 && scroll > 0) ? (
           <button
             type="button"
             key="upNav"
@@ -109,7 +120,7 @@ export default function Thumbnails({
       }
       </ul>
       {
-        displayStart <= (N - 6) ? (
+        (displayStart < (N - 7) || scroll < (N - 7)) ? (
           <button
             type="button"
             key="downNav"

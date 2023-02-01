@@ -69,9 +69,10 @@ export default function Buttons() {
 
   const { skus } = style;
   const [currentSKU, setSKU] = useState(Object.keys(skus)[0]);
-  const [size, setSize] = useState('XL');
+  const [size, setSize] = useState('Size');
   const [sizeOpened, openSize] = useState(false);
   const [quantityOpened, openQuantity] = useState(false);
+  const [quantity, setQuantity] = useState('Count');
 
   function selectSize(event) {
     setSize(event.target.value);
@@ -86,41 +87,45 @@ export default function Buttons() {
     openQuantity(!quantityOpened);
   }
 
+  function optionClick(event) {
+    setQuantity(event.target.id);
+  }
+
   return (
     <div className="all-buttons">
       <div className="top-buttons">
         {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
         <div className="dropdown" onClick={sizeClick}>
-          <span>Size</span>
+          <button type="button" className="button">{size}</button>
           {
             sizeOpened
               ? (Object.keys(skus).map((sku) => (
-                <div className="dropdown-content">
-                  <button
-                    id={sku}
-                    type="button"
-                    onClick={selectSize}
-                    value={skus[sku].size}
-                  >
-                    {skus[sku].size}
-
-                  </button>
-                </div>
+                // <div className="dropdown-content">
+                <button
+                  id={sku}
+                  type="button"
+                  onClick={selectSize}
+                  value={skus[sku].size}
+                  className="dropdown-content size-option"
+                >
+                  {skus[sku].size}
+                </button>
+                // </div>
               ))
               ) : null
         }
         </div>
         {/* <button type="button" className="button quantitySelect">Quantity</button> */}
         <div className="dropdown" onClick={quantityClick} data-testid="test">
-          <span>Quantity</span>
+          <button type="button" className="button">{quantity}</button>
           {
             quantityOpened
               ? (
                 // eslint-disable-next-line max-len
                 [...Array(Math.min(skus[currentSKU].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
-                  <div className="dropdown-content">
-                    <p>{option}</p>
-                  </div>
+                  <button type="button" id={option} value={option} className="dropdown-content size-option" onClick={optionClick}>
+                    {option}
+                  </button>
                 ))
               ) : null
         }
