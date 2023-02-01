@@ -7,7 +7,7 @@ export default function ReviewCardPhotos({ photos, handleImageClick }) {
 
   return (
     <div>
-      (Optional) ReviewCardPhotos -If they attach pictures- (conditional render)
+      <div>Review photos:</div>
       <div onClick={(e) => handleImageClick(e)}>
         {photoElements}
       </div>

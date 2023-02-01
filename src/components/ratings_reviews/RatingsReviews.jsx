@@ -12,11 +12,13 @@ const initialStarFilterState = {
   1: false,
 };
 
-export default function RatingsReviews({ productID }) {
+// Current props needed: productID, productName
+export default function RatingsReviews({ productID, productName }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
   const [sortBy, setSortBy] = useState('relevance');
+  const [rerender, setRerender] = useState([]); // Solely for re-rendering reviews
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {
@@ -29,13 +31,13 @@ export default function RatingsReviews({ productID }) {
         // reviews will be an array of objects
         setProductReviews([...reviews]);
       });
-  }, [sortBy]);
+  }, [sortBy, rerender]);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews/meta').then(({ data }) => {
       setReviewMetaData(data);
     });
-  }, []);
+  }, [rerender]);
 
   const handleStarClick = (starType) => {
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
@@ -57,6 +59,8 @@ export default function RatingsReviews({ productID }) {
               starFilter={starFilter}
               handleSortClick={handleSortClick}
               sortBy={sortBy}
+              reviewMetaData={reviewMetaData}
+              setRerender={setRerender}
             />
           )}
       </div>
