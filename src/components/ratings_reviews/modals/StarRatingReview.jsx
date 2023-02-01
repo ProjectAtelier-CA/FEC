@@ -19,12 +19,12 @@ export default function StarRating({ score, setStarRating }) {
     if (scale === 0.75) scale -= 0.1;
 
     return (
-      <svg viewBox="0 0 100 100" key={index} onClick={() => setStarRating(index + 1)} className="review-modal-star">
+      <svg viewBox="0 0 100 100" key={index} onClick={() => setStarRating(index + 1)}>
         <use href="#star" fill={`url('#star__fill--${scale * 100}')`} />
       </svg>
     );
   });
 
   // return a DIV of 5 SVG stars
-  return <div className="star__rating">{starList}</div>;
+  return <div className="review-modal-star">{starList}</div>;
 };

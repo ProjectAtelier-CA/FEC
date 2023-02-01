@@ -1,3 +1,10 @@
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+
+
 * {
   box-sizing: border-box;
 }
@@ -69,9 +76,18 @@
   border: 2px solid red;
 }
 
-.review-modal-star:hover {
-  background-color: yellow;
+.review-modal-star {
+  display: flex;
+  gap: 0.1rem;
+  width: 6rem;
+  stroke: black;
+  stroke-width: 0.35rem;
+
+  svg:hover {
+    stroke: darkorange;
+  }
 }
+
 
 // Left Container
 .ratings-breakdown {
@@ -129,9 +145,11 @@
 
 .characteristics {
   display: flex;
+  border: 2px solid $color1;
 
   .selection-type {
-    border: 2px solid darkgoldenrod;
+    // border: 2px solid $color1;
+    background-color: $color2;
     font-size: 1em;
     min-width: 100px;
     width: auto;
@@ -142,7 +160,7 @@
 
   .selections {
     font-size: .7em; //need to change according to our root font size
-    border: 2px solid darkgoldenrod;
+    // border: 2px solid $color1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,14 +229,14 @@
 
 .review-modal-content {
   border: 2px solid coral;
-  background-color: white;
+  background-color: $color4;
   padding: 20px;
   position: fixed;
   width: 800px;
   overflow-y: auto;
 
   .star-name-container {
-    border: 2px solid darkgreen;
+    // border: 2px solid darkgreen;
     padding: 3px;
     display: flex;
     justify-content: space-between;
@@ -368,6 +386,7 @@
     }
 
     textarea {
+      background-color: $color5;
       width: 100%;
       height: 200px;
       resize: none;
