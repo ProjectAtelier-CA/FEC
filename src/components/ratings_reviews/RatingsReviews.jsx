@@ -23,7 +23,9 @@ export default function RatingsReviews({ productID, productName }) {
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {
       params: {
+        product_id: productID,
         sort: sortBy,
+        count: 500,
       },
     })
       .then(({ data }) => {
@@ -36,7 +38,11 @@ export default function RatingsReviews({ productID, productName }) {
   }, [sortBy, rerender]);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews/meta')
+    axios.get('http://localhost:8081/reviews/meta', {
+      params: {
+        product_id: productID,
+      },
+    })
       .then(({ data }) => {
         setReviewMetaData(data);
       }).catch((err) => {
@@ -64,6 +70,7 @@ export default function RatingsReviews({ productID, productName }) {
           sortBy={sortBy}
           reviewMetaData={reviewMetaData}
           setRerender={setRerender}
+          productName={productName}
         />
       </div>
     </>

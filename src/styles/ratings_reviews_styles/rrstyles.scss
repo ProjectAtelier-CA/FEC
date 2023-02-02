@@ -175,7 +175,7 @@ $color6: #EE6C4D;
 .review-scroll {
   // border: 2px solid blue;
   overflow-y: auto;
-  // min-height: 600px;
+  min-height: 650px;
   max-height: 700px;
   // width: 60vw;
   margin-top: 5px;
@@ -314,6 +314,7 @@ $color6: #EE6C4D;
       .filter-star-button:hover {
         cursor: pointer;
         opacity: .5;
+        background-color: $color3;
       }
 
       .break-down-bar {
@@ -462,7 +463,8 @@ $color6: #EE6C4D;
   background-color: $color4;
   padding: 20px;
   position: fixed;
-  width: 60vw;
+  min-width: 650px;
+  width: 70vw;
   height: 85vh;
   overflow-y: auto;
   overflow-x: auto;
