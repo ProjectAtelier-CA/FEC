@@ -19,7 +19,8 @@ export default function App() {
   const [email, setEmail] = useState('');
   const [newAnswer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState('');
+  const [photoURLs, setPhotoURL] = useState([]);
 
   const emailInformation = (e) => {
     setEmail(e.target.value);
@@ -30,6 +31,20 @@ export default function App() {
   const nicknameInformation = (e) => {
     setNickname(e.target.value);
   };
+  const photoInformation = (e) => {
+    setPhotos(e.target.files[0]);
+  };
+
+  // useEffect(() => {
+  //   const quack = URL.createObjectURL(photos);
+  //   setPhotoURL(quack);
+  //   console.log("THIS IS URLS", photoURLs);
+  // });
+  // useEffect(() => {
+  //   const tempPhotoStorage = [];
+  //   photos.forEach((photo) => { tempPhotoStorage.push(URL.createObjectURL(photo)); });
+  //   setPhotoURL(tempPhotoStorage);
+  // }, [photos]);
 
   return (
     <span>
@@ -68,11 +83,12 @@ export default function App() {
           <label className="label-answer-modal">(mandatory)</label>
           <label>:</label>
           <br />
-          <input className="add-answer-modal" value={email} placeholder="jack@email.com" />
+          <input className="add-answer-modal" value={email} placeholder="jack@email.com" required />
           <br />
           <label className="label-answer-modal"> For authentication reasons, you will not be emailed</label>
           <br />
-          <button type="button">Upload Images</button>
+          <input type="file" value={photos} multiple accept="image/*" onClick={photoInformation} />
+          {photoURLs.map((source) => <img alt="img" src={source} /> )}
         </form>
         <button type="button" onClick={() => setOpen(false)}>Submit</button>
       </Modal>

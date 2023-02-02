@@ -201,5 +201,19 @@ app.post('/helpful', (req, res) => {
     .catch(() => res.send('Error occurred when updating helpfulness'));
 });
 
+app.post('/report', (req, res) => {
+  console.log(req.query.answerId);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.query.answerId}/report`, null, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('REPORTED');
+      res.status(204);
+    })
+    .catch(() => res.send('Error occurred when reporting'));
+});
+
 app.listen(8081);
 console.log('Listening at http://localhost:8081');

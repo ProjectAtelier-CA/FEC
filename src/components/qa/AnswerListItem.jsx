@@ -16,7 +16,6 @@ export default function AnswerListItem({ ans }) {
   return (
     <>
       <div className="answer-body" key={ans.answer_id}>
-        A:
         {ans.body}
         <div className="image-answer-list">
           {ans.photos.map((photo) => (<PhotoList photo={photo} />))}
@@ -31,7 +30,7 @@ export default function AnswerListItem({ ans }) {
         {' '}
         |
         {' '}
-        <ReportButton />
+        <ReportButton answerId={ans.answer_id} />
       </div>
     </>
 
