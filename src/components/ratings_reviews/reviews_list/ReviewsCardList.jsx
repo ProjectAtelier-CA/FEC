@@ -21,7 +21,7 @@ export default function ReviewsCardList({
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalImageURL, setModalImageURL] = useState('');
-  const moreReviewsButtonRef = useRef(null);
+  const actionButtonsRef = useRef(null);
 
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function ReviewsCardList({
     setReviewIndex(reviewIndex + 2);
 
     setTimeout(() => {
-      moreReviewsButtonRef.current.scrollIntoView({ behavior: 'smooth'});
+      actionButtonsRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -101,7 +101,7 @@ export default function ReviewsCardList({
         setShowReviewModal={setShowReviewModal}
         totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
-        moreReviewsButtonRef={moreReviewsButtonRef}
+        actionButtonsRef={actionButtonsRef}
       />
       {showModal && (
         <ImageModal

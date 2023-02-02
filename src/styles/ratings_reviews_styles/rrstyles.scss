@@ -15,8 +15,7 @@ $color6: #EE6C4D;
   display: flex;
   // justify-content: center;
   gap: 50px;
-  padding: 50px;
-  // width: 100vw;
+  padding: 50px 50px 20px 50px;
 }
 
 .review-card {
@@ -264,6 +263,7 @@ $color6: #EE6C4D;
 
 // Left Container
 .ratings-breakdown {
+  min-width: 300px;
   // border: 2px solid palevioletred;
 
   .percent-recommend {
