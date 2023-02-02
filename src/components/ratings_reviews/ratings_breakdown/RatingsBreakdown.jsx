@@ -24,12 +24,16 @@ const calcRecommended = (recommended) => {
   return trueCount / totalCount;
 };
 
-export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
+export default function RatingsBreakdown({
+  reviewMetaData, handleStarClick, starFilter, setStarFilter,
+}) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [averageRating, setAverageRating] = useState(5);
   const [percentRec, setPercentRec] = useState(100);
   const [ratings, setRatings] = useState({});
   const [chars, setChars] = useState({});
+
+  // console.log(starFilter);
 
   useEffect(() => {
     if (Object.keys(reviewMetaData).length) {
@@ -54,6 +58,8 @@ export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
               totalVotes={totalVotes}
               ratings={ratings}
               handleStarClick={handleStarClick}
+              starFilter={starFilter}
+              setStarFilter={setStarFilter}
             />
             <ProductBreakdownList chars={chars} />
           </div>

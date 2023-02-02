@@ -51,6 +51,7 @@ export default function RatingsReviews({ productID, productName }) {
   }, [rerender]);
 
   const handleStarClick = (starType) => {
+    // console.log(starType);
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
   };
 
@@ -62,7 +63,12 @@ export default function RatingsReviews({ productID, productName }) {
     <>
       <h1>RatingsReviews Component</h1>
       <div className="ratings-reviews-container">
-        <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
+        <RatingsBreakdown
+          reviewMetaData={reviewMetaData}
+          handleStarClick={handleStarClick}
+          starFilter={starFilter}
+          setStarFilter={setStarFilter}
+        />
         <ReviewsList
           productReviews={productReviews}
           starFilter={starFilter}

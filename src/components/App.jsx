@@ -15,7 +15,7 @@ export default function App() {
       <Overview />
       <RelatedProducts />
       <QuestionsAnswers />
-      <RatingsReviews />
+      <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
     </>
   );
 }

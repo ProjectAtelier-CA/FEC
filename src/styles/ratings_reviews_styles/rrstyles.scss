@@ -110,10 +110,9 @@ $color6: #EE6C4D;
 
       button {
         all: unset;
-
-        span {
-          border-bottom: 2px solid $color1;
-        }
+        display: flex;
+        gap: 2px;
+        border-bottom: 2px solid $color1;
       }
 
       button:hover {
@@ -141,11 +140,22 @@ $color6: #EE6C4D;
 
     .report {
       // border: 2px solid green;
+      // display: flex;
       padding-left: 10px;
 
       button {
         all: unset;
         border-bottom: 2px solid $color1;
+        display: flex;
+        gap: 2px;
+
+        div {
+          display: flex;
+        }
+
+        .report-icon {
+          font-size: 1.1rem;
+        }
       }
 
       button:hover {
@@ -334,6 +344,71 @@ $color6: #EE6C4D;
           height: 10px;
         }
       }
+    }
+
+    .star-filter-tags {
+      background-color: $color4;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px;
+      min-height: 50px;
+
+      .big-tag {
+        // border: 2px solid blue;
+        // height: auto;
+        // width: auto;
+        transform: scale(2);
+        margin-left: 15px;
+        margin-right: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .big-tag:hover {
+        color: $color6;
+      }
+
+      .tag-filters {
+        display: flex;
+
+        .tag-container:hover {
+          cursor: pointer;
+          color: $color6;
+        }
+
+        .small-tag {
+          // border: 1.5px solid red;
+          margin-left: 15px;
+          margin-right: 17px;
+          .tag {
+            position: absolute;
+            transform: scale(2.2, 2) rotate(-45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .text {
+            // border: 1px solid yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-size: 0.8rem;
+            translate: 2px 1px;
+
+            .text-star {
+              font-size: 0.5rem;
+              translate: 0px 0.5px;
+            }
+          }
+        }
+      }
+
+
     }
   }
 
