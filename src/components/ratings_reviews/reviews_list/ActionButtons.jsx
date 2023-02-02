@@ -19,7 +19,7 @@ export default function ActionButtons({
     <div className="action-buttons-container" ref={actionButtonsRef}>
       {showMore
         ? (
-          <button type="button" onClick={handleMoreClick} ref={moreReviewsButtonRef}>
+          <button type="button" onClick={handleMoreClick}>
             <div className="more-text">More Reviews</div>
           </button>
         ) : null}
