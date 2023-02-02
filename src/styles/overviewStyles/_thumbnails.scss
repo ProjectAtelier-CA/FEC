@@ -1,19 +1,15 @@
 .thumbnails {
   display: flex;
   flex-flow: column nowrap;
-  // border: solid;
-  // border-color: green;
   width: 4vw;
   inset: 0;
   z-index: 4;
-  position: absolute;
+  position: relative;
   align-items: center;
   height: fit-content;
-
-  // border: solid;
-  // border-color: green;
-
-  overflow: hidden;
+  justify-content: flex-start;
+  overflow: visible;
+  padding-left: 1vw;
 }
 
 .thumbnail-images {
@@ -22,16 +18,20 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  padding-left: .5vw;
+  padding-left: 4px;
+  padding-right: 4px;
   height: 37vh;
   width: fit-content;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
 
   // transform: translate(-5%);
 
   // border: solid;
-  // border-color: green;
+  // border-color: red;
 
   overflow-y: scroll;
+  overflow-x: visible;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
   // overflow: hidden;
@@ -52,11 +52,13 @@
   width: 5vh;
   object-fit: cover;
   border-radius: 3px;
+  opacity: .7;
 }
 
 .thumbnail-active {
   border: rgba(0, 0, 0, 0.8) solid;
   border-width: 2px;
+  opacity: 1;
 }
 
 .down-nav {
@@ -68,14 +70,45 @@
   align-self: center;
   align-items: center;
   transition: opacity 200ms;
+  width: 3vh;
+  height: 3vh;
+  // border: solid green;
+  position: absolute;
+  bottom: 1%;
 }
 
-.down-nav:hover {
-  border: solid green;
+.up-nav {
+  background-color: rgba(255,255,255,.8);
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  width: fit-content;
+  align-self: center;
+  align-items: center;
+  transition: opacity 200ms;
+  width: 3vh;
+  height: 3vh;
+  // border: solid green;
+  position: absolute;
+  top: 1%;
+
+
+}
+
+.nav-arrow {
+  scale: 2.5;
+  opacity: .7;
+  transform: translate(0,5%);
+}
+
+.nav-arrow:hover {
+  scale: 3;
+  transition: scale 200ms;
 }
 
 .thumbnail-image:hover {
-  transform: scale(1.2);
+  // transform: scale(1.1);
+  opacity: 1;
   transition: transform 300ms ease-out;
 }
 

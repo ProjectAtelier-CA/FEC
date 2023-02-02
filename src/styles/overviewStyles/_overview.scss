@@ -5,8 +5,17 @@
 @import "_product_info";
 @import "_description.scss";
 
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+* {
+  margin-left: 0;
 }
 
 

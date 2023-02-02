@@ -15,10 +15,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
-app.get('/styles', (req, res) => {
-  console.log(`Request received for styles at product ${req.query.product_id}`);
+app.get('/products/:product_id/styles', (req, res) => {
+  const { product_id } = req.params;
+  console.log(`Request received for styles at product`, product_id);
 
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${req.query.product_id})/styles`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product_id})/styles`, {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },

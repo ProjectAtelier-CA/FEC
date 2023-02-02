@@ -5,6 +5,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md';
 
 export default function Buttons() {
   const style = {
@@ -57,7 +58,7 @@ export default function Buttons() {
         size: 'L',
       },
       1281036: {
-        quantity: 15,
+        quantity: 0,
         size: 'XL',
       },
       1281037: {
@@ -73,8 +74,12 @@ export default function Buttons() {
   const [sizeOpened, openSize] = useState(false);
   const [quantityOpened, openQuantity] = useState(false);
   const [quantity, setQuantity] = useState('Count');
+  const [gotSize, setSizeStatus] = useState(false);
+  const [addedToBag, setBagged] = useState(false);
+  const iff = (condition, then, otherwise) => (condition ? then : otherwise);
 
   function selectSize(event) {
+    setSizeStatus(true);
     setSize(event.target.value);
     setSKU(event.target.id);
   }
@@ -91,48 +96,104 @@ export default function Buttons() {
     setQuantity(event.target.id);
   }
 
+  function addToBag() {
+    if (quantity > 0) {
+      setBagged(true);
+    } else if (!gotSize) {
+      openSize(true);
+    } else {
+      openQuantity(true);
+    }
+  }
+
+  useEffect(() => {
+    setQuantity(0);
+  }, [size]);
+
   return (
     <div className="all-buttons">
       <div className="top-buttons">
         {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
         <div className="dropdown" onClick={sizeClick}>
-          <button type="button" className="button">{size}</button>
-          {
-            sizeOpened
-              ? (Object.keys(skus).map((sku) => (
-                // <div className="dropdown-content">
-                <button
-                  id={sku}
-                  type="button"
-                  onClick={selectSize}
-                  value={skus[sku].size}
-                  className="dropdown-content size-option"
-                >
-                  {skus[sku].size}
-                </button>
-                // </div>
-              ))
-              ) : null
-        }
+          <button type="button" className="size button">
+            {sizeOpened
+              ? 'Select size'
+              : iff(skus[currentSKU].quantity > 0, size, <span className="no-stock">
+                {size}
+                {' '}
+                -
+                {' '}
+                out of stock
+              </span>)}
+            {/* {
+              iff(skus[currentSKU].quantity > 0, size, <span className="no-stock">
+                {size}
+                {' '}
+                -
+                {' '}
+                out of stock
+                                                     </span>)
+            } */}
+          </button>
+          <ul className="dropdown-list">
+            {
+                sizeOpened
+                  ? (Object.keys(skus).map((sku) => (
+                    // <div className="dropdown-content">
+                    <button
+                      id={sku}
+                      type="button"
+                      onClick={selectSize}
+                      value={skus[sku].size}
+                      className="dropdown-content size-option"
+                    >
+                      {skus[sku].size}
+                    </button>
+                    // </div>
+                  ))
+                  ) : null
+            }
+          </ul>
         </div>
         {/* <button type="button" className="button quantitySelect">Quantity</button> */}
         <div className="dropdown" onClick={quantityClick} data-testid="test">
-          <button type="button" className="button">{quantity}</button>
           {
-            quantityOpened
+            // eslint-disable-next-line no-nested-ternary
+            skus[currentSKU].quantity > 0
               ? (
-                // eslint-disable-next-line max-len
-                [...Array(Math.min(skus[currentSKU].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
-                  <button type="button" id={option} value={option} className="dropdown-content size-option" onClick={optionClick}>
-                    {option}
-                  </button>
-                ))
-              ) : null
-        }
+                quantity > 0
+                  ? (<button type="button" className="button quantity">{quantity}</button>)
+                  : (<button type="button" className="button quantity">-</button>)
+              )
+              : null
+          }
+          <ul className="dropdown-list">
+            {
+              quantityOpened
+                ? (
+                  // eslint-disable-next-line max-len
+                  [...Array(Math.min(skus[currentSKU].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
+                    <button type="button" id={option} value={option} className="dropdown-content quantity-option" onClick={optionClick}>
+                      {option}
+                    </button>
+                  ))
+                ) : null
+          }
+          </ul>
         </div>
       </div>
       <div className="bottom-buttons">
-        <button type="button" className="button addToBag">Add to bag</button>
+        {
+          addedToBag
+            ? (
+              <button type="button" className="button added" disabled>
+                Added to bag!
+                {' '}
+                <MdCheckCircle className="bag-check" />
+              </button>
+            )
+            : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
+        }
         <button type="button" className="button favorite">&#9734;</button>
       </div>
     </div>

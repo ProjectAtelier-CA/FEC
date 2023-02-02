@@ -8,11 +8,10 @@ export default function Thumbnails({
   imageIndex, setIndex, setStyle, imgToStyle, styles,
 }) {
   const [displayStart, setStart] = useState(0);
-  const [showDown, setDown] = useState(true);
-  const [showUp, setUp] = useState(false);
   const [height, setHeight] = useState(0);
   const [mouseOut, setMouse] = useState(true);
   const [scroll, setScroll] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   const photos = styles.map((style) => style.photos).flat();
   const N = photos.length;
@@ -22,25 +21,31 @@ export default function Thumbnails({
     const element = document.querySelector('ul#scroll-container');
     const scroller = (event) => {
       const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
-      // setScroll(scrollTo);
-      // setScroll(scrollTo);
-      setTimeout(() => setScroll(scrollTo), 50);
+      setScrolled(true);
+      setScroll(scrollTo);
+      setHeight(event.srcElement.scrollTop);
     };
 
     const mouseLeave = (event) => {
       const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
-      setStart(scrollTo);
+      if (scrolled) {
+        setStart(scrollTo);
+      }
+      setMouse(true);
     };
 
-    element.addEventListener('mouseenter', () => { setMouse(false); });
-    // element.addEventListener('mouseover', mouseLeave);
-    element.addEventListener('mouseleave', mouseLeave); //console.log('LEAVING'); setMouse(true);
+    const mouseEnter = () => {
+      setMouse(false);
+      setScrolled(false);
+    };
+
+    element.addEventListener('mouseenter', mouseEnter);
+    element.addEventListener('mouseleave', mouseLeave);
     element.addEventListener('scroll', scroller);
 
     return () => {
       element.removeEventListener('scroll', scroller);
-      element.removeEventListener('mouseenter', () => setMouse(false));
-      // element.removeEventListener('mouseover', mouseLeave);
+      element.removeEventListener('mouseenter', mouseEnter);
       element.removeEventListener('mouseleave', mouseLeave);
     };
   });
@@ -51,17 +56,27 @@ export default function Thumbnails({
   }
 
   useEffect(() => {
-    containerRef.current.children[displayStart].scrollIntoView({
+    setScrolled(false);
+  }, [scroll]);
+
+  useEffect(() => {
+    let params = {
       top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
-    });
+    };
+    if (displayStart <= 1) {
+      params = {
+        top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
+      };
+    }
+    containerRef.current.children[displayStart].scrollIntoView(params);
   }, [displayStart]);
 
   useEffect(() => {
-    containerRef.current.children[imageIndex].scrollIntoView({
-      top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
-    });
-    // eslint-disable-next-line no-unused-vars
-    setStart((state) => (imageIndex));
+    if (mouseOut) {
+      setStart(imageIndex);
+    } else {
+      setScroll(imageIndex);
+    }
   }, [imageIndex]);
 
   const scrollDown = () => {
@@ -88,14 +103,14 @@ export default function Thumbnails({
 
     <div className="thumbnails">
       {
-        (displayStart > 0 && scroll > 0) ? (
+        (height > 0) ? (
           <button
             type="button"
             key="upNav"
-            className="down-nav"
+            className="up-nav"
             onClick={scrollUp}
           >
-            <MdOutlineArrowDropUp />
+            <MdOutlineArrowDropUp className="nav-arrow" />
           </button>
         ) : null
       }
@@ -120,14 +135,14 @@ export default function Thumbnails({
       }
       </ul>
       {
-        (displayStart < (N - 7) || scroll < (N - 7)) ? (
+        (scroll < (N - 7)) ? (
           <button
             type="button"
             key="downNav"
             className="down-nav"
             onClick={scrollDown}
           >
-            <MdOutlineArrowDropDown />
+            <MdOutlineArrowDropDown className="nav-arrow" />
           </button>
         ) : null
       }

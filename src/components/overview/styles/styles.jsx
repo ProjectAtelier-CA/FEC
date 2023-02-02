@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md';
+import { MdCheckCircle } from 'react-icons/md';
 
 export default function Styles({
   setIndex, styles, currentStyle, setStyle,
@@ -48,14 +48,14 @@ export default function Styles({
         {' '}
         {'>'}
         {' '}
-        {styles[currentStyle].name}
+        <span className="style-name">{styles[currentStyle].name}</span>
       </h2>
       <ul className="style-list">
         {
           styles.map((style, index) => (
             <div key={style.style_id} className="style-container">
               {
-                style === styles[currentStyle] ? (<span className="style-checkmark"><MdCheckCircle className="testMe" /></span>) : null
+                style === styles[currentStyle] ? (<span className="style-checkmark"><MdCheckCircle className="checkmark-self" /></span>) : null
               }
               <img
                 alt="style-thumbnail"

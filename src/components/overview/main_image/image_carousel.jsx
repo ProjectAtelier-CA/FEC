@@ -9,6 +9,7 @@ export default function ImageCarousel({
   imageIndex, setIndex, setStyle, imgToStyle, styles,
 }) {
   const images = styles.map((style) => style.photos).flat();
+  const N = images.length;
 
   // const [imageIndex, setIndex] = useState(0);
   const [isExpanded, setExpand] = useState(false);
@@ -61,8 +62,6 @@ export default function ImageCarousel({
     }
   });
 
-  const N = images.length;
-
   const getIndex = (index) => {
     if (index < 0) {
       return N - 1;
@@ -78,15 +77,8 @@ export default function ImageCarousel({
     setStyle(imgToStyle[newIndex]);
   }
 
-  function handleNav(event) {
-    let newIndex;
-    // eslint-disable-next-line no-restricted-globals
-    if (event.target.data === 'left') {
-      newIndex = getIndex(imageIndex - 1);
-    } else {
-      newIndex = getIndex(imageIndex + 1);
-    }
-
+  function handleRight() {
+    const newIndex = getIndex(parseInt(imageIndex, 10) + 1);
     setIndex(newIndex);
     setStyle(imgToStyle[newIndex]);
   }
@@ -117,24 +109,35 @@ export default function ImageCarousel({
               setStyle={setStyle}
               styles={styles}
             />
-            <button
-              type="button"
-              key="leftNav"
-              className="o-carousel-button carousel-left"
-              onClick={handleLeft}
-            >
-              <MdKeyboardArrowLeft />
+            {
+              imageIndex > 0
+                ? (
+                  <button
+                    type="button"
+                    key="leftNav"
+                    className="o-carousel-button carousel-left"
+                    onClick={handleLeft}
+                  >
+                    <MdKeyboardArrowLeft className="carousel-nav" />
+                  </button>
+                )
+                : null
+            }
+            {
+              imageIndex < (N - 1)
+                ? (
+                  <button
+                    type="button"
+                    key="rightNav"
+                    className="o-carousel-button carousel-right"
+                    onClick={handleRight}
+                  >
+                    <MdKeyboardArrowRight className="carousel-nav" />
 
-            </button>
-            <button
-              type="button"
-              key="rightNav"
-              className="o-carousel-button carousel-right"
-              onClick={handleNav}
-            >
-              <MdKeyboardArrowRight />
-
-            </button>
+                  </button>
+                )
+                : null
+            }
             <button
               type="button"
               key="expand"
