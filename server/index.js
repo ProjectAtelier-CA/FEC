@@ -43,7 +43,8 @@ app.get('/reviews', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37331,
+      product_id: 37331, //no reviews 37339
+      // product_id: 37331,
       sort,
       count: '100',
     },

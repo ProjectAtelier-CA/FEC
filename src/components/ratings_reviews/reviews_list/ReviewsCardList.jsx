@@ -21,6 +21,8 @@ export default function ReviewsCardList({
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalImageURL, setModalImageURL] = useState('');
+  const moreReviewsButtonRef = useRef(null);
+
 
   useEffect(() => {
     // Should menu collaspe when we are switching our sort by filter?
@@ -30,6 +32,10 @@ export default function ReviewsCardList({
 
   const handleMoreClick = () => {
     setReviewIndex(reviewIndex + 2);
+
+    setTimeout(() => {
+      moreReviewsButtonRef.current.scrollIntoView({ behavior: 'smooth'});
+    }, 100);
   };
 
   const handleImageClick = (e) => {
@@ -95,6 +101,7 @@ export default function ReviewsCardList({
         setShowReviewModal={setShowReviewModal}
         totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
+        moreReviewsButtonRef={moreReviewsButtonRef}
       />
       {showModal && (
         <ImageModal

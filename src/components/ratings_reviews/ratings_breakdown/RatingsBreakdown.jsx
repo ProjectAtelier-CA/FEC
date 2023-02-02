@@ -45,8 +45,7 @@ export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
 
   return (
     <div className="ratings-breakdown">
-      <h2>RatingsBreakdown (Left Container)</h2>
-      <h4>Ratings and Review</h4>
+      <h4>Ratings and Reviews</h4>
       <StarRepresentation averageRating={averageRating} />
       <RecommendPercentage percentRec={percentRec} />
       <StarBreakdownList

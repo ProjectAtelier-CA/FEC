@@ -4,7 +4,7 @@ export default function SellerResponse({ response }) {
   return (
     <div className="seller-response">
       <span>
-        Seller Response:
+        Response from Seller:
       </span>
       <div>
         {response}

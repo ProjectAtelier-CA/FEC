@@ -33,8 +33,7 @@ export default function StarBreakdownList({ totalVotes, ratings, handleStarClick
   }
 
   return (
-    <div>
-      <h4>StarBreakdownList (Filterable Stars)</h4>
+    <div className="star-bar-container">
       {barDisplays}
     </div>
   );

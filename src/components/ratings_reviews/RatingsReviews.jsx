@@ -52,8 +52,8 @@ export default function RatingsReviews({ productID, productName }) {
       <h1>RatingsReviews Component</h1>
       <div className="ratings-reviews-container">
         <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
-        { productReviews.length
-          && (
+        {/* { productReviews.length
+          ? (
             <ReviewsList
               productReviews={productReviews}
               starFilter={starFilter}
@@ -62,7 +62,15 @@ export default function RatingsReviews({ productID, productName }) {
               reviewMetaData={reviewMetaData}
               setRerender={setRerender}
             />
-          )}
+          ) : null} */}
+        <ReviewsList
+          productReviews={productReviews}
+          starFilter={starFilter}
+          handleSortClick={handleSortClick}
+          sortBy={sortBy}
+          reviewMetaData={reviewMetaData}
+          setRerender={setRerender}
+        />
       </div>
     </>
   );
