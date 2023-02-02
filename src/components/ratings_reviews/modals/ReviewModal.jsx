@@ -168,7 +168,7 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
               <div className="name-email-container">
                 <div className="username">
                   <div>What is your nickname *</div>
-                  <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">

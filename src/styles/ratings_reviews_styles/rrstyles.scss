@@ -11,16 +11,21 @@ $color6: #EE6C4D;
 }
 
 .ratings-reviews-container {
-  border: 2px solid yellow;
+  // border: 2px solid yellow;
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  // justify-content: center;
+  gap: 50px;
+  padding: 50px;
+  // width: 100vw;
 }
 
 .review-card {
   // border: 2px solid purple;
   border-bottom: 2px solid $color1;
-  width: 98%;
+  // width: 98%;
+  // inline-size: min-content;
+  min-width: 400px;
+  max-width: 100%;
   padding-right: 20px;
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -45,7 +50,7 @@ $color6: #EE6C4D;
         // Makes a bigger pop-up to preview image
         cursor: pointer;
         width: fit-content;
-        height: 200px;
+        height: 125px;
         z-index: 0;
         border: solid 1px #555;
         background-color: #eed;
@@ -82,8 +87,10 @@ $color6: #EE6C4D;
 
   .review-card-body {
     // border: 2px solid red;
+    width: 100%;
+    // max-width: 100%;
     margin-bottom: 10px;
-    word-wrap: break-word;
+    word-break: break-word;
   }
 
   .review-card-buttons {
@@ -111,12 +118,20 @@ $color6: #EE6C4D;
       }
 
       button:hover {
-        opacity: .8;
-        color: darkgreen;
+        opacity: .5;
+        color: $color1;
         span {
-          border-color: darkgreen;
+          border-color: $color1;
         }
         cursor: pointer;
+      }
+
+      .helpful-active {
+        opacity: .5;
+        color: $color1;
+        span {
+          border-color: $color1;
+        }
       }
 
       div {
@@ -161,16 +176,18 @@ $color6: #EE6C4D;
 .review-scroll {
   // border: 2px solid blue;
   overflow-y: auto;
-  min-height: 700px;
-  max-height: 750px;
-  width: 60vw;
+  // min-height: 600px;
+  max-height: 700px;
+  // width: 60vw;
   margin-top: 5px;
+  // max-width: 1100px;
   // display: flex;
   // justify-content: center;
 
   .review-scroll-item {
     display: flex;
     flex-direction: column;
+    max-width: 70vw;
     // height: 100%;
     // justify-content: center;
     // align-items: center;
@@ -180,7 +197,7 @@ $color6: #EE6C4D;
 // Right Container
 .reviews-list {
   // border: 2px solid dodgerblue;
-  width: 60vw;
+  width: 100%;
 }
 
 .reviews-sort-menu {
@@ -247,58 +264,134 @@ $color6: #EE6C4D;
 
 // Left Container
 .ratings-breakdown {
-  border: 2px solid palevioletred;
-  // padding: 20px;
-  // height: 100vw;
-}
+  // border: 2px solid palevioletred;
 
-.star-representation {
-  border: 2px solid purple;
-  display: flex;
-  // gap: 10px;
+  .percent-recommend {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // text-align: center;
+  }
 
-  .average-rating {
-    border: 2px solid green;
-    font-size: 3rem;
-    height: 80px;
-    width: 80px;
+  .star-representation {
+    // border: 2px solid purple;
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    // padding-left: 20px;
+    gap: 10px;
 
-  .star-rating{
-    padding-top: 22px;
-  }
-}
-
-.star-breakdown-item {
-  border: 2px solid olivedrab;
-  display: flex;
-  gap: 5px;
-  padding: 5px;
-
-  span {
-    border: 2px solid orange;
-  }
-  .break-down-bar {
-    display: flex;
-    align-items: center;
-
-    .gray-bar {
-      // border: 2px solid cyan;
-      background-color: rgba(102, 102, 102, 0.472);
-      width: 200px;
-      height: 10px;
-      position: absolute;
+    .average-rating {
+      // border: 2px solid green;
+      font-size: 3rem;
+      font-weight: 700;
     }
 
-    .green-bar {
-      background-color: rgb(9, 246, 9);
+    .star-rating{
+      padding-top: 10px;
+    }
+  }
+
+  .star-bar-container {
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+
+    .star-breakdown-item {
+      // border: 2px solid olivedrab;
+      display: flex;
+      gap: 5px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+
+      .filter-star-button {
+        display: flex;
+        gap: 5px;
+        border-bottom: 1px solid $color1;
+      }
+
+      .filter-active {
+        background-color: $color3;
+      }
+
+      .filter-star-button:hover {
+        cursor: pointer;
+        opacity: .5;
+      }
+
+      .break-down-bar {
+        display: flex;
+        align-items: center;
+
+        .gray-bar {
+          background-color: $color2;
+          opacity: .4;
+          width: 244px;
+          height: 10px;
+          position: absolute;
+        }
+
+        .green-bar {
+          background-color: $color6;
+          height: 10px;
+        }
+      }
+    }
+  }
+
+  .char-bars-section {
+    // border: 2px solid red;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .char-bar-container {
+      display: flex;
+      width: 300px;
+      margin-bottom: 5px;
+      gap: 5px;
+    }
+
+    .char-bar-traits {
+      display: flex;
+      width: 300px;
+    }
+
+    .char-bar {
+      margin-top: 3px;
+      background-color: $color3;
+      width: 100px;
       height: 10px;
+    }
+
+    .char-triangle {
+      position:absolute;
+      font-size: 1.1em;
+      height: 10px;
+      transform: rotate(180deg);
+      margin-top: 9px;
+      color: $color6;
+    }
+
+    .trait-container-left {
+      display: flex;
+      justify-content: flex-start;
+      width: 100px;
+      font-size: .7rem;
+    }
+    .trait-container-middle {
+      display: flex;
+      justify-content: center;
+      width: 100px;
+      font-size: .7rem;
+    }
+    .trait-container-right {
+      display: flex;
+      justify-content: flex-end;
+      width: 100px;
+      font-size: .7rem;
     }
   }
 }
+
 
 .characteristics {
   display: flex;
@@ -351,52 +444,8 @@ $color6: #EE6C4D;
   }
 }
 
-.char-bar-container {
-  display: flex;
-  width: 300px;
-  margin-bottom: 5px;
-  gap: 5px;
-}
-
-.char-bar-traits {
-  display: flex;
-  width: 300px;
-}
-
-.char-bar {
-  margin-top: 3px;
-  background-color: gray;
-  width: 100px;
-  height: 10px;
-}
-
-.char-triangle {
-  position:absolute;
-  font-size: 1.1em;
-  height: 10px;
-  transform: rotate(180deg);
-  margin-top: 9px;
-}
-
-.trait-container-left {
-  display: flex;
-  justify-content: flex-start;
-  width: 100px;
-}
-.trait-container-middle {
-  display: flex;
-  justify-content: center;
-  width: 100px;
-}
-.trait-container-right {
-  display: flex;
-  justify-content: flex-end;
-  width: 100px;
-}
-
 .review-modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  border: 2px solid blue;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -409,12 +458,12 @@ $color6: #EE6C4D;
 }
 
 .review-modal-content {
-  border: 2px solid coral;
+  border: 2px solid $color6;
   background-color: $color4;
   padding: 20px;
   position: fixed;
   width: 60vw;
-  height: 80vh;
+  height: 85vh;
   overflow-y: auto;
   overflow-x: auto;
 

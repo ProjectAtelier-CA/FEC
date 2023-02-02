@@ -11,7 +11,6 @@ export default function ReviewsList({
 
   return (
     <div className="reviews-list">
-      {/* <h2>Reviews List (Right Container)</h2> */}
       <ReviewsSortMenu
         handleSortClick={handleSortClick}
         numReviews={productReviews.length}

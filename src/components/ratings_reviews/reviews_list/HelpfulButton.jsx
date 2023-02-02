@@ -15,7 +15,7 @@ export default function HelpfulButton({ helpfulness, handleHelpfulClick, reviewI
     <div className="helpful">
       <span>Helpful?</span>
       <div>
-        <button type="button" onClick={!isClicked ? handleClick : null}>
+        <button type="button" onClick={!isClicked ? handleClick : null} className={!isClicked ? "" : "helpful-active"}>
           <span>Yes</span>
         </button>
         <span>({helpfulCount})</span>
