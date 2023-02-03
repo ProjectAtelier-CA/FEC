@@ -6,12 +6,11 @@ import {
 import Thumbnails from './thumbnails';
 
 export default function ImageCarousel({
-  imageIndex, setIndex, setStyle, imgToStyle, styles,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle,
 }) {
   const images = styles.map((style) => style.photos).flat();
   const N = images.length;
 
-  // const [imageIndex, setIndex] = useState(0);
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
   const [isClicked, setClick] = useState(false);
@@ -62,6 +61,13 @@ export default function ImageCarousel({
     }
   });
 
+  useEffect(() => {
+    if (styles[currentStyle] !== undefined) {
+      setSkus(styles[currentStyle].skus);
+      setSku(Object.keys(styles[currentStyle].skus)[0]);
+    }
+  }, [currentStyle]);
+
   const getIndex = (index) => {
     if (index < 0) {
       return N - 1;
@@ -108,6 +114,9 @@ export default function ImageCarousel({
               imgToStyle={imgToStyle}
               setStyle={setStyle}
               styles={styles}
+              setSku={setSku}
+              setSkus={setSkus}
+              currentStyle={currentStyle}
             />
             {
               imageIndex > 0

@@ -9,7 +9,7 @@
 }
 // Product info
 .product-info {
-  padding-left: 20px;
+  padding-left: 5vw;
   padding-top: 20px;
   display: flex;
   flex-flow: column nowrap;
@@ -168,6 +168,10 @@
     background-color: white;
     border-radius: 100%;
     scale: 1.1;
+    height: min(2vh,2vw);
+    width: min(2vh,2vw);
+    top: 0px;
+    right: 0px;
   }
 
 
@@ -179,8 +183,8 @@
 
 .style-thumbnail {
   inset: 0;
-  height: 6vh;
-  width: 6vh;
+  height: min(6vh,6vw);
+  width: min(6vh,6vw);
   object-fit: cover;
   border-radius: 100px;
   transition: border 200ms ease-in-out;

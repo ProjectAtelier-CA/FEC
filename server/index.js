@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
 const axios = require('axios');
@@ -15,24 +16,68 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
-app.get('/products/:product_id/styles', (req, res) => {
-  const { product_id } = req.params;
-  console.log(`Request received for styles at product`, product_id);
+app.get('/products', (req, res) => {
+  console.log('Request received for products');
 
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product_id})/styles`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`, {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37323,
+      page: 1,
+      count: 100,
     },
   })
     .then(({ data }) => {
       res.status(200);
-      res.json(data);
+      res.send(data);
+      res.end();
+    })
+    .catch(() => res.send('Failed to get products'));
+});
+
+app.get('/products/:product_id/styles', (req, res) => {
+  const { product_id } = req.params;
+  console.log('Request received for styles at product', product_id);
+
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product_id}/styles`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+    params: {
+      product_id,
+      page: 1,
+      count: 100,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.send(data);
       res.end();
     })
     .catch(() => res.send('Failed to get styles'));
+});
+
+app.get('/products/:product_id/', (req, res) => {
+  const { product_id } = req.params;
+  console.log('Request received for details about product', product_id);
+
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product_id}`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+    params: {
+      product_id,
+      page: 1,
+      count: 100,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.send(data);
+      res.end();
+    })
+    .catch(() => res.send('Failed to get product details'));
 });
 
 app.get('/reviews', (req, res) => {
@@ -109,7 +154,7 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
     })
     .catch((err) => {
       // console.log(err);
-      console.log('Error occured with PUT request')
+      console.log('Error occured with PUT request');
       res.end();
     });
 });

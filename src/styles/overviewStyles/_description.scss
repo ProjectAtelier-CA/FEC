@@ -5,7 +5,7 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  padding: 10px
+  padding: 5vh 100px 10px 100px;
 }
 
 .description-content {
@@ -26,7 +26,8 @@
 }
 
 .o-title {
-  font-size: 1em;
+  font-size: 2rem;
+  margin: 0;
   // border: solid;
   // border-color: green;
 }
@@ -54,4 +55,15 @@
   flex-flow: row;
   gap: 10px;
   align-items: center;
+
+  .attribute-copy {
+    display: flex;
+    flex-flow: row;
+
+    .product-feature {
+      text-transform: lowercase;
+      margin-left: .3vw;
+    }
+
+  }
 }

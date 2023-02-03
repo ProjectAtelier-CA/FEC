@@ -95,6 +95,7 @@
 
 .carousel-nav {
   scale: 3;
+  width: 1vw;
   color: black;
   margin: 4px;
   align-self: center;
@@ -112,7 +113,7 @@
 }
 
 .o-carousel-button.carousel-left {
-  left: 4rem;
+  left: 5vw;
   // align-self: baseline;
   // bottom: 50%;
 }
@@ -143,6 +144,10 @@
   border-radius: .05rem;
   padding: 0 .5rem;
   background-color: rgba(0,0,0,.1);
+}
+
+.o-image-expand:hover {
+  color: #463F3A;
 }
 
 .o-carousel > ul {

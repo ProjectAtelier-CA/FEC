@@ -5,22 +5,25 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 
 export default function Thumbnails({
-  imageIndex, setIndex, setStyle, imgToStyle, styles,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus,
 }) {
   const [displayStart, setStart] = useState(0);
   const [height, setHeight] = useState(0);
   const [mouseOut, setMouse] = useState(true);
   const [scroll, setScroll] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  // const [elementHeight, setElementHeight] = useState(0);
 
   const photos = styles.map((style) => style.photos).flat();
   const N = photos.length;
   const containerRef = useRef();
 
   useEffect(() => {
+    // console.log(imgToStyle);
     const element = document.querySelector('ul#scroll-container');
     const scroller = (event) => {
       const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
+      // setElementHeight(event.srcElement.scrollHeight / N);
       setScrolled(true);
       setScroll(scrollTo);
       setHeight(event.srcElement.scrollTop);
@@ -51,29 +54,39 @@ export default function Thumbnails({
   });
 
   function handleClick(event) {
-    setIndex(event.target.id);
     setStyle(imgToStyle[event.target.id]);
+    setIndex(event.target.id);
   }
+
+  useEffect(() => {
+    console.log("here");
+    if (styles[currentStyle] !== undefined) {
+      setSkus(styles[currentStyle].skus);
+      setSku(Object.keys(styles[currentStyle].skus)[0]);
+    }
+  }, [currentStyle]);
 
   useEffect(() => {
     setScrolled(false);
   }, [scroll]);
 
   useEffect(() => {
-    let params = {
+    const params = {
       top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
     };
-    if (displayStart <= 1) {
-      params = {
-        top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
-      };
+    if (displayStart > 0) {
+      containerRef.current.children[displayStart].scrollIntoView(params);
     }
-    containerRef.current.children[displayStart].scrollIntoView(params);
   }, [displayStart]);
 
   useEffect(() => {
     if (mouseOut) {
       setStart(imageIndex);
+      if (imageIndex === 0) {
+        containerRef.current.children[2].scrollIntoView({
+          top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
+        });
+      }
     } else {
       setScroll(imageIndex);
     }
@@ -81,8 +94,8 @@ export default function Thumbnails({
 
   const scrollDown = () => {
     let scrollTo;
-    if (photos[displayStart + 6]) {
-      scrollTo = displayStart + 6;
+    if (photos[displayStart + 7]) {
+      scrollTo = displayStart + 7;
     } else {
       scrollTo = N - 1;
     }
@@ -91,12 +104,17 @@ export default function Thumbnails({
 
   const scrollUp = () => {
     let scrollTo;
-    if (displayStart - 6 <= 0) {
+    if (scroll - 7 < 0) {
       scrollTo = 0;
+      const scrollPos = 2;
+      setStart(scrollTo);
+      containerRef.current.children[scrollPos].scrollIntoView({
+        top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
+      });
     } else {
-      scrollTo = displayStart - 6;
+      scrollTo = scroll - 7;
+      setStart(scrollTo);
     }
-    setStart(scrollTo);
   };
 
   return (
