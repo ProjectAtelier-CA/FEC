@@ -138,7 +138,7 @@ export default function ReviewModal({
   return (
     <div
       className="review-modal-container"
-      onClick={(e) => handleModalOutsideClick(e)}
+      onMouseDown={(e) => handleModalOutsideClick(e)}
       ref={outsideModalRef}
     >
       <div className="review-modal-content">
@@ -152,7 +152,7 @@ export default function ReviewModal({
               <div className="star-rec-container">
                 <div>
                   <div className="star-rating">
-                    <div>Rate the product *</div>
+                    <div>Rate this product *</div>
                     <StarRatingReview score={starRating} setStarRating={setStarRating} />
                     <StarMeaning score={starRating} />
                   </div>
@@ -200,12 +200,12 @@ export default function ReviewModal({
               </div>
               <div className="name-email-container">
                 <div className="username">
-                  <div>Username *</div>
+                  <div>Enter Username *</div>
                   <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">
-                  <div>Email *</div>
+                  <div>Enter Email *</div>
                   <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <div className="privacy-notice">For authentication reasons, you will not be emailed</div>
                 </div>
@@ -227,7 +227,7 @@ export default function ReviewModal({
               </div>
             </div>
             <div className="char-container">
-              <div>Characteristics *</div>
+              <div>Select Characteristics *</div>
               <div className="char-forms">
                 {charForms}
               </div>
