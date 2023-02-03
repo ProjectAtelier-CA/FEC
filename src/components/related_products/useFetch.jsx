@@ -29,10 +29,10 @@ export default function useFetch(id) {
     async function fetchData() {
       try {
         const resultsRaw = (await Promise.all([
-          fetch(`/products/${id}`),
-          fetch(`/products/${id}/styles`),
-          fetch(`/products/${id}/related`),
-          fetch(`/reviews/meta?product_id=${id}`)
+          fetch(`http://localhost:8081/products/${id}`),
+          fetch(`http://localhost:8081/products/${id}/styles`),
+          fetch(`http://localhost:8081/products/${id}/related`),
+          fetch(`http://localhost:8081/reviews/meta?product_id=${id}`)
         ])).map(res => res.json());
 
         const results = await Promise.all(resultsRaw);
@@ -44,7 +44,7 @@ export default function useFetch(id) {
         const { name, category, features } = results[0];
         const { originalPrice, salePrice, photo } = parseStyles(results[1]);
         const [relatedProducts, rating] = [results[2], parseRatings(results[3].ratings)];
-        
+
         setLoading(null);
         setData({
           id, name, category, features, relatedProducts,
@@ -56,7 +56,7 @@ export default function useFetch(id) {
         setError(err.message);
       }
     }
-    
+
     setLoading('Loading...');
     fetchData();
 
