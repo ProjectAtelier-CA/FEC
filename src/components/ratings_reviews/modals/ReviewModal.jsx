@@ -69,7 +69,7 @@ export default function ReviewModal({
 
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
-  const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
+  const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Average', 'Comfortable', 'Perfect'];
   const qualitySelections = ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'];
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'];
