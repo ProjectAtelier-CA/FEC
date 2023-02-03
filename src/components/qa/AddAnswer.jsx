@@ -24,8 +24,6 @@ export default function App({ question_id }) {
   const [nickname, setNickname] = useState('');
   const [photos, setPhotos] = useState('');
   const [photoURLs, setPhotoURL] = useState([]);
-  const [photos, setPhotos] = useState('');
-  const [photoURLs, setPhotoURL] = useState([]);
 
   const emailInformation = (e) => {
     setEmail(e.target.value);

@@ -32,7 +32,6 @@ export default function AnswerListItem({ ans }) {
         |
         {' '}
         <ReportButton answerId={ans.answer_id} />
-        <ReportButton answerId={ans.answer_id} />
       </div>
     </>
 
