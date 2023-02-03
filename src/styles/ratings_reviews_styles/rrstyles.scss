@@ -640,6 +640,7 @@ $color6: #EE6C4D;
       }
 
       .photo-error-message {
+<<<<<<< HEAD
         color:red;
         margin-top: 5px;
         width: fit-content;
@@ -652,6 +653,10 @@ $color6: #EE6C4D;
         div {
           display: flex;
         }
+=======
+        border: 2px solid red;
+        margin-top: 5px;
+>>>>>>> 28ef9e7ee8e0da907f2e6eb957f2d95e959c8cdf
       }
     }
   }

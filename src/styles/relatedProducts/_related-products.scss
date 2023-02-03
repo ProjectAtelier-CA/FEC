@@ -6,9 +6,13 @@
   padding: 0;
 }
 
+#root h1 {
+  text-align: center;
+}
+
 // styling for Product Card component
 .product__card {
-  border: $small-margin solid $main-color;
+  border: 0.08rem solid $main-color;
   width: 10rem;
   position: relative;
 
@@ -21,73 +25,191 @@
     object-fit: cover;
   }
 
+  // for star button
   button {
     @include button--formless;
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
 
     svg {
       width: 1rem;
-      stroke: white;
-      stroke-width: 0.5rem;
+      stroke: black;
+      stroke-width: 10;
+
+      use:hover { fill: orange }
     }
   }
 
+  // text section
   section {
-    @include flex(column, space-between, flex-start);
+    @include flex(column, space-around, flex-start);
     height: 5rem;
-    padding: 0.25rem;
+    padding: 0.3rem;
 
     // this should be enforced in index.scss
     p {
-      font-size: 0.5rem;
+      font-size: 0.6rem;
 
-      &:first-child {
-        text-transform: uppercase;
-      }
+      & > s { color: red }
+
+      &:first-child { text-transform: uppercase }
     }
 
     // all headline 1 to 6 should also be map to differen rem in index.scss
-    h2 { font-size: 0.7rem }
+    h2 { font-size: 0.9rem }
+  }
+
+  // for delete button
+  &--outfit button {
+    margin: 0.3rem;
+
+    svg {
+      width: 1.5rem;
+      stroke-width: 7;
+      stroke: black;
+      fill: transparent;
+
+      &:hover { fill: red }
+    }
+  }
+
+  // for adder card svg img
+  &--adder {
+    svg {
+      width: 10rem;
+      stroke: gray;
+      stroke-width: 12;
+    }
+
+    section {
+      justify-content: flex-start;
+
+      & > p {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    }
   }
 
   // hover effect on the whole card
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.3rem 0.1rem black;
+    box-shadow: 0 0 0.5rem 0.05rem black;
   }
 }
 
-.product__related {
-  @include flex;
-  gap: 0.5rem;
 
-  & > button  {
+// ## More refactor could be done;
+// ProductCarousel Component
+.product__carousel {
+  width: 70%;
+  min-width: 12rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  & > h2 {
+    font-size: 1.2rem;
+    margin: 2rem 0 0 0;
+    padding-left: 1rem;
+    grid-column: 2 / span 10;
+  }
+
+  & > button {
     @include button--formless;
-    font-size: 2rem;
+    font: 1.5rem bold;
 
-    &.invisible {
+    &.hidden {
       visibility: hidden;
     }
   }
-}
 
-// ProductCarousel Component
-.product__carousel {
-  //outline: 2px solid black;
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 1rem;
-  overflow: hidden;
-  // min width -- one card wide
-  min-width: 12rem;
-  width: 70%;
+  &__container {
+    grid-column: 2 / span 8;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1rem;
+    overflow: hidden;
+    // min width -- one card wide
+    min-width: 12rem;
+    width: 100%;
+    gap: 2rem;
+  }
 
   &__scroller {
     display: flex;
     gap: 2rem;
     transition: translate 1s;
   }
-
 }
+
+
+// ProductModal Component
+.product__modal {
+  // modal take over the whole screen
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 70%);
+  @include flex;
+
+  table {
+    border-collapse: collapse;
+    background: white;
+    display: block;
+    max-height: 60vh;
+    max-width: 80vw;
+    overflow-y: auto;
+
+    thead, caption {
+      position: sticky;
+      background: white;
+    }
+
+    caption {
+      top: 0;
+      padding: 1rem 0 0 1rem;
+      font-size: 0.8rem;
+      height: 2rem;
+      text-align: left;
+    }
+
+    thead {
+      top: 2rem;
+
+      th {
+        padding-top: 0.5rem;
+        padding-bottom: 1.5rem;
+
+        &:first-child { min-width: 15vw }
+        &:last-child { min-width: 15vw }
+      }
+    }
+
+    th, td {
+      vertical-align: top;
+      padding: 1rem 1rem;
+
+      $map: (1: left, 2: center, 3: right);
+      @each $order, $position in $map {
+        &:nth-child(#{$order}) { text-align: $position }
+      }
+    }
+
+    // row hover effect, subject to dark mode;
+    tbody tr {
+      border-top: 0.05rem solid black;
+
+      &:hover {
+        color: white;
+        background: grey;
+      }
+    }
+  }
+}
+
