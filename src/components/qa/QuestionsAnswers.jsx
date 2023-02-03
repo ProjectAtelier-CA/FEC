@@ -16,7 +16,7 @@ export default function QuestionsAnswers() {
     axios.get('http://localhost:8081/questions', { params: { productId } }).then(({ data }) => {
       const result = data.results;
       setLoading(false);
-      // reviews will be an array of objects
+      // reviews will be an array of objects allegedly
       setQuestions(result);
     });
   }, []);
