@@ -554,37 +554,82 @@ $color6: #EE6C4D;
     padding: 3px;
     display: flex;
     justify-content: space-between;
-    height: 160px;
+    // height: 180px;
+    margin-top: 10px;
   }
 
   .star-rec-container {
     // border: 2px solid blue;
-    width: 500px;
+    width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 10px;
 
     .photo-container {
-      height: 100px;
+      // height: 120px;
       // border: 2px solid red;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
 
       .upload {
         display: flex;
-        gap: 10px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .input-url {
+        // border: 2px solid red;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        input {
+          width: 80%;
+        }
       }
 
       .photos {
         display: flex;
-        gap: 5px;
+        // justify-content: space-between;
+        gap: 6.25px;
       }
 
       .individual-photo {
-        border: 2px solid green;
-        width: 60px;
-        height: 60px;
+        border: 2px solid $color6;
+        width: 65px;
+        height: 65px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        div {
+          transform: scale(2);
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30.5px;
+          height: 30.5px;
+          background-color: $color4;
+          opacity: .7;
+          z-index: 0;
+        }
+      }
+
+      .individual-photo:hover {
+        opacity: .7;
+        background-color: $color1;
+        cursor: pointer;
+      }
+
+      .photo-error-message {
+        border: 2px solid red;
+        margin-top: 5px;
       }
     }
   }
@@ -594,7 +639,8 @@ $color6: #EE6C4D;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 20px;
 
     .username {
       // border: 2px solid blue;
@@ -609,7 +655,7 @@ $color6: #EE6C4D;
       }
 
       .privacy-notice {
-        width: 150px;
+        width: 160px;
         font-size: .7rem;
         text-align: center;
       }
@@ -705,7 +751,7 @@ $color6: #EE6C4D;
   }
 
   .review-summary-text {
-    margin-top: 5px;
+    margin-top: 10px;
     // border: 2px solid red;
 
     div {
