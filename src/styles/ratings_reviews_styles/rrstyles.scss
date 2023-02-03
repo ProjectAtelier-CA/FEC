@@ -256,6 +256,7 @@ $color6: #EE6C4D;
 .review-error-message {
   border: 2px solid red;
   padding: 5px;
+  margin-top: 10px;
 }
 
 .review-modal-star {
@@ -294,7 +295,7 @@ $color6: #EE6C4D;
       font-weight: 700;
     }
 
-    .star-rating{
+    .star-rating {
       padding-top: 10px;
     }
   }
@@ -628,8 +629,18 @@ $color6: #EE6C4D;
       }
 
       .photo-error-message {
-        border: 2px solid red;
+        color:red;
         margin-top: 5px;
+        width: fit-content;
+        padding: 2px 0px;
+        font-size: .8rem;
+
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        div {
+          display: flex;
+        }
       }
     }
   }
@@ -689,7 +700,10 @@ $color6: #EE6C4D;
 
   .star-rating {
     display: flex;
-    gap: 5px;
+    gap: 10px;
+
+    .star-meaning {
+    }
   }
 
   .modal-recommend {
@@ -713,14 +727,6 @@ $color6: #EE6C4D;
         input {
           margin: 0px;
         }
-
-        // input:hover {
-        //   appearance: none;
-        //   width: 1em;
-        //   height: 1em;
-        //   border: 0.15em solid $color6;
-        //   border-radius: 50%;
-        // }
       }
     }
 

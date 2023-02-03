@@ -4,7 +4,7 @@ export default function StarMeaning({ score }) {
   let meaningElement;
 
   if (score === 0) {
-    meaningElement = <div></div>;
+    meaningElement = <div />;
   } else if (score === 1) {
     meaningElement = <div>"Poor"</div>;
   } else if (score === 2) {
@@ -18,7 +18,7 @@ export default function StarMeaning({ score }) {
   }
 
   return (
-    <div>
+    <div className="star-meaning">
       {meaningElement}
     </div>
   );

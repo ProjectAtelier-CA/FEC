@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
+import { IoWarningOutline } from 'react-icons/io5';
 import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 import StarRatingReview from './StarRatingReview';
 import StarMeaning from './StarMeaning';
 import ReviewModalPhoto from './ReviewModalPhoto';
-
-// Todo: Upload photo functionality
-// Todo: Validating photo urls
-// Todo: Setting star rating
 
 export default function ReviewModal({
   setShowReviewModal, reviewMetaData, setRerender, productName,
@@ -77,26 +74,28 @@ export default function ReviewModal({
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'];
 
-  const currChars = Object.keys(reviewMetaData.characteristics);
-  const charForms = currChars.map((char) => {
-    const currKey = reviewMetaData.characteristics[char].id;
-    // console.log(char);
-    let currCharForm;
-    if (char === 'Size') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={sizeSelections} charType="Size" charID={currKey} />;
-    } else if (char === 'Width') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={widthSelections} charType="Width" charID={currKey} />;
-    } else if (char === 'Comfort') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={comfortSelections} charType="Comfort" charID={currKey} />;
-    } else if (char === 'Quality') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={qualitySelections} charType="Quality" charID={currKey} />;
-    } else if (char === 'Length') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={lengthSelections} charType="Length" charID={currKey} />;
-    } else if (char === 'Fit') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={fitSelections} charType="Fit" charID={currKey} />;
-    }
-    return currCharForm;
-  });
+  const charForms = useMemo(() => {
+    const currChars = Object.keys(reviewMetaData.characteristics);
+    return currChars.map((char) => {
+      // console.log('loading char vote form');
+      const currKey = reviewMetaData.characteristics[char].id;
+      let currCharForm;
+      if (char === 'Size') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={sizeSelections} charType="Size" charID={currKey} />;
+      } else if (char === 'Width') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={widthSelections} charType="Width" charID={currKey} />;
+      } else if (char === 'Comfort') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={comfortSelections} charType="Comfort" charID={currKey} />;
+      } else if (char === 'Quality') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={qualitySelections} charType="Quality" charID={currKey} />;
+      } else if (char === 'Length') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={lengthSelections} charType="Length" charID={currKey} />;
+      } else if (char === 'Fit') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={fitSelections} charType="Fit" charID={currKey} />;
+      }
+      return currCharForm;
+    });
+  }, [reviewMetaData]);
 
   const handleModalOutsideClick = (e) => {
     if (e.target === outsideModalRef.current) {
@@ -111,6 +110,7 @@ export default function ReviewModal({
   const onPhotoSubmit = () => {
     if (!currUrl.length) {
       console.log('Error with photo url');
+      // Maybe put a animation for submit bc bad url
     } else {
       setPhotos([...photos, currUrl]);
       setCurrUrl('');
@@ -122,15 +122,18 @@ export default function ReviewModal({
     setPhotos(newPhotos);
   };
 
-  const reviewModalPhotos = photos.map((photo, index) => (
-    <ReviewModalPhoto
-      key={Math.random()}
-      photoUrl={photo}
-      photoIndex={index}
-      handleImageClick={handleImageClick}
-      setShowPhotoError={setShowPhotoError}
-    />
-  ));
+  // Memoized the modalPhotos until the photos state changes (prevents excessive reloading)
+  const reviewModalPhotos = useMemo(() => (
+    photos.map((photo, index) => (
+      <ReviewModalPhoto
+        key={Math.random()}
+        photoUrl={photo}
+        photoIndex={index}
+        handleImageClick={handleImageClick}
+        setShowPhotoError={setShowPhotoError}
+      />
+    ))
+  ), [photos]);
 
   return (
     <div
@@ -186,7 +189,13 @@ export default function ReviewModal({
                   <div className="photos">
                     {reviewModalPhotos}
                   </div>
-                  {showPhotoError ? <div className="photo-error-message">Please remove error image</div> : null}
+                  {showPhotoError
+                    ? (
+                      <div className="photo-error-message">
+                        <div>{IoWarningOutline()}</div>
+                        <div>Please remove error image</div>
+                      </div>
+                    ) : null}
                 </div>
               </div>
               <div className="name-email-container">
