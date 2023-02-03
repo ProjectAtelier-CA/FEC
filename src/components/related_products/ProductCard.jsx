@@ -1,26 +1,103 @@
 import React from 'react';
-// just import the StarRating component and insert in your component like this.
 import StarRating from '../shared/StarRating';
+import useFetch from './useFetch';
+import { useProps } from './Contexts';
 
-const imageUrl = 'https://images.unsplash.com/photo-1605134513573-384dcf99a44c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+// SVG for delete and star buttons
+const deleteButtonSVG = (
+  <svg viewBox='0 0 100 100'>
+    <circle cx='50' cy='50' r='28' />
+    <path d="M40,40 L60,60 M40,60 L60,40" />,
+  </svg>
+);
+// Only optimize star ratings cuz it is used too often
+const starButtonSVG = (
+  <svg viewBox='0 0 100 100'>
+    <use href='#star' fill="url('#star__fill--0')" />;
+  </svg>
+);
+const adderCardSVG = (
+  <svg viewBox='0 0 100 100'>
+    <path d="M50,60 h20 h-40 M50,60 v20 v-40" />
+  </svg>
+);
 
-// both card and button are clickable, so might need to stop bubbling
-export default function ProductCard({ rating }) {
+// ProductCard component
+export default function ProductCard (props) {
+  const { type, id, cardCallback, buttonCallback } = props;
+  const { resetPosition } = useProps();
+  const className = `product__card product__card--${type}`;
+
+  // Adder Card scenario
+  if (type === 'adder') return (
+    <article className={ className } onClick={ cardCallback }>
+      { adderCardSVG }
+      <section>
+        <p>Add to Outfit</p>
+      </section>
+    </article>
+  );
+
+  // fetch data at ProductCard level, which is not ideal
+  // but this is good for preload data for next product redirection
+  const {data, error, loading} = useFetch(id);
+
+  // Refactor this one for better UX
+  if (!data) return (
+    <article className='product__card product__card--adder'>
+      <svg viewBox='0 0 100 100'>
+        <rect width='100' height='100' fill='grey' />
+      </svg>
+      <section>
+        <p>Loading...</p>
+      </section>
+    </article>
+  );
+
+  // when mousedown over 0.2s cancel click
+  // if clicked, reset carousel position
+  function onMouseDownCard(event) {
+    if (event.target.closest('button')) return;
+
+    const card = event.currentTarget;
+    let isClick = true;
+    let timerId = setTimeout(() => isClick = false, 200);
+
+    card.onmouseup = () => {
+      clearTimeout(timerId);
+      card.onmouseup = null;
+
+      if (!isClick) return false;
+
+      resetPosition();
+      cardCallback();
+    }
+  }
+
+  // We need to stop bubbling for the CTA button
+  function onClickButton(event) {
+    event.stopPropagation();
+    buttonCallback(data);
+  }
+
+  const { photo, category, name, originalPrice, salePrice, rating } = data;
+  const price = salePrice === null ?
+    <p>{ '$' + originalPrice }</p> :
+    <p><s>{ '$' + originalPrice}</s>{ ' $' + salePrice }</p>;
+
+  // general case: (1)related card (2)outfit card
   return (
-    <article className="product__card">
-      <img src={imageUrl} alt="placeholder" />
-      {/* this button will be dynamically generated, if star or delete */}
-      <button type="button">
-        <svg viewBox="0 0 100 100">
-          <use href="#star" fill="url('#star__fill--0')" />
-        </svg>
+    <article className={ className } onMouseDown={ onMouseDownCard }>
+      {/* this alt is an accesibility problem */}
+      <img src={ photo.url } alt='' />
+      <button type='button' onClick={ onClickButton }>
+        { type === 'related' ? starButtonSVG : deleteButtonSVG }
       </button>
       <section>
-        <p>category</p>
-        <h2>Latest Razer Blade 16 with RTX3090</h2>
-        <p>$2499</p>
-        {/* Just pass score prop into this component and it will render star rating for you */}
-        <StarRating score={rating} />
+        <p>{ category }</p>
+        <h2>{ name }</h2>
+        { price }
+        <StarRating score={ rating } />
       </section>
     </article>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
@@ -16,26 +17,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
-app.get('/products', (req, res) => {
-  console.log('Request received for products');
-
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`, {
-    headers: {
-      Authorization: process.env.AUTH_SECRET,
-    },
-    params: {
-      page: 1,
-      count: 100,
-    },
-  })
-    .then(({ data }) => {
-      res.status(200);
-      res.send(data);
-      res.end();
-    })
-    .catch(() => res.send('Failed to get products'));
-});
-
 app.get('/products/:product_id/styles', (req, res) => {
   const { product_id } = req.params;
   console.log('Request received for styles at product', product_id);
@@ -58,40 +39,33 @@ app.get('/products/:product_id/styles', (req, res) => {
     .catch(() => res.send('Failed to get styles'));
 });
 
-app.get('/products/:product_id/', (req, res) => {
-  const { product_id } = req.params;
-  console.log('Request received for details about product', product_id);
+// This is for all products GET
+// replicate the HR API syntax
+// ----------- Added Routes
+const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
+const headers = { Authorization: process.env.AUTH_SECRET };
+app.get('/products/:id/?*', (req, res) => {
+  console.log(`GET request received from ${req.originalUrl}`);
 
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product_id}`, {
-    headers: {
-      Authorization: process.env.AUTH_SECRET,
-    },
-    params: {
-      product_id,
-      page: 1,
-      count: 100,
-    },
-  })
-    .then(({ data }) => {
-      res.status(200);
-      res.send(data);
-      res.end();
-    })
-    .catch(() => res.send('Failed to get product details'));
+  const url = path.join(baseUrl, req.originalUrl);
+  axios.get(url, { headers })
+    .then(({ data }) => res.json(data))
+    .catch(console.log);
 });
+// -------------------------
 
 app.get('/reviews', (req, res) => {
   console.log('GET request received from /reviews');
-  const { sort } = req.query;
+  const { sort, product_id, count } = req.query;
 
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37331,
+      product_id, // no review product is 37339
       sort,
-      count: '100',
+      count, // figure out how to do max count
     },
   })
     .then(({ data }) => {
@@ -121,13 +95,14 @@ app.post('/reviews', (req, res) => {
 
 app.get('/reviews/meta', (req, res) => {
   console.log('GET request received from /reviews/meta');
+  const { product_id } = req.query;
 
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37331,
+      product_id,
     },
   })
     .then(({ data }) => {
@@ -225,12 +200,36 @@ app.get('/answers', (req, res) => {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
+    params: {
+      count: 100,
+    },
   })
     .then(({ data }) => {
       res.status(200);
       res.json(data);
     })
     .catch(() => res.send('Error occurred when getting questions from /qa/questions/answers'));
+});
+
+app.post('/answers', (req, res) => {
+  console.log(req.body);
+  axios({
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.question_id}/answers`,
+    headers: { Authorization: process.env.AUTH_SECRET },
+    data: {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      photo: req.body.photo,
+    },
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.post('/helpful', (req, res) => {
@@ -244,6 +243,20 @@ app.post('/helpful', (req, res) => {
       res.status(200);
     })
     .catch(() => res.send('Error occurred when updating helpfulness'));
+});
+
+app.post('/report', (req, res) => {
+  console.log(req.body);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.body.answerId}/report`, null, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(() => {
+      console.log('REPORTED');
+      res.status(204);
+    })
+    .catch(() => res.send('Error occurred when reporting'));
 });
 
 app.listen(8081);

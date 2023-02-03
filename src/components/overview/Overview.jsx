@@ -26,7 +26,7 @@ import ProductInfo from './product_header/product_info';
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
-export default function Overview() {
+export default function Overview({ product_id }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [isLoading, setLoading] = useState(true);
@@ -35,21 +35,21 @@ export default function Overview() {
   const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});
   const [currentSku, setSku] = useState('');
-  const [product_id, setProduct] = useState(null);
-  const [products, setProducts] = useState([]);
+  // const [product_id, setProduct] = useState(null);
+  // const [products, setProducts] = useState([]);
 
   let iToS = [];
 
-  function getProducts() {
-    axios.get('http://127.0.0.1:8081/products')
-      .then(({ data }) => {
-        setProducts(data);
-        return data[0];
-      })
-      .then((product) => {
-        setProduct(product.id);
-      });
-  }
+  // function getProducts() {
+  //   axios.get('http://127.0.0.1:8081/products')
+  //     .then(({ data }) => {
+  //       setProducts(data);
+  //       return data[0];
+  //     })
+  //     .then((product) => {
+  //       setProduct(product.id);
+  //     });
+  // }
 
   function getStyles() {
     axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
@@ -68,12 +68,15 @@ export default function Overview() {
       })
       .then(() => {
         setImgToStyles(iToS);
+      })
+      .catch(() => {
+        console.log('failed to get products with id');
       });
   }
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   useEffect(() => {
     getStyles();

@@ -10,7 +10,7 @@ export default function Characteristic({ handleChange, selectionNames, charType,
     <div className="characteristics">
       <div className="selection-type">{charType}</div>
       <label className="selections">
-        <div>{selectionNames[0]}</div>
+        <span>{selectionNames[0]}</span>
         <div>
           <input
             required
@@ -21,25 +21,25 @@ export default function Characteristic({ handleChange, selectionNames, charType,
         </div>
       </label>
       <label className="selections">
-        <div>{selectionNames[1]}</div>
+        <span>{selectionNames[1]}</span>
         <div>
           <input type="radio" name={charType} onChange={() => handleChange(2, charID)} />
         </div>
       </label>
       <label className="selections">
-        <div>{selectionNames[2]}</div>
+        <span>{selectionNames[2]}</span>
         <div>
           <input type="radio" name={charType} onChange={() => handleChange(3, charID)} />
         </div>
       </label>
       <label className="selections">
-        <div>{selectionNames[3]}</div>
+        <span>{selectionNames[3]}</span>
         <div>
           <input type="radio" name={charType} onChange={() => handleChange(4, charID)} />
         </div>
       </label>
       <label className="selections">
-        <div>{selectionNames[4]}</div>
+        <span>{selectionNames[4]}</span>
         <div>
           <input type="radio" name={charType} onChange={() => handleChange(5, charID)} />
         </div>

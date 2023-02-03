@@ -51,8 +51,7 @@ export default function ProductBreakdownList({ chars }) {
   }, [chars]);
 
   return (
-    <div>
-      <h4>ProductBreakdownList (List of bars of characteristics (size) (comfort))</h4>
+    <div className="char-bars-section">
       { showSize ? <SizeBar position={triPositions.Size} /> : null }
       { showWidth ? <WidthBar position={triPositions.Width} /> : null }
       { showComfort ? <ComfortBar position={triPositions.Comfort} /> : null }

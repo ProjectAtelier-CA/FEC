@@ -4,8 +4,7 @@ import StarRating from '../../shared/StarRating';
 export default function StarRepresentation({ averageRating }) {
   const roundedRating = Math.round(averageRating * 10) / 10
   return (
-    <>
-      <h4>StarRepresentation</h4>
+    <div>
       <div className="star-representation">
         <div className="average-rating">
           {roundedRating}
@@ -14,6 +13,6 @@ export default function StarRepresentation({ averageRating }) {
           <StarRating score={roundedRating} />
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -12,13 +12,18 @@ export default function AnswerList({ answers }) {
   const [sortedAnswers, setSorted] = useState([]);
   const [answerLog, setLog] = useState(2);
   const answerLength = answers.length;
-
-  let renderAnswer = answers.slice(0, answerLog);
-
+  let sortBySeller = [];
+  const sellers = [];
+  let renderAnswer = [];
   useEffect(() => {
-    if (answerLog >= answerLength) {
+    if (answerLog > answerLength) {
       setMore(false);
       setLess(true);
+    }
+    if (answers.length === 2) {
+      console.log(answers);
+      setMore(false);
+      setLess(false);
     }
   });
   useEffect(() => {
@@ -26,26 +31,50 @@ export default function AnswerList({ answers }) {
       setLess(false);
     }
   });
-  useEffect(() => {
-    setSorted(answers.sort((a1, a2) => ((a1.helpfulness < a2.helpfulness) ? 1 : (a1.helpfulness > a2.helpfulness) ? -1 : 0)));
-  });
 
+  const firstSort = () => {
+    answers.forEach((answer) => {
+      if (answer.answerer_name === 'Seller') {
+        sellers.push(answer);
+        answers.splice(answers.indexOf(answer), 1);
+      }
+    });
+    sortBySeller = sellers.concat(answers);
+    renderAnswer = sortBySeller.slice(0, answerLog);
+
+    console.log('SORTING SELLERS', renderAnswer);
+  };
+  firstSort();
   const loadAnswers = () => {
     setLog(answerLog + 2);
-    renderAnswer = sortedAnswers.slice(0, answerLog);
+    console.log('load answers', sortBySeller);
+    renderAnswer = sortBySeller.slice(0, answerLog);
   };
 
   const unloadAnswers = () => {
     setMore(true);
     setLess(false);
     setLog(2);
-    renderAnswer = sortedAnswers.slice(0, answerLog);
+    renderAnswer = sortBySeller.slice(0, answerLog);
   };
   return (
     <section className="answer-list">
-      {renderAnswer.map((answer) => (<AnswerListItem key={answer.answer_id} ans={answer} />))}
-      { showMore ? <button type="button" onClick={loadAnswers}> See more answers</button> : null }
-      {showLess ? <button type="button" onClick={unloadAnswers}>See Less </button> : null}
+      { (renderAnswer.length !== 0)
+        ? (
+          <div className="align-answers">
+            <div className="answer-list-use">
+              <div className="a-tag">
+                A:
+              </div>
+              <div className="answers">
+                {renderAnswer.map((answer) => (<AnswerListItem key={answer.answer_id} ans={answer} />))}
+              </div>
+
+            </div>
+          </div>
+        ) : null}
+      { showMore ? <button type="button" className="more-answer-button" onClick={loadAnswers}> Load More Answers</button> : null }
+      {showLess ? <button type="button" className="less-answer-button" onClick={unloadAnswers}>See Less </button> : null}
     </section>
   );
 }

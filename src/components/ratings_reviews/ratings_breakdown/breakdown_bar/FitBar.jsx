@@ -12,9 +12,9 @@ export default function FitBar({ position }) {
         <div className="char-bar" />
       </div>
       <div className="char-bar-traits">
-        <div className="trait-container-left">Runs tight</div>
+        <div className="trait-container-left">Tight</div>
         <div className="trait-container-middle">Perfect</div>
-        <div className="trait-container-right">Runs long</div>
+        <div className="trait-container-right">Loose</div>
       </div>
     </div>
   );

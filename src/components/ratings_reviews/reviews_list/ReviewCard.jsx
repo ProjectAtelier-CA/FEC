@@ -16,7 +16,6 @@ export default function ReviewCard({
 
   return (
     <div className="review-card">
-      <h5>ReviewCard (Individual Review Card)</h5>
       <div className="review-star-user">
         <div>
           <StarRating score={review.rating} />
@@ -29,8 +28,7 @@ export default function ReviewCard({
       { review.recommend ? <RecommendCheck /> : null }
       { review.response ? <SellerResponse response={review.response} /> : null }
       { review.photos.length ? <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick}/> : null }
-      <div>
-        Inner Card Buttons:
+      <div className="review-card-buttons">
         <HelpfulButton
           helpfulness={review.helpfulness}
           handleHelpfulClick={handleHelpfulClick}

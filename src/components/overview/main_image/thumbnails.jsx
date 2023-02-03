@@ -9,24 +9,25 @@ export default function Thumbnails({
 }) {
   const [displayStart, setStart] = useState(0);
   const [height, setHeight] = useState(0);
+  const [maxHeight, setMax] = useState(100);
   const [mouseOut, setMouse] = useState(true);
   const [scroll, setScroll] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  // const [elementHeight, setElementHeight] = useState(0);
 
   const photos = styles.map((style) => style.photos).flat();
   const N = photos.length;
   const containerRef = useRef();
 
   useEffect(() => {
-    // console.log(imgToStyle);
     const element = document.querySelector('ul#scroll-container');
     const scroller = (event) => {
       const scrollTo = Math.floor((event.srcElement.scrollTop / event.srcElement.scrollHeight) * N);
-      // setElementHeight(event.srcElement.scrollHeight / N);
       setScrolled(true);
       setScroll(scrollTo);
       setHeight(event.srcElement.scrollTop);
+      // eslint-disable-next-line max-len
+      setMax((event.srcElement.scrollHeight / N) * (N - 7));
+      // eslint-disable-next-line no-mixed-operators
     };
 
     const mouseLeave = (event) => {
@@ -59,7 +60,6 @@ export default function Thumbnails({
   }
 
   useEffect(() => {
-    console.log("here");
     if (styles[currentStyle] !== undefined) {
       setSkus(styles[currentStyle].skus);
       setSku(Object.keys(styles[currentStyle].skus)[0]);
@@ -72,7 +72,7 @@ export default function Thumbnails({
 
   useEffect(() => {
     const params = {
-      top: 0, behavior: 'smooth', inline: 'center', block: 'start', alignToTop: 'true',
+      top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'false',
     };
     if (displayStart > 0) {
       containerRef.current.children[displayStart].scrollIntoView(params);
@@ -83,8 +83,8 @@ export default function Thumbnails({
     if (mouseOut) {
       setStart(imageIndex);
       if (imageIndex === 0) {
-        containerRef.current.children[2].scrollIntoView({
-          top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
+        containerRef.current.children[0].scrollIntoView({
+          top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
         });
       }
     } else {
@@ -106,10 +106,10 @@ export default function Thumbnails({
     let scrollTo;
     if (scroll - 7 < 0) {
       scrollTo = 0;
-      const scrollPos = 2;
+      const scrollPos = 0;
       setStart(scrollTo);
       containerRef.current.children[scrollPos].scrollIntoView({
-        top: 0, behavior: 'smooth', inline: 'center', block: 'end', alignToTop: 'true',
+        top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
       });
     } else {
       scrollTo = scroll - 7;
@@ -153,7 +153,7 @@ export default function Thumbnails({
       }
       </ul>
       {
-        (scroll < (N - 7)) ? (
+        (height < maxHeight && N >= 7) ? (
           <button
             type="button"
             key="downNav"

@@ -21,14 +21,21 @@ export default function QuestionListItem({ q }) {
   if (!loading) {
     return (
       <div className="question-body" key={question_id}>
-        Q:
+        <span className="q-tag">
+          Q:
+        </span>
         {q.question_body}
-        <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
-        {' '}
-        |
-        {' '}
-        <App />
-        <AnswerList answers={allAnswers} />
+        <div className="question-buttons">
+          <HelpfulButton helpfulness={q.question_helpfulness} id={question_id} type="questions" />
+          {' '}
+          |
+          {' '}
+          <App question_id={question_id} />
+        </div>
+        <div className="answer-in-question">
+          {(allAnswers.length !== 0) ? <AnswerList key={question_id} answers={allAnswers} /> : null}
+
+        </div>
       </div>
     );
   }

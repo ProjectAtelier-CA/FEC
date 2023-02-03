@@ -4,12 +4,15 @@ import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 import StarRatingReview from './StarRatingReview';
 import StarMeaning from './StarMeaning';
+import ReviewModalPhoto from './ReviewModalPhoto';
 
 // Todo: Upload photo functionality
 // Todo: Validating photo urls
 // Todo: Setting star rating
 
-export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRerender }) {
+export default function ReviewModal({
+  setShowReviewModal, reviewMetaData, setRerender, productName,
+}) {
   // console.log(reviewMetaData);
   const [starRating, setStarRating] = useState(0); // Star rating for product
   const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
@@ -19,11 +22,13 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]); // Array of photo urls
   const [charRatings, setCharRatings] = useState({}); // Object of char ratings
+  const [showPhotoInput, setShowPhotoInput] = useState(false); // Show input bar for photo add
+  const [currUrl, setCurrUrl] = useState(''); // Current url value of input bar
 
+  const [showPhotoError, setShowPhotoError] = useState(false);
   const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
   const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
-
 
   useEffect(() => {
     if (showErrorMsg) {
@@ -31,13 +36,17 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
     }
   }, [showErrorMsg]);
 
+  useEffect(() => { // Will set photo error to false if no photos are errored
+    setShowPhotoError(false);
+  }, [photos]);
+
   const handleRatingClick = (num, id) => {
     setCharRatings({ ...charRatings, [id]: num });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // Form validation handler
     e.preventDefault();
-    if (reviewText.length < 50 || !starRating) {
+    if (reviewText.length < 50 || !starRating || showPhotoError) {
       setShowErrorMsg(true);
     } else {
       setShowErrorMsg(false);
@@ -61,29 +70,12 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
     }
   };
 
-  // { this is test data, will remove later
-  //   "product_id": 37331,
-  //   "rating": 5,
-  //   "summary": "Test summary2",
-  //   "body": "Test body2",
-  //   "recommend": false,
-  //   "name": "Andrew",
-  //   "email": "andrew@andrew.com",
-  //   "photos": [],
-  //   "characteristics": {
-  //       "125098": 5,
-  //       "125096": 5,
-  //       "125097": 5,
-  //       "125099": 5
-  //   }
-  // }
-
-  const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
+  const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
   const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
   const qualitySelections = ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'];
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
-  const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
+  const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'];
 
   const currChars = Object.keys(reviewMetaData.characteristics);
   const charForms = currChars.map((char) => {
@@ -112,6 +104,34 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
     }
   };
 
+  const onAddPhotoClick = () => {
+    setShowPhotoInput(!showPhotoInput);
+  };
+
+  const onPhotoSubmit = () => {
+    if (!currUrl.length) {
+      console.log('Error with photo url');
+    } else {
+      setPhotos([...photos, currUrl]);
+      setCurrUrl('');
+    }
+  };
+
+  const handleImageClick = (index) => {
+    const newPhotos = photos.slice(0, index).concat(photos.slice(index + 1));
+    setPhotos(newPhotos);
+  };
+
+  const reviewModalPhotos = photos.map((photo, index) => (
+    <ReviewModalPhoto
+      key={Math.random()}
+      photoUrl={photo}
+      photoIndex={index}
+      handleImageClick={handleImageClick}
+      setShowPhotoError={setShowPhotoError}
+    />
+  ));
+
   return (
     <div
       className="review-modal-container"
@@ -121,10 +141,10 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       <div className="review-modal-content">
         <div className="review-header">
           <div>Write Your Review</div>
-          <div>About the [Product Name Here]</div>
+          <div>{`About the ${productName}`}</div>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="review-form">
             <div className="star-name-container">
               <div className="star-rec-container">
                 <div>
@@ -136,35 +156,43 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
                 </div>
                 <div className="modal-recommend">
                   <div>Do you recommend this product? *</div>
-                  <div>
+                  <div className="modal-rec-selection">
                     <label>
-                      Yes:
-                      <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      <span>Yes:</span>
+                      <div>
+                        <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      </div>
                     </label>
                     <label>
-                      No:
-                      <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      <span>No:</span>
+                      <div>
+                        <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      </div>
                     </label>
                   </div>
                 </div>
                 <div className="photo-container">
                   <div className="upload">
                     <span>Upload your photos (5 photos max)</span>
-                    <button type="button">Add a photo</button>
+                    {photos.length < 5 ? (<button type="button" onClick={onAddPhotoClick}>Add A Photo</button>) : null }
                   </div>
+                  { showPhotoInput && photos.length < 5
+                    ? (
+                      <div className="input-url">
+                        <input type="url" value={currUrl} onChange={(e) => setCurrUrl(e.target.value)} placeholder="Enter photo url"/>
+                        <button type="button" onClick={onPhotoSubmit} className="shake">Submit</button>
+                      </div>
+                    ) : null }
                   <div className="photos">
-                    <div className="individual-photo">1</div>
-                    <div className="individual-photo">2</div>
-                    <div className="individual-photo">3</div>
-                    <div className="individual-photo">4</div>
-                    <div className="individual-photo">5</div>
+                    {reviewModalPhotos}
                   </div>
+                  {showPhotoError ? <div className="photo-error-message">Please remove error image</div> : null}
                 </div>
               </div>
               <div className="name-email-container">
                 <div className="username">
                   <div>What is your nickname *</div>
-                  <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">

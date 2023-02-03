@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
@@ -32,14 +33,25 @@ export default function App({ product_id }) {
   const nicknameInformation = (e) => {
     setNickname(e.target.value);
   };
+  const validateEmail = function (internetMail) {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(internetMail);
+  };
 
   const submitQuestion = () => {
-    axios.post('http://localhost:8081/questions', {
-      body: newQuestion,
-      name: nickname,
-      email,
-      product_id,
-    });
+    if (validateEmail(email) && newQuestion.length !== 0 && nickname.length !== 0) {
+      axios.post('http://localhost:8081/questions', {
+        body: newQuestion,
+        name: nickname,
+        email,
+        product_id,
+      });
+      setOpen(false);
+    } else if (!validateEmail(email)) {
+      alert('Not valid email try again');
+    } else {
+      alert('Please complete mandatory fields');
+    }
   };
 
   return (
@@ -56,7 +68,9 @@ export default function App({ product_id }) {
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
-          <input className="add-answer-input" value={newQuestion} placeholder="max:1000chars" onChange={questionInformation} required />
+          <textarea rows="5" value={newQuestion} onChange={questionInformation} className="add-answer-input">.</textarea>
+          {/* <input className="add-answer-input" value={newQuestion} onChange={questionInformation} required /> */}
+          <label className="word-limit"> maxChar: 1000</label>
           {' '}
           <br />
           <label> Enter Nickname</label>
@@ -72,18 +86,22 @@ export default function App({ product_id }) {
           />
           {' '}
           <br />
-          <label className="label-answer-modal">For privacy reasons, do not use your full name or email address</label>
+          <label className="label-answer-modal-warning">For privacy reasons, do not use your full name or email address</label>
           {' '}
           <br />
-          <label htmlFor="email">Enter Email</label>
+          <br />
+          <label type="email">Enter Email</label>
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
           <input className="add-answer-modal" value={email} placeholder="jack@email.com" onChange={emailInformation} required />
           <br />
-          <label className="label-answer-modal"> For authentication reasons, you will not be emailed</label>
+          <label className="label-answer-modal-warning"> For authentication reasons, you will not be emailed</label>
+          <br />
           <br />
           <input type="submit" onClick={submitQuestion} />
+          <br />
+          <label className="mandatory-warning">Required Fields * </label>
         </form>
       </Modal>
     </span>
