@@ -12,7 +12,7 @@ export default function HelpfulButton({ helpfulness, id, type }) {
   };
 
   const downVote = () => {
-    setClicked(true);
+    setClicked(false);
     setHelp(help - 1);
     axios.post('http://localhost:8081/helpful', null, { params: { id, type } });
   };

@@ -16,9 +16,14 @@ export default function AnswerList({ answers }) {
   let renderAnswer = answers.slice(0, answerLog);
 
   useEffect(() => {
-    if (answerLog >= answerLength) {
+    if (answerLog > answerLength) {
       setMore(false);
       setLess(true);
+    }
+    if (answers.length === 2) {
+      console.log(answers);
+      setMore(false);
+      setLess(false);
     }
   });
   useEffect(() => {
@@ -28,6 +33,7 @@ export default function AnswerList({ answers }) {
   });
   useEffect(() => {
     setSorted(answers.sort((a1, a2) => ((a1.helpfulness < a2.helpfulness) ? 1 : (a1.helpfulness > a2.helpfulness) ? -1 : 0)));
+    // setSorted(answers.sort((a1, a2) => ((a1.answerer_name === 'Seller') ? 1 : (a2.answerer_name === 'Seller') ? -1 : 0)));
   });
 
   const loadAnswers = () => {
@@ -58,7 +64,7 @@ export default function AnswerList({ answers }) {
           </div>
         ) : null}
       { showMore ? <button type="button" className="more-answer-button" onClick={loadAnswers}> Load More Answers</button> : null }
-      {showLess ? <button type="button" onClick={unloadAnswers}>See Less </button> : null}
+      {showLess ? <button type="button" className="less-answer-button" onClick={unloadAnswers}>See Less </button> : null}
     </section>
   );
 }

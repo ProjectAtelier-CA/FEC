@@ -179,6 +179,9 @@ app.get('/answers', (req, res) => {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
+    params: {
+      count: 100,
+    },
   })
     .then(({ data }) => {
       res.status(200);
