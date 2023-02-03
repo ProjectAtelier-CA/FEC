@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
@@ -22,6 +22,8 @@ export default function ReviewsCardList({
   const [showModal, setShowModal] = useState(false);
   const [modalImageURL, setModalImageURL] = useState('');
   const actionButtonsRef = useRef(null);
+
+  // console.log(productReviews);
 
 
   useEffect(() => {
@@ -79,15 +81,19 @@ export default function ReviewsCardList({
     ));
   }
 
-  const reviewElements = filteredProductReviews.map((review) => (
-    <ReviewCard
-      key={review.review_id}
-      review={review}
-      handleImageClick={handleImageClick}
-      handleHelpfulClick={handleHelpfulClick}
-      handleReportClick={handleReportClick}
-    />
-  ));
+  const reviewElements = useMemo(() => (
+    filteredProductReviews.map((review) => (
+      <ReviewCard
+        key={review.review_id}
+        review={review}
+        handleImageClick={handleImageClick}
+        handleHelpfulClick={handleHelpfulClick}
+        handleReportClick={handleReportClick}
+      />
+    ))
+  ), [filteredProductReviews]);
+
+
 
   return (
     <>

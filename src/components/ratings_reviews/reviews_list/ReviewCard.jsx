@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StarRating from '../../shared/StarRating';
 import UserDateInfo from '../../shared/UserDateInfo';
 import ReviewCardText from './ReviewCardText';
@@ -11,8 +11,8 @@ import ReportButton from './ReportButton';
 export default function ReviewCard({
   review, handleImageClick, handleHelpfulClick, handleReportClick,
 }) {
-  // console.log(review);
-  // console.log(review);
+  const shortBodyText = review.body.slice(0, 250); // Don't need state since never changing
+  // const [shortBodyText, setShortBodyText] = useState(review.body.slice(0, 250));
 
   return (
     <div className="review-card">
@@ -24,10 +24,11 @@ export default function ReviewCard({
           <UserDateInfo date={review.date} user={review.reviewer_name} />
         </div>
       </div>
-      <ReviewCardText content={review.body} summary={review.summary} />
+      <ReviewCardText content={shortBodyText} fullContent={review.body} summary={review.summary} />
       { review.recommend ? <RecommendCheck /> : null }
       { review.response ? <SellerResponse response={review.response} /> : null }
-      { review.photos.length ? <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick}/> : null }
+      { review.photos.length
+        ? <ReviewCardPhotos photos={review.photos} handleImageClick={handleImageClick} /> : null }
       <div className="review-card-buttons">
         <HelpfulButton
           helpfulness={review.helpfulness}

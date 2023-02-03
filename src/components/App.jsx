@@ -18,7 +18,7 @@ export default function App() {
       <h1 data-testid="app-test">All Our Components</h1>
       {/* <Overview /> */}
       {/* <RelatedProducts id={id} setId={setId} /> */}
-      <QuestionsAnswers />
+      {/* <QuestionsAnswers /> */}
       <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
     </>
   );
