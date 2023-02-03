@@ -43,9 +43,21 @@ export default function AnswerList({ answers }) {
   };
   return (
     <section className="answer-list">
-      A:
-      {renderAnswer.map((answer) => (<AnswerListItem key={answer.answer_id} ans={answer} />))}
-      { showMore ? <button type="button" onClick={loadAnswers}> See more answers</button> : null }
+      { (renderAnswer.length !== 0)
+        ? (
+          <div className="align-answers">
+            <div className="answer-list-use">
+              <div className="a-tag">
+                A:
+              </div>
+              <div className="answers">
+                {renderAnswer.map((answer) => (<AnswerListItem key={answer.answer_id} ans={answer} />))}
+              </div>
+
+            </div>
+          </div>
+        ) : null}
+      { showMore ? <button type="button" className="more-answer-button" onClick={loadAnswers}> Load More Answers</button> : null }
       {showLess ? <button type="button" onClick={unloadAnswers}>See Less </button> : null}
     </section>
   );

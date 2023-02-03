@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+import React, { useState } from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 const answersStyles = {
   content: {
@@ -14,7 +17,7 @@ const answersStyles = {
     height: 500,
   },
 };
-export default function App() {
+export default function App({ question_id }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [newAnswer, setAnswer] = useState('');
@@ -34,20 +37,30 @@ export default function App() {
   const photoInformation = (e) => {
     setPhotos(e.target.files[0]);
   };
+  const validateEmail = function (internetMail) {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(internetMail);
+  };
 
-  // useEffect(() => {
-  //   const quack = URL.createObjectURL(photos);
-  //   setPhotoURL(quack);
-  //   console.log("THIS IS URLS", photoURLs);
-  // });
-  // useEffect(() => {
-  //   const tempPhotoStorage = [];
-  //   photos.forEach((photo) => { tempPhotoStorage.push(URL.createObjectURL(photo)); });
-  //   setPhotoURL(tempPhotoStorage);
-  // }, [photos]);
+  const submitQuestion = () => {
+    if (validateEmail(email) && newAnswer.length !== 0 && nickname.length !== 0) {
+      axios.post('http://localhost:8081/answers', {
+        question_id,
+        body: newAnswer,
+        name: nickname,
+        email,
+        photo: photoURLs,
+      });
+      setOpen(false);
+    } else if(!validateEmail(email)) {
+      alert('Not valid email');
+    } else {
+      alert('Please complete required fields');
+    }
+  };
 
   return (
-    <span>
+    <span className="add-answer-span">
       <button type="button" onClick={setOpen} className="add-answer-button">Add Answer</button>
       <Modal
         isOpen={open}
@@ -56,16 +69,14 @@ export default function App() {
       >
         <div>Complete Information Below </div>
         <form>
-          <label> Your Answer </label>
-          <label className="label-answer-modal">*</label>
-          <label>:</label>
+          <label> Your Answer: * </label>
           <br />
-          <input className="add-answer-input" value={newAnswer} placeholder="max:1000chars" onChange={answerInformation} required />
+          <textarea rows="5" value={newAnswer} onChange={answerInformation} className="add-answer-input">.</textarea>
+          {/* <input className="add-answer-input" value={newAnswer} onChange={answerInformation} required /> */}
+          <label className="word-limit"> maxChar: 1000</label>
           {' '}
           <br />
-          <label> Enter Nickname</label>
-          <label className="label-answer-modal">(mandatory)</label>
-          <label>:</label>
+          <label> Enter Nickname: *</label>
           <br />
           <input
             className="add-answer-modal"
@@ -74,23 +85,26 @@ export default function App() {
             onChange={nicknameInformation}
             required
           />
+
+          <br />
+          <label className="label-answer-modal-warning">For privacy reasons, do not use your full name or email address</label>
+          <br />
           {' '}
           <br />
-          <label className="label-answer-modal">For privacy reasons, do not use your full name or email address</label>
-          {' '}
+          <label>Enter Email: *</label>
           <br />
-          <label>Enter Email</label>
-          <label className="label-answer-modal">(mandatory)</label>
-          <label>:</label>
+          <input className="add-answer-modal" type="email" value={email} placeholder="jack@email.com" onChange={emailInformation} required />
           <br />
-          <input className="add-answer-modal" value={email} placeholder="jack@email.com" required />
+          <label className="label-answer-modal-warning"> For authentication reasons, you will not be emailed</label>
           <br />
-          <label className="label-answer-modal"> For authentication reasons, you will not be emailed</label>
           <br />
           <input type="file" value={photos} multiple accept="image/*" onClick={photoInformation} />
-          {photoURLs.map((source) => <img alt="img" src={source} /> )}
+          {photoURLs.map((source) => <img alt="img" src={source} />)}
         </form>
-        <button type="button" onClick={() => setOpen(false)}>Submit</button>
+        <br />
+        <button type="button" onClick={submitQuestion}>Submit</button>
+        <br />
+        <label className="mandatory-warning">Required Fields * </label>
       </Modal>
     </span>
   );

@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
-import Search from './Search.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
 import AddQuestions from './AddQuestion';
 
@@ -24,17 +23,17 @@ export default function QuestionsAnswers() {
 
   if (!loading) {
     return (
-      <section>
-        <div className="question-answers">
-          Questions and Answers
-        </div>
-        {/* <Search questionList={questions} /> */}
-        {
+      <div>
+        <h3 className="question-header"> Questions and Answers</h3>
+        <div className="master-question">
+
+          {
         !loading
           ? <QuestionList product_id={productId} productIdData={questions} />
           : null
          }
-      </section>
+        </div>
+      </div>
     );
   }
 }
