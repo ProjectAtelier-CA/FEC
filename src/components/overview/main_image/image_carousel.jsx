@@ -2,15 +2,57 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnails from './thumbnails';
 
-export default function ImageCarousel() {
-  const images = [{
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-  },
-  {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
-  }];
+export default function ImageCarousel({
+  imageIndex, setIndex, setStyle, imgToStyle, styles,
+}) {
+  const images = styles.map((style) => style.photos).flat();
+
+  // const [imageIndex, setIndex] = useState(0);
+  const [isExpanded, setExpand] = useState(false);
+  const [mousePos, setPos] = useState({});
+  const [isClicked, setClick] = useState(false);
+  // const [thumbnailIndex, setThumbnail] = useState(imageIndex);
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (isExpanded && isClicked && mousePos !== null) {
+      const mouseMove = (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+        const X = window.innerWidth;
+        // const Y = window.innerHeight;
+        // const ratio = event.target.naturalHeight / event.target.naturalWidth;
+
+        const height = event.target.offsetHeight;
+        // const width = height / ratio;
+        // const marginX = Math.max((X - width) / 2, 0);
+        // eslint-disable-next-line max-len
+        let margin = 0;
+        try {
+          margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
+        } catch (error) {
+          margin = null;
+        }
+        let pos;
+        if (margin === null) {
+          pos = mousePos;
+        } else {
+          pos = {
+            x: (x / X) * 100,
+            y: ((y - margin) / height) * 100,
+          };
+        }
+
+        setPos(pos);
+      };
+
+      window.addEventListener('mousemove', mouseMove);
+
+      return () => {
+        window.removeEventListener('mousemove', mouseMove);
+      };
+    }
+  });
 
   const N = images.length;
 
@@ -23,18 +65,26 @@ export default function ImageCarousel() {
     return index;
   };
 
-  const [imageIndex, setIndex] = useState(0);
-  const [isExpanded, setExpand] = useState(false);
-
   function handleNav() {
     let newIndex;
     // eslint-disable-next-line no-restricted-globals
-    if (event.target.classname === 'o-carousel-button carousel-left') {
-      newIndex = getIndex(imageIndex + 1);
-    } else {
+    if (event.target.className === 'o-carousel-button carousel-left') {
       newIndex = getIndex(imageIndex - 1);
+    } else {
+      newIndex = getIndex(imageIndex + 1);
     }
+
     setIndex(newIndex);
+    setStyle(imgToStyle[newIndex]);
+  }
+
+  function handleImageClick() {
+    if (isExpanded) {
+      setClick(!isClicked);
+    }
+    if (!isExpanded) {
+      setExpand(!isExpanded);
+    }
   }
 
   function handleExpand() {
@@ -47,17 +97,30 @@ export default function ImageCarousel() {
       <section>
         <div className={isExpanded ? 'expanded' : 'normal'}>
           <div className="o-carousel">
+            <Thumbnails
+              imageIndex={imageIndex}
+              setIndex={setIndex}
+              imgToStyle={imgToStyle}
+              setStyle={setStyle}
+              styles={styles}
+            />
             <button type="button" key="leftNav" className="o-carousel-button carousel-left" onClick={handleNav}>{'<'}</button>
             <button type="button" key="rightNav" className="o-carousel-button carousel-right" onClick={handleNav}>{'>'}</button>
             <button type="button" key="expand" className="o-image-expand" onClick={handleExpand}>Expand</button>
             <ul>
               {
                 images.map((image) => (
-                  <li key={image.id} className="o-slide">
+                  // eslint-disable-next-line max-len
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
+                  <li key={image.url} className="o-slide" onClick={handleImageClick}>
                     <img
+                      style={{ transformOrigin: `${mousePos.x}% ${mousePos.y}%` }}
                       className={
-                      image === images[imageIndex] ? 'active' : 'hidden'
-                    }
+                      `image
+                        ${isExpanded || (mousePos === null) ? 'zoom' : ''}
+                        ${isClicked && isExpanded ? 'zoom_clicked' : ''}
+                        ${image === images[imageIndex] ? 'active' : 'hidden'}`
+                      }
                       src={image.url}
                       alt="Carousel Slide"
                     />
@@ -65,14 +128,9 @@ export default function ImageCarousel() {
                 ))
               }
             </ul>
-            <Thumbnails />
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-ImageCarousel.propTypes = {
-
-};

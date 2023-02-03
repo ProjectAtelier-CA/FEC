@@ -6,8 +6,8 @@ export default function ReviewCardPhotos({ photos, handleImageClick }) {
   ));
 
   return (
-    <div>
-      <div>Review photos:</div>
+    <div className="review-photo-container">
+      {/* <div>Review Photos:</div> */}
       <div onClick={(e) => handleImageClick(e)}>
         {photoElements}
       </div>

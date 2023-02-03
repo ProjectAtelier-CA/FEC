@@ -24,13 +24,16 @@ const calcRecommended = (recommended) => {
   return trueCount / totalCount;
 };
 
-export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
+export default function RatingsBreakdown({
+  reviewMetaData, handleStarClick, starFilter, setStarFilter,
+}) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [averageRating, setAverageRating] = useState(5);
   const [percentRec, setPercentRec] = useState(100);
   const [ratings, setRatings] = useState({});
   const [chars, setChars] = useState({});
-  // console.log(reviewMetaData);
+
+  // console.log(starFilter);
 
   useEffect(() => {
     if (Object.keys(reviewMetaData).length) {
@@ -44,17 +47,23 @@ export default function RatingsBreakdown({ reviewMetaData, handleStarClick }) {
   }, [reviewMetaData]);
 
   return (
-    <div className="ratings-breakdown">
-      <h2>RatingsBreakdown (Left Container)</h2>
-      <h4>Ratings and Review</h4>
-      <StarRepresentation averageRating={averageRating} />
-      <RecommendPercentage percentRec={percentRec} />
-      <StarBreakdownList
-        totalVotes={totalVotes}
-        ratings={ratings}
-        handleStarClick={handleStarClick}
-      />
-      <ProductBreakdownList chars={chars} />
+    <div>
+      {Object.keys(reviewMetaData).length > 0
+        ? (
+          <div className="ratings-breakdown">
+            <h4>Ratings and Reviews</h4>
+            <StarRepresentation averageRating={averageRating} />
+            <RecommendPercentage percentRec={percentRec} />
+            <StarBreakdownList
+              totalVotes={totalVotes}
+              ratings={ratings}
+              handleStarClick={handleStarClick}
+              starFilter={starFilter}
+              setStarFilter={setStarFilter}
+            />
+            <ProductBreakdownList chars={chars} />
+          </div>
+        ) : null}
     </div>
   );
 }

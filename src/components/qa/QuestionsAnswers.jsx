@@ -28,7 +28,7 @@ export default function QuestionsAnswers() {
         <div className="question-answers">
           Questions and Answers
         </div>
-        <Search />
+        {/* <Search questionList={questions} /> */}
         {
         !loading
           ? <QuestionList product_id={productId} productIdData={questions} />
