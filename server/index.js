@@ -34,6 +34,21 @@ app.get('/styles', (req, res) => {
     .catch(() => res.send('Failed to get styles'));
 });
 
+// This is for all products GET
+// replicate the HR API syntax
+// ----------- Added Routes
+const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
+const headers = { Authorization: process.env.AUTH_SECRET };
+app.get('/products/:id/?*', (req, res) => {
+  console.log(`GET request received from ${req.originalUrl}`);
+
+  const url = path.join(baseUrl, req.originalUrl);
+  axios.get(url, { headers })
+    .then(({ data }) => res.json(data))
+    .catch(console.log);
+});
+// -------------------------
+
 app.get('/reviews', (req, res) => {
   console.log('GET request received from /reviews');
   const { sort, product_id, count } = req.query;
