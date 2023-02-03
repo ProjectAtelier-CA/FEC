@@ -4,6 +4,7 @@ import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 import StarRatingReview from './StarRatingReview';
 import StarMeaning from './StarMeaning';
+import ReviewModalPhoto from './ReviewModalPhoto';
 
 // Todo: Upload photo functionality
 // Todo: Validating photo urls
@@ -21,7 +22,10 @@ export default function ReviewModal({
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]); // Array of photo urls
   const [charRatings, setCharRatings] = useState({}); // Object of char ratings
+  const [showPhotoInput, setShowPhotoInput] = useState(false); // Show input bar for photo add
+  const [currUrl, setCurrUrl] = useState(''); // Current url value of input bar
 
+  const [showPhotoError, setShowPhotoError] = useState(false);
   const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
   const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
@@ -32,13 +36,17 @@ export default function ReviewModal({
     }
   }, [showErrorMsg]);
 
+  useEffect(() => { // Will set photo error to false if no photos are errored
+    setShowPhotoError(false);
+  }, [photos]);
+
   const handleRatingClick = (num, id) => {
     setCharRatings({ ...charRatings, [id]: num });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // Form validation handler
     e.preventDefault();
-    if (reviewText.length < 50 || !starRating) {
+    if (reviewText.length < 50 || !starRating || showPhotoError) {
       setShowErrorMsg(true);
     } else {
       setShowErrorMsg(false);
@@ -62,12 +70,12 @@ export default function ReviewModal({
     }
   };
 
-  const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
+  const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
   const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
   const qualitySelections = ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'];
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
-  const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
+  const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'];
 
   const currChars = Object.keys(reviewMetaData.characteristics);
   const charForms = currChars.map((char) => {
@@ -95,6 +103,34 @@ export default function ReviewModal({
       setShowReviewModal(false);
     }
   };
+
+  const onAddPhotoClick = () => {
+    setShowPhotoInput(!showPhotoInput);
+  };
+
+  const onPhotoSubmit = () => {
+    if (!currUrl.length) {
+      console.log('Error with photo url');
+    } else {
+      setPhotos([...photos, currUrl]);
+      setCurrUrl('');
+    }
+  };
+
+  const handleImageClick = (index) => {
+    const newPhotos = photos.slice(0, index).concat(photos.slice(index + 1));
+    setPhotos(newPhotos);
+  };
+
+  const reviewModalPhotos = photos.map((photo, index) => (
+    <ReviewModalPhoto
+      key={Math.random()}
+      photoUrl={photo}
+      photoIndex={index}
+      handleImageClick={handleImageClick}
+      setShowPhotoError={setShowPhotoError}
+    />
+  ));
 
   return (
     <div
@@ -138,15 +174,19 @@ export default function ReviewModal({
                 <div className="photo-container">
                   <div className="upload">
                     <span>Upload your photos (5 photos max)</span>
-                    <button type="button">Add a photo</button>
+                    {photos.length < 5 ? (<button type="button" onClick={onAddPhotoClick}>Add A Photo</button>) : null }
                   </div>
+                  { showPhotoInput && photos.length < 5
+                    ? (
+                      <div className="input-url">
+                        <input type="url" value={currUrl} onChange={(e) => setCurrUrl(e.target.value)} placeholder="Enter photo url"/>
+                        <button type="button" onClick={onPhotoSubmit} className="shake">Submit</button>
+                      </div>
+                    ) : null }
                   <div className="photos">
-                    <div className="individual-photo">1</div>
-                    <div className="individual-photo">2</div>
-                    <div className="individual-photo">3</div>
-                    <div className="individual-photo">4</div>
-                    <div className="individual-photo">5</div>
+                    {reviewModalPhotos}
                   </div>
+                  {showPhotoError ? <div className="photo-error-message">Please remove error image</div> : null}
                 </div>
               </div>
               <div className="name-email-container">
