@@ -2,11 +2,12 @@ $small: 10px;
 $grey: rgb(102, 100, 100);
 
 .question-header {
-  width:48.9rem;
-  text-align: left;
-  // border-style:solid;
+  // display: flex;
+  justify-content: center;
+  border-style:solid;
   opacity:50%;
   margin-left: 13.30rem;
+  width: max-content;
 }
 .master-question {
   display: flex;

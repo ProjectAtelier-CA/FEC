@@ -7,8 +7,8 @@ import QuestionList from './QuestionList.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
 import AddQuestions from './AddQuestion';
 
-export default function QuestionsAnswers() {
-  const [productId, setId] = useState('37316');
+export default function QuestionsAnswers({ id }) {
+  const [productId, setId] = useState('37316' || id);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
