@@ -200,12 +200,12 @@ export default function ReviewModal({
               </div>
               <div className="name-email-container">
                 <div className="username">
-                  <div>What is your nickname *</div>
+                  <div>Username *</div>
                   <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">
-                  <div>Your email *</div>
+                  <div>Email *</div>
                   <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <div className="privacy-notice">For authentication reasons, you will not be emailed</div>
                 </div>
@@ -213,13 +213,13 @@ export default function ReviewModal({
             </div>
             <div>
               <div className="review-summary-text">
-                <div>Review Summary Text</div>
+                <div>Enter Summary Text</div>
                 <input maxLength="60" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
               </div>
             </div>
             <div>
               <div className="review-body-text">
-                <div className="text-header">Review Body Text Input *</div>
+                <div className="text-header">Enter Body Text *</div>
                 <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
                 <div className="text-footer">
                   {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached'}

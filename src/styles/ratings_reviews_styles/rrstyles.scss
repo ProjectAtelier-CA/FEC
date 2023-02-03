@@ -254,9 +254,20 @@ $color6: #EE6C4D;
 }
 
 .review-error-message {
+  font-size: .8rem;
   border: 2px solid red;
-  padding: 5px;
+  width: fit-content;
+  padding-right: 20px;
   margin-top: 10px;
+
+  ul {
+    padding-left: 20px;
+
+    div {
+      margin-bottom: 5px;
+      text-decoration: underline;
+    }
+  }
 }
 
 .review-modal-star {
@@ -758,6 +769,7 @@ $color6: #EE6C4D;
 
   .review-summary-text {
     margin-top: 10px;
+    margin-bottom: 10px;
     // border: 2px solid red;
 
     div {
