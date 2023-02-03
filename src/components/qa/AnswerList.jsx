@@ -12,9 +12,9 @@ export default function AnswerList({ answers }) {
   const [sortedAnswers, setSorted] = useState([]);
   const [answerLog, setLog] = useState(2);
   const answerLength = answers.length;
-
-  let renderAnswer = answers.slice(0, answerLog);
-
+  let sortBySeller = [];
+  const sellers = [];
+  let renderAnswer = [];
   useEffect(() => {
     if (answerLog > answerLength) {
       setMore(false);
@@ -31,21 +31,31 @@ export default function AnswerList({ answers }) {
       setLess(false);
     }
   });
-  useEffect(() => {
-    setSorted(answers.sort((a1, a2) => ((a1.helpfulness < a2.helpfulness) ? 1 : (a1.helpfulness > a2.helpfulness) ? -1 : 0)));
-    // setSorted(answers.sort((a1, a2) => ((a1.answerer_name === 'Seller') ? 1 : (a2.answerer_name === 'Seller') ? -1 : 0)));
-  });
 
+  const firstSort = () => {
+    answers.forEach((answer) => {
+      if (answer.answerer_name === 'Seller') {
+        sellers.push(answer);
+        answers.splice(answers.indexOf(answer), 1);
+      }
+    });
+    sortBySeller = sellers.concat(answers);
+    renderAnswer = sortBySeller.slice(0, answerLog);
+
+    console.log('SORTING SELLERS', renderAnswer);
+  };
+  firstSort();
   const loadAnswers = () => {
     setLog(answerLog + 2);
-    renderAnswer = sortedAnswers.slice(0, answerLog);
+    console.log('load answers', sortBySeller);
+    renderAnswer = sortBySeller.slice(0, answerLog);
   };
 
   const unloadAnswers = () => {
     setMore(true);
     setLess(false);
     setLog(2);
-    renderAnswer = sortedAnswers.slice(0, answerLog);
+    renderAnswer = sortBySeller.slice(0, answerLog);
   };
   return (
     <section className="answer-list">

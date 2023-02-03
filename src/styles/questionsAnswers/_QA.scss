@@ -2,8 +2,9 @@ $small: 10px;
 $grey: rgb(102, 100, 100);
 
 .question-header {
-  display:flex;
-  justify-content: left;
+  width:48.9rem;
+  text-align: left;
+  // border-style:solid;
   opacity:50%;
   margin-left: 13.30rem;
 }
