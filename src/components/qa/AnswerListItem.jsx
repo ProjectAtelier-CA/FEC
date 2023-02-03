@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
@@ -15,11 +16,11 @@ export default function AnswerListItem({ ans }) {
 
   return (
     <>
-      <div className="answer-body" key={ans.answer_id}>
+      <div className="answer-body">
         {ans.body}
-        <div className="image-answer-list">
-          {ans.photos.map((photo) => (<PhotoList photo={photo} />))}
-        </div>
+      </div>
+      <div className="image-answer-list">
+        {(ans.photos.length > 0) ? ans.photos.map((photo) => (<PhotoList photo={photo} />)) : null}
       </div>
       <div className="answerer-info">
         by

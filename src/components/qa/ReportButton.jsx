@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function ReportButton({ answerId }) {
   const sendItAway = () => {
-    axios.post('http://localhost:8081/report', null, { params: { answerId } });
+    axios.post('http://localhost:8081/report', { answerId });
   };
 
   return (

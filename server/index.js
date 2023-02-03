@@ -195,12 +195,36 @@ app.get('/answers', (req, res) => {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
+    params: {
+      count: 100,
+    },
   })
     .then(({ data }) => {
       res.status(200);
       res.json(data);
     })
     .catch(() => res.send('Error occurred when getting questions from /qa/questions/answers'));
+});
+
+app.post('/answers', (req, res) => {
+  console.log(req.body);
+  axios({
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.question_id}/answers`,
+    headers: { Authorization: process.env.AUTH_SECRET },
+    data: {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      photo: req.body.photo,
+    },
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.post('/helpful', (req, res) => {
@@ -217,8 +241,8 @@ app.post('/helpful', (req, res) => {
 });
 
 app.post('/report', (req, res) => {
-  console.log(req.query.answerId);
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.query.answerId}/report`, null, {
+  console.log(req.body);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.body.answerId}/report`, null, {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },

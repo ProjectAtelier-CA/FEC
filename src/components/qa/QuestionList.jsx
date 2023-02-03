@@ -39,6 +39,7 @@ export default function QuestionList({ productIdData, product_id }) {
     renderQuestions = productIdData.slice(0, questionLog);
   } else if (search.length > 2) {
     renderQuestions = [];
+    // eslint-disable-next-line array-callback-return
     productIdData.filter((question) => {
       if (question.question_body.match(search)) {
         renderQuestions.push(question);
@@ -70,15 +71,17 @@ export default function QuestionList({ productIdData, product_id }) {
   };
 
   return (
-    <section>
-      <input value={search} onChange={searching} type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
-      { (renderQuestions.length === 0) ? <div>No Results Matching Search. Try Again</div> : null}
-      {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} q={question} />))}
+    <div>
+      <input className="search-bar-question" value={search} onChange={searching} type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
+      <div className="question-list">
+        { (renderQuestions.length === 0) ? <div>No Results Matching Search. Try Again</div> : null}
+        {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} q={question} />))}
+      </div>
       <div className="bottom-buttons">
-        { showMore ? <button type="button" onClick={loadQuestions}> More Answered Questions</button> : null }
-        {showLess ? <button type="button" onClick={unloadQuestions}> Top</button> : null}
+        { showMore ? <button type="button" className="more-question-button" onClick={loadQuestions}> More Answered Questions</button> : null }
+        {showLess ? <button type="button" className="more-question-button" onClick={unloadQuestions}> Top</button> : null}
         <App product_id={product_id} />
       </div>
-    </section>
+    </div>
   );
 }
