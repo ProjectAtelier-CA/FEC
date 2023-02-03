@@ -20,7 +20,7 @@ export default function ReviewCard({
         <div>
           <StarRating score={review.rating} />
         </div>
-        <div>
+        <div className="user-date-info">
           <UserDateInfo date={review.date} user={review.reviewer_name} />
         </div>
       </div>

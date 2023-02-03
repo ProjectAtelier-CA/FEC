@@ -7,7 +7,13 @@ export default function UserDateInfo({ user, date }) {
 
   return (
     <span>
-      { `${user}, ${formattedDate}` }
+      <span className="review-user">{ `${user}, `}</span>
+      <span>{`${formattedDate}`}</span>
     </span>
   );
 }
+
+
+{/* <span>
+  { `${user}, ${formattedDate}` }
+</span> */}

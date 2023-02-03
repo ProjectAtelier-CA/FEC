@@ -74,6 +74,17 @@ $color6: #EE6C4D;
       display: flex;
       align-items: center;
     }
+
+    .user-date-info {
+      span {
+        opacity: .8;
+        color: $color1;
+        .review-user {
+          font-weight: 700;
+        }
+      }
+    }
+
   }
 
   .review-card-summary {
