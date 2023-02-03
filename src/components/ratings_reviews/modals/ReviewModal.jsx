@@ -117,11 +117,6 @@ export default function ReviewModal({
     }
   };
 
-  // const reviewModalPhotos = photos.map((photo) => (
-  //   <div className="individual-photo">
-  //     <img src={photo} />
-  //   </div>
-  // ));
   const handleImageClick = (index) => {
     // console.log(index);
     const newPhotos = photos.slice(0, index).concat(photos.slice(index+1));
@@ -137,15 +132,6 @@ export default function ReviewModal({
       setShowPhotoError={setShowPhotoError}
     />
   ));
-
-
-  // for (let i = 0; i < 5; i++) {
-  //   if (photos[i]) {
-  //     reviewModalPhotos.push(
-  //       <ReviewModalPhoto photoUrl={photos[i]} photoIndex={i} handleImageClick={handleImageClick} key={Math.random()} />
-  //     );
-  //   }
-  // }
 
   return (
     <div
