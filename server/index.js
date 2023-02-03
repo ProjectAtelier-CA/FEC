@@ -34,18 +34,33 @@ app.get('/styles', (req, res) => {
     .catch(() => res.send('Failed to get styles'));
 });
 
+// This is for all products GET
+// replicate the HR API syntax
+// ----------- Added Routes
+const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
+const headers = { Authorization: process.env.AUTH_SECRET };
+app.get('/products/:id/?*', (req, res) => {
+  console.log(`GET request received from ${req.originalUrl}`);
+
+  const url = path.join(baseUrl, req.originalUrl);
+  axios.get(url, { headers })
+    .then(({ data }) => res.json(data))
+    .catch(console.log);
+});
+// -------------------------
+
 app.get('/reviews', (req, res) => {
   console.log('GET request received from /reviews');
-  const { sort } = req.query;
+  const { sort, product_id, count } = req.query;
 
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37331,
+      product_id, // no review product is 37339
       sort,
-      count: '100',
+      count, // figure out how to do max count
     },
   })
     .then(({ data }) => {
@@ -75,13 +90,14 @@ app.post('/reviews', (req, res) => {
 
 app.get('/reviews/meta', (req, res) => {
   console.log('GET request received from /reviews/meta');
+  const { product_id } = req.query;
 
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: 37331,
+      product_id,
     },
   })
     .then(({ data }) => {

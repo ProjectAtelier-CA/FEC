@@ -9,7 +9,9 @@ import StarMeaning from './StarMeaning';
 // Todo: Validating photo urls
 // Todo: Setting star rating
 
-export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRerender }) {
+export default function ReviewModal({
+  setShowReviewModal, reviewMetaData, setRerender, productName,
+}) {
   // console.log(reviewMetaData);
   const [starRating, setStarRating] = useState(0); // Star rating for product
   const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
@@ -23,7 +25,6 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
   const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
   const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
-
 
   useEffect(() => {
     if (showErrorMsg) {
@@ -60,23 +61,6 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       });
     }
   };
-
-  // { this is test data, will remove later
-  //   "product_id": 37331,
-  //   "rating": 5,
-  //   "summary": "Test summary2",
-  //   "body": "Test body2",
-  //   "recommend": false,
-  //   "name": "Andrew",
-  //   "email": "andrew@andrew.com",
-  //   "photos": [],
-  //   "characteristics": {
-  //       "125098": 5,
-  //       "125096": 5,
-  //       "125097": 5,
-  //       "125099": 5
-  //   }
-  // }
 
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
@@ -121,10 +105,10 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       <div className="review-modal-content">
         <div className="review-header">
           <div>Write Your Review</div>
-          <div>About the [Product Name Here]</div>
+          <div>{`About the ${productName}`}</div>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="review-form">
             <div className="star-name-container">
               <div className="star-rec-container">
                 <div>
@@ -136,14 +120,18 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
                 </div>
                 <div className="modal-recommend">
                   <div>Do you recommend this product? *</div>
-                  <div>
+                  <div className="modal-rec-selection">
                     <label>
-                      Yes:
-                      <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      <span>Yes:</span>
+                      <div>
+                        <input required type="radio" name="recommended" onChange={() => setRecommended(true)} />
+                      </div>
                     </label>
                     <label>
-                      No:
-                      <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      <span>No:</span>
+                      <div>
+                        <input type="radio" name="recommended" onChange={() => setRecommended(false)} />
+                      </div>
                     </label>
                   </div>
                 </div>
@@ -164,7 +152,7 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
               <div className="name-email-container">
                 <div className="username">
                   <div>What is your nickname *</div>
-                  <input required type="text" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">

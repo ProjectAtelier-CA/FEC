@@ -34,6 +34,25 @@ export default function QuestionList({ productIdData, product_id }) {
     // });
     // }
   };
+  const [search, setSearch] = useState('');
+  let renderQuestions = [];
+  // let renderQuestions = productIdData.slice(0, questionLog);
+  const searching = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+    // if (search.length > 1) {
+    //   renderQuestions = [];
+    //   productIdData.filter((question) => {
+    //     if (question.question_body.includes(search)) {
+    //       console.log(renderQuestions);
+    //       return renderQuestions.push(question);
+    //       // questionMatch.push(question);
+    //       console.log(renderQuestions);
+    //       // renderQuestions = questionMatch;
+    //     }
+    // });
+    // }
+  };
 
   if (search.length < 3) {
     renderQuestions = productIdData.slice(0, questionLog);
