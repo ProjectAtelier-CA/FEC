@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-export default function StarBreakdownItem({ starType, barWidth, handleStarClick }) {
-  const [isClicked, setIsClicked] = useState(false);
+export default function StarBreakdownItem({ starType, barWidth, handleStarClick, starFilter }) {
+  // console.log(starFilter);
+  const [isClicked, setIsClicked] = useState(starFilter[starType]);
   const [clickedClass, setClickedClass] = useState('');
+  // console.log(isClicked);
+
+  useEffect(() => {
+    setIsClicked(starFilter[starType]);
+  }, [starFilter]);
 
   useEffect(() => {
     if (isClicked) {
@@ -14,7 +20,7 @@ export default function StarBreakdownItem({ starType, barWidth, handleStarClick 
 
   const handleClick = (type) => {
     handleStarClick(type);
-    setIsClicked(!isClicked);
+    // setIsClicked(!isClicked);
   };
 
   return (

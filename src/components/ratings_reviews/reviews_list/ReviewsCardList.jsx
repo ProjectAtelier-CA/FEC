@@ -21,20 +21,21 @@ export default function ReviewsCardList({
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalImageURL, setModalImageURL] = useState('');
-  const moreReviewsButtonRef = useRef(null);
+  const actionButtonsRef = useRef(null);
 
 
   useEffect(() => {
     // Should menu collaspe when we are switching our sort by filter?
     setFilterBy(makeStarFilters(starFilter));
-    setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
+    // setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
+    // Turned this off for now
   }, [starFilter]);
 
   const handleMoreClick = () => {
     setReviewIndex(reviewIndex + 2);
 
     setTimeout(() => {
-      moreReviewsButtonRef.current.scrollIntoView({ behavior: 'smooth'});
+      actionButtonsRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -52,7 +53,7 @@ export default function ReviewsCardList({
   const handleHelpfulClick = (reviewID) => {
     // Not sure why its giving unauthorized in axios but not postman
     axios.put(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
-      console.log('request sent');
+      console.log('Helpful reqeuest sent');
     }).catch(() => {
       console.log('error occurred sending put request');
     });
@@ -60,7 +61,7 @@ export default function ReviewsCardList({
 
   const handleReportClick = (reviewID) => {
     axios.put(`http://localhost:8081/reviews/${reviewID}/report`).then(() => {
-      console.log('request sent');
+      console.log('Report request sent');
     }).then(() => {
       setRerender([]);
     }).catch(() => {
@@ -90,18 +91,22 @@ export default function ReviewsCardList({
 
   return (
     <>
-      <div className="review-scroll">
-        <div ref={reviewListTopRef} />
-        <div className="review-scroll-item">
-          {reviewElements.slice(0, reviewIndex)}
-        </div>
-      </div>
+      { reviewElements.length
+        ? (
+          <div className="review-scroll">
+            <div ref={reviewListTopRef} />
+            <div className="review-scroll-item">
+              {reviewElements.slice(0, reviewIndex)}
+            </div>
+          </div>
+        )
+        : null }
       <ActionButtons
         handleMoreClick={handleMoreClick}
         setShowReviewModal={setShowReviewModal}
         totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
-        moreReviewsButtonRef={moreReviewsButtonRef}
+        actionButtonsRef={actionButtonsRef}
       />
       {showModal && (
         <ImageModal

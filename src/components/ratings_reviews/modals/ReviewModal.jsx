@@ -9,7 +9,9 @@ import StarMeaning from './StarMeaning';
 // Todo: Validating photo urls
 // Todo: Setting star rating
 
-export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRerender }) {
+export default function ReviewModal({
+  setShowReviewModal, reviewMetaData, setRerender, productName,
+}) {
   // console.log(reviewMetaData);
   const [starRating, setStarRating] = useState(0); // Star rating for product
   const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
@@ -23,7 +25,6 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
   const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
   const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
-
 
   useEffect(() => {
     if (showErrorMsg) {
@@ -60,23 +61,6 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       });
     }
   };
-
-  // { this is test data, will remove later
-  //   "product_id": 37331,
-  //   "rating": 5,
-  //   "summary": "Test summary2",
-  //   "body": "Test body2",
-  //   "recommend": false,
-  //   "name": "Andrew",
-  //   "email": "andrew@andrew.com",
-  //   "photos": [],
-  //   "characteristics": {
-  //       "125098": 5,
-  //       "125096": 5,
-  //       "125097": 5,
-  //       "125099": 5
-  //   }
-  // }
 
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
@@ -121,7 +105,7 @@ export default function ReviewModal({ setShowReviewModal, reviewMetaData, setRer
       <div className="review-modal-content">
         <div className="review-header">
           <div>Write Your Review</div>
-          <div>About the [Product Name Here]</div>
+          <div>{`About the ${productName}`}</div>
         </div>
         <div>
           <form onSubmit={handleSubmit} className="review-form">

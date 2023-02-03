@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function ActionButtons({
-  handleMoreClick, totalReviews, reviewIndex, setShowReviewModal, moreReviewsButtonRef
+  handleMoreClick, totalReviews, reviewIndex, setShowReviewModal, actionButtonsRef
 }) {
   const [showMore, setShowMore] = useState(true);
 
@@ -16,10 +16,10 @@ export default function ActionButtons({
   }, [reviewIndex, totalReviews]);
 
   return (
-    <div className="action-buttons-container">
+    <div className="action-buttons-container" ref={actionButtonsRef}>
       {showMore
         ? (
-          <button type="button" onClick={handleMoreClick} ref={moreReviewsButtonRef}>
+          <button type="button" onClick={handleMoreClick}>
             <div className="more-text">More Reviews</div>
           </button>
         ) : null}

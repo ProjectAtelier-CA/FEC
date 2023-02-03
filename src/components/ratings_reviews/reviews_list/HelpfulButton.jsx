@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RiChatCheckFill, RiChatCheckLine } from 'react-icons/ri';
 
 export default function HelpfulButton({ helpfulness, handleHelpfulClick, reviewID }) {
   const [helpfulCount, setHelpfulCount] = useState(helpfulness);
@@ -16,9 +17,10 @@ export default function HelpfulButton({ helpfulness, handleHelpfulClick, reviewI
       <span>Helpful?</span>
       <div>
         <button type="button" onClick={!isClicked ? handleClick : null} className={!isClicked ? "" : "helpful-active"}>
-          <span>Yes</span>
+          <div>Yes</div>
+          <div>{RiChatCheckLine()}</div>
         </button>
-        <span>({helpfulCount})</span>
+        <span>{`(${helpfulCount})`}</span>
       </div>
     </div>
   );

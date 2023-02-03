@@ -23,23 +23,35 @@ export default function RatingsReviews({ productID, productName }) {
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {
       params: {
+        product_id: productID,
         sort: sortBy,
+        count: 500,
       },
     })
       .then(({ data }) => {
         const reviews = data.results;
-        // reviews will be an array of objects
         setProductReviews([...reviews]);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [sortBy, rerender]);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews/meta').then(({ data }) => {
-      setReviewMetaData(data);
-    });
+    axios.get('http://localhost:8081/reviews/meta', {
+      params: {
+        product_id: productID,
+      },
+    })
+      .then(({ data }) => {
+        setReviewMetaData(data);
+      }).catch((err) => {
+        console.log(err);
+      });
   }, [rerender]);
 
   const handleStarClick = (starType) => {
+    // console.log(starType);
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
   };
 
@@ -51,18 +63,12 @@ export default function RatingsReviews({ productID, productName }) {
     <>
       <h1>RatingsReviews Component</h1>
       <div className="ratings-reviews-container">
-        <RatingsBreakdown reviewMetaData={reviewMetaData} handleStarClick={handleStarClick} />
-        {/* { productReviews.length
-          ? (
-            <ReviewsList
-              productReviews={productReviews}
-              starFilter={starFilter}
-              handleSortClick={handleSortClick}
-              sortBy={sortBy}
-              reviewMetaData={reviewMetaData}
-              setRerender={setRerender}
-            />
-          ) : null} */}
+        <RatingsBreakdown
+          reviewMetaData={reviewMetaData}
+          handleStarClick={handleStarClick}
+          starFilter={starFilter}
+          setStarFilter={setStarFilter}
+        />
         <ReviewsList
           productReviews={productReviews}
           starFilter={starFilter}
@@ -70,6 +76,7 @@ export default function RatingsReviews({ productID, productName }) {
           sortBy={sortBy}
           reviewMetaData={reviewMetaData}
           setRerender={setRerender}
+          productName={productName}
         />
       </div>
     </>
