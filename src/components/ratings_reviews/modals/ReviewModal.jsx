@@ -119,9 +119,9 @@ export default function ReviewModal({
 
   const handleImageClick = (index) => {
     // console.log(index);
-    const newPhotos = photos.slice(0, index).concat(photos.slice(index+1));
+    const newPhotos = photos.slice(0, index).concat(photos.slice(index + 1));
     setPhotos(newPhotos);
-  }
+  };
 
   const reviewModalPhotos = photos.map((photo, index) => (
     <ReviewModalPhoto
