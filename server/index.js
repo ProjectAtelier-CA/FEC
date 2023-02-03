@@ -39,6 +39,25 @@ app.get('/products/:product_id/styles', (req, res) => {
     .catch(() => res.send('Failed to get styles'));
 });
 
+app.post('/cart', (req, res) => {
+  console.log('getting cart post request');
+  console.log(`"${req.body.body}"`);
+  axios({
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart',
+    headers: { Authorization: process.env.AUTH_SECRET },
+    data: {
+      sku_id: 1,
+    },
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 // This is for all products GET
 // replicate the HR API syntax
 // ----------- Added Routes

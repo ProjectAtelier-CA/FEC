@@ -63,6 +63,7 @@ export default function Overview({ product_id }) {
 
   useEffect(() => {
     getStyles();
+    setStyle(0);
   }, [product_id]);
 
   useEffect(() => {
@@ -113,6 +114,7 @@ export default function Overview({ product_id }) {
             isLoading={isLoading}
             currentSku={currentSku}
             setSku={setSku}
+            product_id={product_id}
           />
         </div>
       </div>

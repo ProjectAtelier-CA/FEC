@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable max-len */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
@@ -7,7 +8,7 @@ import Share from '../buttons/share';
 import StarRating from '../../shared/StarRating';
 
 export default function ProductInfo({
-  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku,
+  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id,
 }) {
   const product = {
     id: 37311,
@@ -51,6 +52,7 @@ export default function ProductInfo({
         isLoading={isLoading}
         currentSku={currentSku}
         setSku={setSku}
+        product_id={product_id}
       />
       <Share />
     </div>
