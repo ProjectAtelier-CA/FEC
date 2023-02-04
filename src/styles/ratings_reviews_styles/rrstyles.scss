@@ -89,6 +89,8 @@ $triangle: #2f5aaa;
         opacity: .8;
         color: $color1;
         .review-user {
+          opacity: 1;
+          color: $triangle;
           font-weight: 700;
         }
       }
@@ -155,19 +157,15 @@ $triangle: #2f5aaa;
 
       button:hover {
         opacity: .5;
-        color: $color1;
-        span {
-          border-color: $color1;
-        }
+        color: $triangle;
+        border-color: $triangle;
         cursor: pointer;
       }
 
       .helpful-active {
-        opacity: .5;
-        color: $color1;
-        span {
-          border-color: $color1;
-        }
+        opacity: .6;
+        color: $triangle;
+        border-color: $triangle;
       }
 
       div {
