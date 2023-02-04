@@ -74,34 +74,54 @@ export default function Buttons({
     }
   }
 
+  // function handleFavorite() {
+  //   addFavorite(!favorite);
+  //   const object = favorites;
+  //   if (object[product_id] === undefined) {
+  //     object[product_id] = {};
+  //     object[product_id][currentSku] = 1;
+  //   } else if (object[product_id][currentSku] !== undefined) {
+  //     delete object[product_id][currentSku];
+  //   } else {
+  //     object[product_id][currentSku] = 1;
+  //   }
+  //   setFavorites(object);
+  // }
+
   function handleFavorite() {
     addFavorite(!favorite);
     const object = favorites;
     if (object[product_id] === undefined) {
-      object[product_id] = {};
-      object[product_id][currentSku] = 1;
-    } else if (object[product_id][currentSku] !== undefined) {
-      delete object[product_id][currentSku];
+      object[product_id] = 1;
     } else {
-      object[product_id][currentSku] = 1;
+      delete object[product_id];
     }
     setFavorites(object);
   }
 
+  // useEffect(() => {
+  //   if (favorites[product_id] !== undefined) {
+  //     if (favorites[product_id][currentSku] === 1) {
+  //       addFavorite(true);
+  //     } else {
+  //       addFavorite(false);
+  //     }
+  //   } else {
+  //     addFavorite(false);
+  //   }
+  // }, [favorites, currentSku, product_id]);
+
   useEffect(() => {
-    console.log(favorite);
     if (favorites[product_id] !== undefined) {
-      console.log('FAVORITED');
-      if (favorites[product_id][currentSku] === 1) {
+      if (favorites[product_id] === 1) {
         addFavorite(true);
       } else {
         addFavorite(false);
       }
     } else {
-      console.log('UNFAV');
       addFavorite(false);
     }
-  }, [favorites, currentSku, product_id]);
+  }, [favorites, product_id]);
 
   useEffect(() => {
     if (skus[currentSku] !== undefined) {

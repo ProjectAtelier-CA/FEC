@@ -8,28 +8,16 @@ import Share from '../buttons/share';
 import StarRating from '../../shared/StarRating';
 
 export default function ProductInfo({
-  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id,
+  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details,
 }) {
-  const product = {
-    id: 37311,
-    campus: 'hr-rfe',
-    name: 'Camo Onesie',
-    slogan: 'Blend in to your crowd',
-    description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-    category: 'Jackets',
-    default_price: '140.00',
-    created_at: '2021-08-13T14:37:33.145Z',
-    updated_at: '2021-08-13T14:37:33.145Z',
-  };
-
   return (
-    <div className="info" key={product.id}>
+    <div className="info" key={details.id}>
       <div className="rating" key="rating">
         <StarRating rating={3} />
         <a href="http://www.google.com/" className="review-link">Read reviews...</a>
       </div>
-      <h3 className="category">{product.category}</h3>
-      <h1 className="product-name">{product.name}</h1>
+      <h3 className="category">{details.category}</h3>
+      <h1 className="product-name">{details.name}</h1>
       <Styles
         imageIndex={imageIndex}
         setIndex={setIndex}

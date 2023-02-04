@@ -82,6 +82,7 @@ export default function Thumbnails({
   useEffect(() => {
     if (mouseOut) {
       setStart(imageIndex);
+      setScroll(imageIndex);
       if (imageIndex === 0) {
         containerRef.current.children[0].scrollIntoView({
           top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',

@@ -1,23 +1,20 @@
+/* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 // eslint-disable-next-line camelcase
-export default function Description({ product_id }) {
+export default function Description({ product_id, details }) {
   // eslint-disable-next-line no-unused-vars
-  const [details, setDetails] = useState({});
+  // const [details, setDetails] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // eslint-disable-next-line camelcase
-    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
-      .then(({ data }) => {
-        setDetails(data);
-      })
-      .then(() => {
-        setLoading(false);
-      });
-  }, []);
+    if (details.slogan === undefined) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [product_id, details]);
 
   if (loading) {
     return (
@@ -50,7 +47,3 @@ export default function Description({ product_id }) {
 
   );
 }
-
-Description.propTypes = {
-  // images: PropTypes.array.isRequired
-};
