@@ -142,7 +142,6 @@ export default function ReviewsCardList({
   //   });
   // }
 
-
   const reviewElements = useMemo(() => (
     filteredProductReviews.map((review) => (
       <ReviewCard
@@ -151,7 +150,7 @@ export default function ReviewsCardList({
         handleImageClick={handleImageClick}
         handleHelpfulClick={handleHelpfulClick}
         handleReportClick={handleReportClick}
-        testHighlight={review.testHighlight}
+        debouncedSearch={debouncedSearch}
       />
     ))
   ), [filteredProductReviews]);

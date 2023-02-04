@@ -32,6 +32,7 @@ export default function ReviewsList({
         reviewListTopRef={reviewListTopRef}
         setSearchInput={setSearchInput}
         searchInput={searchInput}
+        setDebouncedSearch={setDebouncedSearch}
       />
       <ReviewsCardList
         productReviews={productReviews}

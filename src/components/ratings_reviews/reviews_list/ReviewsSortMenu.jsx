@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 
 export default function ReviewsSortMenu({
-  handleSortClick, numReviews, reviewListTopRef, searchInput, setSearchInput,
+  handleSortClick, numReviews, reviewListTopRef, searchInput, setSearchInput, setDebouncedSearch
 }) {
   const [showSearch, setShowSearch] = useState(false);
 
@@ -16,6 +16,8 @@ export default function ReviewsSortMenu({
 
   const handleIconClick = () => {
     setShowSearch(!showSearch);
+    setDebouncedSearch('');
+    setSearchInput('');
   };
 
   return (
