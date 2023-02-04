@@ -60,25 +60,22 @@ export default function RatingsReviews({ productID, productName }) {
   };
 
   return (
-    <>
-      <h1>RatingsReviews Component</h1>
-      <div className="ratings-reviews-container">
-        <RatingsBreakdown
-          reviewMetaData={reviewMetaData}
-          handleStarClick={handleStarClick}
-          starFilter={starFilter}
-          setStarFilter={setStarFilter}
-        />
-        <ReviewsList
-          productReviews={productReviews}
-          starFilter={starFilter}
-          handleSortClick={handleSortClick}
-          sortBy={sortBy}
-          reviewMetaData={reviewMetaData}
-          setRerender={setRerender}
-          productName={productName}
-        />
-      </div>
-    </>
+    <div className="ratings-reviews-container">
+      <RatingsBreakdown
+        reviewMetaData={reviewMetaData}
+        handleStarClick={handleStarClick}
+        starFilter={starFilter}
+        setStarFilter={setStarFilter}
+      />
+      <ReviewsList
+        productReviews={productReviews}
+        starFilter={starFilter}
+        handleSortClick={handleSortClick}
+        sortBy={sortBy}
+        reviewMetaData={reviewMetaData}
+        setRerender={setRerender}
+        productName={productName}
+      />
+    </div>
   );
 }

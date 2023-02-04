@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
@@ -21,17 +21,17 @@ export default function ReviewsCardList({
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalImageURL, setModalImageURL] = useState('');
-  const actionButtonsRef = useRef(null);
+  const [moreState, setMoreState] = useState(false); // Current state of more reviews button
 
+  const actionButtonsRef = useRef(null);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
-    // Should menu collaspe when we are switching our sort by filter?
     setFilterBy(makeStarFilters(starFilter));
-    // setReviewIndex(2); // Everytime we filter by stars, reset our reviewIndex
-    // Turned this off for now
   }, [starFilter]);
 
   const handleMoreClick = () => {
+    setMoreState(true);
     setReviewIndex(reviewIndex + 2);
 
     setTimeout(() => {
@@ -69,6 +69,16 @@ export default function ReviewsCardList({
     });
   };
 
+  const handleScroll = () => {
+    const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+    // scrollHeight = height of current scroll (max height)
+    // scrollTop = current position of our scroller
+    // clientHeight = how big the client is (the box for the scroll)
+    if ((scrollHeight - (scrollTop + clientHeight)) < 100 && moreState) {
+      setReviewIndex(reviewIndex + 5);
+    }
+  };
+
   let filteredProductReviews = [];
 
   if (filterBy.length === 0) {
@@ -79,21 +89,23 @@ export default function ReviewsCardList({
     ));
   }
 
-  const reviewElements = filteredProductReviews.map((review) => (
-    <ReviewCard
-      key={review.review_id}
-      review={review}
-      handleImageClick={handleImageClick}
-      handleHelpfulClick={handleHelpfulClick}
-      handleReportClick={handleReportClick}
-    />
-  ));
+  const reviewElements = useMemo(() => (
+    filteredProductReviews.map((review) => (
+      <ReviewCard
+        key={review.review_id}
+        review={review}
+        handleImageClick={handleImageClick}
+        handleHelpfulClick={handleHelpfulClick}
+        handleReportClick={handleReportClick}
+      />
+    ))
+  ), [filteredProductReviews]);
 
   return (
-    <>
+    <div>
       { reviewElements.length
         ? (
-          <div className="review-scroll">
+          <div className="review-scroll" onScroll={handleScroll} ref={scrollRef}>
             <div ref={reviewListTopRef} />
             <div className="review-scroll-item">
               {reviewElements.slice(0, reviewIndex)}
@@ -107,6 +119,8 @@ export default function ReviewsCardList({
         totalReviews={filteredProductReviews.length}
         reviewIndex={reviewIndex}
         actionButtonsRef={actionButtonsRef}
+        setReviewIndex={setReviewIndex}
+        setMoreState={setMoreState}
       />
       {showModal && (
         <ImageModal
@@ -114,6 +128,6 @@ export default function ReviewsCardList({
           onClick={handleModalClick}
         />
       )}
-    </>
+    </div>
   );
 }
