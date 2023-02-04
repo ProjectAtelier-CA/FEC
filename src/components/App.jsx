@@ -16,9 +16,9 @@ export default function App() {
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <h1 data-testid="app-test">All Our Components</h1>
-      {/* <Overview /> */}
-      {/* <RelatedProducts id={id} setId={setId} /> */}
-      {/* <QuestionsAnswers /> */}
+      <Overview />
+      <RelatedProducts id={id} setId={setId} />
+      <QuestionsAnswers />
       <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
     </>
   );
