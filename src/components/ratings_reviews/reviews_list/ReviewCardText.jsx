@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ReviewCardText({ content, summary, fullContent }) {
+export default function ReviewCardText({ content, summary, fullContent, testHighlight }) {
   const [currContent, setCurrContent] = useState(content);
   const [showMore, setShowMore] = useState(content.length !== fullContent.length);
   const [showLess, setShowLess] = useState(false);
@@ -17,11 +17,14 @@ export default function ReviewCardText({ content, summary, fullContent }) {
     setCurrContent(content);
   };
 
+  // console.log(testHighlight);
+
   return (
     <div>
       <div className="review-card-summary">{summary}</div>
       <div className="review-card-body">
         <div>{currContent}</div>
+        <div>{testHighlight}</div>
         {showMore ? <div className="show-button" onClick={onMoreClick} >Show more...</div> : null }
         {showLess ? <div className="show-button" onClick={onLessClick} >Show less</div> : null }
       </div>

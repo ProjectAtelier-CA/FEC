@@ -16,6 +16,7 @@ const makeStarFilters = (starFilter) => {
 
 export default function ReviewsCardList({
   productReviews, setShowReviewModal, starFilter, reviewListTopRef, setRerender, searchInput,
+  debouncedSearch,
 }) {
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
@@ -81,10 +82,7 @@ export default function ReviewsCardList({
 
   let filteredProductReviews = [];
 
-  // ----- todo ----- //
-  // New additional keyword needed : by keyword search
-  // searchInput is the keyword, make sure its of length 3, then filter our reviews.
-
+  // ---- Sort by rating
   if (filterBy.length === 0) {
     filteredProductReviews = productReviews;
   } else {
@@ -92,6 +90,58 @@ export default function ReviewsCardList({
       filterBy.includes(productReview.rating.toString())
     ));
   }
+
+  // ---- Sort by search with debounce of 500ms
+
+  if (debouncedSearch.length >= 3) {
+    filteredProductReviews = filteredProductReviews.filter((review) => (
+      review.summary.toLowerCase().includes((debouncedSearch.toLowerCase()))
+      || review.body.toLowerCase().includes((debouncedSearch.toLowerCase()))
+    ));
+  }
+
+  // ---- Implement logic to put highlighting onto the words that are matched
+
+  // if (debouncedSearch.length >= 3) {
+  //   filteredProductReviews = filteredProductReviews.filter((review) => {
+  //     if (review.summary.toLowerCase().includes((debouncedSearch.toLowerCase()))
+  //     || review.body.toLowerCase().includes((debouncedSearch.toLowerCase()))) {
+  //       let searchRegExp = new RegExp(`${debouncedSearch}`, 'gi');
+  //       let matchedIndexes = [];
+
+  //       while (searchRegExp.exec(review.summary) !== null) {
+  //         matchedIndexes.push(searchRegExp.lastIndex);
+  //       }
+  //       console.log(matchedIndexes);
+
+  //       if (matchedIndexes.length) {
+  //         // if greater than length 0
+  //         // console.log(review.summary.slice(47-(debouncedSearch.length),47));
+  //         review.testHighlight = [];
+  //         review.testHighlight.push(
+  //           <span>{review.summary.slice(0, matchedIndexes[0]-debouncedSearch.length)}</span>
+  //         );
+  //         matchedIndexes.forEach((matchIndex) => {
+  //           review.testHighlight.push(
+  //             <mark>{review.summary.slice(matchIndex-debouncedSearch.length, matchIndex)}</mark>
+  //           );
+  //         });
+  //         review.testHighlight.push(
+  //           <span>{review.summary.slice(matchedIndexes[matchedIndexes.length - 1])}</span>
+  //         );
+  //       } else {
+  //         review.testHighlight = [];
+  //       }
+
+  //       return true;
+  //     }
+  //   });
+  // } else {
+  //   filteredProductReviews.forEach((review) => {
+  //     review.testHighlight = [];
+  //   });
+  // }
+
 
   const reviewElements = useMemo(() => (
     filteredProductReviews.map((review) => (
@@ -101,6 +151,7 @@ export default function ReviewsCardList({
         handleImageClick={handleImageClick}
         handleHelpfulClick={handleHelpfulClick}
         handleReportClick={handleReportClick}
+        testHighlight={review.testHighlight}
       />
     ))
   ), [filteredProductReviews]);

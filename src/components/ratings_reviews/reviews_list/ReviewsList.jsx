@@ -4,12 +4,24 @@ import ReviewsCardList from './ReviewsCardList';
 import ReviewModal from '../modals/ReviewModal';
 
 export default function ReviewsList({
-  productReviews, starFilter, handleSortClick, sortBy, reviewMetaData, setRerender, productName
+  productReviews, starFilter, handleSortClick, sortBy,
+  reviewMetaData, setRerender, productName,
 }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const reviewListTopRef = useRef(null);
-  // console.log(searchInput);
+
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  useEffect(() => {
+    const debounceTimeoutID = setTimeout(() => {
+      setDebouncedSearch(searchInput);
+    }, 500);
+
+    return (() => {
+      clearTimeout(debounceTimeoutID);
+    });
+  }, [searchInput]);
 
   return (
     <div className="reviews-list">
@@ -29,6 +41,7 @@ export default function ReviewsList({
         reviewListTopRef={reviewListTopRef}
         setRerender={setRerender}
         searchInput={searchInput}
+        debouncedSearch={debouncedSearch}
       />
       {showReviewModal
       && (
