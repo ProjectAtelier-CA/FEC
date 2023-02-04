@@ -5,7 +5,38 @@
 @import "_product_info";
 @import "_description.scss";
 
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+* {
+  margin-left: 0;
+}
+
+.overview-loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #463F3A; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 40%;
+  transform: translate(0,50%);
+  left: 50%;
+  animation: spin 2s linear infinite;
+  // animation: scale 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
 

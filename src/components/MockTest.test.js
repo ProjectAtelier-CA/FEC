@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@testing-library/react';
 import ReviewErrorMessage from './ratings_reviews/modals/ReviewErrorMessage';
+import Buttons from './overview/buttons/buttons';
 
 describe('Jest', function() {
   const user = userEvent.setup();
@@ -10,5 +11,6 @@ describe('Jest', function() {
   it ('should say all our components', () => {
     render(<ReviewErrorMessage />)
     expect(screen.getByTestId('error-test')).toHaveTextContent('This error will occur if:');
-  })
+  });
+
 })
