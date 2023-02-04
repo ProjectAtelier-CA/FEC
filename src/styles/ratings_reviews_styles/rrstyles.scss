@@ -33,7 +33,7 @@ $color6: #EE6C4D;
   .review-photo-container {
     // border: 2px solid blue;
     height: 100%;
-    // margin-bottom: 10px;
+    margin-bottom: 4px;
 
     div {
       // border: 2px solid $color3;
@@ -49,6 +49,7 @@ $color6: #EE6C4D;
         // Makes a bigger pop-up to preview image
         cursor: pointer;
         width: fit-content;
+        max-width: 100%; // For preventing overflow
         height: 125px;
         z-index: 0;
         border: solid 1px #555;
@@ -238,37 +239,79 @@ $color6: #EE6C4D;
   width: 100%;
 }
 
-.reviews-sort-menu {
-  // border: 2px solid cyan;
-  // background-color: $color2;
+.sort-menu-container {
+  // border: 2px solid red;
   display: flex;
-  align-items: flex-end;
-  margin-bottom: 20px;
-  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  // margin-bottom: 20px;
 
-  .number-of-reviews {
-    font-size: 2rem;
-    transform: translate(0px, 5px);
-    margin-right: 5px;
-  }
+  .reviews-sort-menu {
+    // border: 2px solid cyan;
+    // background-color: $color2;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    font-weight: 700;
+    // border: 2px solid blue;
 
-  .sort-selections {
-    select {
-      border: none;
-      border-bottom: 2px solid black;
-      margin-left: 5px;
-      font-weight: 700;
-      // Move it down according to border bottom
-      position: relative;
-      top: 2px
+    .number-of-reviews {
+      font-size: 2rem;
+      transform: translate(0px, 5px);
+      margin-right: 5px;
     }
 
-    select:hover {
+    .sort-selections {
+      select {
+        border: none;
+        border-bottom: 2px solid black;
+        margin-left: 5px;
+        font-weight: 700;
+        // Move it down according to border bottom
+        position: relative;
+        top: 2px
+      }
+
+      select:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .search-input-bar {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-left: 30px;
+    // border: 2px solid red;
+    // width: 100%;
+    // min-width: 300px;
+    // max-width: 400px;
+    // width: 100%;
+    // height: 20px;
+    input {
+      // width: 100%;
+      width: 200px;
+      // max-width: 400px;
+    }
+
+    .search-icon {
+      font-size: 2rem;
+      // transform: scale(1.5);
+      display: flex;
+      transition: 0.5s;
+    }
+
+    .search-icon:hover {
       cursor: pointer;
+      color: $color6;
+      translate: 0 -5px;
+      transition: 0.5s;
     }
   }
 
 }
+
 
 .recommend-check-container {
   // border: 2px solid blue;

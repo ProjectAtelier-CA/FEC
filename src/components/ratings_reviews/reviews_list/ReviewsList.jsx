@@ -7,7 +7,9 @@ export default function ReviewsList({
   productReviews, starFilter, handleSortClick, sortBy, reviewMetaData, setRerender, productName
 }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
   const reviewListTopRef = useRef(null);
+  // console.log(searchInput);
 
   return (
     <div className="reviews-list">
@@ -16,6 +18,8 @@ export default function ReviewsList({
         numReviews={productReviews.length}
         sortBy={sortBy}
         reviewListTopRef={reviewListTopRef}
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
       />
       <ReviewsCardList
         productReviews={productReviews}
@@ -24,6 +28,7 @@ export default function ReviewsList({
         sortBy={sortBy}
         reviewListTopRef={reviewListTopRef}
         setRerender={setRerender}
+        searchInput={searchInput}
       />
       {showReviewModal
       && (

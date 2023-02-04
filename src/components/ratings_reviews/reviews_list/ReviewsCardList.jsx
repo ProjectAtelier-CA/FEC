@@ -15,7 +15,7 @@ const makeStarFilters = (starFilter) => {
 };
 
 export default function ReviewsCardList({
-  productReviews, setShowReviewModal, starFilter, reviewListTopRef, setRerender,
+  productReviews, setShowReviewModal, starFilter, reviewListTopRef, setRerender, searchInput,
 }) {
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
@@ -80,6 +80,10 @@ export default function ReviewsCardList({
   };
 
   let filteredProductReviews = [];
+
+  // ----- todo ----- //
+  // New additional keyword needed : by keyword search
+  // searchInput is the keyword, make sure its of length 3, then filter our reviews.
 
   if (filterBy.length === 0) {
     filteredProductReviews = productReviews;
