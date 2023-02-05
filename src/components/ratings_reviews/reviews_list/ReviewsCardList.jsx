@@ -51,7 +51,6 @@ export default function ReviewsCardList({
   // ---- Image Modal
   // Lazy way to doing it is to store data in the alt lol...
   const handleImageClick = (e, photos) => {
-    console.log(Number(e.target.alt[0]));
     if (e.target.src) {
       setModalImageURL(e.target.src);
       setShowModal(true);

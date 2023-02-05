@@ -457,18 +457,28 @@ $triangle: #2f5aaa;
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 0.5s;
       }
 
       .big-tag:hover {
         color: $triangle;
+        transform: scale(2) rotate(15deg);
+        transition: transform 0.3s ease;
       }
 
       .tag-filters {
         display: flex;
 
+        .tag-container {
+          transition: 0.5s ease;
+        }
+
         .tag-container:hover {
           cursor: pointer;
           color: $triangle;
+          translate: 0 -2px;
+          transform: rotate(10deg);
+          transition: 0.3s ease;
         }
 
         .small-tag {
@@ -931,51 +941,54 @@ $triangle: #2f5aaa;
   align-items: center;
 
   .image-modal-carousel {
-    border: 2px solid blue;
-    position: relative;
+    // border: 2px solid blue;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1000px;
-  }
+    width: 100%;
 
-  .image-modal-carousel::-webkit-scrollbar {
-    display: none;
   }
 
   .image-carousel-modal-next {
-    img {
-      max-width: 40vw;
-      height: 40vh;
-      object-fit: contain;
-      margin: 10px;
-      z-index: -5;
-      filter: blur(3px);
-      // background-color: black;
-    }
+    // border: 2px solid pink;
+    // width: object-fit;
+    width: 700px;
+    max-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 15px;
+    filter: blur(2px);
+    transition: 0.5s;
+  }
 
-    img:hover {
-      filter: none;
-      translate: 0px -10px;
-      transition: .3s;
-    }
+  .image-carousel-modal-next:hover {
+    filter: blur(0);
+    transition: 0.3s;
+    box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
   }
 
   .image-carousel-modal-content {
-    width: 500px;
+    // width: 500px;
     z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     img {
-      width: 50vw;
-      // max-width: 80%;
-      height: 50%;
-      max-height: 80%;
+      max-width: 70vw;
+      max-height: 60vh;
       object-fit: contain;
       box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
+      // animation: fadeIn 1s;
     }
   }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
 }
 
 

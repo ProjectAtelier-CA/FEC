@@ -30,14 +30,10 @@ export default function ImageCarousel({
 
   return (
     <div className="image-carousel-modal-container" onClick={onClick}>
-      <div
-        className="image-modal-carousel"
-        ref={scrollRef}
-        onWheel={(e) => handleScroll(e)}
-      >
+      <div className="image-modal-carousel">
         {modalImagePhotos.length > 1 ? (
           <div className="image-carousel-modal-next" onClick={(e) => handlePrevClick(e)}>
-            <img src={modalImagePhotos[prevIndex]} alt="clothing-review" />
+            <img src={modalImagePhotos[prevIndex]} />
           </div>
         ) : null }
         <div className="image-carousel-modal-content">
@@ -45,7 +41,7 @@ export default function ImageCarousel({
         </div>
         {modalImagePhotos.length > 1 ? (
           <div className="image-carousel-modal-next" onClick={(e) => handleNextClick(e)}>
-            <img src={modalImagePhotos[nextIndex]} alt="clothing-review" />
+          <img src={modalImagePhotos[nextIndex]} />
           </div>
         ) : null }
       </div>
