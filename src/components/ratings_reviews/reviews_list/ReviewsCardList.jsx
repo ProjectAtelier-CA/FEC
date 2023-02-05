@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
 import ImageModal from '../../shared/ImageModal';
+import ImageCarousel from '../modals/ImageCarousel';
 
 const makeStarFilters = (starFilter) => {
   const filter = [];
@@ -21,7 +22,14 @@ export default function ReviewsCardList({
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [modalImageURL, setModalImageURL] = useState('');
+
+  const [modalImageURL, setModalImageURL] = useState(''); // Current modal image
+
+  const [currImageIndex, setCurrImageIndex] = useState(''); // Current modal image test
+  const [modalImagePhotos, setModalImagePhotos] = useState([]); // Array of modal images
+  // console.log(modalImagePhotos[currImageIndex]);
+  // console.log(modalImagePhotos);
+
   const [moreState, setMoreState] = useState(false); // Current state of more reviews button
 
   const actionButtonsRef = useRef(null);
@@ -40,10 +48,16 @@ export default function ReviewsCardList({
     }, 100);
   };
 
-  const handleImageClick = (e) => {
+  // ---- Image Modal
+  // Lazy way to doing it is to store data in the alt lol...
+  const handleImageClick = (e, photos) => {
+    console.log(Number(e.target.alt[0]));
     if (e.target.src) {
       setModalImageURL(e.target.src);
       setShowModal(true);
+
+      setModalImagePhotos(photos);
+      setCurrImageIndex(Number(e.target.alt[0]));
     }
   };
 
@@ -52,7 +66,6 @@ export default function ReviewsCardList({
   };
 
   const handleHelpfulClick = (reviewID) => {
-    // Not sure why its giving unauthorized in axios but not postman
     axios.put(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
       console.log('Helpful reqeuest sent');
     }).catch(() => {
@@ -100,48 +113,6 @@ export default function ReviewsCardList({
     ));
   }
 
-  // ---- Implement logic to put highlighting onto the words that are matched
-
-  // if (debouncedSearch.length >= 3) {
-  //   filteredProductReviews = filteredProductReviews.filter((review) => {
-  //     if (review.summary.toLowerCase().includes((debouncedSearch.toLowerCase()))
-  //     || review.body.toLowerCase().includes((debouncedSearch.toLowerCase()))) {
-  //       let searchRegExp = new RegExp(`${debouncedSearch}`, 'gi');
-  //       let matchedIndexes = [];
-
-  //       while (searchRegExp.exec(review.summary) !== null) {
-  //         matchedIndexes.push(searchRegExp.lastIndex);
-  //       }
-  //       console.log(matchedIndexes);
-
-  //       if (matchedIndexes.length) {
-  //         // if greater than length 0
-  //         // console.log(review.summary.slice(47-(debouncedSearch.length),47));
-  //         review.testHighlight = [];
-  //         review.testHighlight.push(
-  //           <span>{review.summary.slice(0, matchedIndexes[0]-debouncedSearch.length)}</span>
-  //         );
-  //         matchedIndexes.forEach((matchIndex) => {
-  //           review.testHighlight.push(
-  //             <mark>{review.summary.slice(matchIndex-debouncedSearch.length, matchIndex)}</mark>
-  //           );
-  //         });
-  //         review.testHighlight.push(
-  //           <span>{review.summary.slice(matchedIndexes[matchedIndexes.length - 1])}</span>
-  //         );
-  //       } else {
-  //         review.testHighlight = [];
-  //       }
-
-  //       return true;
-  //     }
-  //   });
-  // } else {
-  //   filteredProductReviews.forEach((review) => {
-  //     review.testHighlight = [];
-  //   });
-  // }
-
   const reviewElements = useMemo(() => (
     filteredProductReviews.map((review) => (
       <ReviewCard
@@ -176,12 +147,22 @@ export default function ReviewsCardList({
         setReviewIndex={setReviewIndex}
         setMoreState={setMoreState}
       />
-      {showModal && (
+      {/* {showModal && (
         <ImageModal
+          // photos={}
           url={modalImageURL}
           onClick={handleModalClick}
         />
+      )} */}
+      {showModal && (
+        <ImageCarousel
+          currImageIndex={currImageIndex}
+          modalImagePhotos={modalImagePhotos}
+          onClick={handleModalClick}
+          setCurrImageIndex={setCurrImageIndex}
+        />
       )}
+
     </div>
   );
 }

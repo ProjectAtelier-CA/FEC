@@ -917,6 +917,68 @@ $triangle: #2f5aaa;
   }
 }
 
+.image-carousel-modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  // border: 2px solid blue;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .image-modal-carousel {
+    border: 2px solid blue;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+  }
+
+  .image-modal-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .image-carousel-modal-next {
+    img {
+      max-width: 40vw;
+      height: 40vh;
+      object-fit: contain;
+      margin: 10px;
+      z-index: -5;
+      filter: blur(3px);
+      // background-color: black;
+    }
+
+    img:hover {
+      filter: none;
+      translate: 0px -10px;
+      transition: .3s;
+    }
+  }
+
+  .image-carousel-modal-content {
+    width: 500px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 50vw;
+      // max-width: 80%;
+      height: 50%;
+      max-height: 80%;
+      object-fit: contain;
+      box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+
 .action-buttons-container {
   // border: 2px solid red;
   // padding: 20px;
