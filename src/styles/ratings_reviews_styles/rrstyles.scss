@@ -51,6 +51,7 @@ $triangle: #2f5aaa;
 
       img {
         border: 2px solid $color2;
+        // transition: 0.4s;
       }
 
       img:hover {
@@ -59,10 +60,12 @@ $triangle: #2f5aaa;
         width: fit-content;
         max-width: 100%; // For preventing overflow
         height: 125px;
+        min-width: 80px;
         z-index: 0;
         border: solid 1px #555;
         background-color: #eed;
         box-shadow:  0 0 10px  rgba(0,0,0, .6);
+        transition: 0.2s
         // -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
         // -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
         // -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
@@ -911,9 +914,12 @@ $triangle: #2f5aaa;
 
 .image-modal-content {
   img {
-    max-width: 90vw;
-    height: 80vh;
+    max-width: 80vw;
+    // height: auto;
+    // height: 70vh;
+    max-height: 70vh;
     object-fit: contain;
+    box-shadow:  0 0 10px  rgba(0,0,0, .6);
   }
 }
 
