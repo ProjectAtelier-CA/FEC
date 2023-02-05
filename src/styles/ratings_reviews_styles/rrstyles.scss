@@ -56,6 +56,8 @@ $triangle: #2f5aaa;
       img:hover {
         // Makes a bigger pop-up to preview image
         cursor: pointer;
+        transition: 0.2s ease;
+        min-width: 75px;
         width: fit-content;
         max-width: 100%; // For preventing overflow
         height: 125px;
