@@ -18,7 +18,8 @@ export default function App() {
       <h1 data-testid="app-test">All Our Components</h1>
       <Overview product_id={id} />
       <RelatedProducts id={id} setId={setId} />
-      <QuestionsAnswers />
+      <h3 className="testing-header"> Questions and Answers</h3>
+      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
       <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
     </>
   );

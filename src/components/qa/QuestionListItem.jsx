@@ -5,7 +5,7 @@ import AnswerList from './AnswerList';
 import HelpfulButton from './HelpfulButton';
 import App from './AddAnswer';
 
-export default function QuestionListItem({ q }) {
+export default function QuestionListItem({ q, productName }) {
   const [allAnswers, setAns] = useState([]);
   const [loading, setLoad] = useState(true);
   const { question_id } = q;
@@ -30,12 +30,12 @@ export default function QuestionListItem({ q }) {
           {' '}
           |
           {' '}
-          <App question_id={question_id} />
+          <App questionBody={q.question_body} productName={productName} question_id={question_id} />
         </div>
         <div className="answer-in-question">
           {(allAnswers.length !== 0) ? <AnswerList key={question_id} answers={allAnswers} /> : null}
-
         </div>
+
       </div>
     );
   }
