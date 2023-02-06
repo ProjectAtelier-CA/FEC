@@ -1,3 +1,11 @@
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+$color6: #FF101F;
+$color7: #32DE8A;
+
 .banner {
   font-family: Inter, sans-serif;
   justify-content: center;
@@ -14,6 +22,8 @@
   height: fit-content;
   flex-shrink: 2;
   transform: translate(0,-60%);
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .banner-div {
@@ -25,4 +35,18 @@
   min-height: 20px;
   margin-bottom: 50px;
   margin-top: 20px;
+}
+
+.sale {
+  color: $color6;
+  text-decoration: underline;
+}
+
+.sales {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.sales:hover {
+  cursor: pointer;
 }
