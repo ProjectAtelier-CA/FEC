@@ -27,12 +27,11 @@ import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview({
-  product_id, goDark, dark, appAvgRating, details, setDetails,
+  product_id, goDark, dark, appAvgRating, details, setDetails, styles, setStyles,
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [isLoading, setLoading] = useState(true);
-  const [styles, setStyles] = useState([]);
   const [imgToStyles, setImgToStyles] = useState([]);
   const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});

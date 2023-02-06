@@ -14,6 +14,7 @@ export default function App() {
   const [dark, goDark] = useState(false);
   const [appAvgRating, setAppAvgRating] = useState(5);
   const [productDetails, setDetails] = useState({});
+  const [styles, setStyles] = useState([]);
   // console.log(appAvgRating);
 
   return (
@@ -28,6 +29,8 @@ export default function App() {
         appAvgRating={appAvgRating}
         details={productDetails}
         setDetails={setDetails}
+        styles={styles}
+        setStyles={setStyles}
       />
       <RelatedProducts id={id} setId={setId} />
       <h3 className="testing-header"> Questions and Answers</h3>
