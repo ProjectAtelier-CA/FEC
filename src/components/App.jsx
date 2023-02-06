@@ -6,6 +6,7 @@ import QuestionsAnswers from './qa/QuestionsAnswers';
 import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
+import { GiAmericanShield, GiOctopus } from 'react-icons/gi';
 
 /* ----------- Set up id state -------------- */
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
   const [appAvgRating, setAppAvgRating] = useState(5);
   const [productDetails, setDetails] = useState({});
   const [styles, setStyles] = useState([]);
+  const [overviewLoading, setOverviewLoading] = useState(true);
   // console.log(appAvgRating);
   // Reviews id test 37331
   console.log(productDetails);
@@ -23,9 +25,7 @@ export default function App() {
     <>
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
-      <h1 data-testid="app-test">All Our Components</h1>
       <Overview
-        product_id={id}
         goDark={goDark}
         dark={dark}
         appAvgRating={appAvgRating}
@@ -33,11 +33,24 @@ export default function App() {
         setDetails={setDetails}
         styles={styles}
         setStyles={setStyles}
+        isLoading={overviewLoading}
+        setLoading={setOverviewLoading}
+        product_id={id}
       />
-      <RelatedProducts id={id} setId={setId} />
-      <h3 className="testing-header"> Questions and Answers</h3>
-      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
-      <RatingsReviews productID={37331} productName={productDetails.name} setAppAvgRating={setAppAvgRating} />
+      {
+        overviewLoading
+          ? (
+            <GiAmericanShield className="overview-loader" />
+          )
+          : (
+            <>
+              <RelatedProducts id={id} setId={setId} />
+              <h3 className="testing-header"> Questions and Answers</h3>
+              <QuestionsAnswers id={id} productName="A Purty Pink Jacket" />
+              <RatingsReviews productID={id} productName="Dummy Product Name" setAppAvgRating={setAppAvgRating} />
+            </>
+          )
+      }
     </>
   );
 }

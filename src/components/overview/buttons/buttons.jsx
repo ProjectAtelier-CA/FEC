@@ -44,6 +44,14 @@ export default function Buttons({
     }
   }, [addedToBag]);
 
+  useEffect(() => {
+    if (addedToBag) {
+      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
+    } else {
+      console.log(`Removed ${currentSku} from bag`);
+    }
+  }, [addedToBag]);
+
   function selectSize(event) {
     setSizeStatus(true);
     setSize(event.target.value);
@@ -56,6 +64,7 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
+    console.log(size);
   }
 
   function optionClick(event) {
@@ -138,6 +147,11 @@ export default function Buttons({
     setQuantity(0);
     setBagged(false);
   }, [product_id]);
+  useEffect(() => {
+    setSize('Size');
+    setQuantity(0);
+    setBagged(false);
+  }, [product_id]);
 
   if (loading) {
     return (
@@ -194,7 +208,7 @@ export default function Buttons({
           }
           <ul className="dropdown-list">
             {
-              quantityOpened
+              (quantityOpened && size !== 'Size')
                 ? (
                   // eslint-disable-next-line max-len
                   [...Array(Math.min(skus[currentSku].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
