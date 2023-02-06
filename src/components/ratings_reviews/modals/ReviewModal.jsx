@@ -233,7 +233,7 @@ export default function ReviewModal({
               </div>
             </div>
             <br />
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Review</button>
             <div ref={errorRef}>
               {showErrorMsg ? <ReviewErrorMessage /> : null}
             </div>
