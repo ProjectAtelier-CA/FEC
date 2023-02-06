@@ -26,7 +26,9 @@ import ProductInfo from './product_header/product_info';
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
-export default function Overview({ product_id, goDark, dark }) {
+export default function Overview({
+  product_id, goDark, dark, appAvgRating, details, setDetails,
+}) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [isLoading, setLoading] = useState(true);
@@ -36,7 +38,6 @@ export default function Overview({ product_id, goDark, dark }) {
   const [skus, setSkus] = useState({});
   const [currentSku, setSku] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [details, setDetails] = useState({});
   const [styleClick, clickStyle] = useState(false);
 
   let iToS = [];
@@ -137,6 +138,7 @@ export default function Overview({ product_id, goDark, dark }) {
             setSku={setSku}
             product_id={product_id}
             clickStyle={clickStyle}
+            appAvgRating={appAvgRating}
           />
         </div>
       </div>
