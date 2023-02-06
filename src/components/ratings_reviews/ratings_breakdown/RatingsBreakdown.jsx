@@ -25,7 +25,7 @@ const calcRecommended = (recommended) => {
 };
 
 export default function RatingsBreakdown({
-  reviewMetaData, handleStarClick, starFilter, setStarFilter,
+  reviewMetaData, handleStarClick, starFilter, setStarFilter, setAppAvgRating
 }) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [averageRating, setAverageRating] = useState(5);
@@ -38,6 +38,7 @@ export default function RatingsBreakdown({
   useEffect(() => {
     if (Object.keys(reviewMetaData).length) {
       const calcRatings = calcAverageRating(reviewMetaData.ratings);
+      setAppAvgRating(calcRatings.averageScore); // Setting Apps Average Rating too
       setAverageRating(calcRatings.averageScore);
       setTotalVotes(calcRatings.totalVotes);
       setPercentRec(calcRecommended(reviewMetaData.recommended) * 100);

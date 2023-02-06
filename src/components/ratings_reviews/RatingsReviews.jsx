@@ -13,7 +13,7 @@ const initialStarFilterState = {
 };
 
 // Current props needed: productID, productName
-export default function RatingsReviews({ productID, productName }) {
+export default function RatingsReviews({ productID, productName, setAppAvgRating }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
@@ -67,6 +67,7 @@ export default function RatingsReviews({ productID, productName }) {
         handleStarClick={handleStarClick}
         starFilter={starFilter}
         setStarFilter={setStarFilter}
+        setAppAvgRating={setAppAvgRating}
       />
       <ReviewsList
         productReviews={productReviews}

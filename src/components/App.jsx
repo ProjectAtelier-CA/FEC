@@ -10,6 +10,9 @@ import '../styles/styles.scss';
 export default function App() {
   // later this initial id should be passed down from index.jsx as props
   const [id, setId] = useState(37331);
+  const [appAvgRating, setAppAvgRating] = useState(5);
+  // console.log(appAvgRating);
+
 
   return (
     <>
@@ -20,7 +23,7 @@ export default function App() {
       <RelatedProducts id={id} setId={setId} />
       <h3 className="testing-header"> Questions and Answers</h3>
       <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
-      <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
+      <RatingsReviews productID={37331} productName={"Dummy Product Name"} setAppAvgRating={setAppAvgRating} />
     </>
   );
 }
