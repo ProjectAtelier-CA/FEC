@@ -1,34 +1,28 @@
+/* eslint-disable camelcase */
 /* eslint-disable max-len */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+
 import Styles from '../styles/styles';
 import Buttons from '../buttons/buttons';
 import Share from '../buttons/share';
 import StarRating from '../../shared/StarRating';
 
 export default function ProductInfo({
-  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku,
+  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details, clickStyle, appAvgRating,
 }) {
-  const product = {
-    id: 37311,
-    campus: 'hr-rfe',
-    name: 'Camo Onesie',
-    slogan: 'Blend in to your crowd',
-    description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-    category: 'Jackets',
-    default_price: '140.00',
-    created_at: '2021-08-13T14:37:33.145Z',
-    updated_at: '2021-08-13T14:37:33.145Z',
-  };
+  useEffect(() => {
+
+  }, []);
 
   return (
-    <div className="info" key={product.id}>
+    <div className="info" key={details.id}>
       <div className="rating" key="rating">
-        <StarRating rating={3} />
+        <StarRating score={appAvgRating} />
         <a href="http://www.google.com/" className="review-link">Read reviews...</a>
       </div>
-      <h3 className="category">{product.category}</h3>
-      <h1 className="product-name">{product.name}</h1>
+      <h3 className="category">{details.category}</h3>
+      <h1 className="product-name">{details.name}</h1>
       <Styles
         imageIndex={imageIndex}
         setIndex={setIndex}
@@ -41,6 +35,7 @@ export default function ProductInfo({
         styleObject={styleObject}
         currentSku={currentSku}
         setSku={setSku}
+        clickStyle={clickStyle}
       />
       <Buttons
         styles={styles}
@@ -51,6 +46,7 @@ export default function ProductInfo({
         isLoading={isLoading}
         currentSku={currentSku}
         setSku={setSku}
+        product_id={product_id}
       />
       <Share />
     </div>

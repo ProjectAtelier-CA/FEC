@@ -17,6 +17,20 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
+app.get('/products', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.send(data);
+      res.end();
+    })
+    .catch(() => res.send('Failed to get styles'));
+});
+
 app.get('/products/:product_id/styles', (req, res) => {
   const { product_id } = req.params;
   console.log('Request received for styles at product', product_id);
@@ -37,6 +51,25 @@ app.get('/products/:product_id/styles', (req, res) => {
       res.end();
     })
     .catch(() => res.send('Failed to get styles'));
+});
+
+app.post('/cart', (req, res) => {
+  console.log('getting cart post request');
+  console.log(`"${req.body.body}"`);
+  axios({
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart',
+    headers: { Authorization: process.env.AUTH_SECRET },
+    data: {
+      sku_id: 1,
+    },
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // This is for all products GET

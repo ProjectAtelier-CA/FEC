@@ -50,13 +50,15 @@ $triangle: #2f5aaa;
       height: 75px;
 
       img {
-        border: 2px solid $color2;
+        border: 2px solid $triangle;
         // transition: 0.4s;
       }
 
       img:hover {
         // Makes a bigger pop-up to preview image
         cursor: pointer;
+        transition: 0.2s ease;
+        min-width: 75px;
         width: fit-content;
         max-width: 100%; // For preventing overflow
         height: 125px;
@@ -373,6 +375,7 @@ $triangle: #2f5aaa;
   .percent-recommend {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 0.9rem;
     // text-align: center;
   }
 
@@ -412,7 +415,7 @@ $triangle: #2f5aaa;
       }
 
       .filter-active {
-        background-color: $color3;
+        background-color: $color4;
       }
 
       .filter-star-button:hover {
@@ -460,18 +463,28 @@ $triangle: #2f5aaa;
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 0.5s;
       }
 
       .big-tag:hover {
         color: $triangle;
+        transform: scale(2) rotate(15deg);
+        transition: transform 0.3s ease;
       }
 
       .tag-filters {
         display: flex;
 
+        .tag-container {
+          transition: 0.5s ease;
+        }
+
         .tag-container:hover {
           cursor: pointer;
           color: $triangle;
+          translate: 0 -2px;
+          transform: rotate(10deg);
+          transition: 0.3s ease;
         }
 
         .small-tag {
@@ -631,7 +644,7 @@ $triangle: #2f5aaa;
 }
 
 .review-modal-content {
-  border: 2px solid $color6;
+  border: 3px solid $triangle;
   background-color: $color4;
   padding: 20px;
   position: fixed;
@@ -657,7 +670,7 @@ $triangle: #2f5aaa;
 
   .star-rec-container {
     // border: 2px solid blue;
-    width: 350px;
+    min-width: 370px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -692,7 +705,7 @@ $triangle: #2f5aaa;
       }
 
       .individual-photo {
-        border: 2px solid $color6;
+        border: 2px solid $triangle;
         width: 65px;
         height: 65px;
         display: flex;
@@ -922,6 +935,71 @@ $triangle: #2f5aaa;
     box-shadow:  0 0 10px  rgba(0,0,0, .6);
   }
 }
+
+.image-carousel-modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  // border: 2px solid blue;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .image-modal-carousel {
+    // border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+  }
+
+  .image-carousel-modal-next {
+    // border: 2px solid pink;
+    // width: object-fit;
+    width: 700px;
+    max-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 15px;
+    filter: blur(2px);
+    transition: 0.5s;
+  }
+
+  .image-carousel-modal-next:hover {
+    filter: blur(0);
+    transition: 0.3s;
+    box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
+  }
+
+  .image-carousel-modal-content {
+    // width: 500px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 70vw;
+      max-height: 60vh;
+      object-fit: contain;
+      box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
+      // animation: fadeIn 1s;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+}
+
 
 .action-buttons-container {
   // border: 2px solid red;

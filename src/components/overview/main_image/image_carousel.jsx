@@ -1,20 +1,24 @@
+/* eslint-disable max-len */
+/* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import {
   MdKeyboardArrowLeft, MdKeyboardArrowRight, MdOutlineFullscreen, MdOutlineFullscreenExit,
 } from 'react-icons/md';
-import Thumbnails from './thumbnails';
+// import Thumbnails from './thumbnails';
+import Thumbnails2 from './thumbnailRefactor';
 
 export default function ImageCarousel({
-  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos, clickStyle, styleClick,
 }) {
-  const images = styles.map((style) => style.photos).flat();
-  const N = images.length;
-
+  const [N, setN] = useState(photos.length);
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
   const [isClicked, setClick] = useState(false);
-  // const [thumbnailIndex, setThumbnail] = useState(imageIndex);
+
+  useEffect(() => {
+    setN(photos.length);
+  }, [photos]);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -29,7 +33,7 @@ export default function ImageCarousel({
         const width = height / ratio;
         const startX = Math.max((X - width) / 2, 0);
         const endX = X - startX;
-        // eslint-disable-next-line max-len
+
         let margin = 0;
         try {
           margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
@@ -49,7 +53,6 @@ export default function ImageCarousel({
             y: y - margin,
           };
         }
-
         setPos(pos);
       };
 
@@ -108,7 +111,7 @@ export default function ImageCarousel({
       <section>
         <div className={isExpanded ? 'expanded' : 'normal'}>
           <div className="o-carousel">
-            <Thumbnails
+            <Thumbnails2
               imageIndex={imageIndex}
               setIndex={setIndex}
               imgToStyle={imgToStyle}
@@ -117,6 +120,11 @@ export default function ImageCarousel({
               setSku={setSku}
               setSkus={setSkus}
               currentStyle={currentStyle}
+              product_id={product_id}
+              photos={photos}
+              N={N}
+              clickStyle={clickStyle}
+              styleClick={styleClick}
             />
             {
               imageIndex > 0
@@ -159,7 +167,7 @@ export default function ImageCarousel({
             </button>
             <ul>
               {
-                images.map((image) => (
+                photos.map((image) => (
                   // eslint-disable-next-line max-len
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
                   <li key={image.url} className="o-slide" onClick={handleImageClick}>
@@ -169,7 +177,7 @@ export default function ImageCarousel({
                       `image
                         ${isExpanded || (mousePos === null) ? 'zoom' : ''}
                         ${isClicked && isExpanded ? 'zoom_clicked' : ''}
-                        ${image === images[imageIndex] ? 'active' : 'hidden'}`
+                        ${image === photos[imageIndex] ? 'active' : 'hidden'}`
                       }
                       src={image.url}
                       alt="Carousel Slide"

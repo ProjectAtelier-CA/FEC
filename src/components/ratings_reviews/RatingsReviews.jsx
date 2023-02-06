@@ -13,7 +13,7 @@ const initialStarFilterState = {
 };
 
 // Current props needed: productID, productName
-export default function RatingsReviews({ productID, productName }) {
+export default function RatingsReviews({ productID, productName, setAppAvgRating }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
@@ -35,7 +35,7 @@ export default function RatingsReviews({ productID, productName }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [sortBy, rerender]);
+  }, [sortBy, rerender, productID]);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews/meta', {
@@ -49,7 +49,7 @@ export default function RatingsReviews({ productID, productName }) {
         console.log(err);
       });
   // Re-render is triggered on report so we can hot reload
-  }, [rerender]);
+  }, [rerender, productID]);
 
   const handleStarClick = (starType) => {
     // console.log(starType);
@@ -67,6 +67,7 @@ export default function RatingsReviews({ productID, productName }) {
         handleStarClick={handleStarClick}
         starFilter={starFilter}
         setStarFilter={setStarFilter}
+        setAppAvgRating={setAppAvgRating}
       />
       <ReviewsList
         productReviews={productReviews}

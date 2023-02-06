@@ -4,7 +4,17 @@ $blue: #2F5AAA;
 $coolblue: #415A77;
 $darkblue: #1B263B;
 $lightgrey: #e0e1dd;
+$blue: #2F5AAA;
+$coolblue: #415A77;
+$darkblue: #1B263B;
+$lightgrey: #e0e1dd;
 
+.testing-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: $coolblue;
+}
 .testing-header {
   display: flex;
   flex-direction: row;
@@ -16,7 +26,13 @@ $lightgrey: #e0e1dd;
   justify-content: center;
   border-style:solid;
   align-items: center;
+  // display: flex;
+  justify-content: center;
+  border-style:solid;
+  align-items: center;
   opacity:50%;
+  // margin-left: 13.30rem;
+  width: 50%;
   // margin-left: 13.30rem;
   width: 50%;
 }

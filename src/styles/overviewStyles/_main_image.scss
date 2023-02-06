@@ -1,5 +1,11 @@
 
 @import "_thumbnails";
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+$color6: #FF101F;
 
 .o-slide {
   position: absolute;
@@ -8,6 +14,7 @@
 }
 
 .image {
+  display: flex;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -96,7 +103,7 @@
 .carousel-nav {
   scale: 3;
   width: 1vw;
-  color: black;
+  color: $color1;
   margin: 4px;
   align-self: center;
   justify-content: center;
@@ -139,7 +146,7 @@
   z-index: 2;
   transform: translate(0,50%);
   bottom: 98%;
-  color: black;//rgba(255,255,255,.5);
+  color: $color1;//rgba(255,255,255,.5);
   cursor: pointer;
   border-radius: .05rem;
   padding: 0 .5rem;
@@ -147,7 +154,7 @@
 }
 
 .o-image-expand:hover {
-  color: #463F3A;
+  color: $color2;
 }
 
 .o-carousel > ul {

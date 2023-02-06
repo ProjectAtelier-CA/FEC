@@ -1,7 +1,18 @@
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+$color6: #FF101F;
+
 .image-and-info {
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 10px;
 
+  flex-shrink: 1;
+  height: fit-content;
+  padding-bottom: 10px;
 }
 
 * {
@@ -15,6 +26,7 @@
   flex-flow: column nowrap;
   width: 40vw;
   height: 60vh;
+  height: fit-content;
 }
 
 .info {
@@ -24,6 +36,7 @@
   // overflow: auto;
   flex-shrink: inherit;
   position: relative;
+  color: $color1;
 
   h1 {
     margin: 0;
@@ -50,16 +63,17 @@
   font-weight: normal;
   padding-top: 3%;
   padding-bottom: 3%;
+  font-size: min(1.7vh, 1.7vw);;
 
   .sale-price {
-    color: red;
+    color: $color6;
     font-weight: bold;
   }
 
   .original-price {
     font-family: 'Inter', sans-serif;
     font-weight: normal;
-    color: black;
+    color: $color1;
     opacity: .5;
     text-decoration: line-through;
   }
@@ -77,6 +91,7 @@
   margin: 0px;
   padding-top: 2%;
   padding-bottom: 2%;
+  color: $color1;
   // border: solid green;
 }
 
@@ -86,6 +101,12 @@
   width: fit-content;
   height: fit-content;
   font-weight: light;
+  color: $color1;
+  justify-content: flex-start;
+
+  h1 {
+    text-align: left;
+  }
   // border: solid green;
   // border: solid;
   // border-color: green;
@@ -98,6 +119,7 @@
 // styles
 .styles {
   padding: 0;
+  color: $color1;
   // border: solid;
   // border-color: green;
 
@@ -164,7 +186,7 @@
   border-radius: 100%;
 
   .checkmark-self {
-    color: #D0B8AC;
+    color: $color2;
     background-color: white;
     border-radius: 100%;
     scale: 1.1;
@@ -191,13 +213,13 @@
 }
 
 .style-thumbnail:hover {
-  border: solid #D0B8AC;
+  border: solid $color2;
   transition: border 200ms ease-in-out;
 
 }
 
 .style-active {
-  border: solid black;
+  border: solid $color1;
 }
 
 .price {

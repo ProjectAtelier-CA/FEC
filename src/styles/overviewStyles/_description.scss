@@ -1,4 +1,10 @@
-
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+$color6: #FF101F;
+$color7: #32DE8A;
 
 .o-description {
   display: flex;
@@ -6,17 +12,20 @@
   justify-content: center;
   align-items: center;
   padding: 5vh 100px 10px 100px;
+  height: 10vh;
+  width: 100vw;
+  flex-shrink: 2;
 }
 
 .description-content {
   font-family: 'Inter', sans-serif;
+  color: $color1;
   padding-right: 50px;
   display: flex;
   flex-flow: column nowrap;
   align-items: start;
-  height:fit-content;
-  // justify-content: space-between;
   height: fit-content;
+  // justify-content: space-between;
   // margin: 0px;
   // padding: 0px;
   // height: 100%;
@@ -26,8 +35,9 @@
 }
 
 .o-title {
-  font-size: 2rem;
+  // font-size: 2rem;
   margin: 0;
+  font-size: min(3vh, 3vw);
   // border: solid;
   // border-color: green;
 }
