@@ -12,6 +12,7 @@ export default function App() {
   const [id, setId] = useState(37331);
   const [appAvgRating, setAppAvgRating] = useState(5);
   // console.log(appAvgRating);
+  console.log(id);
 
 
   return (
@@ -23,7 +24,7 @@ export default function App() {
       <RelatedProducts id={id} setId={setId} />
       <h3 className="testing-header"> Questions and Answers</h3>
       <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
-      <RatingsReviews productID={37331} productName={"Dummy Product Name"} setAppAvgRating={setAppAvgRating} />
+      <RatingsReviews productID={id} productName={"Dummy Product Name"} setAppAvgRating={setAppAvgRating} />
     </>
   );
 }
