@@ -5,20 +5,16 @@ $coolblue: #415A77;
 $darkblue: #1B263B;
 $lightgrey: #e0e1dd;
 $buttoncolor: #EFE5DC;
+$darkbrown: #463F3A;
 
 
 .testing-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: $coolblue;
+  color: $darkbrown;
 }
-.testing-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: $coolblue;
-}
+
 .question-header {
   // display: flex;
   justify-content: center;
@@ -55,7 +51,7 @@ $buttoncolor: #EFE5DC;
   margin:1rem;
   min-height: fit-content;
   text-align: justify;
-  color: $coolblue;
+  color: $darkbrown;
 }
 
 
@@ -67,7 +63,7 @@ $buttoncolor: #EFE5DC;
 
 .q-tag {
   margin-right: .5rem;
-  color: $coolblue;
+  color: $darkbrown;
 
 }
 .a-tag{
@@ -136,7 +132,7 @@ $buttoncolor: #EFE5DC;
   background: none;
   font-size: .7rem;
   font-weight: 600;
-  color:$coolblue;
+  color:$darkbrown;
   border:none;
   margin-left:2rem;
 }
