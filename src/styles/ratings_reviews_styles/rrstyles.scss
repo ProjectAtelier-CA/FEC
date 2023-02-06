@@ -4,10 +4,14 @@ $color3: #F3D8C7;
 $color4: #EFE5DC;
 $color5: #FBFEFB;
 $color6: #EE6C4D;
+$triangle: #2f5aaa;
+
 
 
 * {
   box-sizing: border-box;
+  // background-color: #141416;
+  // color: #bb9f8c;
 }
 
 .ratings-reviews-container {
@@ -30,10 +34,14 @@ $color6: #EE6C4D;
   margin-bottom: 20px;
   // margin-right: 40px;
 
+  .highlight-color {
+    background-color: $color4;
+  }
+
   .review-photo-container {
     // border: 2px solid blue;
     height: 100%;
-    // margin-bottom: 10px;
+    margin-bottom: 4px;
 
     div {
       // border: 2px solid $color3;
@@ -49,6 +57,7 @@ $color6: #EE6C4D;
         // Makes a bigger pop-up to preview image
         cursor: pointer;
         width: fit-content;
+        max-width: 100%; // For preventing overflow
         height: 125px;
         z-index: 0;
         border: solid 1px #555;
@@ -80,6 +89,8 @@ $color6: #EE6C4D;
         opacity: .8;
         color: $color1;
         .review-user {
+          opacity: 1;
+          color: $triangle;
           font-weight: 700;
         }
       }
@@ -146,19 +157,15 @@ $color6: #EE6C4D;
 
       button:hover {
         opacity: .5;
-        color: $color1;
-        span {
-          border-color: $color1;
-        }
+        color: $triangle;
+        border-color: $triangle;
         cursor: pointer;
       }
 
       .helpful-active {
-        opacity: .5;
-        color: $color1;
-        span {
-          border-color: $color1;
-        }
+        opacity: .6;
+        color: $triangle;
+        border-color: $triangle;
       }
 
       div {
@@ -234,41 +241,84 @@ $color6: #EE6C4D;
 
 // Right Container
 .reviews-list {
+  // background-color: white;
   // border: 2px solid dodgerblue;
   width: 100%;
 }
 
-.reviews-sort-menu {
-  // border: 2px solid cyan;
-  // background-color: $color2;
+.sort-menu-container {
+  // border: 2px solid red;
   display: flex;
-  align-items: flex-end;
-  margin-bottom: 20px;
-  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  // margin-bottom: 20px;
 
-  .number-of-reviews {
-    font-size: 2rem;
-    transform: translate(0px, 5px);
-    margin-right: 5px;
-  }
+  .reviews-sort-menu {
+    // border: 2px solid cyan;
+    // background-color: $color2;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    font-weight: 700;
+    // border: 2px solid blue;
 
-  .sort-selections {
-    select {
-      border: none;
-      border-bottom: 2px solid black;
-      margin-left: 5px;
-      font-weight: 700;
-      // Move it down according to border bottom
-      position: relative;
-      top: 2px
+    .number-of-reviews {
+      font-size: 2rem;
+      transform: translate(0px, 5px);
+      margin-right: 5px;
     }
 
-    select:hover {
+    .sort-selections {
+      select {
+        border: none;
+        border-bottom: 2px solid black;
+        margin-left: 5px;
+        font-weight: 700;
+        // Move it down according to border bottom
+        position: relative;
+        top: 2px
+      }
+
+      select:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .search-input-bar {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-left: 30px;
+    // border: 2px solid red;
+    // width: 100%;
+    // min-width: 300px;
+    // max-width: 400px;
+    // width: 100%;
+    // height: 20px;
+    input {
+      // width: 100%;
+      width: 200px;
+      // max-width: 400px;
+    }
+
+    .search-icon {
+      font-size: 2rem;
+      // transform: scale(1.5);
+      display: flex;
+      transition: 0.5s;
+    }
+
+    .search-icon:hover {
       cursor: pointer;
+      color: $triangle;
+      translate: 0 -5px;
+      transition: 0.5s;
     }
   }
 
 }
+
 
 .recommend-check-container {
   // border: 2px solid blue;
@@ -378,10 +428,11 @@ $color6: #EE6C4D;
           width: 244px;
           height: 10px;
           position: absolute;
+          z-index: -1;
         }
 
         .green-bar {
-          background-color: $color6;
+          background-color: $triangle;
           height: 10px;
         }
       }
@@ -409,7 +460,7 @@ $color6: #EE6C4D;
       }
 
       .big-tag:hover {
-        color: $color6;
+        color: $triangle;
       }
 
       .tag-filters {
@@ -417,7 +468,7 @@ $color6: #EE6C4D;
 
         .tag-container:hover {
           cursor: pointer;
-          color: $color6;
+          color: $triangle;
         }
 
         .small-tag {
@@ -474,7 +525,9 @@ $color6: #EE6C4D;
 
     .char-bar {
       margin-top: 3px;
-      background-color: $color3;
+      background-color: $color2;
+      opacity: 0.4;
+      z-index: -1;
       width: 100px;
       height: 10px;
     }
@@ -485,7 +538,7 @@ $color6: #EE6C4D;
       height: 10px;
       transform: rotate(180deg);
       margin-top: 9px;
-      color: $color6;
+      color: $triangle;
     }
 
     .trait-container-left {

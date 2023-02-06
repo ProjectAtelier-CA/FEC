@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { BiSearchAlt } from 'react-icons/bi';
 
-export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewListTopRef }) {
+export default function ReviewsSortMenu({
+  handleSortClick, numReviews, reviewListTopRef, searchInput, setSearchInput, setDebouncedSearch
+}) {
+  const [showSearch, setShowSearch] = useState(false);
+
   const handleClick = (e) => {
     handleSortClick(e);
     setTimeout(() => {
@@ -9,8 +14,14 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewLis
     }, 200);
   };
 
+  const handleIconClick = () => {
+    setShowSearch(!showSearch);
+    setDebouncedSearch('');
+    setSearchInput('');
+  };
+
   return (
-    <div>
+    <div className="sort-menu-container">
       {/* <h4>ReviewsSortMenu</h4> */}
       <div className="reviews-sort-menu">
         <div className="number-of-reviews">
@@ -26,6 +37,12 @@ export default function ReviewsSortMenu({ handleSortClick, numReviews, reviewLis
             <option value="helpful">helpful</option>
           </select>
         </div>
+      </div>
+      <div className="search-input-bar">
+        {showSearch
+          ? <input type="text" placeholder="Search..." value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+          : null }
+        <div className="search-icon" onClick={handleIconClick}>{BiSearchAlt()}</div>
       </div>
     </div>
   );

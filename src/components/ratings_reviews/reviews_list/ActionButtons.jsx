@@ -29,7 +29,7 @@ export default function ActionButtons({
       ) : null}
       {showLess ? (
         <button type="button" onClick={handleLessClick}>
-          <div className="more-text">Collaspe Reviews</div>
+          <div className="more-text">Collapse Reviews</div>
         </button>
       ) : null }
       <button type="button" onClick={() => setShowReviewModal(true)}>

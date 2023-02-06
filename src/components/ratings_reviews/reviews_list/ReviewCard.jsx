@@ -9,7 +9,7 @@ import HelpfulButton from './HelpfulButton';
 import ReportButton from './ReportButton';
 
 export default function ReviewCard({
-  review, handleImageClick, handleHelpfulClick, handleReportClick,
+  review, handleImageClick, handleHelpfulClick, handleReportClick, debouncedSearch,
 }) {
   const shortBodyText = review.body.slice(0, 250); // Don't need state since never changing
   // const [shortBodyText, setShortBodyText] = useState(review.body.slice(0, 250));
@@ -24,7 +24,12 @@ export default function ReviewCard({
           <UserDateInfo date={review.date} user={review.reviewer_name} />
         </div>
       </div>
-      <ReviewCardText content={shortBodyText} fullContent={review.body} summary={review.summary} />
+      <ReviewCardText
+        content={shortBodyText}
+        fullContent={review.body}
+        summary={review.summary}
+        debouncedSearch={debouncedSearch}
+      />
       { review.recommend ? <RecommendCheck /> : null }
       { review.response ? <SellerResponse response={review.response} /> : null }
       { review.photos.length

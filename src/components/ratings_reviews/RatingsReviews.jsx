@@ -48,6 +48,7 @@ export default function RatingsReviews({ productID, productName }) {
       }).catch((err) => {
         console.log(err);
       });
+  // Re-render is triggered on report so we can hot reload
   }, [rerender]);
 
   const handleStarClick = (starType) => {
