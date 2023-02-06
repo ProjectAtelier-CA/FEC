@@ -1,7 +1,18 @@
 // think of these statement as [import * from '...'] in JavaScript module
 @use 'shared/_utils' as *;
 @use 'shared/_stars' as *;
+@use 'shared/_colors' as *;
 @use 'relatedProducts/_related-products' as *;
+
+#App__container {
+  color: $color__font;
+  background: $color__background;
+
+  &.dark-mode {
+    color: $color__font--dark;
+    background: $color__background--dark;
+  }
+}
 
 // $main-color: #463F3A;
 // $heading-font-family: Inter, sans-serif;
@@ -10,10 +21,3 @@
 //   color: $main-color;
 //   font-family: Inter, sans-serif;
 // }
-
-
-
-// $heading-font-family: 'Inter', sans-serif;
-// $body-font-family: 'Inter', sans-serif;
-// $base-font-size: 18px;
-// $base-font-weight: 400;
