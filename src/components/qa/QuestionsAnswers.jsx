@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
@@ -7,8 +8,8 @@ import QuestionList from './QuestionList.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
 import AddQuestions from './AddQuestion';
 
-export default function QuestionsAnswers({ id }) {
-  const [productId, setId] = useState('37316' || id);
+export default function QuestionsAnswers({ id, productName }) {
+  const [productId, setId] = useState(37316);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,12 +25,12 @@ export default function QuestionsAnswers({ id }) {
   if (!loading) {
     return (
       <div>
-        <h3 className="question-header"> Questions and Answers</h3>
+        {/* <h3 className="question-header"> Questions and Answers</h3> */}
         <div className="master-question">
-
+        {/* <h3> Questions and Answers</h3> */}
           {
         !loading
-          ? <QuestionList product_id={productId} productIdData={questions} />
+          ? <QuestionList productName={productName} product_id={productId} productIdData={questions} />
           : null
          }
         </div>
