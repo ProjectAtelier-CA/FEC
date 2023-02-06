@@ -40,7 +40,17 @@ export default function ProductBreakdownList({ chars }) {
     }
   };
 
+  const resetCharBars = () => {
+    setShowSize(false);
+    setShowWidth(false);
+    setShowComfort(false);
+    setShowQuality(false);
+    setShowLength(false);
+    setShowFit(false);
+  };
+
   useEffect(() => {
+    resetCharBars();
     const currChars = Object.keys(chars); // List of characteristics for product
     if (currChars.length) {
       setTriPositions(calcTrianglePosition(chars)); // Set triangle position
