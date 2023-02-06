@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
+import { IoWarningOutline } from 'react-icons/io5';
 import Characteristic from './Characteristic';
 import ReviewErrorMessage from './ReviewErrorMessage';
 import StarRatingReview from './StarRatingReview';
 import StarMeaning from './StarMeaning';
 import ReviewModalPhoto from './ReviewModalPhoto';
-
-// Todo: Upload photo functionality
-// Todo: Validating photo urls
-// Todo: Setting star rating
 
 export default function ReviewModal({
   setShowReviewModal, reviewMetaData, setRerender, productName,
@@ -72,31 +69,33 @@ export default function ReviewModal({
 
   const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
   const widthSelections = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
-  const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
+  const comfortSelections = ['Uncomfortable', 'Slightly uncomfortable', 'Average', 'Comfortable', 'Perfect'];
   const qualitySelections = ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'];
   const lengthSelections = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
   const fitSelections = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'];
 
-  const currChars = Object.keys(reviewMetaData.characteristics);
-  const charForms = currChars.map((char) => {
-    const currKey = reviewMetaData.characteristics[char].id;
-    // console.log(char);
-    let currCharForm;
-    if (char === 'Size') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={sizeSelections} charType="Size" charID={currKey} />;
-    } else if (char === 'Width') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={widthSelections} charType="Width" charID={currKey} />;
-    } else if (char === 'Comfort') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={comfortSelections} charType="Comfort" charID={currKey} />;
-    } else if (char === 'Quality') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={qualitySelections} charType="Quality" charID={currKey} />;
-    } else if (char === 'Length') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={lengthSelections} charType="Length" charID={currKey} />;
-    } else if (char === 'Fit') {
-      currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={fitSelections} charType="Fit" charID={currKey} />;
-    }
-    return currCharForm;
-  });
+  const charForms = useMemo(() => {
+    const currChars = Object.keys(reviewMetaData.characteristics);
+    return currChars.map((char) => {
+      // console.log('loading char vote form');
+      const currKey = reviewMetaData.characteristics[char].id;
+      let currCharForm;
+      if (char === 'Size') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={sizeSelections} charType="Size" charID={currKey} />;
+      } else if (char === 'Width') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={widthSelections} charType="Width" charID={currKey} />;
+      } else if (char === 'Comfort') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={comfortSelections} charType="Comfort" charID={currKey} />;
+      } else if (char === 'Quality') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={qualitySelections} charType="Quality" charID={currKey} />;
+      } else if (char === 'Length') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={lengthSelections} charType="Length" charID={currKey} />;
+      } else if (char === 'Fit') {
+        currCharForm = <Characteristic key={currKey} handleChange={handleRatingClick} selectionNames={fitSelections} charType="Fit" charID={currKey} />;
+      }
+      return currCharForm;
+    });
+  }, [reviewMetaData]);
 
   const handleModalOutsideClick = (e) => {
     if (e.target === outsideModalRef.current) {
@@ -111,6 +110,7 @@ export default function ReviewModal({
   const onPhotoSubmit = () => {
     if (!currUrl.length) {
       console.log('Error with photo url');
+      // Maybe put a animation for submit bc bad url
     } else {
       setPhotos([...photos, currUrl]);
       setCurrUrl('');
@@ -122,20 +122,23 @@ export default function ReviewModal({
     setPhotos(newPhotos);
   };
 
-  const reviewModalPhotos = photos.map((photo, index) => (
-    <ReviewModalPhoto
-      key={Math.random()}
-      photoUrl={photo}
-      photoIndex={index}
-      handleImageClick={handleImageClick}
-      setShowPhotoError={setShowPhotoError}
-    />
-  ));
+  // Memoized the modalPhotos until the photos state changes (prevents excessive reloading)
+  const reviewModalPhotos = useMemo(() => (
+    photos.map((photo, index) => (
+      <ReviewModalPhoto
+        key={Math.random()}
+        photoUrl={photo}
+        photoIndex={index}
+        handleImageClick={handleImageClick}
+        setShowPhotoError={setShowPhotoError}
+      />
+    ))
+  ), [photos]);
 
   return (
     <div
       className="review-modal-container"
-      onClick={(e) => handleModalOutsideClick(e)}
+      onMouseDown={(e) => handleModalOutsideClick(e)}
       ref={outsideModalRef}
     >
       <div className="review-modal-content">
@@ -149,7 +152,7 @@ export default function ReviewModal({
               <div className="star-rec-container">
                 <div>
                   <div className="star-rating">
-                    <div>Rate the product *</div>
+                    <div>Rate this product *</div>
                     <StarRatingReview score={starRating} setStarRating={setStarRating} />
                     <StarMeaning score={starRating} />
                   </div>
@@ -186,17 +189,23 @@ export default function ReviewModal({
                   <div className="photos">
                     {reviewModalPhotos}
                   </div>
-                  {showPhotoError ? <div className="photo-error-message">Please remove error image</div> : null}
+                  {showPhotoError
+                    ? (
+                      <div className="photo-error-message">
+                        <div>{IoWarningOutline()}</div>
+                        <div>Please remove error image</div>
+                      </div>
+                    ) : null}
                 </div>
               </div>
               <div className="name-email-container">
                 <div className="username">
-                  <div>What is your nickname *</div>
+                  <div>Enter Username *</div>
                   <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="email">
-                  <div>Your email *</div>
+                  <div>Enter Email *</div>
                   <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <div className="privacy-notice">For authentication reasons, you will not be emailed</div>
                 </div>
@@ -204,13 +213,13 @@ export default function ReviewModal({
             </div>
             <div>
               <div className="review-summary-text">
-                <div>Review Summary Text</div>
+                <div>Enter Summary Text</div>
                 <input maxLength="60" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
               </div>
             </div>
             <div>
               <div className="review-body-text">
-                <div className="text-header">Review Body Text Input *</div>
+                <div className="text-header">Enter Body Text *</div>
                 <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
                 <div className="text-footer">
                   {reviewText.length <= 50 ? `Minimum required characters left: [ ${50 - reviewText.length} ]` : 'Minimum reached'}
@@ -218,7 +227,7 @@ export default function ReviewModal({
               </div>
             </div>
             <div className="char-container">
-              <div>Characteristics *</div>
+              <div>Select Characteristics *</div>
               <div className="char-forms">
                 {charForms}
               </div>
