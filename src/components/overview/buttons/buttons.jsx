@@ -236,8 +236,8 @@ export default function Buttons({
         <button type="button" className="button favorite" onClick={handleFavorite}>
           {
             favorite
-              ? <BsStarFill />
-              : <BsStar />
+              ? <BsStarFill className="favorite-star" />
+              : <BsStar className="favorite-star" />
           }
         </button>
       </div>
