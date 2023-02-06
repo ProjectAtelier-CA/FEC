@@ -6,7 +6,7 @@ import QuestionsAnswers from './qa/QuestionsAnswers';
 import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
-import { GiAmericanShield, GiOctopus } from 'react-icons/gi';
+import { GiAmericanShield } from 'react-icons/gi';
 
 /* ----------- Set up id state -------------- */
 export default function App() {

@@ -7,7 +7,6 @@ import { FaSearch } from 'react-icons/fa';
 
 export default function Nav({ goDark, dark }) {
   // const [search, setSearch] = useState('');
-  // const [results, setResults] = useState([]);
   // const [searched, setSearched] = useState(false);
 
   // useEffect(() => {
@@ -17,6 +16,11 @@ export default function Nav({ goDark, dark }) {
   //       setResults(data);
   //     });
   // }, []);
+
+  function handleSearch(event) {
+    console.log(event.target.value);
+    // setSearch(event.target.value);
+  }
 
   function setDarkMode() {
     goDark(!dark);
@@ -30,7 +34,7 @@ export default function Nav({ goDark, dark }) {
           : <GiAmericanShield className="light-logo" />}
       </div>
       <div className="searchWrapper">
-        <input className="search" type="text" />
+        <input className="search" type="text" onChange={handleSearch} />
         <FaSearch className="search-icon" />
         <button type="button" className="night-button" onClick={setDarkMode}>
           <MdModeNight

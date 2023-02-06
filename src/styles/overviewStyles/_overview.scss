@@ -66,15 +66,21 @@ html {
   top: 40%;
   transform: translate(0,50%);
   left: 50%;
-  animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+  // animation: spin 2s linear infinite;
+  // animation: spin 2s linear infinite;
   color: $color1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateY 2s infinite linear;
+
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+// @keyframes spin {
+//   0% { transform: rotate(0deg); }
+//   100% { transform: rotate(360deg); }
+// }
 
 h1 {
   text-align: left;
@@ -83,5 +89,19 @@ h1 {
   text-align: left;
 }
 
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 
+// .loading-reviews-icon {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   animation: rotateY 2s infinite linear;
+// }
 

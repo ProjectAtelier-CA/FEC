@@ -29,11 +29,10 @@ import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview({
 
-  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id
+  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id,
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
-  // const [overviewLoading, setOverviewLoading] = useState(true);
   const [imgToStyles, setImgToStyles] = useState([]);
   const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});
@@ -100,7 +99,14 @@ export default function Overview({
     <div className="overview">
       <Nav goDark={goDark} dark={dark} />
       <div className="spacer">
-        <Banner className="banner-div" />
+        <Banner
+          className="banner-div"
+          styles={styles}
+          setStyle={setStyle}
+          setIndex={setIndex}
+          setStyleObject={setStyleObject}
+          clickStyle={clickStyle}
+        />
       </div>
       <div className="image-and-info">
         <ImageCarousel
