@@ -161,7 +161,7 @@ app.get('/questions', (req, res) => {
       Authorization: process.env.AUTH_SECRET,
     },
     params: {
-      product_id: req.query.productId,
+      product_id: req.query.id,
       count: 100,
     },
   })

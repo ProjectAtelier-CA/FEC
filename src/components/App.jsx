@@ -19,7 +19,7 @@ export default function App() {
       <Overview product_id={id} />
       <RelatedProducts id={id} setId={setId} />
       <h3 className="testing-header"> Questions and Answers</h3>
-      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
+      <QuestionsAnswers id={id} setId={setId} productName={"A Purty Pink Jacket"}/>
       <RatingsReviews productID={37331} productName={"Dummy Product Name"} />
     </>
   );

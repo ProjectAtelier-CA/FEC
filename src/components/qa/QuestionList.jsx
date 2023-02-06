@@ -74,7 +74,7 @@ export default function QuestionList({ productIdData, product_id, productName })
         { (renderQuestions.length === 0 && isSearching) ? <div>No Results Matching Search. Try Again</div> : null}
         {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} productName={productName} q={question} />))}
       </div>
-      <div className="bottom-buttons">
+      <div className="bottom-buttons-questions">
         { showMore ? <button type="button" className="more-question-button" onClick={loadQuestions}> More Answered Questions</button> : null }
         {(showLess && productIdData.length !== 0) ? <button type="button" className="more-question-button" onClick={unloadQuestions}> Top</button> : null}
         <App productName={productName} product_id={product_id} />

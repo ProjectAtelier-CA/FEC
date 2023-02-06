@@ -37,7 +37,7 @@ $lightgrey: #e0e1dd;
 }
 
 .question-body {
-  font-weight: 900;
+  font-weight: 700;
   width: 60em;
   margin:1rem;
   min-height: fit-content;
@@ -89,7 +89,7 @@ $lightgrey: #e0e1dd;
 
 }
 .answer-list {
-  max-height: 15rem;
+  max-height: 16rem;
   min-height: min-content;
   overflow-y: auto;
 }
@@ -166,6 +166,12 @@ $lightgrey: #e0e1dd;
 
 }
 
+.report-button-clicked{
+  font-weight: 500;
+  color:red;
+}
+
+
 
 .more-question-button, .add-question-button {
   border: solid;
@@ -174,7 +180,7 @@ $lightgrey: #e0e1dd;
   background-color: white;
   margin-right: 1rem;
   color:$darkblue;
-  font-weight: 900;
+  font-weight: 500;
 
 }
 
