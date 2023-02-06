@@ -50,7 +50,7 @@ $triangle: #2f5aaa;
       height: 75px;
 
       img {
-        border: 2px solid $color2;
+        border: 2px solid $triangle;
       }
 
       img:hover {
@@ -372,6 +372,7 @@ $triangle: #2f5aaa;
   .percent-recommend {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 0.9rem;
     // text-align: center;
   }
 
@@ -411,7 +412,7 @@ $triangle: #2f5aaa;
       }
 
       .filter-active {
-        background-color: $color3;
+        background-color: $color4;
       }
 
       .filter-star-button:hover {
@@ -640,7 +641,7 @@ $triangle: #2f5aaa;
 }
 
 .review-modal-content {
-  border: 2px solid $color6;
+  border: 3px solid $triangle;
   background-color: $color4;
   padding: 20px;
   position: fixed;
@@ -666,7 +667,7 @@ $triangle: #2f5aaa;
 
   .star-rec-container {
     // border: 2px solid blue;
-    width: 350px;
+    min-width: 370px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -701,7 +702,7 @@ $triangle: #2f5aaa;
       }
 
       .individual-photo {
-        border: 2px solid $color6;
+        border: 2px solid $triangle;
         width: 65px;
         height: 65px;
         display: flex;
