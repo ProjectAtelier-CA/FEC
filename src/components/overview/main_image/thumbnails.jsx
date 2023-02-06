@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // eslint-disable-next-line no-unused-vars
+
+/*
 import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 
@@ -82,6 +84,7 @@ export default function Thumbnails({
   useEffect(() => {
     if (mouseOut) {
       setStart(imageIndex);
+      setScroll(imageIndex);
       if (imageIndex === 0) {
         containerRef.current.children[0].scrollIntoView({
           top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
@@ -168,3 +171,5 @@ export default function Thumbnails({
 
   );
 }
+
+*/

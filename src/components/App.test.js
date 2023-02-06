@@ -12,3 +12,4 @@ describe('Jest', function() {
     expect(screen.getByTestId('app-test')).toHaveTextContent('All Our Components');
   })
 })
+

@@ -26,15 +26,18 @@ import ProductInfo from './product_header/product_info';
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
-export default function Overview({ product_id }) {
+export default function Overview({
+  product_id, goDark, dark, appAvgRating, details, setDetails, styles, setStyles,
+}) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [isLoading, setLoading] = useState(true);
-  const [styles, setStyles] = useState([]);
   const [imgToStyles, setImgToStyles] = useState([]);
   const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});
   const [currentSku, setSku] = useState('');
+  const [photos, setPhotos] = useState([]);
+  const [styleClick, clickStyle] = useState(false);
 
   let iToS = [];
 
@@ -49,9 +52,10 @@ export default function Overview({ product_id }) {
       })
       .then((results) => {
         setStyles(results);
-        setStyleObject(styles[0]);
+        setStyleObject(results[0]);
         setSkus(results[0].skus);
         setSku(Object.keys(results[0].skus)[0]);
+        setPhotos(results.map((style) => style.photos).flat());
       })
       .then(() => {
         setImgToStyles(iToS);
@@ -61,12 +65,22 @@ export default function Overview({ product_id }) {
       });
   }
 
+  function getProduct() {
+    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
+      .then(({ data }) => {
+        setDetails(data);
+      });
+  }
+
   useEffect(() => {
     getStyles();
+    setStyle(0);
+    setIndex(0);
+    getProduct();
   }, [product_id]);
 
   useEffect(() => {
-    if (Object.keys(skus).length > 0) {
+    if (Object.keys(skus).length > 0 && photos.length > 0) {
       setLoading(false);
     }
   }, [skus]);
@@ -81,11 +95,14 @@ export default function Overview({ product_id }) {
   }
 
   return (
-    <>
-      <Nav />
-      <Banner />
+    <div className="overview">
+      <Nav goDark={goDark} dark={dark} />
+      <div className="spacer">
+        <Banner className="banner-div" />
+      </div>
       <div className="image-and-info">
         <ImageCarousel
+          key={product_id}
           imageIndex={imageIndex}
           setIndex={setIndex}
           setStyle={setStyle}
@@ -97,9 +114,14 @@ export default function Overview({ product_id }) {
           styleObject={styleObject}
           setStyleObject={setStyleObject}
           currentStyle={currentStyle}
+          product_id={product_id}
+          photos={photos}
+          clickStyle={clickStyle}
+          styleClick={styleClick}
         />
         <div className="product-info">
           <ProductInfo
+            details={details}
             imageIndex={imageIndex}
             setIndex={setIndex}
             styles={styles}
@@ -113,10 +135,13 @@ export default function Overview({ product_id }) {
             isLoading={isLoading}
             currentSku={currentSku}
             setSku={setSku}
+            product_id={product_id}
+            clickStyle={clickStyle}
+            appAvgRating={appAvgRating}
           />
         </div>
       </div>
-      <Description product_id={product_id} />
-    </>
+      <Description product_id={product_id} details={details} />
+    </div>
   );
 }

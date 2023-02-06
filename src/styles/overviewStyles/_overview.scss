@@ -5,6 +5,14 @@
 @import "_product_info";
 @import "_description.scss";
 
+
+$color1: #463F3A;
+$color2: #D0B8AC;
+$color3: #F3D8C7;
+$color4: #EFE5DC;
+$color5: #FBFEFB;
+$color6: #FF101F;
+
 :root { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   :root { font-family: 'Inter var', sans-serif; }
@@ -18,9 +26,20 @@
   margin-left: 0;
 }
 
+.overview {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .overview-loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #463F3A; /* Blue */
+  border-top: 16px solid $color1; /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -37,6 +56,9 @@
   100% { transform: rotate(360deg); }
 }
 
+h1 {
+  text-align: left;
+}
 
 
 

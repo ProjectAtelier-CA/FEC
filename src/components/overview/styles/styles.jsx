@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-no-comment-textnodes */
@@ -6,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { MdCheckCircle } from 'react-icons/md';
 
 export default function Styles({
-  setIndex, styles, currentStyle, setStyle, setStyleObject, setSkus, styleObject, setSku,
+  setIndex, styles, currentStyle, setStyle, setStyleObject, setSkus, styleObject, setSku, clickStyle,
 }) {
   const [indeces, setIndeces] = useState([0]);
 
@@ -24,7 +25,6 @@ export default function Styles({
   }, [currentStyle]);
 
   useEffect(() => {
-    console.log(styleObject);
     if (styleObject !== undefined) {
       setSkus(styleObject.skus);
       setSku(Object.keys(styleObject.skus)[0]);
@@ -35,6 +35,7 @@ export default function Styles({
     setStyle(parseInt(event.target.id, 10));
     setStyleObject(styles[parseInt(event.target.id, 10)]);
     setIndex(indeces[event.target.id]);
+    clickStyle(true);
   }
 
   return (
