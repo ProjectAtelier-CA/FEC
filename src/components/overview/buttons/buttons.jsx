@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
@@ -7,15 +8,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md';
+import { BsStarFill, BsStar } from 'react-icons/bs';
 
 export default function Buttons({
-  styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku,
+  styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku, product_id,
 }) {
-  // const style = styles[currentStyle];
-  // const { skus } = style;
   const [style, updateStyle] = useState(styles[0]);
-  // const [skus, setSkus] = useState(style.skus);
-  // const [currentSKU, setSKU] = useState(Object.keys(skus)[0]);
   const [loading, setLoading] = useState(true);
 
   const [size, setSize] = useState('Size');
@@ -24,39 +22,27 @@ export default function Buttons({
   const [quantity, setQuantity] = useState('Count');
   const [gotSize, setSizeStatus] = useState(false);
   const [addedToBag, setBagged] = useState(false);
+  const [favorite, addFavorite] = useState(false);
+  const [favorites, setFavorites] = useState({});
   const iff = (condition, then, otherwise) => (condition ? then : otherwise);
-
-  // useEffect(() => {
-  //   console.log('style is now', styleObject);
-  //   setLoading(true);
-
-  //   if (styleObject !== undefined) {
-  //     console.log('here');
-  //     setSkus(styleObject.skus);
-  //   }
-  // }, [styleObject]);
-
-  // useEffect(() => {
-  //   console.log(skus);
-  //   if (skus !== undefined) {
-  //     console.log('here');
-  //     setSKU(Object.keys(skus)[0]);
-  //   }
-  // }, [skus]);
 
   useEffect(() => {
     setSize('Size');
     setQuantity(0);
+    setBagged(false);
   }, [currentStyle]);
-
-  // useEffect(() => {
-  //   console.log('SKU');
-  //   setSKU(Object.keys(skus)[0]);
-  // }, [skus]);
 
   useEffect(() => {
     setQuantity(0);
   }, [size]);
+
+  useEffect(() => {
+    if (addedToBag) {
+      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
+    } else {
+      console.log('removed');
+    }
+  }, [addedToBag]);
 
   function selectSize(event) {
     setSizeStatus(true);
@@ -77,7 +63,11 @@ export default function Buttons({
   }
 
   function addToBag() {
-    if (quantity > 0) {
+    console.log(addedToBag);
+    if (addedToBag) {
+      console.log('here');
+      setBagged(false);
+    } else if (quantity > 0) {
       setBagged(true);
     } else if (!gotSize) {
       openSize(true);
@@ -85,6 +75,55 @@ export default function Buttons({
       openQuantity(true);
     }
   }
+
+  // function handleFavorite() {
+  //   addFavorite(!favorite);
+  //   const object = favorites;
+  //   if (object[product_id] === undefined) {
+  //     object[product_id] = {};
+  //     object[product_id][currentSku] = 1;
+  //   } else if (object[product_id][currentSku] !== undefined) {
+  //     delete object[product_id][currentSku];
+  //   } else {
+  //     object[product_id][currentSku] = 1;
+  //   }
+  //   setFavorites(object);
+  // }
+
+  function handleFavorite() {
+    addFavorite(!favorite);
+    const object = favorites;
+    if (object[product_id] === undefined) {
+      object[product_id] = 1;
+    } else {
+      delete object[product_id];
+    }
+    setFavorites(object);
+  }
+
+  // useEffect(() => {
+  //   if (favorites[product_id] !== undefined) {
+  //     if (favorites[product_id][currentSku] === 1) {
+  //       addFavorite(true);
+  //     } else {
+  //       addFavorite(false);
+  //     }
+  //   } else {
+  //     addFavorite(false);
+  //   }
+  // }, [favorites, currentSku, product_id]);
+
+  useEffect(() => {
+    if (favorites[product_id] !== undefined) {
+      if (favorites[product_id] === 1) {
+        addFavorite(true);
+      } else {
+        addFavorite(false);
+      }
+    } else {
+      addFavorite(false);
+    }
+  }, [favorites, product_id]);
 
   useEffect(() => {
     if (skus[currentSku] !== undefined) {
@@ -94,12 +133,11 @@ export default function Buttons({
     }
   }, [currentSku]);
 
-  if (Object.keys(skus).length === 0) {
-    console.log('here');
-    return (
-      <div>Loading...</div>
-    );
-  }
+  useEffect(() => {
+    setSize('Size');
+    setQuantity(0);
+    setBagged(false);
+  }, [product_id]);
 
   if (loading) {
     return (
@@ -173,7 +211,7 @@ export default function Buttons({
         {
           addedToBag
             ? (
-              <button type="button" className="button added" disabled>
+              <button type="button" className="button added" onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
@@ -181,7 +219,13 @@ export default function Buttons({
             )
             : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
         }
-        <button type="button" className="button favorite">&#9734;</button>
+        <button type="button" className="button favorite" onClick={handleFavorite}>
+          {
+            favorite
+              ? <BsStarFill />
+              : <BsStar />
+          }
+        </button>
       </div>
     </div>
   );
