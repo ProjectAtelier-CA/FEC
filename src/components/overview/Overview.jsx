@@ -26,7 +26,7 @@ import ProductInfo from './product_header/product_info';
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
-export default function Overview({ product_id }) {
+export default function Overview({ product_id, goDark, dark }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [isLoading, setLoading] = useState(true);
@@ -94,9 +94,11 @@ export default function Overview({ product_id }) {
   }
 
   return (
-    <>
-      <Nav />
-      <Banner />
+    <div className="overview">
+      <Nav goDark={goDark} dark={dark} />
+      <div className="spacer">
+        <Banner className="banner-div" />
+      </div>
       <div className="image-and-info">
         <ImageCarousel
           key={product_id}
@@ -135,6 +137,6 @@ export default function Overview({ product_id }) {
         </div>
       </div>
       <Description product_id={product_id} details={details} />
-    </>
+    </div>
   );
 }

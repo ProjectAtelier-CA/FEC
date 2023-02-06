@@ -17,6 +17,20 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
+app.get('/products', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`, {
+    headers: {
+      Authorization: process.env.AUTH_SECRET,
+    },
+  })
+    .then(({ data }) => {
+      res.status(200);
+      res.send(data);
+      res.end();
+    })
+    .catch(() => res.send('Failed to get styles'));
+});
+
 app.get('/products/:product_id/styles', (req, res) => {
   const { product_id } = req.params;
   console.log('Request received for styles at product', product_id);

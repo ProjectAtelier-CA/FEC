@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+
 import Styles from '../styles/styles';
 import Buttons from '../buttons/buttons';
 import Share from '../buttons/share';
@@ -10,10 +11,14 @@ import StarRating from '../../shared/StarRating';
 export default function ProductInfo({
   imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details,
 }) {
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <div className="info" key={details.id}>
       <div className="rating" key="rating">
-        <StarRating rating={3} />
+        <StarRating score={details.rating} />
         <a href="http://www.google.com/" className="review-link">Read reviews...</a>
       </div>
       <h3 className="category">{details.category}</h3>

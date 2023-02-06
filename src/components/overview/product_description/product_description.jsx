@@ -23,27 +23,30 @@ export default function Description({ product_id, details }) {
   }
 
   return (
-    <div className="o-description">
-      <div className="description-content">
-        <h3 className="o-title">{details.slogan}</h3>
-        <p className="o-body">{details.description}</p>
-      </div>
-      <div className="divider" />
-      <div className="attributes">
-        {
+    loading
+      ? (null)
+      : (
+        <div className="o-description">
+          <div className="description-content">
+            <h3 className="o-title">{details.slogan}</h3>
+            <p className="o-body">{details.description}</p>
+          </div>
+          <div className="divider" />
+          <div className="attributes">
+            {
           details.features.map((att) => (
             <div className="o-attribute" key={att.feature}>
               <div className="checkmark">✓</div>
               <div className="attribute-copy">
                 {att.value}
                 {' '}
-                <div className="product-feature">{att.feature}</div>
+                {att.feature.toLowerCase()}
               </div>
             </div>
           ))
         }
-      </div>
-    </div>
-
+          </div>
+        </div>
+      )
   );
 }

@@ -13,11 +13,7 @@ import { BsStarFill, BsStar } from 'react-icons/bs';
 export default function Buttons({
   styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku, product_id,
 }) {
-  // const style = styles[currentStyle];
-  // const { skus } = style;
   const [style, updateStyle] = useState(styles[0]);
-  // const [skus, setSkus] = useState(style.skus);
-  // const [currentSKU, setSKU] = useState(Object.keys(skus)[0]);
   const [loading, setLoading] = useState(true);
 
   const [size, setSize] = useState('Size');
@@ -43,6 +39,8 @@ export default function Buttons({
   useEffect(() => {
     if (addedToBag) {
       console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
+    } else {
+      console.log('removed');
     }
   }, [addedToBag]);
 
@@ -65,7 +63,11 @@ export default function Buttons({
   }
 
   function addToBag() {
-    if (quantity > 0) {
+    console.log(addedToBag);
+    if (addedToBag) {
+      console.log('here');
+      setBagged(false);
+    } else if (quantity > 0) {
       setBagged(true);
     } else if (!gotSize) {
       openSize(true);
@@ -209,7 +211,7 @@ export default function Buttons({
         {
           addedToBag
             ? (
-              <button type="button" className="button added" disabled>
+              <button type="button" className="button added" onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
