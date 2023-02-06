@@ -11,16 +11,20 @@ export default function App() {
   // later this initial id should be passed down from index.jsx as props
   const [id, setId] = useState(37313);
   const [dark, goDark] = useState(false);
+  const [appAvgRating, setAppAvgRating] = useState(5);
+  // console.log(appAvgRating);
+
 
   return (
     <>
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
-      {/* <h1 data-testid="app-test">All Our Components</h1> */}
+      <h1 data-testid="app-test">All Our Components</h1>
       <Overview product_id={id} goDark={goDark} dark={dark} />
       <RelatedProducts id={id} setId={setId} />
-      <QuestionsAnswers />
-      <RatingsReviews productID={37313} productName={"Dummy Product Name"} />
+      <h3 className="testing-header"> Questions and Answers</h3>
+      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
+      <RatingsReviews productID={37313} productName={"Dummy Product Name"} setAppAvgRating={setAppAvgRating} />
     </>
   );
 }

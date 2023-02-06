@@ -13,7 +13,7 @@ const initialStarFilterState = {
 };
 
 // Current props needed: productID, productName
-export default function RatingsReviews({ productID, productName }) {
+export default function RatingsReviews({ productID, productName, setAppAvgRating }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
@@ -48,6 +48,7 @@ export default function RatingsReviews({ productID, productName }) {
       }).catch((err) => {
         console.log(err);
       });
+  // Re-render is triggered on report so we can hot reload
   }, [rerender]);
 
   const handleStarClick = (starType) => {
@@ -60,25 +61,23 @@ export default function RatingsReviews({ productID, productName }) {
   };
 
   return (
-    <>
-      <h1>RatingsReviews Component</h1>
-      <div className="ratings-reviews-container">
-        <RatingsBreakdown
-          reviewMetaData={reviewMetaData}
-          handleStarClick={handleStarClick}
-          starFilter={starFilter}
-          setStarFilter={setStarFilter}
-        />
-        <ReviewsList
-          productReviews={productReviews}
-          starFilter={starFilter}
-          handleSortClick={handleSortClick}
-          sortBy={sortBy}
-          reviewMetaData={reviewMetaData}
-          setRerender={setRerender}
-          productName={productName}
-        />
-      </div>
-    </>
+    <div className="ratings-reviews-container">
+      <RatingsBreakdown
+        reviewMetaData={reviewMetaData}
+        handleStarClick={handleStarClick}
+        starFilter={starFilter}
+        setStarFilter={setStarFilter}
+        setAppAvgRating={setAppAvgRating}
+      />
+      <ReviewsList
+        productReviews={productReviews}
+        starFilter={starFilter}
+        handleSortClick={handleSortClick}
+        sortBy={sortBy}
+        reviewMetaData={reviewMetaData}
+        setRerender={setRerender}
+        productName={productName}
+      />
+    </div>
   );
 }

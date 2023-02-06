@@ -9,30 +9,19 @@ import React, { useState, useEffect } from 'react';
 import QuestionListItem from './QuestionListItem.jsx';
 import App from './AddQuestion';
 
-export default function QuestionList({ productIdData, product_id }) {
+export default function QuestionList({ productIdData, product_id, productName }) {
   const [showMore, setMore] = useState(true);
   const [showLess, setLess] = useState(false);
   const [questionLog, setLog] = useState(2);
   const questionLength = productIdData.length;
   const [sortedQuestions, setSorted] = useState([]);
   const [search, setSearch] = useState('');
+  const [isSearching, setSearching] = useState(false);
   let renderQuestions = [];
   // let renderQuestions = productIdData.slice(0, questionLog);
   const searching = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
-    // if (search.length > 1) {
-    //   renderQuestions = [];
-    //   productIdData.filter((question) => {
-    //     if (question.question_body.includes(search)) {
-    //       console.log(renderQuestions);
-    //       return renderQuestions.push(question);
-    //       // questionMatch.push(question);
-    //       console.log(renderQuestions);
-    //       // renderQuestions = questionMatch;
-    //     }
-    // });
-    // }
   };
 
   if (search.length < 3) {
@@ -45,15 +34,22 @@ export default function QuestionList({ productIdData, product_id }) {
         renderQuestions.push(question);
       }
     });
-    console.log('renderQuestion', renderQuestions);
   }
+
+  useEffect(() => {
+    if (search.length < 3) {
+      setSearching(false);
+    } else if (search.length > 2) {
+      setSearching(true);
+    }
+  }, [search]);
 
   useEffect(() => {
     if (questionLog >= questionLength) {
       setMore(false);
       setLess(true);
     }
-  });
+  }, [questionLog]);
 
   useEffect(() => {
     setSorted(productIdData.sort((q1, q2) => ((q1.helpfulness < q2.helpfulness) ? 1 : (q1.helpfulness > q2.helpfulness) ? -1 : 0)));
@@ -74,13 +70,14 @@ export default function QuestionList({ productIdData, product_id }) {
     <div>
       <input className="search-bar-question" value={search} onChange={searching} type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
       <div className="question-list">
-        { (renderQuestions.length === 0) ? <div>No Results Matching Search. Try Again</div> : null}
-        {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} q={question} />))}
+        {(productIdData.length === 0 && !isSearching) ? <div>No Questions Asked Yet. Try Asking One</div> : null}
+        { (renderQuestions.length === 0 && isSearching) ? <div>No Results Matching Search. Try Again</div> : null}
+        {renderQuestions.map((question) => (<QuestionListItem key={question.question_id} productName={productName} q={question} />))}
       </div>
       <div className="bottom-buttons">
         { showMore ? <button type="button" className="more-question-button" onClick={loadQuestions}> More Answered Questions</button> : null }
-        {showLess ? <button type="button" className="more-question-button" onClick={unloadQuestions}> Top</button> : null}
-        <App product_id={product_id} />
+        {(showLess && productIdData.length !== 0) ? <button type="button" className="more-question-button" onClick={unloadQuestions}> Top</button> : null}
+        <App productName={productName} product_id={product_id} />
       </div>
     </div>
   );
