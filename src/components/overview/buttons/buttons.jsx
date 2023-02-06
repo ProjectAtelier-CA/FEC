@@ -40,7 +40,7 @@ export default function Buttons({
     if (addedToBag) {
       console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
     } else {
-      console.log('removed');
+      console.log(`Removed ${currentSku} from bag`);
     }
   }, [addedToBag]);
 
@@ -56,6 +56,7 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
+    console.log(size);
   }
 
   function optionClick(event) {
@@ -194,7 +195,7 @@ export default function Buttons({
           }
           <ul className="dropdown-list">
             {
-              quantityOpened
+              (quantityOpened && size !== 'Size')
                 ? (
                   // eslint-disable-next-line max-len
                   [...Array(Math.min(skus[currentSku].quantity, 15)).keys()].map((key) => key + 1).map((option) => (

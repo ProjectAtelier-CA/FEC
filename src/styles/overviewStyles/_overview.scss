@@ -38,9 +38,9 @@ html {
 }
 
 .overview-loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid $color1; /* Blue */
-  border-radius: 50%;
+  // border: 16px solid #f3f3f3; /* Light grey */
+  // border-top: 16px solid $color1; /* Blue */
+  // border-radius: 50%;
   width: 60px;
   height: 60px;
   position: absolute;
@@ -48,7 +48,8 @@ html {
   transform: translate(0,50%);
   left: 50%;
   animation: spin 2s linear infinite;
-  // animation: scale 2s linear infinite;
+  animation: spin 2s linear infinite;
+  color: $color1;
 }
 
 @keyframes spin {
