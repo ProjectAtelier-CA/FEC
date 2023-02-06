@@ -12,8 +12,8 @@ export default function AnswerList({ answers }) {
   const [sortedAnswers, setSorted] = useState([]);
   const [answerLog, setLog] = useState(2);
   const answerLength = answers.length;
-  let sortBySeller = [];
-  const sellers = [];
+  const sortBySeller = [];
+  let sellers = {};
   let renderAnswer = [];
   useEffect(() => {
     if (answerLog > answerLength) {
@@ -35,20 +35,18 @@ export default function AnswerList({ answers }) {
   const firstSort = () => {
     answers.forEach((answer) => {
       if (answer.answerer_name === 'Seller') {
-        sellers.push(answer);
+        sellers = answer;
         answers.splice(answers.indexOf(answer), 1);
+        answers.unshift(sellers);
       }
     });
-    sortBySeller = sellers.concat(answers);
-    renderAnswer = sortBySeller.slice(0, answerLog);
-
-    console.log('SORTING SELLERS', renderAnswer);
+    renderAnswer = answers.slice(0, answerLog);
   };
   firstSort();
+
   const loadAnswers = () => {
     setLog(answerLog + 2);
-    console.log('load answers', sortBySeller);
-    renderAnswer = sortBySeller.slice(0, answerLog);
+    firstSort();
   };
 
   const unloadAnswers = () => {

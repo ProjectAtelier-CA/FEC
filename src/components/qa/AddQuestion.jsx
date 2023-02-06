@@ -14,21 +14,23 @@ const questionStyles = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'beige',
     width: 1000,
-    height: 500,
+    height: 600,
   },
 };
 
-export default function App({ product_id }) {
+export default function App({ product_id, productName }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [newQuestion, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
+  const [maxLength, setMax] = useState(1000);
 
   const emailInformation = (e) => {
     setEmail(e.target.value);
   };
   const questionInformation = (e) => {
     setQuestion(e.target.value);
+    setMax(maxLength - e.target.value.length);
   };
   const nicknameInformation = (e) => {
     setNickname(e.target.value);
@@ -50,7 +52,7 @@ export default function App({ product_id }) {
     } else if (!validateEmail(email)) {
       alert('Not valid email try again');
     } else {
-      alert('Please complete mandatory fields');
+      alert('You must enter the following : Question, Nickname');
     }
   };
 
@@ -62,15 +64,24 @@ export default function App({ product_id }) {
         onRequestClose={() => setOpen(false)}
         style={questionStyles}
       >
+        <h2 className="question-modal-title">Ask Your Question </h2>
+        <h5 className="question-modal-title-subtitle">
+          {' '}
+          About the
+          {' '}
+          {productName}
+          {' '}
+          Here
+        </h5>
         <div> Complete Information Below </div>
         <form>
           <label> Your Question </label>
           <label className="label-answer-modal">*</label>
           <label>:</label>
           <br />
-          <textarea rows="5" value={newQuestion} onChange={questionInformation} className="add-answer-input">.</textarea>
+          <textarea rows="5" maxLength="1000" value={newQuestion} onChange={questionInformation} className="add-answer-input">.</textarea>
           {/* <input className="add-answer-input" value={newQuestion} onChange={questionInformation} required /> */}
-          <label className="word-limit"> maxChar: 1000</label>
+          <label className="word-limit">Limit: {maxLength}</label>
           {' '}
           <br />
           <label> Enter Nickname</label>
@@ -82,6 +93,7 @@ export default function App({ product_id }) {
             value={nickname}
             placeholder="Example: jack1234"
             onChange={nicknameInformation}
+            maxLength="60"
             required
           />
           {' '}
