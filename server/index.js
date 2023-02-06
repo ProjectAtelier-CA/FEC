@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ----- Routes ----- //
 app.get('/products', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`, {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products', {
     headers: {
       Authorization: process.env.AUTH_SECRET,
     },
@@ -28,7 +29,7 @@ app.get('/products', (req, res) => {
       res.send(data);
       res.end();
     })
-    .catch(() => res.send('Failed to get styles'));
+    .catch(() => res.send('Failed to get products'));
 });
 
 app.get('/products/:product_id/styles', (req, res) => {

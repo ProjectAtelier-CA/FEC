@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable import/extensions */
@@ -27,11 +28,12 @@ import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview({
-  product_id, goDark, dark, appAvgRating, details, setDetails, styles, setStyles,
+
+  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
-  const [isLoading, setLoading] = useState(true);
+  // const [overviewLoading, setOverviewLoading] = useState(true);
   const [imgToStyles, setImgToStyles] = useState([]);
   const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});
