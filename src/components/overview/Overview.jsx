@@ -37,6 +37,7 @@ export default function Overview({ product_id, goDark, dark }) {
   const [currentSku, setSku] = useState('');
   const [photos, setPhotos] = useState([]);
   const [details, setDetails] = useState({});
+  const [styleClick, clickStyle] = useState(false);
 
   let iToS = [];
 
@@ -115,6 +116,8 @@ export default function Overview({ product_id, goDark, dark }) {
           currentStyle={currentStyle}
           product_id={product_id}
           photos={photos}
+          clickStyle={clickStyle}
+          styleClick={styleClick}
         />
         <div className="product-info">
           <ProductInfo
@@ -133,6 +136,7 @@ export default function Overview({ product_id, goDark, dark }) {
             currentSku={currentSku}
             setSku={setSku}
             product_id={product_id}
+            clickStyle={clickStyle}
           />
         </div>
       </div>

@@ -9,7 +9,7 @@ import Share from '../buttons/share';
 import StarRating from '../../shared/StarRating';
 
 export default function ProductInfo({
-  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details,
+  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details, clickStyle,
 }) {
   // useEffect(() => {
 
@@ -35,6 +35,7 @@ export default function ProductInfo({
         styleObject={styleObject}
         currentSku={currentSku}
         setSku={setSku}
+        clickStyle={clickStyle}
       />
       <Buttons
         styles={styles}

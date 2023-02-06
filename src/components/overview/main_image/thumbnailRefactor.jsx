@@ -9,7 +9,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 
 export default function Thumbnails2({
-  imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus, product_id, photos, N,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus, product_id, photos, N, styleClick, clickStyle,
 }) {
   // const [displayStart, setStart] = useState(0);
   const [height, setHeight] = useState(0);
@@ -29,11 +29,21 @@ export default function Thumbnails2({
   useEffect(() => {
     setScrollUp(0);
     setScrollDown(6);
-    if (scrollRef.current !== undefined) {
-      scrollRef.current.children[0].scrollIntoView({
-        top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
-      });
-    }
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
+    window.scrollBy({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    // if (scrollRef.current !== undefined) {
+    //   scrollRef.current.children[0].scrollIntoView({
+    //     top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
+    //   });
+    // }
   }, [product_id, scrollRef]);
 
   useEffect(() => {
@@ -46,12 +56,13 @@ export default function Thumbnails2({
   useEffect(() => {
     setScrollUp(imageIndex);
     setScrollDown(imageIndex + 6);
-    if (mouseOut) {
+    if (mouseOut && styleClick) {
       scrollRef.current.children[imageIndex].scrollIntoView({
         top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
       });
+      clickStyle(false);
     }
-  }, [imageIndex, currentStyle]);
+  }, [currentStyle, imageIndex, styleClick]);
 
   // ----- Local functions -------//
   function handleScroll() {

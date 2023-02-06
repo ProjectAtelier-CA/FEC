@@ -9,10 +9,8 @@ import {
 import Thumbnails2 from './thumbnailRefactor';
 
 export default function ImageCarousel({
-  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos, clickStyle, styleClick,
 }) {
-  // const photos = styles.map((style) => style.photos).flat();
-  // const N = photos.length;
   const [N, setN] = useState(photos.length);
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
@@ -35,7 +33,7 @@ export default function ImageCarousel({
         const width = height / ratio;
         const startX = Math.max((X - width) / 2, 0);
         const endX = X - startX;
-        // eslint-disable-next-line max-len
+
         let margin = 0;
         try {
           margin = event.target.offsetParent.parentNode.offsetParent.offsetTop;
@@ -55,7 +53,6 @@ export default function ImageCarousel({
             y: y - margin,
           };
         }
-
         setPos(pos);
       };
 
@@ -114,16 +111,6 @@ export default function ImageCarousel({
       <section>
         <div className={isExpanded ? 'expanded' : 'normal'}>
           <div className="o-carousel">
-            {/* <Thumbnails
-              imageIndex={imageIndex}
-              setIndex={setIndex}
-              imgToStyle={imgToStyle}
-              setStyle={setStyle}
-              styles={styles}
-              setSku={setSku}
-              setSkus={setSkus}
-              currentStyle={currentStyle}
-            /> */}
             <Thumbnails2
               imageIndex={imageIndex}
               setIndex={setIndex}
@@ -136,6 +123,8 @@ export default function ImageCarousel({
               product_id={product_id}
               photos={photos}
               N={N}
+              clickStyle={clickStyle}
+              styleClick={styleClick}
             />
             {
               imageIndex > 0
