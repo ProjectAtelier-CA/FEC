@@ -12,7 +12,6 @@ export default function App() {
   const [id, setId] = useState(37331);
   const [appAvgRating, setAppAvgRating] = useState(5);
   // console.log(appAvgRating);
-  console.log(id);
 
 
   return (
