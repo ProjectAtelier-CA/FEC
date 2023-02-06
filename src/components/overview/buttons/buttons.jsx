@@ -40,6 +40,14 @@ export default function Buttons({
     if (addedToBag) {
       console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
     } else {
+      console.log('removed');
+    }
+  }, [addedToBag]);
+
+  useEffect(() => {
+    if (addedToBag) {
+      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
+    } else {
       console.log(`Removed ${currentSku} from bag`);
     }
   }, [addedToBag]);
@@ -139,6 +147,11 @@ export default function Buttons({
     setQuantity(0);
     setBagged(false);
   }, [product_id]);
+  useEffect(() => {
+    setSize('Size');
+    setQuantity(0);
+    setBagged(false);
+  }, [product_id]);
 
   if (loading) {
     return (
@@ -213,6 +226,7 @@ export default function Buttons({
           addedToBag
             ? (
               <button type="button" className="button added" onClick={addToBag}>
+              <button type="button" className="button added" onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
@@ -220,6 +234,13 @@ export default function Buttons({
             )
             : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
         }
+        <button type="button" className="button favorite" onClick={handleFavorite}>
+          {
+            favorite
+              ? <BsStarFill />
+              : <BsStar />
+          }
+        </button>
         <button type="button" className="button favorite" onClick={handleFavorite}>
           {
             favorite
