@@ -35,7 +35,7 @@ export default function RatingsReviews({ productID, productName, setAppAvgRating
       .catch((err) => {
         console.log(err);
       });
-  }, [sortBy, rerender]);
+  }, [sortBy, rerender, productID]);
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews/meta', {
@@ -49,7 +49,7 @@ export default function RatingsReviews({ productID, productName, setAppAvgRating
         console.log(err);
       });
   // Re-render is triggered on report so we can hot reload
-  }, [rerender]);
+  }, [rerender, productID]);
 
   const handleStarClick = (starType) => {
     // console.log(starType);
