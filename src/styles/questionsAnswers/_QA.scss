@@ -4,10 +4,8 @@ $blue: #2F5AAA;
 $coolblue: #415A77;
 $darkblue: #1B263B;
 $lightgrey: #e0e1dd;
-$blue: #2F5AAA;
-$coolblue: #415A77;
-$darkblue: #1B263B;
-$lightgrey: #e0e1dd;
+$buttoncolor: #EFE5DC;
+
 
 .testing-header {
   display: flex;
@@ -26,7 +24,6 @@ $lightgrey: #e0e1dd;
   justify-content: center;
   border-style:solid;
   align-items: center;
-  // display: flex;
   justify-content: center;
   border-style:solid;
   align-items: center;
@@ -34,7 +31,7 @@ $lightgrey: #e0e1dd;
   // margin-left: 13.30rem;
   width: 50%;
   // margin-left: 13.30rem;
-  width: 50%;
+
 }
 
 .master-question {
@@ -45,7 +42,7 @@ $lightgrey: #e0e1dd;
 .question-list {
   text-align: justify;
   overflow-y: auto;
-  max-height: 30rem;
+  max-height: 27rem;
 }
 .bottom-buttons {
   display: flex;
@@ -187,13 +184,17 @@ $lightgrey: #e0e1dd;
   color:red;
 }
 
+button:hover {
+  opacity: .7;
+  cursor:pointer;
+}
 
 
 .more-question-button, .add-question-button {
   border: solid;
   size: 1rem;
   padding: 1rem;
-  background-color: white;
+  background-color: $buttoncolor;
   margin-right: 1rem;
   color:$darkblue;
   font-weight: 500;
@@ -203,10 +204,16 @@ $lightgrey: #e0e1dd;
 .answerer-info {
   font-size: $small;
   color: black;
-  opacity: .7;
+  opacity: 1;
   margin-bottom: 1rem;
   margin-left: .50rem;
   font-weight: 200;
+
+  .seller-ans  {
+    .review-user {
+      font-weight: 700;
+    }
+  }
 }
 
 .answer-info .helpful-button {
@@ -228,4 +235,12 @@ $lightgrey: #e0e1dd;
 ::placeholder {
   color: grey;
   font-weight: bolder;
+}
+
+.question-modal-title, .answer-header-qa {
+  color:$darkblue;
+}
+
+.answer-submit-button {
+  background-color: $buttoncolor;
 }

@@ -12,7 +12,7 @@ const answersStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: 'lightpink',
+    backgroundColor: '#e0e1dd',
     width: 1000,
     height: 600,
   },
@@ -69,7 +69,7 @@ export default function App({ question_id, productName, questionBody }) {
         onRequestClose={() => setOpen(false)}
         style={answersStyles}
       >
-        <h2>Submit Your Answer </h2>
+        <h2 className="answer-header-qa">Submit Your Answer </h2>
         <h6> {productName}: {questionBody}</h6>
         <form>
           <label> Your Answer: * </label>
@@ -106,7 +106,7 @@ export default function App({ question_id, productName, questionBody }) {
           <input type="file" value={photos} multiple accept="image/*" onClick={photoInformation} />
         </form>
         <br />
-        <button type="button" onClick={submitQuestion}>Submit</button>
+        <button type="button" className="answer-submit-button" onClick={submitQuestion}>Submit</button>
         <br />
         <label className="mandatory-warning">Required Fields * </label>
       </Modal>

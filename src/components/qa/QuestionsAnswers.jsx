@@ -27,8 +27,6 @@ export default function QuestionsAnswers({ id, productName }) {
       <div>
         {/* <h3 className="question-header"> Questions and Answers</h3> */}
         <div className="master-question">
-        {/* <h3> Questions and Answers</h3> */}
-        {/* <h3> Questions and Answers</h3> */}
           {
         !loading
           ? <QuestionList productName={productName} product_id={id} productIdData={questions} />
