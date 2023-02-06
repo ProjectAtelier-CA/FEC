@@ -226,7 +226,6 @@ export default function Buttons({
           addedToBag
             ? (
               <button type="button" className="button added" onClick={addToBag}>
-              <button type="button" className="button added" onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
@@ -234,13 +233,6 @@ export default function Buttons({
             )
             : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
         }
-        <button type="button" className="button favorite" onClick={handleFavorite}>
-          {
-            favorite
-              ? <BsStarFill />
-              : <BsStar />
-          }
-        </button>
         <button type="button" className="button favorite" onClick={handleFavorite}>
           {
             favorite
