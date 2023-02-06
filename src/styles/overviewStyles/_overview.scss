@@ -74,7 +74,6 @@ html {
   justify-content: center;
   align-items: center;
   animation: rotateY 2s infinite linear;
-
 }
 
 // @keyframes spin {
@@ -82,6 +81,9 @@ html {
 //   100% { transform: rotate(360deg); }
 // }
 
+h1 {
+  text-align: left;
+}
 h1 {
   text-align: left;
 }
