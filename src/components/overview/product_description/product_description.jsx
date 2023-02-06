@@ -1,30 +1,47 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default function Description() {
-  const product = {
-    id: 1,
-    description: "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
-    title: 'Catchy phrase about a product...',
-    attributes: ['Gluten free', 'No carbs', 'Smells good'],
-  };
-
+// eslint-disable-next-line camelcase
+export default function Description({ product_id }) {
   // eslint-disable-next-line no-unused-vars
-  const [currentProduct, setProduct] = useState(product);
+  const [details, setDetails] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // eslint-disable-next-line camelcase
+    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
+      .then(({ data }) => {
+        setDetails(data);
+      })
+      .then(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      null
+    );
+  }
 
   return (
     <div className="o-description">
       <div className="description-content">
-        <h3 className="o-title">{currentProduct.title}</h3>
-        <p className="o-body">{currentProduct.description}</p>
+        <h3 className="o-title">{details.slogan}</h3>
+        <p className="o-body">{details.description}</p>
       </div>
       <div className="divider" />
       <div className="attributes">
         {
-          product.attributes.map((att) => (
-            <div className="o-attribute" key={currentProduct.id}>
+          details.features.map((att) => (
+            <div className="o-attribute" key={att.feature}>
               <div className="checkmark">✓</div>
-              <div className="attribute-copy">{att}</div>
+              <div className="attribute-copy">
+                {att.value}
+                {' '}
+                <div className="product-feature">{att.feature}</div>
+              </div>
             </div>
           ))
         }
