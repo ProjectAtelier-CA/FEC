@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
@@ -167,10 +168,10 @@ export default function ImageCarousel({
             </button>
             <ul>
               {
-                photos.map((image) => (
+                photos.map((image, index) => (
                   // eslint-disable-next-line max-len
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
-                  <li key={image.url} className="o-slide" onClick={handleImageClick}>
+                  <li key={index} className="o-slide" onClick={handleImageClick}>
                     <img
                       style={{ transformOrigin: `${mousePos.x}px ${mousePos.y}px` }}
                       className={

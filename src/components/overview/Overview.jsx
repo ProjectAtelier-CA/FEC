@@ -28,7 +28,6 @@ import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview({
-
   goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id,
 }) {
   const [imageIndex, setIndex] = useState(0);
@@ -90,14 +89,14 @@ export default function Overview({
     return (
       <>
         <Nav />
-        <div className="overview-loader" />
+        <div className="overview-loader" data-testid="loading" />
       </>
     );
   }
 
   return (
     <div className="overview">
-      <Nav goDark={goDark} dark={dark} />
+      <Nav goDark={goDark} dark={dark} data-testid="nav" />
       <div className="spacer">
         <Banner
           className="banner-div"
@@ -106,6 +105,7 @@ export default function Overview({
           setIndex={setIndex}
           setStyleObject={setStyleObject}
           clickStyle={clickStyle}
+          data-testid="banner"
         />
       </div>
       <div className="image-and-info">
@@ -126,6 +126,7 @@ export default function Overview({
           photos={photos}
           clickStyle={clickStyle}
           styleClick={styleClick}
+          data-testid="carousel"
         />
         <div className="product-info">
           <ProductInfo
@@ -146,10 +147,15 @@ export default function Overview({
             product_id={product_id}
             clickStyle={clickStyle}
             appAvgRating={appAvgRating}
+            data-testid="info"
           />
         </div>
       </div>
-      <Description product_id={product_id} details={details} />
+      <Description
+        product_id={product_id}
+        details={details}
+        data-testid="description"
+      />
     </div>
   );
 }

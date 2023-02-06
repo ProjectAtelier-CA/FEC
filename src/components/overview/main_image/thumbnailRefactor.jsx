@@ -29,21 +29,6 @@ export default function Thumbnails2({
   useEffect(() => {
     setScrollUp(0);
     setScrollDown(6);
-    // window.scroll({
-    //   top: 0,
-    //   left: 0,
-    //   behavior: 'smooth',
-    // });
-    window.scrollBy({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-    // if (scrollRef.current !== undefined) {
-    //   scrollRef.current.children[0].scrollIntoView({
-    //     top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
-    //   });
-    // }
   }, [product_id, scrollRef]);
 
   useEffect(() => {

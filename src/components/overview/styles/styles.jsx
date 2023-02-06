@@ -21,10 +21,6 @@ export default function Styles({
   }, [styles]);
 
   useEffect(() => {
-    console.log('style is now', styles[currentStyle]);
-  }, [currentStyle]);
-
-  useEffect(() => {
     if (styleObject !== undefined) {
       setSkus(styleObject.skus);
       setSku(Object.keys(styleObject.skus)[0]);

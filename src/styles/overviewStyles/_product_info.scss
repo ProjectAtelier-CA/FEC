@@ -4,6 +4,7 @@ $color3: #F3D8C7;
 $color4: #EFE5DC;
 $color5: #FBFEFB;
 $color6: #FF101F;
+$blue: #2f5aaa;
 
 .image-and-info {
   display: flex;
@@ -13,6 +14,9 @@ $color6: #FF101F;
   flex-shrink: 1;
   height: fit-content;
   padding-bottom: 10px;
+  // min-width: 1200px;
+  // border: solid green;
+  // overflow: auto;
 }
 
 * {
@@ -24,7 +28,7 @@ $color6: #FF101F;
   padding-top: 20px;
   display: flex;
   flex-flow: column nowrap;
-  width: 40vw;
+  width: 400px;//40vw;
   height: 60vh;
   height: fit-content;
 }
@@ -42,6 +46,8 @@ $color6: #FF101F;
     margin: 0;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    // justify-content: flex-start;
+    padding-right: 4px;
   }
 
   .rating {
@@ -61,8 +67,8 @@ $color6: #FF101F;
 .price {
 
   font-weight: normal;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   font-size: min(1.7vh, 1.7vw);;
 
   .sale-price {
@@ -84,25 +90,24 @@ $color6: #FF101F;
 
 .category {
   text-transform: uppercase;
-  font-size: min(1.7vh, 1.7vw);
+  font-size: min(1.2vh, 1.2vw);
   font-weight: normal;
   font-family: 'Inter', sans-serif;
   // font-weight: light;
   margin: 0px;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding-top: 5%;
+  padding-bottom: 1%;
   color: $color1;
   // border: solid green;
 }
 
 .product-name {
-  font-size: min(4vh, 4vw);
+  font-size: min(3vh, 3vw);
   font-family: 'Inter', sans-serif;
   width: fit-content;
   height: fit-content;
-  font-weight: light;
+  font-weight: bold;
   color: $color1;
-  justify-content: flex-start;
 
   h1 {
     text-align: left;

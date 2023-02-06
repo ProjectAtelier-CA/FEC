@@ -44,14 +44,6 @@ export default function Buttons({
     }
   }, [addedToBag]);
 
-  useEffect(() => {
-    if (addedToBag) {
-      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
-    } else {
-      console.log(`Removed ${currentSku} from bag`);
-    }
-  }, [addedToBag]);
-
   function selectSize(event) {
     setSizeStatus(true);
     setSize(event.target.value);
@@ -64,7 +56,6 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
-    console.log(size);
   }
 
   function optionClick(event) {
@@ -72,9 +63,7 @@ export default function Buttons({
   }
 
   function addToBag() {
-    console.log(addedToBag);
     if (addedToBag) {
-      console.log('here');
       setBagged(false);
     } else if (quantity > 0) {
       setBagged(true);
@@ -84,20 +73,6 @@ export default function Buttons({
       openQuantity(true);
     }
   }
-
-  // function handleFavorite() {
-  //   addFavorite(!favorite);
-  //   const object = favorites;
-  //   if (object[product_id] === undefined) {
-  //     object[product_id] = {};
-  //     object[product_id][currentSku] = 1;
-  //   } else if (object[product_id][currentSku] !== undefined) {
-  //     delete object[product_id][currentSku];
-  //   } else {
-  //     object[product_id][currentSku] = 1;
-  //   }
-  //   setFavorites(object);
-  // }
 
   function handleFavorite() {
     addFavorite(!favorite);
@@ -109,18 +84,6 @@ export default function Buttons({
     }
     setFavorites(object);
   }
-
-  // useEffect(() => {
-  //   if (favorites[product_id] !== undefined) {
-  //     if (favorites[product_id][currentSku] === 1) {
-  //       addFavorite(true);
-  //     } else {
-  //       addFavorite(false);
-  //     }
-  //   } else {
-  //     addFavorite(false);
-  //   }
-  // }, [favorites, currentSku, product_id]);
 
   useEffect(() => {
     if (favorites[product_id] !== undefined) {
@@ -179,7 +142,6 @@ export default function Buttons({
             {
                 sizeOpened
                   ? (Object.keys(skus).map((sku) => (
-                    // <div className="dropdown-content">
                     <button
                       id={sku}
                       type="button"
@@ -189,13 +151,12 @@ export default function Buttons({
                     >
                       {skus[sku].size}
                     </button>
-                    // </div>
                   ))
                   ) : null
             }
           </ul>
         </div>
-        <div className="dropdown" onClick={quantityClick} data-testid="test">
+        <div className="dropdown" onClick={quantityClick}>
           {
             // eslint-disable-next-line no-nested-ternary
             skus[currentSku].quantity > 0

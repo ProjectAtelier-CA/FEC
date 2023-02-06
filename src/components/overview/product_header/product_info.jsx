@@ -22,7 +22,7 @@ export default function ProductInfo({
         <a href="http://www.google.com/" className="review-link">Read reviews...</a>
       </div>
       <h3 className="category">{details.category}</h3>
-      <h1 className="product-name">{details.name}</h1>
+      <div className="product-name">{details.name}</div>
       <Styles
         imageIndex={imageIndex}
         setIndex={setIndex}

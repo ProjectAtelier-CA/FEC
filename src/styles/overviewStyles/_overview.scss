@@ -12,14 +12,7 @@ $color3: #F3D8C7;
 $color4: #EFE5DC;
 $color5: #FBFEFB;
 $color6: #FF101F;
-
-
-$color1: #463F3A;
-$color2: #D0B8AC;
-$color3: #F3D8C7;
-$color4: #EFE5DC;
-$color5: #FBFEFB;
-$color6: #FF101F;
+$blue: #2f5aaa;
 
 :root { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
@@ -81,11 +74,7 @@ html {
 //   0% { transform: rotate(0deg); }
 //   100% { transform: rotate(360deg); }
 // }
-
-h1 {
-  text-align: left;
-}
-h1 {
+* h1 {
   text-align: left;
 }
 

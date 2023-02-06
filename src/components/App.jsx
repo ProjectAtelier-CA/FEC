@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
+import { GiAmericanShield } from 'react-icons/gi';
+
 import RelatedProducts from './related_products/RelatedProducts';
 import RatingsReviews from './ratings_reviews/RatingsReviews';
 import QuestionsAnswers from './qa/QuestionsAnswers';
 import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
-import { GiAmericanShield } from 'react-icons/gi';
 
 /* ----------- Set up id state -------------- */
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <Overview
+        data-testid="overview"
         goDark={goDark}
         dark={dark}
         appAvgRating={appAvgRating}
@@ -38,7 +40,7 @@ export default function App() {
       {
         overviewLoading
           ? (
-            <GiAmericanShield className="overview-loader" />
+            <GiAmericanShield className="overview-loader" data-testid="loader" />
           )
           : (
             <>

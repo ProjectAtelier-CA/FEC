@@ -51,8 +51,15 @@ $color7: #32DE8A;
   }
 }
 
+.favorite {
+  display: flex;
+  justify-content: center;
+}
+
 .favorite-star {
-  transform: translate(0,10%);
+  // transform: translate(-10%,10%);
+  align-self: center;
+  scale: 1.5;
 }
 
 .out-of-stock {
@@ -80,9 +87,9 @@ $color7: #32DE8A;
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  // color: #463F3A;
   font-size: 1.6vh;
-
+  overflow: hidden;
+  display: flex;
 }
 
 .button:hover {
