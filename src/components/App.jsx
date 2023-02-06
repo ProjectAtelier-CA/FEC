@@ -16,13 +16,15 @@ export default function App() {
   const [productDetails, setDetails] = useState({});
   const [styles, setStyles] = useState([]);
   // console.log(appAvgRating);
+  // Reviews id test 37331
+  console.log(productDetails);
 
   return (
     <>
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       {/* <h1 data-testid="app-test">All Our Components</h1> */}
-      <Overview
+      {/* <Overview
         product_id={id}
         goDark={goDark}
         dark={dark}
@@ -34,8 +36,8 @@ export default function App() {
       />
       <RelatedProducts id={id} setId={setId} />
       <h3 className="testing-header"> Questions and Answers</h3>
-      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/>
-      <RatingsReviews productID={37331} productName={"Dummy Product Name"} setAppAvgRating={setAppAvgRating} />
+      <QuestionsAnswers id={id} productName={"A Purty Pink Jacket"}/> */}
+      <RatingsReviews productID={37331} productName={productDetails.name} setAppAvgRating={setAppAvgRating} />
     </>
   );
 }
