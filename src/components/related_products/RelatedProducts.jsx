@@ -4,7 +4,7 @@ import ProductModal from './ProductModal';
 import ProductCard from './ProductCard';
 import useFetch from './useFetch';
 
-export default function RelatedProduct({ id, setId }) {
+export default function RelatedProduct({ id, setId, handleTrackClick }) {
   const [modal, setModal] = useState({ show: false, onClickProduct: null })
   const [outfits, setOutfits] = useState(new Set([-1]));
   const { data: currentProduct, loading, error } = useFetch(id);
@@ -74,7 +74,7 @@ export default function RelatedProduct({ id, setId }) {
   };
 
   return (
-    <section className='widget__related-product'>
+    <section className='widget__related-product' onClick={(e) => handleTrackClick(e, 'Related Products')}>
       <ProductCarousel title='related product'>
         { relatedCardList }
       </ProductCarousel>
