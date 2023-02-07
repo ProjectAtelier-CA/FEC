@@ -1,14 +1,21 @@
-// import React from 'react';
-// import '@testing-library/jest-dom';
-// import userEvent from '@testing-library/user-event';
-// import {render, screen, waitFor} from '@testing-library/react';
-// import RatingsReviews from './RatingsReviews';
+import React from 'react';
+import '@testing-library/jest-dom';
+import '@testing-library/react/dont-cleanup-after-each';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
+import RatingsReviews from './RatingsReviews';
 
-// describe('Jest', function() {
-//   const user = userEvent.setup();
+describe('Jest', () => {
+  const user = userEvent.setup();
 
-//   it ('should say all our components', () => {
-//     render(<ReviewErrorMessage />)
-//     expect(screen.getByTestId('error-test')).toHaveTextContent('This error will occur if:');
-//   })
-// })
+  it('should check if our components are rendered', () => {
+    render(<RatingsReviews />);
+    setTimeout(() => expect(screen.getByTestId('ratings-reviews-test')).containsMatchingElement(<RatingsBreakdown />), 3000);
+  });
+
+  it('should check if our components are rendered', () => {
+    render(<RatingsReviews />);
+    setTimeout(() => expect(screen.getByTestId('ratings-reviews-test')).containsMatchingElement(<ReviewsList />), 3000);
+  });
+
+});

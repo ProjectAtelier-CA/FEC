@@ -87,7 +87,11 @@ export default function RatingsReviews({
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div className="ratings-reviews-container" onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')} >
+        <div
+          className="ratings-reviews-container"
+          onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
+          // data-testid='ratings-reviews-test'
+        >
           <RatingsBreakdown
             reviewMetaData={reviewMetaData}
             handleStarClick={handleStarClick}
