@@ -4,21 +4,30 @@ $blue: #2F5AAA;
 $coolblue: #415A77;
 $darkblue: #1B263B;
 $lightgrey: #e0e1dd;
+$buttoncolor: #EFE5DC;
+$darkbrown: #463F3A;
+
 
 .testing-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: $coolblue;
+  color: $darkbrown;
 }
+
 .question-header {
   // display: flex;
+  justify-content: center;
+  border-style:solid;
+  align-items: center;
   justify-content: center;
   border-style:solid;
   align-items: center;
   opacity:50%;
   // margin-left: 13.30rem;
   width: 50%;
+  // margin-left: 13.30rem;
+
 }
 
 .master-question {
@@ -29,7 +38,7 @@ $lightgrey: #e0e1dd;
 .question-list {
   text-align: justify;
   overflow-y: auto;
-  max-height: 30rem;
+  max-height: 27rem;
 }
 .bottom-buttons {
   display: flex;
@@ -37,12 +46,12 @@ $lightgrey: #e0e1dd;
 }
 
 .question-body {
-  font-weight: 900;
+  font-weight: 700;
   width: 60em;
   margin:1rem;
   min-height: fit-content;
   text-align: justify;
-  color: $coolblue;
+  color: $darkbrown;
 }
 
 
@@ -54,7 +63,7 @@ $lightgrey: #e0e1dd;
 
 .q-tag {
   margin-right: .5rem;
-  color: $coolblue;
+  color: $darkbrown;
 
 }
 .a-tag{
@@ -89,7 +98,7 @@ $lightgrey: #e0e1dd;
 
 }
 .answer-list {
-  max-height: 15rem;
+  max-height: 16rem;
   min-height: min-content;
   overflow-y: auto;
 }
@@ -123,7 +132,7 @@ $lightgrey: #e0e1dd;
   background: none;
   font-size: .7rem;
   font-weight: 600;
-  color:$coolblue;
+  color:$darkbrown;
   border:none;
   margin-left:2rem;
 }
@@ -166,25 +175,41 @@ $lightgrey: #e0e1dd;
 
 }
 
+.report-button-clicked{
+  font-weight: 500;
+  color:red;
+}
+
+button:hover {
+  opacity: .7;
+  cursor:pointer;
+}
+
 
 .more-question-button, .add-question-button {
   border: solid;
   size: 1rem;
   padding: 1rem;
-  background-color: white;
+  background-color: $buttoncolor;
   margin-right: 1rem;
   color:$darkblue;
-  font-weight: 900;
+  font-weight: 500;
 
 }
 
 .answerer-info {
   font-size: $small;
   color: black;
-  opacity: .7;
+  opacity: 1;
   margin-bottom: 1rem;
   margin-left: .50rem;
   font-weight: 200;
+
+  .seller-ans  {
+    .review-user {
+      font-weight: 700;
+    }
+  }
 }
 
 .answer-info .helpful-button {
@@ -206,4 +231,18 @@ $lightgrey: #e0e1dd;
 ::placeholder {
   color: grey;
   font-weight: bolder;
+}
+
+.question-modal-title, .answer-header-qa {
+  color:$darkblue;
+}
+
+.answer-submit-button {
+  background-color: $buttoncolor;
+}
+
+.yes-helpful-span{
+  font-weight:600;
+  margin-left: .3rem;
+  color:$darkblue;
 }

@@ -25,7 +25,8 @@ export default function AnswerListItem({ ans }) {
       <div className="answerer-info">
         by
         {' '}
-        <UserDateInfo user={ans.answerer_name} date={ans.date} />
+        {(ans.answerer_name === "Seller") ? <span className="seller-ans">   <UserDateInfo user={ans.answerer_name} date={ans.date} /></span> : null }
+        {(ans.answerer_name !== "Seller") ? <span>   <UserDateInfo user={ans.answerer_name} date={ans.date} /></span> : null }
         {' '}
         <HelpfulButton helpfulness={ans.helpfulness} id={ans.answer_id} type="answers" />
         {' '}

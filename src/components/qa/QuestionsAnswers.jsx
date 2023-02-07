@@ -8,29 +8,28 @@ import QuestionList from './QuestionList.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
 import AddQuestions from './AddQuestion';
 
-export default function QuestionsAnswers({ id, productName }) {
+export default function QuestionsAnswers({ id, productName, handleTrackClick }) {
   const [productId, setId] = useState(37316);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/questions', { params: { productId } }).then(({ data }) => {
+    axios.get('http://localhost:8081/questions', { params: { id } }).then(({ data }) => {
+      console.log('this is id: ', id);
       const result = data.results;
       setLoading(false);
-      // reviews will be an array of objects allegedly
       setQuestions(result);
     });
-  }, []);
+  }, [id]);
 
   if (!loading) {
     return (
-      <div>
+      <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
         {/* <h3 className="question-header"> Questions and Answers</h3> */}
         <div className="master-question">
-        {/* <h3> Questions and Answers</h3> */}
           {
         !loading
-          ? <QuestionList productName={productName} product_id={productId} productIdData={questions} />
+          ? <QuestionList productName={productName} product_id={id} productIdData={questions} />
           : null
          }
         </div>
