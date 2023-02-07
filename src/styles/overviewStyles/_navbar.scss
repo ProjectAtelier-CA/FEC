@@ -4,12 +4,12 @@ $color3: #F3D8C7;
 $color4: #EFE5DC;
 $color5: #FBFEFB;
 $color6: #FF101F;
+$darkNav: #242424;
 
 .navBar {
   display: flex;
   flex-flow: row nowrap;
   overflow: hidden;
-  background-color: $color2;
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,10 +17,18 @@ $color6: #FF101F;
   min-height: 50px;
   opacity: 1;
   justify-content: space-between;
-  // align-items: center;
   z-index: 6;
   margin-bottom: 20px;
 }
+
+.dark-mode-nav {
+  background-color: $darkNav;
+}
+
+.light-mode-nav {
+  background-color: $color2;
+}
+
 
 .logo {
   padding: 0px 5px;
@@ -32,7 +40,7 @@ $color6: #FF101F;
 }
 
 .dark-logo {
-  color: $color6;
+  color: #bb9f8c;
 }
 
 .light-logo {
@@ -50,14 +58,22 @@ $color6: #FF101F;
   padding-right: 20px;
 }
 
+.dark-mode-search {
+  background-color: $darkNav;
+  border-bottom: 2px solid #bb9f8c;
+}
+
+.light-mode-search {
+  background-color: $color2;
+  border-bottom: 2px solid $color1;
+}
+
 .search {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 2px solid $color1;
   height: 20px;
   width: 80%;
-  background-color: $color2;
 }
 
 .search:hover,
@@ -66,14 +82,18 @@ $color6: #FF101F;
 }
 
 .search-icon {
-  // padding: 0px 2px;
-  // padding-right: 30px;
   margin-right: 30px;
   margin-left: 5px;
   scale: 1.2;
-  color: $color1;
   transform: translate(0, 5%);
-  // border: $color1 solid;
+}
+
+.dark-mode-icon {
+  color: #bb9f8c;
+}
+
+.light-mode-icon {
+  color: $color1;
 }
 
 .night-button {
