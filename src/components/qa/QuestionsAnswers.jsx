@@ -8,7 +8,7 @@ import QuestionList from './QuestionList.jsx';
 import '../../styles/questionsAnswers/_QA.scss';
 import AddQuestions from './AddQuestion';
 
-export default function QuestionsAnswers({ id, productName }) {
+export default function QuestionsAnswers({ id, productName, handleTrackClick }) {
   const [productId, setId] = useState(37316);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ export default function QuestionsAnswers({ id, productName }) {
 
   if (!loading) {
     return (
-      <div>
+      <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
         {/* <h3 className="question-header"> Questions and Answers</h3> */}
         <div className="master-question">
           {

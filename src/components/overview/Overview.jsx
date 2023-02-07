@@ -28,7 +28,7 @@ import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
 export default function Overview({
-  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id,
+  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick,
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
@@ -95,7 +95,7 @@ export default function Overview({
   }
 
   return (
-    <div className="overview">
+    <div className="overview" onClick={(e) => handleTrackClick(e, 'Overview')}>
       <Nav goDark={goDark} dark={dark} />
       <div className="spacer">
         <Banner
