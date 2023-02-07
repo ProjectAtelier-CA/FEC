@@ -12,18 +12,15 @@ $color3: #F3D8C7;
 $color4: #EFE5DC;
 $color5: #FBFEFB;
 $color6: #FF101F;
-
-
-$color1: #463F3A;
-$color2: #D0B8AC;
-$color3: #F3D8C7;
-$color4: #EFE5DC;
-$color5: #FBFEFB;
-$color6: #FF101F;
+$blue: #2f5aaa;
 
 :root { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   :root { font-family: 'Inter var', sans-serif; }
+}
+
+body, html {
+  margin: 0;
 }
 
 *, *::before, *::after {
@@ -56,7 +53,21 @@ html {
   scroll-behavior: smooth;
 }
 
+.overview {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .overview-loader {
+  // border: 16px solid #f3f3f3; /* Light grey */
+  // border-top: 16px solid $color1; /* Blue */
+  // border-radius: 50%;
   // border: 16px solid #f3f3f3; /* Light grey */
   // border-top: 16px solid $color1; /* Blue */
   // border-radius: 50%;
@@ -75,19 +86,14 @@ html {
   align-items: center;
   animation: rotateY 2s infinite linear;
 }
+  // animation: spin 2s linear infinite;
+  // animation: spin 2s linear infinite;
 
 // @keyframes spin {
 //   0% { transform: rotate(0deg); }
 //   100% { transform: rotate(360deg); }
 // }
-
-h1 {
-  text-align: left;
-}
-h1 {
-  text-align: left;
-}
-h1 {
+* h1 {
   text-align: left;
 }
 
@@ -99,7 +105,21 @@ h1 {
     transform: rotateY(360deg);
   }
 }
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 
+// .loading-reviews-icon {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   animation: rotateY 2s infinite linear;
+// }
 // .loading-reviews-icon {
 //   display: flex;
 //   justify-content: center;

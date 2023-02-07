@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
@@ -18,14 +20,11 @@ import ImageCarousel from './main_image/image_carousel';
 // PRODUCT INFO
 import ProductInfo from './product_header/product_info';
 
-// STYLES
-// eslint-disable-next-line import/no-named-as-default
-// import Styles from './styles/styles';
-// import Buttons from './buttons/buttons';
-
 // DESCRIPTION
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
+
+import { useDarkMode } from '../shared/DarkModeProvider';
 
 export default function Overview({
   goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick,
@@ -39,9 +38,8 @@ export default function Overview({
   const [photos, setPhotos] = useState([]);
   const [styleClick, clickStyle] = useState(false);
 
-  let iToS = [];
-
   function getStyles() {
+    let iToS = [];
     axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
       .then(({ data }) => {
         data.results.forEach((style, index) => {
@@ -89,7 +87,7 @@ export default function Overview({
     return (
       <>
         <Nav />
-        <div className="overview-loader" />
+        <div className="overview-loader" data-testid="loading" />
       </>
     );
   }
@@ -125,6 +123,7 @@ export default function Overview({
           photos={photos}
           clickStyle={clickStyle}
           styleClick={styleClick}
+          data-testid="carousel"
         />
         <div className="product-info">
           <ProductInfo
@@ -145,10 +144,15 @@ export default function Overview({
             product_id={product_id}
             clickStyle={clickStyle}
             appAvgRating={appAvgRating}
+            data-testid="info"
           />
         </div>
       </div>
-      <Description product_id={product_id} details={details} />
+      <Description
+        product_id={product_id}
+        details={details}
+        data-testid="description"
+      />
     </div>
   );
 }
