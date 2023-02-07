@@ -8,6 +8,7 @@ $darkblue: #1B263B;
 $lightgrey: #e0e1dd;
 $buttoncolor: #EFE5DC;
 $darkbrown: #463F3A;
+$dark-mode-light-brown: #bb9f8c;
 
 
 .testing-header {
@@ -161,7 +162,14 @@ $darkbrown: #463F3A;
   #App__container.dark-mode  & {
     color:  $color__font--dark;
     text-decoration: underline;
-    text-decoration-color: $buttoncolor;
+    text-decoration-color: $dark-mode-light-brown;
+  }
+}
+.more-answer-button:hover{
+  text-decoration: underline;
+
+  #App__container.dark-mode & {
+    text-decoration:none;
   }
 }
 .label-answer-modal-warning {
@@ -207,36 +215,60 @@ $darkbrown: #463F3A;
 
   #App__container.dark-mode  & {
     color:  $color__font--dark;
-
   }
 
 }
-
+.report-button:hover {
+  font-weight:700;
+}
+.helpful-button-yes:hover{
+  font-weight: 700;
+}
+.add-answer-button:hover {
+  font-weight:700;
+}
 .report-button-clicked{
   font-weight: 500;
   color:red;
 }
 
-button:hover {
-  opacity: .7;
-  cursor:pointer;
+// button:hover {
+//   opacity: .7;
+//   cursor:pointer;
+//   #App__container.dark-mode  & {
+//     border: 1px solid $dark-mode-light-brown;
+//   }
+
+// }
+.more-question-button:hover {
+  opacity: .5;
+
+  #App__container.dark-mode  & {
+    opacity:1;
+    border: 1px solid $dark-mode-light-brown;
+  }
+}
+.add-question-button:hover {
+  opacity: .5;
+  #App__container.dark-mode  & {
+    opacity: 1;
+    border: 1px solid $dark-mode-light-brown;
+  }
 }
 
-
 .more-question-button, .add-question-button {
-  border: solid;
+  border: 1px solid black;
   size: 1rem;
   padding: 1rem;
   background-color: $buttoncolor;
   margin-right: 1rem;
-  color:$darkblue;
+  color: $darkblue;
   font-weight: 500;
 
   #App__container.dark-mode  & {
-    border-style: solid;
-    border-color:$color__background;
+    background-color: $darkblue;
+    color: $dark-mode-light-brown;
   }
-
 }
 
 .answerer-info {

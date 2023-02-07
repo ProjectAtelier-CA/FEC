@@ -31,7 +31,6 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
     return (
       <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
         <div className="master-question">
-          {console.log('tjekgsnfdckbjnrlg', activateDark)}
           {
         !loading
           ? <QuestionList productName={productName} product_id={id} productIdData={questions} />
