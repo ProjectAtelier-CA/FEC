@@ -363,6 +363,10 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
       // transform: scale(1.5);
       display: flex;
       transition: 0.5s;
+
+      &.active-dark {
+        opacity: 0.7;
+      }
     }
 
     .search-icon:hover {
@@ -373,6 +377,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
       &.active-dark {
         color: $dark-mode-light-brown;
+        opacity: 1;
       }
     }
   }
