@@ -30,10 +30,6 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
   if (!loading) {
     return (
       <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
-<<<<<<< HEAD
-        {/* <h3 className="question-header"> Questions and Answers</h3> */}
-=======
->>>>>>> 1c66dcdb62c57ecaa7f5fa3e13c5e9bbbc1ee8d7
         <div className="master-question">
           {console.log('tjekgsnfdckbjnrlg', activateDark)}
           {
