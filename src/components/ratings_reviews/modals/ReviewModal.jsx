@@ -10,7 +10,7 @@ import ReviewModalPhoto from './ReviewModalPhoto';
 export default function ReviewModal({
   setShowReviewModal, reviewMetaData, setRerender, productName,
 }) {
-  // console.log(reviewMetaData);
+  console.log(reviewMetaData);
   const [starRating, setStarRating] = useState(0); // Star rating for product
   const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
   const [reviewText, setReviewText] = useState(''); // Review Body
