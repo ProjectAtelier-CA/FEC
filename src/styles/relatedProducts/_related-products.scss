@@ -1,4 +1,5 @@
 @use '../shared/_utils' as *;
+@use '../shared/colors' as *;
 
 @mixin button--formless {
   border: none;
@@ -6,17 +7,22 @@
   padding: 0;
 }
 
-#root h1 {
-  text-align: center;
+.widget__related-product button:hover {
+  cursor: pointer;
 }
 
 // styling for Product Card component
 .product__card {
-  border: 0.08rem solid $main-color;
+  border: 0.08rem solid black;
   width: 10rem;
   position: relative;
 
   * { margin: 0 }
+
+  // dark-mode
+  #App__container.dark-mode & {
+    border-color: $color__font--dark;
+  }
 
   img {
     display: block;
@@ -38,7 +44,10 @@
       stroke: black;
       stroke-width: 10;
 
-      use:hover { fill: orange }
+      use:hover {
+        fill: orange;
+        //transform:
+      }
     }
   }
 
@@ -79,8 +88,12 @@
   &--adder {
     svg {
       width: 10rem;
-      stroke: gray;
+      stroke: $color__font;
       stroke-width: 12;
+
+      #App__container.dark-mode & {
+        stroke: $color__font--dark;
+      }
     }
 
     section {
@@ -97,6 +110,10 @@
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 0.5rem 0.05rem black;
+  }
+
+  #App__container.dark-mode &:hover {
+    box-shadow: 0 0 0.5rem 0.05rem white;
   }
 }
 
@@ -119,7 +136,12 @@
 
   & > button {
     @include button--formless;
-    font: 1.5rem bold;
+    font: 2rem bold;
+    color: $color__font;
+
+    #App__container.dark-mode & {
+      color: $color__font--sharp;
+    }
 
     &.hidden {
       visibility: hidden;
@@ -166,9 +188,18 @@
     max-width: 80vw;
     overflow-y: auto;
 
+    #App__container.dark-mode & {
+      border: 0.3rem double $color__font--dark;
+      background: $color__background--dark;
+    }
+
     thead, caption {
       position: sticky;
       background: white;
+
+      #App__container.dark-mode & {
+        background: $color__background--dark;
+      }
     }
 
     caption {
