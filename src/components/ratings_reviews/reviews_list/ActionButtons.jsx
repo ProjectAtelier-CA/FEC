@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ActionButtons({
   handleMoreClick, setShowReviewModal,
@@ -6,6 +7,8 @@ export default function ActionButtons({
 }) {
   const [showMore, setShowMore] = useState(true);
   const [showLess, setShowLess] = useState(false);
+
+  const isDarkMode = useDarkMode();
 
   const handleEvenMoreClick = () => {
     handleMoreClick();
@@ -23,16 +26,16 @@ export default function ActionButtons({
   return (
     <div className="action-buttons-container" ref={actionButtonsRef}>
       {showMore ? (
-        <button type="button" onClick={handleEvenMoreClick}>
+        <button className={`${isDarkMode ? 'active-dark' : ''}`} type="button" onClick={handleEvenMoreClick}>
           <div className="more-text">More Reviews</div>
         </button>
       ) : null}
       {showLess ? (
-        <button type="button" onClick={handleLessClick}>
+        <button className={`${isDarkMode ? 'active-dark' : ''}`} type="button" onClick={handleLessClick}>
           <div className="more-text">Collapse Reviews</div>
         </button>
       ) : null }
-      <button type="button" onClick={() => setShowReviewModal(true)}>
+      <button className={`${isDarkMode ? 'active-dark' : ''}`} type="button" onClick={() => setShowReviewModal(true)}>
         <div>
           <div className="add-button-text">Add A Review</div>
           <div className="plus-sign">+</div>

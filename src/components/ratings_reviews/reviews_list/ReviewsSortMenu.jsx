@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ReviewsSortMenu({
   handleSortClick, numReviews, reviewListTopRef, searchInput, setSearchInput, setDebouncedSearch
 }) {
   const [showSearch, setShowSearch] = useState(false);
+  const isDarkMode = useDarkMode();
 
   const handleClick = (e) => {
     handleSortClick(e);
@@ -42,7 +44,7 @@ export default function ReviewsSortMenu({
         {showSearch
           ? <input type="text" placeholder="Search..." value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           : null }
-        <div className="search-icon" onClick={handleIconClick}>{BiSearchAlt()}</div>
+        <div className={`search-icon ${isDarkMode ? 'active-dark' : ''}`} onClick={handleIconClick}>{BiSearchAlt()}</div>
       </div>
     </div>
   );

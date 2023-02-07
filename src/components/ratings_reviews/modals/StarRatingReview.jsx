@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 // take a score from 0 to 5 inclusive
 export default function StarRating({ score, setStarRating }) {
+  const isDarkMode = useDarkMode();
   const scales = [];
   // convert score into 5 scales (0 to 1, increment at 0.25)
   for (let i = 1; i <= 5; i += 1) {
@@ -26,5 +28,5 @@ export default function StarRating({ score, setStarRating }) {
   });
 
   // return a DIV of 5 SVG stars
-  return <div className="review-modal-star">{starList}</div>;
+  return <div className={`review-modal-star ${isDarkMode ? 'active-dark' : ''}`}>{starList}</div>;
 };

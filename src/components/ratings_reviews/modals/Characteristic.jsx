@@ -1,14 +1,16 @@
 import React from 'react';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 // onInvalid={(e) => e.target.setCustomValidity('Please select a characteristic')}
 // onInput={(e) => e.target.setCustomValidity('')}
 
 export default function Characteristic({ handleChange, selectionNames, charType, charID }) {
+  const isDarkMode = useDarkMode();
   // selectionName should be an array of names for selections
   // handleChange should be the function that will change the state for the selection
   return (
     <div className="characteristics">
-      <div className="selection-type">{charType}</div>
+      <div className={`selection-type ${isDarkMode ? 'active-dark' : ''}`}>{charType}</div>
       <label className="selections">
         <span>{selectionNames[0]}</span>
         <div>

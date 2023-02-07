@@ -6,6 +6,7 @@ import ReviewErrorMessage from './ReviewErrorMessage';
 import StarRatingReview from './StarRatingReview';
 import StarMeaning from './StarMeaning';
 import ReviewModalPhoto from './ReviewModalPhoto';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ReviewModal({
   setShowReviewModal, reviewMetaData, setRerender, productName,
@@ -26,6 +27,8 @@ export default function ReviewModal({
   const [showErrorMsg, setShowErrorMsg] = useState(false); // Validation check
   const errorRef = useRef(null); // Refs for error scrolling
   const outsideModalRef = useRef(null);
+
+  const isDarkMode = useDarkMode();
 
   useEffect(() => {
     if (showErrorMsg) {
@@ -141,7 +144,7 @@ export default function ReviewModal({
       onMouseDown={(e) => handleModalOutsideClick(e)}
       ref={outsideModalRef}
     >
-      <div className="review-modal-content">
+      <div className={`review-modal-content ${isDarkMode ? 'active-dark' : ''}`}>
         <div className="review-header">
           <div>Write Your Review</div>
           <div>{`About the ${productName}`}</div>
@@ -181,7 +184,7 @@ export default function ReviewModal({
                   </div>
                   { showPhotoInput && photos.length < 5
                     ? (
-                      <div className="input-url">
+                      <div className={`input-url ${isDarkMode ? 'active-dark' : ''}`}>
                         <input type="url" value={currUrl} onChange={(e) => setCurrUrl(e.target.value)} placeholder="Enter photo url"/>
                         <button type="button" onClick={onPhotoSubmit} className="shake">Submit</button>
                       </div>
@@ -199,12 +202,12 @@ export default function ReviewModal({
                 </div>
               </div>
               <div className="name-email-container">
-                <div className="username">
+                <div className={`username ${isDarkMode ? 'active-dark' : ''}`}>
                   <div>Enter Username *</div>
                   <input required type="text" maxLength="60" placeholder="Example: jackson11!" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <div className="privacy-notice">For privacy reasons, do not use your full name or email address</div>
                 </div>
-                <div className="email">
+                <div className={`email ${isDarkMode ? 'active-dark' : ''}`}>
                   <div>Enter Email *</div>
                   <input required type="email" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <div className="privacy-notice">For authentication reasons, you will not be emailed</div>
@@ -212,13 +215,13 @@ export default function ReviewModal({
               </div>
             </div>
             <div>
-              <div className="review-summary-text">
+              <div className={`review-summary-text ${isDarkMode ? 'active-dark' : ''}`}>
                 <div>Enter Summary Text</div>
                 <input maxLength="60" placeholder="Example: Best purchase ever!" value={reviewSummary} onChange={(e) => setReviewSummary(e.target.value)} />
               </div>
             </div>
             <div>
-              <div className="review-body-text">
+              <div className={`review-body-text ${isDarkMode ? 'active-dark' : ''}`}>
                 <div className="text-header">Enter Body Text *</div>
                 <textarea required="required" minLength="50" maxLength="1000" rows="8" cols="40" placeholder="Why did you like the product or not?" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
                 <div className="text-footer">
