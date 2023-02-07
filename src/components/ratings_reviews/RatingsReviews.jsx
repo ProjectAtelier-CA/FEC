@@ -27,9 +27,6 @@ export default function RatingsReviews({
   const [loadingMeta, setLoadingMeta] = useState(true);
   const [loadingReviews, setLoadingReviews] = useState(true);
 
-  // const isDarkMode = useDarkMode();
-  // // ${isDarkMode ? activeDark : ''}
-
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {

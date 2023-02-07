@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useMemo } from 'react';
+import { GiAmericanShield } from 'react-icons/gi';
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
 import RatingsReviews from './ratings_reviews/RatingsReviews';
@@ -7,7 +8,6 @@ import QuestionsAnswers from './qa/QuestionsAnswers';
 import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
-import { GiAmericanShield } from 'react-icons/gi';
 import { DarkModeProvider } from './shared/DarkModeProvider';
 
 
@@ -36,6 +36,7 @@ export default function App() {
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <Overview
+        data-testid="overview"
         goDark={goDark}
         dark={dark}
         appAvgRating={appAvgRating}
@@ -51,14 +52,14 @@ export default function App() {
       {
         overviewLoading
           ? (
-            <GiAmericanShield className="overview-loader" />
+            <GiAmericanShield className="overview-loader" data-testid="loader" />
           )
           : (
             <>
               <RelatedProducts id={id} setId={setId} handleTrackClick={handleTrackClick}/>
               <h3 className="testing-header"> Questions and Answers</h3>
               <QuestionsAnswers id={id} productName="A Purty Pink Jacket" handleTrackClick={handleTrackClick}/>
-              <RatingsReviews productID={37331} productName={productDetails.name} setAppAvgRating={setAppAvgRating} handleTrackClick={handleTrackClick} />
+              <RatingsReviews productID={id} productName={productDetails.name} setAppAvgRating={setAppAvgRating} handleTrackClick={handleTrackClick} />
             </>
           )
       }
