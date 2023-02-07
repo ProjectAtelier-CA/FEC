@@ -12,8 +12,3 @@ export default function UserDateInfo({ user, date }) {
     </span>
   );
 }
-
-
-{/* <span>
-  { `${user}, ${formattedDate}` }
-</span> */}

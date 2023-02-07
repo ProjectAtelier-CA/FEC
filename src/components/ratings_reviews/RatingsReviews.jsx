@@ -14,7 +14,9 @@ const initialStarFilterState = {
 };
 
 // Current props needed: productID, productName
-export default function RatingsReviews({ productID, productName, setAppAvgRating }) {
+export default function RatingsReviews({
+  productID, productName, setAppAvgRating, handleTrackClick,
+}) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [starFilter, setStarFilter] = useState(initialStarFilterState);
@@ -83,7 +85,7 @@ export default function RatingsReviews({ productID, productName, setAppAvgRating
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div className="ratings-reviews-container">
+        <div className="ratings-reviews-container" onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')} >
           <RatingsBreakdown
             reviewMetaData={reviewMetaData}
             handleStarClick={handleStarClick}

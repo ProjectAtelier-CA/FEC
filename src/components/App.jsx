@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
 import RatingsReviews from './ratings_reviews/RatingsReviews';
 import QuestionsAnswers from './qa/QuestionsAnswers';
@@ -7,6 +8,7 @@ import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
 import { GiAmericanShield, GiOctopus } from 'react-icons/gi';
+
 
 /* ----------- Set up id state -------------- */
 export default function App() {
@@ -17,9 +19,16 @@ export default function App() {
   const [productDetails, setDetails] = useState({});
   const [styles, setStyles] = useState([]);
   const [overviewLoading, setOverviewLoading] = useState(true);
-  // console.log(appAvgRating);
-  // Reviews id test 37331
-  console.log(productDetails);
+
+  // ----- Data tracking function ----- //
+  const trackerData = useMemo(() => ({}), []);
+  const handleTrackClick = (e, module) => {
+    const eleClicked = e.target;
+    const trackKey = format(new Date(), 'MMMM dd, yyyy HH mm ss S SS');
+    const trackTime = format(new Date(), 'MMMM dd, yyyy HH mm ss');
+    trackerData[trackKey] = { eleClicked, trackTime, module };
+    // console.log(trackerData);
+  };
 
   return (
     <>
@@ -47,7 +56,7 @@ export default function App() {
               <RelatedProducts id={id} setId={setId} />
               <h3 className="testing-header"> Questions and Answers</h3>
               <QuestionsAnswers id={id} productName="A Purty Pink Jacket" />
-              <RatingsReviews productID={id} productName="Dummy Product Name" setAppAvgRating={setAppAvgRating} />
+              <RatingsReviews productID={id} productName={productDetails.name} setAppAvgRating={setAppAvgRating} handleTrackClick={handleTrackClick} />
             </>
           )
       }
