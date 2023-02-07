@@ -1,3 +1,5 @@
+@use '../shared/colors' as *;
+
 $small: 10px;
 $grey: rgb(102, 100, 100);
 $blue: #2F5AAA;
@@ -13,6 +15,10 @@ $darkbrown: #463F3A;
   flex-direction: row;
   justify-content: center;
   color: $darkbrown;
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+    -webkit-text-stroke: .2px white;
+  }
 }
 
 .question-header {
@@ -52,6 +58,11 @@ $darkbrown: #463F3A;
   min-height: fit-content;
   text-align: justify;
   color: $darkbrown;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+    -webkit-text-stroke: .2px white;
+  }
 }
 
 
@@ -65,11 +76,18 @@ $darkbrown: #463F3A;
   margin-right: .5rem;
   color: $darkbrown;
 
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+  }
+
 }
 .a-tag{
   color: $grey;
   width:fit-content;
   display: inline;
+  #App__container.dark-mode  & {
+    color:  $color__font--sharp;
+  }
 }
 
 .answer-in-question{
@@ -86,6 +104,10 @@ $darkbrown: #463F3A;
   font-weight: 500;
   margin-left: .5rem;
   display:inline;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--sharp;
+  }
 }
 
 .answers{
@@ -135,6 +157,12 @@ $darkbrown: #463F3A;
   color:$darkbrown;
   border:none;
   margin-left:2rem;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+    text-decoration: underline;
+    text-decoration-color: $buttoncolor;
+  }
 }
 .label-answer-modal-warning {
   opacity:50%;
@@ -161,6 +189,10 @@ $darkbrown: #463F3A;
   font-size: $small;
   margin: .05rem;
   margin-left: .5rem;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+  }
 };
 
 .report-button, .helpful-button-yes, .add-answer-button {
@@ -172,6 +204,11 @@ $darkbrown: #463F3A;
   margin-right: .5rem;
   margin-left: .5rem;
   color:$darkblue;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
+
+  }
 
 }
 
@@ -195,6 +232,11 @@ button:hover {
   color:$darkblue;
   font-weight: 500;
 
+  #App__container.dark-mode  & {
+    border-style: solid;
+    border-color:$color__background;
+  }
+
 }
 
 .answerer-info {
@@ -209,6 +251,10 @@ button:hover {
     .review-user {
       font-weight: 700;
     }
+  }
+
+  #App__container.dark-mode  & {
+    color:  $color__font--dark;
   }
 }
 
@@ -227,10 +273,15 @@ button:hover {
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: 25px;
+
+  #App__container.dark-mode  & {
+    background-color:  $buttoncolor;
+  }
 }
 ::placeholder {
   color: grey;
   font-weight: bolder;
+
 }
 
 .question-modal-title, .answer-header-qa {
@@ -245,4 +296,8 @@ button:hover {
   font-weight:600;
   margin-left: .3rem;
   color:$darkblue;
+
+  #App__container.dark-mode  & {
+    color:  $color__font--sharp;
+  }
 }
