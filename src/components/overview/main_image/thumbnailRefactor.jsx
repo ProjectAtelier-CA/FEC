@@ -7,6 +7,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Thumbnails2({
   imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus, product_id, photos, N, styleClick, clickStyle,
@@ -20,6 +21,7 @@ export default function Thumbnails2({
   const [scrollDown, setScrollDown] = useState(6);
   const [scrolled, setScrolled] = useState(false);
   const scrollRef = useRef();
+  const isDark = useDarkMode();
 
   // ----- Use Effects -------//
   useEffect(() => {
@@ -117,10 +119,10 @@ export default function Thumbnails2({
             type="button"
             id="upNav"
             key="upNav"
-            className="up-nav"
+            className={`up-nav ${isDark ? 'thumbnail-nav-dark' : 'thumbnail-nav-light'}`}
             onClick={handleScrollUp}
           >
-            <MdOutlineArrowDropUp className="nav-arrow" />
+            <MdOutlineArrowDropUp className={`nav-arrow ${isDark ? 'arrow-dark' : 'arrow-light'}`} />
           </button>
         ) : null
       }
@@ -157,10 +159,10 @@ export default function Thumbnails2({
             type="button"
             id="downNav"
             key="downNav"
-            className="down-nav"
+            className={`down-nav ${isDark ? 'thumbnail-nav-dark' : 'thumbnail-nav-light'}`}
             onClick={handleScrollDown}
           >
-            <MdOutlineArrowDropDown className="nav-arrow" />
+            <MdOutlineArrowDropDown className={`nav-arrow ${isDark ? 'arrow-dark' : 'arrow-light'}`} />
           </button>
         ) : null
       }

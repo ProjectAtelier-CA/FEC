@@ -12,6 +12,7 @@ export default function Styles({
 }) {
   const [indeces, setIndeces] = useState([0]);
   const isDark = useDarkMode();
+  const iff = (condition, then, otherwise) => (condition ? then : otherwise);
 
   useEffect(() => {
     const indecesArray = [0];
@@ -72,14 +73,19 @@ export default function Styles({
           styles.map((style, index) => (
             <div key={style.style_id} className="style-container">
               {
-                style === styles[currentStyle] ? (<span className="style-checkmark"><MdCheckCircle className="checkmark-self" /></span>) : null
+                style === styles[currentStyle] ? (<span className="style-checkmark"><MdCheckCircle className={`checkmark-self ${isDark ? 'dark-mode-check' : 'light-mode-check'}`} /></span>) : null
               }
               <img
                 alt="style-thumbnail"
                 key={style.style_id}
                 id={index}
                 onClick={handleClick}
-                className={`style-thumbnail ${style === styles[currentStyle] ? 'style-active' : ''}`}
+                className={
+                  `style-thumbnail
+                  ${iff(style === styles[currentStyle], iff(isDark, 'style-active-dark', 'style-active-light'), '')}
+
+                  ${isDark ? 'dark-mode-style' : 'light-mode-style'}`
+                  }
                 src={style.photos[0].thumbnail_url}
               />
             </div>

@@ -14,30 +14,26 @@ $blue: #2f5aaa;
   flex-shrink: 1;
   height: fit-content;
   padding-bottom: 10px;
-  // min-width: 1200px;
-  // border: solid green;
-  // overflow: auto;
 }
 
 * {
   font-family: 'Inter', sans-serif;
 }
+
 // Product info
 .product-info {
   padding-left: 5vw;
   padding-top: 20px;
   display: flex;
   flex-flow: column nowrap;
-  width: 400px;//40vw;
+  width: 400px;
   height: 60vh;
   height: fit-content;
 }
 
 .info {
-  // resize: inherit;
   width: 100%;
   height: 100%;
-  // overflow: auto;
   flex-shrink: inherit;
   position: relative;
 
@@ -45,7 +41,6 @@ $blue: #2f5aaa;
     margin: 0;
     margin-block-start: 0em;
     margin-block-end: 0em;
-    // justify-content: flex-start;
     padding-right: 4px;
   }
 
@@ -59,6 +54,14 @@ $blue: #2f5aaa;
       font-size: .7rem;
     }
 
+    .dark-link {
+      color: #bb9f8c;
+    }
+
+    .light-link {
+      color: $blue;
+    }
+
   }
 
   .dark-mode {
@@ -68,7 +71,6 @@ $blue: #2f5aaa;
   .light-mode {
     color: $color1;
   }
-
 }
 
 .price {
@@ -97,7 +99,6 @@ $blue: #2f5aaa;
   .light-mode {
     color: $color1;
   }
-
 }
 
 
@@ -107,11 +108,9 @@ $blue: #2f5aaa;
   font-size: min(1.2vh, 1.2vw);
   font-weight: normal;
   font-family: 'Inter', sans-serif;
-  // font-weight: light;
   margin: 0px;
   padding-top: 5%;
   padding-bottom: 1%;
-  // border: solid green;
 
   .dark-mode {
     color: #bb9f8c;
@@ -132,9 +131,7 @@ $blue: #2f5aaa;
   h1 {
     text-align: left;
   }
-  // border: solid green;
-  // border: solid;
-  // border-color: green;
+
   padding-top: 0%;
   padding-bottom: 0%;
 
@@ -145,18 +142,11 @@ $blue: #2f5aaa;
   .light-mode {
     color: $color1;
   }
-
-
 }
-
-
 
 // styles
 .styles {
   padding: 0;
-  // border: solid;
-  // border-color: green;
-
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -175,14 +165,7 @@ $blue: #2f5aaa;
     color: $color1;
   }
 
-
-
-  // align-items: flex-start;
-  // height: fit-content;
-  // justify-content: start;
-  // inset: 0;
   .style {
-
     font-size: min(1.5vh, 1.5vw);
 
     .style-name {
@@ -190,7 +173,6 @@ $blue: #2f5aaa;
       font-weight: normal;
     }
   }
-
 }
 
 
@@ -206,11 +188,6 @@ $blue: #2f5aaa;
   padding: 0;
   padding-top: 3%;
   padding-bottom: 3%;
-
-
-
-  // border: solid;
-  // border-color: green;
 }
 
 .style-container {
@@ -228,8 +205,6 @@ $blue: #2f5aaa;
   border-radius: 100%;
 
   .checkmark-self {
-    color: $color2;
-    background-color: white;
     border-radius: 100%;
     scale: 1;
     height: min(2vh,2vw);
@@ -238,12 +213,16 @@ $blue: #2f5aaa;
     right: 0px;
   }
 
+  .dark-mode-check {
+    color:#1b263b;
+    background-color: #bb9f8c;
+  }
 
+  .light-mode-check {
+    color: $color2;
+    background-color: white;
+  }
 }
-
-// .testMe:hover {
-
-// }
 
 .style-thumbnail {
   inset: 0;
@@ -254,17 +233,21 @@ $blue: #2f5aaa;
   transition: border 200ms ease-in-out;
 }
 
-.style-thumbnail:hover {
+.light-mode-style:hover {
   border: solid $color2;
   transition: border 200ms ease-in-out;
-
 }
 
-.style-active {
+.dark-mode-style:hover {
+  border: solid #bb9f8c;
+  transition: border 200ms ease-in-out;
+}
+
+.style-active-dark {
+  border: solid #bb9f8c;
+}
+
+.style-active-light {
   border: solid $color1;
 }
 
-.price {
-  // border: solid;
-  // border-color: green;
-}

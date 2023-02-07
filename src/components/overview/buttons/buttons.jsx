@@ -157,7 +157,7 @@ export default function Buttons({
                       type="button"
                       onClick={selectSize}
                       value={skus[sku].size}
-                      className="dropdown-content size-option"
+                      className={`dropdown-content size-option ${isDark ? 'dark-mode-dropdown' : 'light-mode-dropdown'}`}
                     >
                       {skus[sku].size}
                     </button>
@@ -183,7 +183,7 @@ export default function Buttons({
                 ? (
                   // eslint-disable-next-line max-len
                   [...Array(Math.min(skus[currentSku].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
-                    <button type="button" id={option} value={option} className="dropdown-content quantity-option" onClick={optionClick}>
+                    <button type="button" id={option} value={option} className={`dropdown-content quantity-option ${isDark ? 'dark-mode-dropdown' : 'light-mode-dropdown'}`} onClick={optionClick}>
                       {option}
                     </button>
                   ))
@@ -196,19 +196,19 @@ export default function Buttons({
         {
           addedToBag
             ? (
-              <button type="button" className="button added" onClick={addToBag}>
+              <button type="button" className={`button added ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
               </button>
             )
-            : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
+            : (<button type="button" className={`button addToBag ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={addToBag}>Add to bag</button>)
         }
-        <button type="button" className="button favorite" onClick={handleFavorite}>
+        <button type="button" className={`button favorite ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={handleFavorite}>
           {
             favorite
-              ? <BsStarFill className="favorite-star" />
-              : <BsStar className="favorite-star" />
+              ? <BsStarFill className={`favorite-star ${isDark ? 'dark-mode-star' : 'light-mode-star'}`} />
+              : <BsStar className={`favorite-star ${isDark ? 'dark-mode-star' : 'light-mode-star'}`} />
           }
         </button>
       </div>

@@ -17,7 +17,6 @@ $darkNav: #242424;
   min-height: 50px;
   opacity: 1;
   justify-content: space-between;
-  // align-items: center;
   z-index: 6;
   margin-bottom: 20px;
 }
@@ -61,7 +60,7 @@ $darkNav: #242424;
 
 .dark-mode-search {
   background-color: $darkNav;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #bb9f8c;
 }
 
 .light-mode-search {
@@ -83,18 +82,14 @@ $darkNav: #242424;
 }
 
 .search-icon {
-  // padding: 0px 2px;
-  // padding-right: 30px;
   margin-right: 30px;
   margin-left: 5px;
   scale: 1.2;
-  // color: $color1;
   transform: translate(0, 5%);
-  // border: $color1 solid;
 }
 
 .dark-mode-icon {
-  color: white;
+  color: #bb9f8c;
 }
 
 .light-mode-icon {

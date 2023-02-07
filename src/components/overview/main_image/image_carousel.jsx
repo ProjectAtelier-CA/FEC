@@ -135,10 +135,10 @@ export default function ImageCarousel({
                   <button
                     type="button"
                     key="leftNav"
-                    className="o-carousel-button carousel-left"
+                    className={`o-carousel-button carousel-left ${isDark ? 'carousel-button-dark' : 'carousel-button-light'}`}
                     onClick={handleLeft}
                   >
-                    <MdKeyboardArrowLeft className="carousel-nav" />
+                    <MdKeyboardArrowLeft className={`carousel-nav ${isDark ? 'carousel-nav-dark' : 'carousel-nav-light'}`} />
                   </button>
                 )
                 : null
@@ -149,10 +149,10 @@ export default function ImageCarousel({
                   <button
                     type="button"
                     key="rightNav"
-                    className="o-carousel-button carousel-right"
+                    className={`o-carousel-button carousel-right ${isDark ? 'carousel-button-dark' : 'carousel-button-light'}`}
                     onClick={handleRight}
                   >
-                    <MdKeyboardArrowRight className="carousel-nav" />
+                    <MdKeyboardArrowRight className={`carousel-nav ${isDark ? 'carousel-nav-dark' : 'carousel-nav-light'}`} />
 
                   </button>
                 )
