@@ -12,7 +12,7 @@ const questionStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: 'beige',
+    backgroundColor: '#e0e1dd',
     width: 1000,
     height: 600,
   },
@@ -111,7 +111,7 @@ export default function App({ product_id, productName }) {
           <label className="label-answer-modal-warning"> For authentication reasons, you will not be emailed</label>
           <br />
           <br />
-          <input type="submit" onClick={submitQuestion} />
+          <input type="submit" className="answer-submit-button" onClick={submitQuestion} />
           <br />
           <label className="mandatory-warning">Required Fields * </label>
         </form>

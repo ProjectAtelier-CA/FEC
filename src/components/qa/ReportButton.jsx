@@ -11,7 +11,7 @@ export default function ReportButton({ answerId }) {
   return (
     <span>
       {!isClicked ? <button className="report-button" onClick={sendItAway} type="button"> Report</button> : null }
-      {isClicked ? <button className="report-button" type="button">Reported </button> : null}
+      {isClicked ? <span className="report-button-clicked" type="button">Reported </span> : null}
     </span>
   );
 }
