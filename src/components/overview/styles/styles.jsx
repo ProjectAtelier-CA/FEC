@@ -5,11 +5,13 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { MdCheckCircle } from 'react-icons/md';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Styles({
   setIndex, styles, currentStyle, setStyle, setStyleObject, setSkus, styleObject, setSku, clickStyle,
 }) {
   const [indeces, setIndeces] = useState([0]);
+  const isDark = useDarkMode();
 
   useEffect(() => {
     const indecesArray = [0];
@@ -50,7 +52,7 @@ export default function Styles({
                 $
                 {styles[currentStyle].sale_price}
                 {' '}
-                <span className="original-price">
+                <span className={`original-price ${isDark ? 'dark-mode' : 'light-mode'}`}>
                   $
                   {styles[currentStyle].original_price}
                 </span>

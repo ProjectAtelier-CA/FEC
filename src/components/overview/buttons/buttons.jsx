@@ -9,6 +9,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md';
 import { BsStarFill, BsStar } from 'react-icons/bs';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Buttons({
   styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku, product_id,
@@ -25,6 +26,7 @@ export default function Buttons({
   const [favorite, addFavorite] = useState(false);
   const [favorites, setFavorites] = useState({});
   const iff = (condition, then, otherwise) => (condition ? then : otherwise);
+  const isDark = useDarkMode();
 
   useEffect(() => {
     setSize('Size');
@@ -64,7 +66,6 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
-    console.log(size);
   }
 
   function optionClick(event) {
@@ -136,7 +137,7 @@ export default function Buttons({
       <div className="top-buttons">
         {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
         <div className="dropdown" onClick={sizeClick}>
-          <button type="button" className="size button">
+          <button type="button" className={`size button ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>
             {sizeOpened
               ? 'Select size'
               : iff(skus[currentSku].quantity > 0, size, <span className="no-stock">
@@ -171,8 +172,8 @@ export default function Buttons({
             skus[currentSku].quantity > 0
               ? (
                 quantity > 0
-                  ? (<button type="button" className="button quantity">{quantity}</button>)
-                  : (<button type="button" className="button quantity">-</button>)
+                  ? (<button type="button" className={`button quantity ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>{quantity}</button>)
+                  : (<button type="button" className={`button quantity ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>-</button>)
               )
               : null
           }

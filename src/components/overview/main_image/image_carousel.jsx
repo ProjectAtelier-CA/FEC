@@ -8,6 +8,7 @@ import {
 } from 'react-icons/md';
 // import Thumbnails from './thumbnails';
 import Thumbnails2 from './thumbnailRefactor';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ImageCarousel({
   imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos, clickStyle, styleClick,
@@ -16,6 +17,7 @@ export default function ImageCarousel({
   const [isExpanded, setExpand] = useState(false);
   const [mousePos, setPos] = useState({});
   const [isClicked, setClick] = useState(false);
+  const isDark = useDarkMode();
 
   useEffect(() => {
     setN(photos.length);
@@ -178,7 +180,8 @@ export default function ImageCarousel({
                       `image
                         ${isExpanded || (mousePos === null) ? 'zoom' : ''}
                         ${isClicked && isExpanded ? 'zoom_clicked' : ''}
-                        ${image === photos[imageIndex] ? 'active' : 'hidden'}`
+                        ${image === photos[imageIndex] ? 'active' : 'hidden'}
+                        ${isDark ? 'dark-mode-image' : 'light-mode-image'}`
                       }
                       src={image.url}
                       alt="Carousel Slide"

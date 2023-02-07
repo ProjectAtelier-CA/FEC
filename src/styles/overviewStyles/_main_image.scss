@@ -18,8 +18,7 @@ $blue: #2f5aaa;
   display: flex;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  background: white; //#463F3A;
+  object-fit: contain; //#463F3A;
   object-position: center;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
@@ -28,6 +27,14 @@ $blue: #2f5aaa;
 
   overflow: hidden;
   transition: 800ms transform;
+}
+
+.dark-mode-image {
+  background: #141416;
+}
+
+.light-mode-image {
+  background: white;
 }
 
 .active {
@@ -127,7 +134,7 @@ $blue: #2f5aaa;
 }
 
 .o-carousel-button.carousel-right {
-  right: 1rem;
+  right: 3rem;
   // bottom: 50%;
 }
 

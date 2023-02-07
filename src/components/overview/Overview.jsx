@@ -24,6 +24,8 @@ import ProductInfo from './product_header/product_info';
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
 
+import { useDarkMode } from '../shared/DarkModeProvider';
+
 export default function Overview({
   goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick,
 }) {
