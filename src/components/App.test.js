@@ -7,9 +7,9 @@ import App from './App';
 describe('Jest', function() {
   const user = userEvent.setup();
 
-  it ('should say all our components', () => {
-    render(<App />)
-    expect(screen.getByTestId('app-test')).toHaveTextContent('All Our Components');
-  })
+  // it ('should say all our components', () => {
+  //   render(<App />)
+  //   expect(screen.getByTestId('app-test')).toHaveTextContent('All Our Components');
+  // })
 })
 

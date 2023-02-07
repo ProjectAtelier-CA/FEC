@@ -1,12 +1,14 @@
 /* eslint-disable camelcase */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 // eslint-disable-next-line camelcase
 export default function Description({ product_id, details }) {
   // eslint-disable-next-line no-unused-vars
   // const [details, setDetails] = useState({});
   const [loading, setLoading] = useState(true);
+  const isDark = useDarkMode();
 
   useEffect(() => {
     if (details.slogan === undefined) {
@@ -27,7 +29,7 @@ export default function Description({ product_id, details }) {
       ? (null)
       : (
         <div className="o-description">
-          <div className="description-content">
+          <div className={`description-content ${isDark ? 'dark-description' : 'light-description'}`}>
             <h3 className="o-title">{details.slogan}</h3>
             <p className="o-body">{details.description}</p>
           </div>

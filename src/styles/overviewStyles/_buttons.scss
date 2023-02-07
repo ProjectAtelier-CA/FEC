@@ -51,8 +51,27 @@ $color7: #32DE8A;
   }
 }
 
+.favorite {
+  width: 3vw;
+  display: flex;
+  justify-content: center;
+}
+
 .favorite-star {
-  transform: translate(0,10%);
+  align-self: center;
+  scale: 1.5;
+  color: $color1;
+  font-weight: bold;
+  opacity: 1;
+}
+
+
+.dark-mode-star {
+  color: #bb9f8c;
+}
+
+.light-mode-star {
+  color: $color1;
 }
 
 .out-of-stock {
@@ -60,19 +79,8 @@ $color7: #32DE8A;
 }
 
 .button {
-  border: 1px solid $color1;
-  background-color: $color4;
-  color: $color1;
-
-
-  // border-radius: 6px;
-  // border: solid;
-  // border-width: .5px;
-  // border-color: #463F3A;
   outline: none;
   height: 5vh;
-  // background-color: #D0B8AC;
-  // background: none;
   padding-left: 10px;
   padding: 10px;
   text-align: left;
@@ -80,15 +88,35 @@ $color7: #32DE8A;
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  // color: #463F3A;
   font-size: 1.6vh;
-
+  overflow: hidden;
+  display: flex;
 }
 
-.button:hover {
+.dark-mode-button {
+  border: 1px solid black;
+  background-color: #1b263b;
+  color: #bb9f8c;
+}
+
+.light-mode-button {
+  border: 1px solid $color1;
+  background-color: $color4;
+  color: $color1;
+}
+
+.light-mode-button:hover {
   opacity: .7;
   cursor: pointer;
 }
+
+.dark-mode-button:hover {
+  opacity: 1;
+  border: 1px solid #bb9f8c;
+  cursor: pointer;
+}
+
+
 
 .dropdown {
   position: relative;
@@ -106,16 +134,11 @@ $color7: #32DE8A;
 }
 
 .size-option {
-  background: none;
-  outline: none;
   border: solid black;
   width: 11.95vw;
-
 }
 
 .quantity-option {
-  background: none;
-  outline: none;
   border: solid black;
   width: 4vw;
 }
@@ -125,24 +148,38 @@ $color7: #32DE8A;
   position: relative;
   // background-color: lightgray;
   margin: 0;
-  box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.2);
   padding: 10px 10px;
   outline: none;
   border: none;
   text-align: left;
-  background-color: white;
   z-index: 2;
   height: 4vh;
+  opacity: 1;
+}
+
+.dark-mode-dropdown {
+  background-color: #1b263b;
+  color: #bb9f8c;
+  box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.2);
+  opacity: 1;
+}
+
+.dark-mode-dropdown:hover {
+  background-color: #141416;
+  opacity: 1;
+}
+
+.light-mode-dropdown {
+  background-color: white;
+  box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.2);
 }
 
 
-.dropdown-content:hover {
+.light-mode-dropdown:hover {
   background-color: lightgray;
+  opacity: 1;
 }
 
-// .dropdown:hover .dropdown-content {
-//   display: block;
-// }
 .social-buttons {
   display: flex;
   flex-flow: row nowrap;
@@ -150,9 +187,21 @@ $color7: #32DE8A;
 }
 
 .social-media {
-  color: $color1;
   height: min(3vh, 3vw);
   width: min(3vh, 3vw);
+}
+
+.dark-mode-social {
+  color: #bb9f8c;
+}
+
+.light-mode-social {
+  color: $color1;
+}
+
+.social-media:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .social-media:hover {

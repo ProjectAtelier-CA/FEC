@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -33,17 +34,17 @@ export default function Banner({
   return (
     sales.length > 0
       ? (
-        <div className="banner">
+        <div className="banner" data-testid="banner">
           <em>&#8212;&nbsp;DON&#39;T MISS BIG SAVINGS:&nbsp;</em>
-          <div className="sales">
+          <div className="sales" key="sales">
             {
-              sales.map((sale) => (
-                <div>
-                  <a key={sale.style.id} className="sale" onClick={handleClick} id={sale.index} data-image={sale.imageIndex}>
+              sales.map((sale, index) => (
+                <div key={index}>
+                  <a className="sale" onClick={handleClick} id={sale.index} data-image={sale.imageIndex}>
                     $
                     {sale.style.original_price - sale.style.sale_price}
                     {' '}
-                    off
+                    OFF
                   </a>
                   &nbsp;
                 </div>
