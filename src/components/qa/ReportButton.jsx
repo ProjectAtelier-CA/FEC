@@ -10,8 +10,8 @@ export default function ReportButton({ answerId }) {
 
   return (
     <span>
-      {!isClicked ? <button className="report-button" onClick={sendItAway} type="button"> Report</button> : null }
-      {isClicked ? <span className="report-button-clicked" type="button">Reported </span> : null}
+      {!isClicked ? <button className="report-button" data-testid="report-button" onClick={sendItAway} type="button"> Report</button> : null }
+      {isClicked ? <span className="report-button-clicked" data-testid="report-button" type="button">Reported </span> : null}
     </span>
   );
 }
