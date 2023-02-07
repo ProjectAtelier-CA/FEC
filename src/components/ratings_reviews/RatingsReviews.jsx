@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// import { useDarkMode } from '../shared/DarkModeProvider';
 import axios from 'axios';
 import { GiAmericanShield } from 'react-icons/gi';
 import RatingsBreakdown from './ratings_breakdown/RatingsBreakdown';
@@ -25,6 +26,10 @@ export default function RatingsReviews({
 
   const [loadingMeta, setLoadingMeta] = useState(true);
   const [loadingReviews, setLoadingReviews] = useState(true);
+
+  // const isDarkMode = useDarkMode();
+  // // ${isDarkMode ? activeDark : ''}
+
 
   useEffect(() => {
     axios.get('http://localhost:8081/reviews', {

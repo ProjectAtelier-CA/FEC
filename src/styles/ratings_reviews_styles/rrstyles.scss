@@ -6,11 +6,18 @@ $background-white: #FBFEFB;
 $orange: #EE6C4D;
 $triangle-blue: #2f5aaa;
 
-
+$dark-mode-steel-blue: #778DA9;
+$dark-mode-dark-blue: #1b263b; // Good for buttons // and gray bar
+$dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 * {
   box-sizing: border-box;
 }
+
+// .active-dark
+// &.activeDark {
+
+// }
 
 .loading-reviews {
   font-size: 2rem;
@@ -448,12 +455,27 @@ $triangle-blue: #2f5aaa;
 
       .filter-active {
         background-color: $super-light-brown;
+
+        &.active-dark {
+          // background-color: $dark-mode-dark-blue;
+          background-color: $dark-mode-light-brown;
+          // border: 1px solid #bb9f8c;
+          color: $dark-mode-dark-blue;
+          opacity: 0.7;
+        }
       }
 
       .filter-star-button:hover {
         cursor: pointer;
         opacity: .5;
         background-color: $beige;
+
+        &.active-dark {
+          // background-color: $dark-mode-dark-blue;
+          // border: 1px solid #bb9f8c;
+          // opacity: 0.7;
+          color: $dark-mode-dark-blue;
+        }
       }
 
       .break-down-bar {
@@ -467,12 +489,20 @@ $triangle-blue: #2f5aaa;
           height: 10px;
           position: absolute;
           z-index: 0;
+
+          &.active-dark {
+            background-color: $dark-mode-dark-blue;
+          }
         }
 
         .green-bar {
           background-color: $triangle-blue;
           height: 10px;
           z-index: 1;
+          &.active-dark {
+            background-color: $dark-mode-light-brown;
+            opacity: 0.7;
+          }
         }
       }
     }
@@ -579,6 +609,11 @@ $triangle-blue: #2f5aaa;
       z-index: 0;
       width: 100px;
       height: 10px;
+
+      &.active-dark {
+        background-color: $dark-mode-dark-blue;
+        opacity: 0.7;
+      }
     }
 
     .char-triangle {
@@ -589,6 +624,10 @@ $triangle-blue: #2f5aaa;
       margin-top: 9px;
       color: $triangle-blue;
       z-index: 1;
+
+      &.active-dark {
+        color: $dark-mode-light-brown;
+      }
     }
 
     .trait-container-left {
