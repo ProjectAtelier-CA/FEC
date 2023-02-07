@@ -9,6 +9,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md';
 import { BsStarFill, BsStar } from 'react-icons/bs';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Buttons({
   styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku, product_id,
@@ -25,6 +26,7 @@ export default function Buttons({
   const [favorite, addFavorite] = useState(false);
   const [favorites, setFavorites] = useState({});
   const iff = (condition, then, otherwise) => (condition ? then : otherwise);
+  const isDark = useDarkMode();
 
   useEffect(() => {
     setSize('Size');
@@ -64,7 +66,6 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
-    console.log(size);
   }
 
   function optionClick(event) {
@@ -72,9 +73,7 @@ export default function Buttons({
   }
 
   function addToBag() {
-    console.log(addedToBag);
     if (addedToBag) {
-      console.log('here');
       setBagged(false);
     } else if (quantity > 0) {
       setBagged(true);
@@ -84,20 +83,6 @@ export default function Buttons({
       openQuantity(true);
     }
   }
-
-  // function handleFavorite() {
-  //   addFavorite(!favorite);
-  //   const object = favorites;
-  //   if (object[product_id] === undefined) {
-  //     object[product_id] = {};
-  //     object[product_id][currentSku] = 1;
-  //   } else if (object[product_id][currentSku] !== undefined) {
-  //     delete object[product_id][currentSku];
-  //   } else {
-  //     object[product_id][currentSku] = 1;
-  //   }
-  //   setFavorites(object);
-  // }
 
   function handleFavorite() {
     addFavorite(!favorite);
@@ -109,18 +94,6 @@ export default function Buttons({
     }
     setFavorites(object);
   }
-
-  // useEffect(() => {
-  //   if (favorites[product_id] !== undefined) {
-  //     if (favorites[product_id][currentSku] === 1) {
-  //       addFavorite(true);
-  //     } else {
-  //       addFavorite(false);
-  //     }
-  //   } else {
-  //     addFavorite(false);
-  //   }
-  // }, [favorites, currentSku, product_id]);
 
   useEffect(() => {
     if (favorites[product_id] !== undefined) {
@@ -164,7 +137,7 @@ export default function Buttons({
       <div className="top-buttons">
         {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
         <div className="dropdown" onClick={sizeClick}>
-          <button type="button" className="size button">
+          <button type="button" className={`size button ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>
             {sizeOpened
               ? 'Select size'
               : iff(skus[currentSku].quantity > 0, size, <span className="no-stock">
@@ -179,30 +152,28 @@ export default function Buttons({
             {
                 sizeOpened
                   ? (Object.keys(skus).map((sku) => (
-                    // <div className="dropdown-content">
                     <button
                       id={sku}
                       type="button"
                       onClick={selectSize}
                       value={skus[sku].size}
-                      className="dropdown-content size-option"
+                      className={`dropdown-content size-option ${isDark ? 'dark-mode-dropdown' : 'light-mode-dropdown'}`}
                     >
                       {skus[sku].size}
                     </button>
-                    // </div>
                   ))
                   ) : null
             }
           </ul>
         </div>
-        <div className="dropdown" onClick={quantityClick} data-testid="test">
+        <div className="dropdown" onClick={quantityClick}>
           {
             // eslint-disable-next-line no-nested-ternary
             skus[currentSku].quantity > 0
               ? (
                 quantity > 0
-                  ? (<button type="button" className="button quantity">{quantity}</button>)
-                  : (<button type="button" className="button quantity">-</button>)
+                  ? (<button type="button" className={`button quantity ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>{quantity}</button>)
+                  : (<button type="button" className={`button quantity ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>-</button>)
               )
               : null
           }
@@ -212,7 +183,7 @@ export default function Buttons({
                 ? (
                   // eslint-disable-next-line max-len
                   [...Array(Math.min(skus[currentSku].quantity, 15)).keys()].map((key) => key + 1).map((option) => (
-                    <button type="button" id={option} value={option} className="dropdown-content quantity-option" onClick={optionClick}>
+                    <button type="button" id={option} value={option} className={`dropdown-content quantity-option ${isDark ? 'dark-mode-dropdown' : 'light-mode-dropdown'}`} onClick={optionClick}>
                       {option}
                     </button>
                   ))
@@ -225,19 +196,19 @@ export default function Buttons({
         {
           addedToBag
             ? (
-              <button type="button" className="button added" onClick={addToBag}>
+              <button type="button" className={`button added ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={addToBag}>
                 Added to bag!
                 {' '}
                 <MdCheckCircle className="bag-check" />
               </button>
             )
-            : (<button type="button" className="button addToBag" onClick={addToBag}>Add to bag</button>)
+            : (<button type="button" className={`button addToBag ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={addToBag}>Add to bag</button>)
         }
-        <button type="button" className="button favorite" onClick={handleFavorite}>
+        <button type="button" className={`button favorite ${isDark ? 'dark-mode-button' : 'light-mode-button'}`} onClick={handleFavorite}>
           {
             favorite
-              ? <BsStarFill className="favorite-star" />
-              : <BsStar className="favorite-star" />
+              ? <BsStarFill className={`favorite-star ${isDark ? 'dark-mode-star' : 'light-mode-star'}`} />
+              : <BsStar className={`favorite-star ${isDark ? 'dark-mode-star' : 'light-mode-star'}`} />
           }
         </button>
       </div>
