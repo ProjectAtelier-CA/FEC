@@ -19,7 +19,6 @@ export default function Nav({ goDark, dark }) {
 
   function handleSearch(event) {
     console.log(event.target.value);
-    // setSearch(event.target.value);
   }
 
   function setDarkMode() {
