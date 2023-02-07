@@ -12,7 +12,6 @@ export default function ReviewCard({
   review, handleImageClick, handleHelpfulClick, handleReportClick, debouncedSearch,
 }) {
   const shortBodyText = review.body.slice(0, 250); // Don't need state since never changing
-  // const [shortBodyText, setShortBodyText] = useState(review.body.slice(0, 250));
 
   return (
     <div className="review-card">

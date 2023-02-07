@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useMemo } from 'react';
 import { GiAmericanShield } from 'react-icons/gi';
-
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
 import RatingsReviews from './ratings_reviews/RatingsReviews';
