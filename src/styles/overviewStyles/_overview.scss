@@ -49,7 +49,21 @@ html {
   scroll-behavior: smooth;
 }
 
+.overview {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .overview-loader {
+  // border: 16px solid #f3f3f3; /* Light grey */
+  // border-top: 16px solid $color1; /* Blue */
+  // border-radius: 50%;
   // border: 16px solid #f3f3f3; /* Light grey */
   // border-top: 16px solid $color1; /* Blue */
   // border-radius: 50%;
@@ -67,8 +81,18 @@ html {
   justify-content: center;
   align-items: center;
   animation: rotateY 2s infinite linear;
+}
+  // animation: spin 2s linear infinite;
+  // animation: spin 2s linear infinite;
+  color: $color1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateY 2s infinite linear;
 
 }
+h1 {
 
 // @keyframes spin {
 //   0% { transform: rotate(0deg); }
@@ -86,7 +110,21 @@ html {
     transform: rotateY(360deg);
   }
 }
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 
+// .loading-reviews-icon {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   animation: rotateY 2s infinite linear;
+// }
 // .loading-reviews-icon {
 //   display: flex;
 //   justify-content: center;

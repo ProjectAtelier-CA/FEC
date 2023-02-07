@@ -8,6 +8,8 @@ import QuestionsAnswers from './qa/QuestionsAnswers';
 import Overview from './overview/Overview';
 import StarReference from './shared/StarReference';
 import '../styles/styles.scss';
+import { GiAmericanShield } from 'react-icons/gi';
+import { DarkModeProvider } from './shared/DarkModeProvider';
 
 /* ----------- Set up id state -------------- */
 export default function App() {
@@ -21,7 +23,7 @@ export default function App() {
   // console.log(appAvgRating);
 
   return (
-    <>
+    <DarkModeProvider dark={dark}>
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <Overview
@@ -51,6 +53,6 @@ export default function App() {
             </>
           )
       }
-    </>
+    </DarkModeProvider>
   );
 }

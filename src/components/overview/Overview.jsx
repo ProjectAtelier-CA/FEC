@@ -105,7 +105,10 @@ export default function Overview({
           setIndex={setIndex}
           setStyleObject={setStyleObject}
           clickStyle={clickStyle}
+<<<<<<< HEAD
           data-testid="banner"
+=======
+>>>>>>> refs/remotes/origin/main
         />
       </div>
       <div className="image-and-info">

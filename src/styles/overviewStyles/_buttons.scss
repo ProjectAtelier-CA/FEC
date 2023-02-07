@@ -95,6 +95,8 @@ $color7: #32DE8A;
 .button:hover {
   opacity: .7;
   cursor: pointer;
+  opacity: .7;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -160,6 +162,11 @@ $color7: #32DE8A;
   color: $color1;
   height: min(3vh, 3vw);
   width: min(3vh, 3vw);
+}
+
+.social-media:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .social-media:hover {

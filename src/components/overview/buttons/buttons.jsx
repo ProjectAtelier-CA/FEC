@@ -44,6 +44,14 @@ export default function Buttons({
     }
   }, [addedToBag]);
 
+  useEffect(() => {
+    if (addedToBag) {
+      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
+    } else {
+      console.log(`Removed ${currentSku} from bag`);
+    }
+  }, [addedToBag]);
+
   function selectSize(event) {
     setSizeStatus(true);
     setSize(event.target.value);
@@ -56,6 +64,7 @@ export default function Buttons({
 
   function quantityClick() {
     openQuantity(!quantityOpened);
+    console.log(size);
   }
 
   function optionClick(event) {
