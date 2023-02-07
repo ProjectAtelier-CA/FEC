@@ -31,31 +31,6 @@ export default function Banner({
     clickStyle(true);
   }
 
-export default function Banner({
-  styles, setStyle, setIndex, setStyleObject, clickStyle,
-}) {
-  const [sales, setSales] = useState({});
-
-  useEffect(() => {
-    const indecesArray = [0];
-    styles.forEach((style) => {
-      const N = indecesArray.length;
-      indecesArray.push(indecesArray[N - 1] + style.photos.length);
-    });
-
-    const indexStyles = styles.map((style, index) => ({ style, index, imageIndex: indecesArray[index] }));
-    const saleStyles = indexStyles.filter((item) => (item.style.sale_price !== null));
-    setSales(saleStyles);
-  }, [styles]);
-
-  function handleClick(event) {
-    const id = parseInt(event.target.id, 10);
-    setStyle(id);
-    setIndex(parseInt(event.target.dataset.image, 10));
-    setStyleObject(styles[id]);
-    clickStyle(true);
-  }
-
   return (
     sales.length > 0
       ? (

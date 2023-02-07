@@ -18,11 +18,6 @@ import ImageCarousel from './main_image/image_carousel';
 // PRODUCT INFO
 import ProductInfo from './product_header/product_info';
 
-// STYLES
-// eslint-disable-next-line import/no-named-as-default
-// import Styles from './styles/styles';
-// import Buttons from './buttons/buttons';
-
 // DESCRIPTION
 import Description from './product_description/product_description';
 import '../../styles/overviewStyles/_overview.scss';
@@ -39,9 +34,8 @@ export default function Overview({
   const [photos, setPhotos] = useState([]);
   const [styleClick, clickStyle] = useState(false);
 
-  let iToS = [];
-
   function getStyles() {
+    let iToS = [];
     axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
       .then(({ data }) => {
         data.results.forEach((style, index) => {
@@ -105,10 +99,6 @@ export default function Overview({
           setIndex={setIndex}
           setStyleObject={setStyleObject}
           clickStyle={clickStyle}
-<<<<<<< HEAD
-          data-testid="banner"
-=======
->>>>>>> refs/remotes/origin/main
         />
       </div>
       <div className="image-and-info">

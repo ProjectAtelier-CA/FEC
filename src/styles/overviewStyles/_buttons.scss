@@ -60,6 +60,9 @@ $color7: #32DE8A;
   // transform: translate(-10%,10%);
   align-self: center;
   scale: 1.5;
+  color: $color1;
+  font-weight: bold;
+  opacity: 1;
 }
 
 .out-of-stock {
@@ -142,11 +145,13 @@ $color7: #32DE8A;
   background-color: white;
   z-index: 2;
   height: 4vh;
+  opacity: 1;
 }
 
 
 .dropdown-content:hover {
   background-color: lightgray;
+  opacity: 1;
 }
 
 // .dropdown:hover .dropdown-content {
