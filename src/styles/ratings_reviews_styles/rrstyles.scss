@@ -1,17 +1,17 @@
-$color1: #463F3A;
-$color2: #D0B8AC;
-$color3: #F3D8C7;
-$color4: #EFE5DC;
-$color5: #FBFEFB;
-$color6: #EE6C4D;
-$triangle: #2f5aaa;
+$dark-brown: #463F3A;
+$light-brown: #D0B8AC;
+$beige: #F3D8C7;
+$super-light-brown: #EFE5DC;
+$background-white: #FBFEFB;
+$orange: #EE6C4D;
+$triangle-blue: #2f5aaa;
 
-
+$dark-mode-steel-blue: #778DA9;
+$dark-mode-dark-blue: #1b263b; // Good for buttons // and gray bar
+$dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 * {
   box-sizing: border-box;
-  // background-color: #141416;
-  // color: #bb9f8c;
 }
 
 .loading-reviews {
@@ -56,7 +56,7 @@ $triangle: #2f5aaa;
 
 .review-card {
   // border: 2px solid purple;
-  border-bottom: 2px solid $color1;
+  border-bottom: 2px solid $dark-brown;
   // width: 98%;
   // inline-size: min-content;
   min-width: 400px;
@@ -67,7 +67,7 @@ $triangle: #2f5aaa;
   // margin-right: 40px;
 
   .highlight-color {
-    background-color: $color4;
+    background-color: $super-light-brown;
   }
 
   .review-photo-container {
@@ -75,14 +75,22 @@ $triangle: #2f5aaa;
     height: 100%;
     margin-bottom: 4px;
 
+    &.active-dark {
+      div{
+        img{
+          border: 2px solid $dark-mode-light-brown;
+        }
+      }
+    }
+
     div {
-      // border: 2px solid $color3;
+      // border: 2px solid $beige;
       display: flex;
       gap: 5px;
       height: 75px;
 
       img {
-        border: 2px solid $triangle;
+        border: 2px solid $triangle-blue;
         // transition: 0.4s;
       }
 
@@ -124,11 +132,14 @@ $triangle: #2f5aaa;
     .user-date-info {
       span {
         opacity: .8;
-        color: $color1;
+        color: $dark-brown;
         .review-user {
           opacity: 1;
-          color: $triangle;
+          color: $triangle-blue;
           font-weight: 700;
+        }
+        &.active-dark {
+          color: $dark-mode-light-brown;
         }
       }
     }
@@ -154,7 +165,7 @@ $triangle: #2f5aaa;
 
     .show-button {
       // border: 2px solid blue;
-      color: $color1;
+      color: $dark-brown;
       opacity: .7;
       font-size: .8rem;
       width: fit-content;
@@ -164,7 +175,7 @@ $triangle: #2f5aaa;
 
     .show-button:hover {
       cursor: pointer;
-      background-color: $color4;
+      background-color: $super-light-brown;
     }
 
   }
@@ -179,7 +190,7 @@ $triangle: #2f5aaa;
 
     .helpful {
       // border: 2px solid blue;
-      border-right: 2px solid $color1;
+      border-right: 2px solid $dark-brown;
       padding-right: 10px;
       // margin-right: 10px;
       display: flex;
@@ -189,20 +200,24 @@ $triangle: #2f5aaa;
         all: unset;
         display: flex;
         gap: 2px;
-        border-bottom: 2px solid $color1;
+        border-bottom: 2px solid $dark-brown;
       }
 
       button:hover {
         opacity: .5;
-        color: $triangle;
-        border-color: $triangle;
+        color: $triangle-blue;
+        border-color: $triangle-blue;
         cursor: pointer;
       }
 
       .helpful-active {
         opacity: .6;
-        color: $triangle;
-        border-color: $triangle;
+        color: $triangle-blue;
+        border-color: $triangle-blue;
+
+        &.active-dark {
+          opacity: 0.8;
+        }
       }
 
       div {
@@ -218,7 +233,7 @@ $triangle: #2f5aaa;
 
       button {
         all: unset;
-        border-bottom: 2px solid $color1;
+        border-bottom: 2px solid $dark-brown;
         display: flex;
         gap: 2px;
 
@@ -241,10 +256,14 @@ $triangle: #2f5aaa;
   }
 
   .seller-response {
-    // border: 2px solid $color1;
-    background-color: $color4;
+    // border: 2px solid $dark-brown;
+    background-color: $super-light-brown;
     margin-bottom: 10px;
     padding: 10px;
+
+    &.active-dark {
+      background-color: #1b263b70;
+    }
 
     span {
       display: block;
@@ -292,7 +311,7 @@ $triangle: #2f5aaa;
 
   .reviews-sort-menu {
     // border: 2px solid cyan;
-    // background-color: $color2;
+    // background-color: $light-brown;
     display: flex;
     align-items: flex-end;
     margin-bottom: 20px;
@@ -348,9 +367,13 @@ $triangle: #2f5aaa;
 
     .search-icon:hover {
       cursor: pointer;
-      color: $triangle;
+      color: $triangle-blue;
       translate: 0 -5px;
       transition: 0.5s;
+
+      &.active-dark {
+        color: $dark-mode-light-brown;
+      }
     }
   }
 
@@ -393,8 +416,12 @@ $triangle: #2f5aaa;
   stroke: black;
   stroke-width: 0.35rem;
 
+  &.active-dark {
+    stroke: $dark-mode-light-brown;
+  }
+
   svg:hover {
-    stroke: $color6;
+    stroke: $orange;
   }
 }
 
@@ -442,18 +469,36 @@ $triangle: #2f5aaa;
 
       .filter-star-button {
         display: flex;
+        justify-content: space-between;
         gap: 5px;
-        border-bottom: 1px solid $color1;
+        border-bottom: 1px solid $dark-brown;
+        font-size: 0.9rem;
+        width: 51px;
       }
 
       .filter-active {
-        background-color: $color4;
+        background-color: $super-light-brown;
+
+        &.active-dark {
+          // background-color: $dark-mode-dark-blue;
+          background-color: $dark-mode-light-brown;
+          // border: 1px solid #bb9f8c;
+          color: $dark-mode-dark-blue;
+          opacity: 0.7;
+        }
       }
 
       .filter-star-button:hover {
         cursor: pointer;
         opacity: .5;
-        background-color: $color3;
+        background-color: $beige;
+
+        &.active-dark {
+          // background-color: $dark-mode-dark-blue;
+          // border: 1px solid #bb9f8c;
+          // opacity: 0.7;
+          color: $dark-mode-dark-blue;
+        }
       }
 
       .break-down-bar {
@@ -461,29 +506,55 @@ $triangle: #2f5aaa;
         align-items: center;
 
         .gray-bar {
-          background-color: $color2;
+          background-color: $light-brown;
           opacity: .4;
           width: 244px;
           height: 10px;
           position: absolute;
-          z-index: -1;
+          z-index: 0;
+
+          &.active-dark {
+            background-color: $dark-mode-dark-blue;
+          }
         }
 
         .green-bar {
-          background-color: $triangle;
+          background-color: $triangle-blue;
           height: 10px;
+          z-index: 1;
+          &.active-dark {
+            background-color: $dark-mode-light-brown;
+            opacity: 0.7;
+          }
         }
       }
     }
 
     .star-filter-tags {
-      background-color: $color4;
+      background-color: $super-light-brown;
       margin-top: 15px;
       display: flex;
       align-items: center;
       gap: 5px;
       padding: 5px;
       min-height: 50px;
+
+      &.active-dark {
+        background-color: #141416;
+        opacity: .8;
+
+        .big-tag:hover {
+          color: $dark-mode-light-brown;
+          opacity: 0.7;
+          cursor: pointer;
+        }
+
+        .tag-filters .tag-container:hover {
+          color: $dark-mode-light-brown;
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
 
       .big-tag {
         // border: 2px solid blue;
@@ -499,9 +570,10 @@ $triangle: #2f5aaa;
       }
 
       .big-tag:hover {
-        color: $triangle;
+        color: $triangle-blue;
         transform: scale(2) rotate(15deg);
         transition: transform 0.3s ease;
+        cursor: pointer;
       }
 
       .tag-filters {
@@ -513,7 +585,7 @@ $triangle: #2f5aaa;
 
         .tag-container:hover {
           cursor: pointer;
-          color: $triangle;
+          color: $triangle-blue;
           translate: 0 -2px;
           transform: rotate(10deg);
           transition: 0.3s ease;
@@ -573,11 +645,16 @@ $triangle: #2f5aaa;
 
     .char-bar {
       margin-top: 3px;
-      background-color: $color2;
+      background-color: $light-brown;
       opacity: 0.4;
-      z-index: -1;
+      z-index: 0;
       width: 100px;
       height: 10px;
+
+      &.active-dark {
+        background-color: $dark-mode-dark-blue;
+        opacity: 0.7;
+      }
     }
 
     .char-triangle {
@@ -586,7 +663,12 @@ $triangle: #2f5aaa;
       height: 10px;
       transform: rotate(180deg);
       margin-top: 9px;
-      color: $triangle;
+      color: $triangle-blue;
+      z-index: 1;
+
+      &.active-dark {
+        color: $dark-mode-light-brown;
+      }
     }
 
     .trait-container-left {
@@ -613,23 +695,27 @@ $triangle: #2f5aaa;
 
 .characteristics {
   display: flex;
-  border: 1px solid $color1;
+  border: 1px solid $dark-brown;
 
   .selection-type {
-    // border: 2px solid $color1;
-    border-right: 2px solid $color1;
-    background-color: $color2;
+    // border: 2px solid $dark-brown;
+    border-right: 2px solid $dark-brown;
+    background-color: $light-brown;
     font-size: 1em;
     min-width: 100px;
     width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.active-dark {
+      background-color: #141416;
+    }
   }
 
   .selections {
     font-size: .7em; //need to change according to our root font size
-    // border: 2px solid $color1;
+    // border: 2px solid $dark-brown;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -667,7 +753,7 @@ $triangle: #2f5aaa;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
@@ -676,8 +762,8 @@ $triangle: #2f5aaa;
 }
 
 .review-modal-content {
-  border: 3px solid $triangle;
-  background-color: $color4;
+  border: 3px solid $triangle-blue;
+  background-color: $super-light-brown;
   padding: 20px;
   position: fixed;
   min-width: 650px;
@@ -685,6 +771,11 @@ $triangle: #2f5aaa;
   height: 85vh;
   overflow-y: auto;
   overflow-x: auto;
+
+  &.active-dark {
+    background-color: #141416;
+    border: 3px solid $dark-mode-light-brown;
+  }
 
   .review-form {
     width: 100%;
@@ -728,6 +819,13 @@ $triangle: #2f5aaa;
         input {
           width: 80%;
         }
+
+        &.active-dark {
+          input {
+            background-color: $dark-mode-dark-blue;
+            color: $dark-mode-light-brown;
+          }
+        }
       }
 
       .photos {
@@ -737,12 +835,16 @@ $triangle: #2f5aaa;
       }
 
       .individual-photo {
-        border: 2px solid $triangle;
+        border: 2px solid $triangle-blue;
         width: 65px;
         height: 65px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.active-dark {
+          border: 2px solid $dark-mode-light-brown;
+        }
 
         img {
           width: 100%;
@@ -757,7 +859,7 @@ $triangle: #2f5aaa;
           align-items: center;
           width: 30.5px;
           height: 30.5px;
-          background-color: $color4;
+          background-color: $super-light-brown;
           opacity: .7;
           z-index: 0;
         }
@@ -765,7 +867,7 @@ $triangle: #2f5aaa;
 
       .individual-photo:hover {
         opacity: .7;
-        background-color: $color1;
+        background-color: $dark-brown;
         cursor: pointer;
       }
 
@@ -806,6 +908,13 @@ $triangle: #2f5aaa;
         width: 200px;
       }
 
+      &.active-dark {
+        input {
+          background-color: $dark-mode-dark-blue;
+          color: $dark-mode-light-brown;
+        }
+      }
+
       .privacy-notice {
         width: 160px;
         font-size: .7rem;
@@ -822,6 +931,13 @@ $triangle: #2f5aaa;
 
       input {
         width: 200px;
+      }
+
+      &.active-dark {
+        input {
+          background-color: $dark-mode-dark-blue;
+          color: $dark-mode-light-brown;
+        }
       }
 
       .privacy-notice {
@@ -874,7 +990,7 @@ $triangle: #2f5aaa;
     label:hover {
       div {
         div {
-          border: 2px solid $color6;
+          border: 2px solid $orange;
           border-radius: 50%;
           position: absolute;
           width: 13px;
@@ -890,7 +1006,7 @@ $triangle: #2f5aaa;
     // width: 600px;
 
     .char-forms {
-      border: 1px solid $color1;
+      border: 1px solid $dark-brown;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -909,8 +1025,16 @@ $triangle: #2f5aaa;
 
     input {
       // border: 2px solid blue;
+      // background-color: black;
       width: 400px;
       resize: none;
+    }
+
+    &.active-dark {
+      input{
+        background-color: $dark-mode-dark-blue;
+        color: $dark-mode-light-brown;
+      }
     }
   }
 
@@ -935,11 +1059,19 @@ $triangle: #2f5aaa;
     }
 
     textarea {
-      background-color: $color5;
+      background-color: $background-white;
       width: 100%;
       height: 200px;
       resize: none;
     }
+
+    &.active-dark {
+      textarea {
+        background-color: $dark-mode-dark-blue;
+        color: $dark-mode-light-brown;
+      }
+    }
+
   }
 }
 
@@ -949,7 +1081,7 @@ $triangle: #2f5aaa;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
@@ -974,7 +1106,7 @@ $triangle: #2f5aaa;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
@@ -1043,9 +1175,13 @@ $triangle: #2f5aaa;
   button {
     all: unset;
     border: 1px solid black;
-    background-color: $color4;
+    background-color: $super-light-brown;
     padding: 15px;
     height: 20px;
+
+    &.active-dark {
+      background-color: $dark-mode-dark-blue;
+    }
 
     div {
       display: flex;
@@ -1074,5 +1210,10 @@ $triangle: #2f5aaa;
   button:hover {
     opacity: .7;
     cursor: pointer;
+
+    &.active-dark {
+      opacity: 1;
+      border: 1px solid $dark-mode-light-brown;
+    }
   }
 }

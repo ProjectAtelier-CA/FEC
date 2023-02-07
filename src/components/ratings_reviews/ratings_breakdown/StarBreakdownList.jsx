@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BsTags, BsTag } from 'react-icons/bs';
 import { FaRegStar } from 'react-icons/fa';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 import StarBreakdownItem from './StarBreakdownItem';
 
 
 export default function StarBreakdownList({
   totalVotes, ratings, handleStarClick, starFilter, setStarFilter,
 }) {
+  const isDarkMode = useDarkMode();
   const barDisplays = [];
 
   for (let i = 5; i > 0; i -= 1) {
@@ -70,7 +72,7 @@ export default function StarBreakdownList({
       </div>
       { filterTags.length
         ? (
-          <div className="star-filter-tags">
+          <div className={`star-filter-tags ${isDarkMode ? 'active-dark' : ''}`}>
             <div className="big-tag" onClick={() => handleBigTagClick()}>{BsTags()}</div>
             <div className="tag-filters">{filterTags.reverse()}</div>
           </div>
