@@ -257,12 +257,12 @@ $dark-mode-light-brown: #bb9f8c;
 }
 
 .more-question-button, .add-question-button {
-  border: 1px solid black;
+  border: 1px solid $darkbrown;
   size: 1rem;
   padding: 1rem;
   background-color: $buttoncolor;
   margin-right: 1rem;
-  color: $darkblue;
+  color: $darkbrown;
   font-weight: 500;
 
   #App__container.dark-mode  & {
