@@ -5,14 +5,14 @@ $super-light-brown: #EFE5DC;
 $background-white: #FBFEFB;
 $orange: #EE6C4D;
 $triangle-blue: #2f5aaa;
-
 $dark-mode-steel-blue: #778DA9;
-$dark-mode-dark-blue: #1b263b; // Good for buttons // and gray bar
-$dark-mode-light-brown: #bb9f8c; // For triangle and green bars
+$dark-mode-dark-blue: #1b263b;
+$dark-mode-light-brown: #bb9f8c;
 
 * {
   box-sizing: border-box;
 }
+
 
 .loading-reviews {
   font-size: 2rem;
@@ -45,33 +45,37 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 }
 
+.ratings-reviews-master-container {
+  display: flex;
+  justify-content: center;
+}
 
 .ratings-reviews-container {
-  // border: 2px solid yellow;
   display: flex;
-  // justify-content: center;
   gap: 50px;
-  padding: 50px 50px 20px 50px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 1000px;
 }
 
 .review-card {
-  // border: 2px solid purple;
   border-bottom: 2px solid $dark-brown;
-  // width: 98%;
-  // inline-size: min-content;
   min-width: 400px;
   max-width: 100%;
   padding-right: 20px;
   padding-bottom: 10px;
   margin-bottom: 20px;
-  // margin-right: 40px;
 
   .highlight-color {
     background-color: $super-light-brown;
+
+    &.active-dark {
+      background-color: #273755;
+      color: $dark-mode-light-brown;
+    }
   }
 
   .review-photo-container {
-    // border: 2px solid blue;
     height: 100%;
     margin-bottom: 4px;
 
@@ -84,14 +88,12 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     }
 
     div {
-      // border: 2px solid $beige;
       display: flex;
       gap: 5px;
       height: 75px;
 
       img {
         border: 2px solid $triangle-blue;
-        // transition: 0.4s;
       }
 
       img:hover {
@@ -108,9 +110,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
         background-color: #eed;
         box-shadow:  0 0 10px  rgba(0,0,0, .6);
         transition: 0.2s
-        // -moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
-        // -webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
-        // -o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
       }
     }
   }
@@ -147,7 +146,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .review-card-summary {
-    // border: 2px solid red;
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 10px;
@@ -155,16 +153,11 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .review-card-body {
-    // border: 2px solid red;
     width: 100%;
-    // max-width: 100%;
     margin-bottom: 10px;
     word-break: break-word;
-    // display: flex;
-    // flex-direction: column;
 
     .show-button {
-      // border: 2px solid blue;
       color: $dark-brown;
       opacity: .7;
       font-size: .8rem;
@@ -181,18 +174,12 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .review-card-buttons {
-    // border: 2px solid red;
     display: flex;
-    // margin-bottom: 10px;
-    // margin-top: 15px;
     justify-content: flex-end;
-    // gap: 5px;
 
     .helpful {
-      // border: 2px solid blue;
       border-right: 2px solid $dark-brown;
       padding-right: 10px;
-      // margin-right: 10px;
       display: flex;
       gap: 10px;
 
@@ -227,8 +214,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     }
 
     .report {
-      // border: 2px solid green;
-      // display: flex;
       padding-left: 10px;
 
       button {
@@ -256,7 +241,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .seller-response {
-    // border: 2px solid $dark-brown;
     background-color: $super-light-brown;
     margin-bottom: 10px;
     padding: 10px;
@@ -275,48 +259,34 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 }
 
 .review-scroll {
-  // border: 2px solid blue;
   overflow-y: auto;
-  min-height: 650px;
-  max-height: 700px;
-  // width: 60vw;
+  min-height: 400px;
+  max-height: 650px;
   margin-top: 5px;
-  // max-width: 1100px;
-  // display: flex;
-  // justify-content: center;
 
   .review-scroll-item {
     display: flex;
     flex-direction: column;
     max-width: 70vw;
-    // height: 100%;
-    // justify-content: center;
-    // align-items: center;
   }
+
 }
 
 // Right Container
 .reviews-list {
-  // background-color: white;
-  // border: 2px solid dodgerblue;
   width: 100%;
 }
 
 .sort-menu-container {
-  // border: 2px solid red;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // margin-bottom: 20px;
 
   .reviews-sort-menu {
-    // border: 2px solid cyan;
-    // background-color: $light-brown;
     display: flex;
     align-items: flex-end;
     margin-bottom: 20px;
     font-weight: 700;
-    // border: 2px solid blue;
 
     .number-of-reviews {
       font-size: 2rem;
@@ -327,12 +297,25 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     .sort-selections {
       select {
         border: none;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid $dark-brown;
         margin-left: 5px;
         font-weight: 700;
-        // Move it down according to border bottom
+        font-size: 1rem;
+        translate: 0 1px;
+        color: $dark-brown;
         position: relative;
-        top: 2px
+        top: 2px;
+        text-align: center;
+      }
+
+      &.active-dark {
+        select{
+          background-color: #141416;
+          color: $dark-mode-light-brown;
+          border-bottom: 2px solid $dark-mode-light-brown;
+          font-size: 1rem;
+          translate: 0 1px;
+        }
       }
 
       select:hover {
@@ -346,23 +329,25 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     gap: 5px;
     align-items: center;
     margin-left: 30px;
-    // border: 2px solid red;
-    // width: 100%;
-    // min-width: 300px;
-    // max-width: 400px;
-    // width: 100%;
-    // height: 20px;
     input {
-      // width: 100%;
       width: 200px;
-      // max-width: 400px;
+    }
+
+    &.active-dark {
+      input {
+        background-color: $dark-mode-dark-blue;
+        color: $dark-mode-light-brown;
+      }
     }
 
     .search-icon {
       font-size: 2rem;
-      // transform: scale(1.5);
       display: flex;
       transition: 0.5s;
+
+      &.active-dark {
+        opacity: 0.7;
+      }
     }
 
     .search-icon:hover {
@@ -373,6 +358,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
       &.active-dark {
         color: $dark-mode-light-brown;
+        opacity: 1;
       }
     }
   }
@@ -381,7 +367,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 
 .recommend-check-container {
-  // border: 2px solid blue;
   display: flex;
   gap: 5px;
   margin-bottom: 10px;
@@ -429,23 +414,18 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 // Left Container
 .ratings-breakdown {
   min-width: 300px;
-  // border: 2px solid palevioletred;
 
   .percent-recommend {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 0.9rem;
-    // text-align: center;
   }
 
   .star-representation {
-    // border: 2px solid purple;
     display: flex;
-    // padding-left: 20px;
     gap: 10px;
 
     .average-rating {
-      // border: 2px solid green;
       font-size: 3rem;
       font-weight: 700;
     }
@@ -456,12 +436,10 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .star-bar-container {
-    // border: 2px solid red;
     display: flex;
     flex-direction: column;
 
     .star-breakdown-item {
-      // border: 2px solid olivedrab;
       display: flex;
       gap: 5px;
       padding-bottom: 5px;
@@ -480,9 +458,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
         background-color: $super-light-brown;
 
         &.active-dark {
-          // background-color: $dark-mode-dark-blue;
           background-color: $dark-mode-light-brown;
-          // border: 1px solid #bb9f8c;
           color: $dark-mode-dark-blue;
           opacity: 0.7;
         }
@@ -494,9 +470,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
         background-color: $beige;
 
         &.active-dark {
-          // background-color: $dark-mode-dark-blue;
-          // border: 1px solid #bb9f8c;
-          // opacity: 0.7;
           color: $dark-mode-dark-blue;
         }
       }
@@ -557,9 +530,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
       }
 
       .big-tag {
-        // border: 2px solid blue;
-        // height: auto;
-        // width: auto;
         transform: scale(2);
         margin-left: 15px;
         margin-right: 15px;
@@ -592,7 +562,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
         }
 
         .small-tag {
-          // border: 1.5px solid red;
           margin-left: 15px;
           margin-right: 17px;
           .tag {
@@ -604,7 +573,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
           }
 
           .text {
-            // border: 1px solid yellow;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -625,7 +593,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .char-bars-section {
-    // border: 2px solid red;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -698,7 +665,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   border: 1px solid $dark-brown;
 
   .selection-type {
-    // border: 2px solid $dark-brown;
     border-right: 2px solid $dark-brown;
     background-color: $light-brown;
     font-size: 1em;
@@ -714,8 +680,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .selections {
-    font-size: .7em; //need to change according to our root font size
-    // border: 2px solid $dark-brown;
+    font-size: .7em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -753,7 +718,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   display: flex;
@@ -771,6 +736,7 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   height: 85vh;
   overflow-y: auto;
   overflow-x: auto;
+  overscroll-behavior: none;
 
   &.active-dark {
     background-color: #141416;
@@ -779,28 +745,22 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
   .review-form {
     width: 100%;
-    // overflow: auto;
   }
 
   .star-name-container {
-    // border: 2px solid darkgreen;
     padding: 3px;
     display: flex;
     justify-content: space-between;
-    // height: 180px;
     margin-top: 10px;
   }
 
   .star-rec-container {
-    // border: 2px solid blue;
     min-width: 370px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 
     .photo-container {
-      // height: 120px;
-      // border: 2px solid red;
       display: flex;
       flex-direction: column;
 
@@ -811,7 +771,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
       }
 
       .input-url {
-        // border: 2px solid red;
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
@@ -830,7 +789,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
       .photos {
         display: flex;
-        // justify-content: space-between;
         gap: 6.25px;
       }
 
@@ -889,15 +847,12 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .name-email-container {
-    // border: 2px solid blue;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    // justify-content: space-between;
     gap: 20px;
 
     .username {
-      // border: 2px solid blue;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -923,7 +878,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     }
 
     .email {
-      // border: 2px solid blue;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -959,8 +913,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     display: flex;
     gap: 10px;
 
-    .star-meaning {
-    }
   }
 
   .modal-recommend {
@@ -1003,7 +955,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   .char-container {
     display: flex;
     flex-direction: column;
-    // width: 600px;
 
     .char-forms {
       border: 1px solid $dark-brown;
@@ -1016,16 +967,12 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   .review-summary-text {
     margin-top: 10px;
     margin-bottom: 10px;
-    // border: 2px solid red;
 
     div {
-      // border: 2px solid blue;
       width: 300px;
     }
 
     input {
-      // border: 2px solid blue;
-      // background-color: black;
       width: 400px;
       resize: none;
     }
@@ -1039,7 +986,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .review-body-text {
-    // border: 2px solid red;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1049,12 +995,10 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     }
 
     .text-footer {
-      // border: 2px solid blue;
       text-align: end;
     }
 
     div {
-      // border: 2px solid blue;
       width: 100%;
     }
 
@@ -1077,7 +1021,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 .image-modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  // border: 2px solid blue;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -1092,8 +1035,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 .image-modal-content {
   img {
     max-width: 80vw;
-    // height: auto;
-    // height: 70vh;
     max-height: 70vh;
     object-fit: contain;
     box-shadow:  0 0 10px  rgba(0,0,0, .6);
@@ -1102,7 +1043,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 .image-carousel-modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  // border: 2px solid blue;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -1114,7 +1054,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   align-items: center;
 
   .image-modal-carousel {
-    // border: 2px solid blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1123,8 +1062,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .image-carousel-modal-next {
-    // border: 2px solid pink;
-    // width: object-fit;
     width: 700px;
     max-height: 50vh;
     display: flex;
@@ -1143,7 +1080,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
   }
 
   .image-carousel-modal-content {
-    // width: 500px;
     z-index: 0;
     display: flex;
     justify-content: center;
@@ -1153,7 +1089,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
       max-height: 60vh;
       object-fit: contain;
       box-shadow:  0px 0px 20px  rgba(0, 0, 0, 0.8);
-      // animation: fadeIn 1s;
     }
   }
 
@@ -1166,8 +1101,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
 
 
 .action-buttons-container {
-  // border: 2px solid red;
-  // padding: 20px;
   margin-top: 50px;
   display: flex;
   gap: 15px;
@@ -1199,7 +1132,6 @@ $dark-mode-light-brown: #bb9f8c; // For triangle and green bars
     }
 
     .plus-sign {
-      // font-size: 1.5rem;
       font-weight: 400;
       transform: scale(1.3);
       position: relative;

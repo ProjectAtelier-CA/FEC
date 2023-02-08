@@ -14,6 +14,9 @@ export default function Share() {
         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">
           <MdFacebook className={`social-media ${isDark ? 'dark-mode-social' : 'light-mode-social'}`} />
         </a>
+        {/* <div class="fb-share-button" data-href="http://localhost:8080/" data-layout="button" data-size="small">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+        </div> */}
       </div>
       <div>
         <a

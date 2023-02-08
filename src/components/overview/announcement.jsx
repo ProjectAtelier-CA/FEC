@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Banner({
-  styles, setStyle, setIndex, setStyleObject, clickStyle,
+  styles, setStyle, setIndex, clickStyle,
 }) {
   const [sales, setSales] = useState({});
 
@@ -27,7 +27,6 @@ export default function Banner({
     const id = parseInt(event.target.id, 10);
     setStyle(id);
     setIndex(parseInt(event.target.dataset.image, 10));
-    setStyleObject(styles[id]);
     clickStyle(true);
   }
 

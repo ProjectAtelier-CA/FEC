@@ -26,7 +26,7 @@ export default function Description({ product_id, details }) {
 
   return (
     loading
-      ? (null)
+      ? (<div data-testid="final-load" />)
       : (
         <div className="o-description">
           <div className={`description-content ${isDark ? 'dark-description' : 'light-description'}`}>
