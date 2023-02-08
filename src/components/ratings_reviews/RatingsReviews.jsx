@@ -90,7 +90,7 @@ export default function RatingsReviews({
         <div
           className="ratings-reviews-container"
           onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
-          // data-testid='ratings-reviews-test'
+          data-testid='ratings-reviews-test'
         >
           <RatingsBreakdown
             reviewMetaData={reviewMetaData}
