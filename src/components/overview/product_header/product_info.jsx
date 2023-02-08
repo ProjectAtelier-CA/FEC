@@ -10,15 +10,21 @@ import StarRating from '../../shared/StarRating';
 import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ProductInfo({
-  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details, clickStyle, appAvgRating,
+  imageIndex, setIndex, styles, currentStyle, setStyle, styleObject, setStyleObject, skus, setSkus, isLoading, currentSku, setSku, product_id, details, clickStyle, appAvgRating, reviewsRef,
 }) {
   const isDark = useDarkMode();
+
+  // Scrolls to Reviews section ref //
+  const handleReviewsClick = (e) => {
+    e.preventDefault();
+    reviewsRef.current.scrollIntoView();
+  };
 
   return (
     <div className="info" key={details.id}>
       <div className="rating" key="rating">
         <StarRating score={appAvgRating} />
-        <a href="http://www.google.com/" className={`review-link ${isDark ? 'dark-link' : 'light-link'}`}>Read reviews...</a>
+        <a href="#" className={`review-link ${isDark ? 'dark-link' : 'light-link'}`} onClick={(e) => handleReviewsClick(e)}>Read reviews...</a>
       </div>
       <h3 className={`category ${isDark ? 'dark-mode' : 'light-mode'}`}>{details.category}</h3>
       <div className={`product-name ${isDark ? 'dark-mode' : 'light-mode'}`}>{details.name}</div>
