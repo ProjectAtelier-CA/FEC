@@ -42,6 +42,7 @@ $darkNav: #242424;
   text-align: center;
   position: relative;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .link {
@@ -49,6 +50,7 @@ $darkNav: #242424;
   padding: 10px;
   font-size: .8em;
   transform: translate(0,3%);
+  cursor: pointer;
 }
 
 .link:hover {
@@ -68,6 +70,7 @@ $darkNav: #242424;
   position: relative;
   transform: translate(0,10%);
   align-self: center;
+  cursor: pointer;
 }
 
 .dark-logo {

@@ -91,7 +91,7 @@ export default function Overview({
   }
 
   return (
-    <div className="overview" onClick={(e) => handleTrackClick(e, 'Overview')} data-testid="overview">
+    <div className="overview" id="OverviewScroll" onClick={(e) => handleTrackClick(e, 'Overview')} data-testid="overview">
       <Nav goDark={goDark} dark={dark} data-testid="nav" />
       <div className="spacer">
         <Banner

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
@@ -14,28 +16,35 @@ export default function Nav({ goDark, dark }) {
     goDark(!dark);
   }
 
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView();
+  }
+
   return (
     <div className={`navBar ${isDark ? 'dark-mode-nav' : 'light-mode-nav'}`}>
       <div className="logoWrapper">
-        <div className="logo">
+        <div className="logo" onClick={() => scrollTo('OverviewScroll')}>
           { dark
             ? <GiOctopus className="dark-logo" />
             : <GiAmericanShield className="light-logo" />}
         </div>
-        <div className={`brand ${isDark ? 'dark-brand' : 'light-brand'}`}>
+        <div
+          onClick={() => scrollTo('OverviewScroll')}
+          className={`brand ${isDark ? 'dark-brand' : 'light-brand'}`}
+        >
           {isDark ? 'Bucky\'s Closet' : 'Steve\'s Closet'}
         </div>
         <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
-          <a>Overview</a>
+          <div onClick={() => scrollTo('OverviewScroll')}>Overview</div>
         </div>
         <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
-          <a>Related Products</a>
+          <div onClick={() => scrollTo('RPScroll')}>Related Products</div>
         </div>
         <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
-          <a>Q & A</a>
+          <div onClick={() => scrollTo('QAScroll')}>Related Products</div>
         </div>
         <div className={`link ${isDark ? 'dark-brand' : 'light-link'}`}>
-          <a>Reviews</a>
+          <div onClick={() => scrollTo('RRScroll')}>Reviews</div>
         </div>
       </div>
       <div className="searchWrapper">
