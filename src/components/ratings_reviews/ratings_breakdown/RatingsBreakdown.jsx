@@ -48,7 +48,7 @@ export default function RatingsBreakdown({
   }, [reviewMetaData]);
 
   return (
-    <div>
+    <div data-testid="ratings-breakdown-test">
       {Object.keys(reviewMetaData).length > 0
         ? (
           <div className="ratings-breakdown">
