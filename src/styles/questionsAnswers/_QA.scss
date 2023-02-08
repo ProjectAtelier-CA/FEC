@@ -333,3 +333,18 @@ $dark-mode-light-brown: #bb9f8c;
     color:  $color__font--sharp;
   }
 }
+
+.overview-in-questions {
+  display:flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: smaller;
+  text-decoration: none;
+
+}
+
+// .question-modal {
+//     z-index: 100;
+
+// }

@@ -34,6 +34,7 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
         </div>
       )
       : (
+        <section id="QAScroll">
         <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
           <div className="master-question">
             {
@@ -43,6 +44,7 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
          }
           </div>
         </div>
+        </section>
       )
   );
 }
