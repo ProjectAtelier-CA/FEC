@@ -718,7 +718,7 @@ $dark-mode-light-brown: #bb9f8c;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   display: flex;
@@ -736,6 +736,7 @@ $dark-mode-light-brown: #bb9f8c;
   height: 85vh;
   overflow-y: auto;
   overflow-x: auto;
+  overscroll-behavior: none;
 
   &.active-dark {
     background-color: #141416;
