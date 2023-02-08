@@ -11,7 +11,7 @@ export default function ReviewsSortMenu({
   const handleClick = (e) => {
     handleSortClick(e);
     setTimeout(() => {
-      // Sometimes the reviews list jumps when clicking by sort. Figure out why.
+      // Sometimes the reviews list jumps when clicking by sort. Can't figure out why.
       reviewListTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, 200);
   };
@@ -23,8 +23,7 @@ export default function ReviewsSortMenu({
   };
 
   return (
-    <div className="sort-menu-container">
-      {/* <h4>ReviewsSortMenu</h4> */}
+    <div className="sort-menu-container" data-testid="sort-menu-test">
       <div className="reviews-sort-menu">
         <div className="number-of-reviews">
           {numReviews}
@@ -32,7 +31,7 @@ export default function ReviewsSortMenu({
         <div>
           reviews sorted by
         </div>
-        <div className="sort-selections">
+        <div className={`sort-selections ${isDarkMode ? 'active-dark' : ''}`}>
           <select onChange={(e) => handleClick(e)}>
             <option value="relevance">relevance</option>
             <option value="newest">newest</option>
@@ -40,7 +39,7 @@ export default function ReviewsSortMenu({
           </select>
         </div>
       </div>
-      <div className="search-input-bar">
+      <div className={`search-input-bar ${isDarkMode ? 'active-dark' : ''}`}>
         {showSearch
           ? <input type="text" placeholder="Search..." value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           : null }

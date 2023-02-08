@@ -14,6 +14,7 @@ export default function ReviewModalPhoto({
       onMouseEnter={() => setShowDelete(true)}
       onMouseLeave={() => setShowDelete(false)}
       onClick={() => handleImageClick(photoIndex)}
+      data-testid="review-modal-photo-test"
     >
       <img
         src={photoUrl}

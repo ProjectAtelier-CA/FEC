@@ -12,7 +12,7 @@ const questionStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: '#e0e1dd',
+    backgroundColor: '#bb9f8c',
     width: 1000,
     height: 600,
   },
