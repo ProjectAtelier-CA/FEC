@@ -5,6 +5,10 @@ import Modal from 'react-modal';
 import axios from 'axios';
 
 const answersStyles = {
+  overlay: {
+    position: 'fixed',
+    zIndex: 100,
+  },
   content: {
     top: '50%',
     left: '50%',

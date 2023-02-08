@@ -41,7 +41,7 @@ export default function Nav({ goDark, dark }) {
           <div onClick={() => scrollTo('RPScroll')}>Related Products</div>
         </div>
         <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
-          <div onClick={() => scrollTo('QAScroll')}>Related Products</div>
+          <div onClick={() => scrollTo('QAScroll')}>Q & A</div>
         </div>
         <div className={`link ${isDark ? 'dark-brand' : 'light-link'}`}>
           <div onClick={() => scrollTo('RRScroll')}>Reviews</div>
