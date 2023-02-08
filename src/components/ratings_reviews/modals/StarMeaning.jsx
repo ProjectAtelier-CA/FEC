@@ -18,7 +18,7 @@ export default function StarMeaning({ score }) {
   }
 
   return (
-    <div className="star-meaning">
+    <div className="star-meaning" data-testid="star-meaning-test">
       {meaningElement}
     </div>
   );

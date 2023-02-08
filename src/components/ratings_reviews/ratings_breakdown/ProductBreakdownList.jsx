@@ -23,6 +23,7 @@ export default function ProductBreakdownList({ chars }) {
   const [showLength, setShowLength] = useState(false);
   const [showFit, setShowFit] = useState(false);
   const [triPositions, setTriPositions] = useState({});
+  // console.log(chars);
 
   const renderCharBars = (currChar) => {
     if (currChar === 'Size') {
@@ -61,7 +62,7 @@ export default function ProductBreakdownList({ chars }) {
   }, [chars]);
 
   return (
-    <div className="char-bars-section">
+    <div className="char-bars-section" data-testid="char-bars-test">
       { showSize ? <SizeBar position={triPositions.Size} /> : null }
       { showWidth ? <WidthBar position={triPositions.Width} /> : null }
       { showComfort ? <ComfortBar position={triPositions.Comfort} /> : null }

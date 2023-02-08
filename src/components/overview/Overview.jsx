@@ -27,7 +27,7 @@ import '../../styles/overviewStyles/_overview.scss';
 import { useDarkMode } from '../shared/DarkModeProvider';
 
 export default function Overview({
-  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick,
+  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick, reviewsRef,
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
@@ -144,6 +144,7 @@ export default function Overview({
             product_id={product_id}
             clickStyle={clickStyle}
             appAvgRating={appAvgRating}
+            reviewsRef={reviewsRef}
             data-testid="info"
           />
         </div>
