@@ -63,6 +63,9 @@ $color7: #32DE8A;
   color: $color1;
   font-weight: bold;
   opacity: 1;
+  min-height: 20px;
+  display: flex;
+  flex-shrink: .2;
 }
 
 
@@ -94,7 +97,7 @@ $color7: #32DE8A;
 }
 
 .dark-mode-button {
-  border: 1px solid black;
+  border: .5px solid #bb9f8c;
   background-color: #1b263b;
   color: #bb9f8c;
 }

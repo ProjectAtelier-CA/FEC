@@ -33,17 +33,17 @@ export default function Thumbnails2({
     setScrollDown(6);
   }, [product_id, scrollRef]);
 
-  useEffect(() => {
-    if (styles[currentStyle] !== undefined) {
-      setSkus(styles[currentStyle].skus);
-      setSku(Object.keys(styles[currentStyle].skus)[0]);
-    }
-  }, [currentStyle]);
+  // useEffect(() => {
+  //   if (styles[currentStyle] !== undefined) {
+  //     setSkus(styles[currentStyle].skus);
+  //     setSku(Object.keys(styles[currentStyle].skus)[0]);
+  //   }
+  // }, [currentStyle]);
 
   useEffect(() => {
     setScrollUp(imageIndex);
     setScrollDown(imageIndex + 6);
-    if (mouseOut && styleClick) {
+    if (mouseOut || styleClick) {
       scrollRef.current.children[imageIndex].scrollIntoView({
         top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
       });
@@ -121,6 +121,7 @@ export default function Thumbnails2({
             key="upNav"
             className={`up-nav ${isDark ? 'thumbnail-nav-dark' : 'thumbnail-nav-light'}`}
             onClick={handleScrollUp}
+            data-testid="up-nav"
           >
             <MdOutlineArrowDropUp className={`nav-arrow ${isDark ? 'arrow-dark' : 'arrow-light'}`} />
           </button>
@@ -133,6 +134,7 @@ export default function Thumbnails2({
         onMouseLeave={handleMouseLeave}
         onScroll={handleScroll}
         ref={scrollRef}
+        data-testid="thumbnail-images"
       >
         {
         photos.map((image, index) => (
@@ -161,6 +163,7 @@ export default function Thumbnails2({
             key="downNav"
             className={`down-nav ${isDark ? 'thumbnail-nav-dark' : 'thumbnail-nav-light'}`}
             onClick={handleScrollDown}
+            data-testid="down-nav"
           >
             <MdOutlineArrowDropDown className={`nav-arrow ${isDark ? 'arrow-dark' : 'arrow-light'}`} />
           </button>

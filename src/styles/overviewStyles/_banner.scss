@@ -10,31 +10,32 @@ $color7: #32DE8A;
   font-family: Inter, sans-serif;
   justify-content: center;
   text-align: center;
-  // padding: 10px;
-  // padding: 10px;
-  // top: 20px;
-  // margin-top: min(50px, 6%);
-  // margin-top: 40px;
   font-size: 1.2vh;
-  // border: solid green;
-  margin-top: min(50px, 4%);
-  margin-bottom: 2%;
   height: fit-content;
-  flex-shrink: 2;
-  transform: translate(0,-60%);
+  flex-shrink: 1;
   display: flex;
   flex-flow: row nowrap;
+  width: 100%;
+  padding: 20px;
 }
 
 .banner-div {
+  align-items: center;
   padding: 10px;
+  justify-content: center;
 }
 
 .spacer {
-  height: 1vh;
+  height: 4vh;
   min-height: 20px;
-  margin-bottom: 50px;
-  margin-top: 20px;
+  // margin-bottom: 50px;
+  margin-top: max(2.5vh, 50px);
+  width: 100%;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  z-index: 12;
+  position: relative;
 }
 
 .sale {
@@ -49,4 +50,5 @@ $color7: #32DE8A;
 
 .sales:hover {
   cursor: pointer;
+  display: flex;
 }
