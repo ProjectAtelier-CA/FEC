@@ -20,24 +20,29 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
 
   useEffect(() => {
     axios.get('http://localhost:8081/questions', { params: { id } }).then(({ data }) => {
-      console.log('this is id: ', id);
       const result = data.results;
       setLoading(false);
       setQuestions(result);
     });
   }, [id]);
 
-  if (!loading) {
-    return (
-      <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
-        <div className="master-question">
-          {
+  return (
+    loading
+      ? (
+        <div>
+          Loading...
+        </div>
+      )
+      : (
+        <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
+          <div className="master-question">
+            {
         !loading
           ? <QuestionList productName={productName} product_id={id} productIdData={questions} />
           : null
          }
+          </div>
         </div>
-      </div>
-    );
-  }
+      )
+  );
 }
