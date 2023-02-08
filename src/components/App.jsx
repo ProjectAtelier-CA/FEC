@@ -28,7 +28,6 @@ export default function App() {
     const trackKey = format(new Date(), 'MMMM dd, yyyy HH mm ss S SS');
     const trackTime = format(new Date(), 'MMMM dd, yyyy HH mm ss');
     trackerData[trackKey] = { eleClicked, trackTime, module };
-    // console.log(trackerData);
   };
 
   return (

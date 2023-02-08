@@ -87,27 +87,29 @@ export default function RatingsReviews({
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div
-          className="ratings-reviews-container"
-          onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
-          data-testid='ratings-reviews-test'
-        >
-          <RatingsBreakdown
-            reviewMetaData={reviewMetaData}
-            handleStarClick={handleStarClick}
-            starFilter={starFilter}
-            setStarFilter={setStarFilter}
-            setAppAvgRating={setAppAvgRating}
-          />
-          <ReviewsList
-            productReviews={productReviews}
-            starFilter={starFilter}
-            handleSortClick={handleSortClick}
-            sortBy={sortBy}
-            reviewMetaData={reviewMetaData}
-            setRerender={setRerender}
-            productName={productName}
-          />
+        <div className='ratings-reviews-master-container'>
+          <div
+            className="ratings-reviews-container"
+            onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
+            data-testid='ratings-reviews-test'
+          >
+            <RatingsBreakdown
+              reviewMetaData={reviewMetaData}
+              handleStarClick={handleStarClick}
+              starFilter={starFilter}
+              setStarFilter={setStarFilter}
+              setAppAvgRating={setAppAvgRating}
+            />
+            <ReviewsList
+              productReviews={productReviews}
+              starFilter={starFilter}
+              handleSortClick={handleSortClick}
+              sortBy={sortBy}
+              reviewMetaData={reviewMetaData}
+              setRerender={setRerender}
+              productName={productName}
+            />
+          </div>
         </div>
       ) : null }
     </>
