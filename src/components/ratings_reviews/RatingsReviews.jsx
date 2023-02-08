@@ -86,7 +86,7 @@ export default function RatingsReviews({
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div className='ratings-reviews-master-container' ref={reviewsRef}>
+        <div className='ratings-reviews-master-container' ref={reviewsRef} id="RRScroll">
           <div
             className="ratings-reviews-container"
             onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
