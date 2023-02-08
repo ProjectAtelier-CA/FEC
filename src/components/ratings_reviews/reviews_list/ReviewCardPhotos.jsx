@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ReviewCardPhotos({ photos, handleImageClick }) {
   const photoUrls = [];
+  const isDarkMode = useDarkMode();
 
   const photoElements = photos.map((photo, index) => {
     photoUrls.push(photo.url);
@@ -9,7 +11,7 @@ export default function ReviewCardPhotos({ photos, handleImageClick }) {
   });
 
   return (
-    <div className="review-photo-container">
+    <div className={`review-photo-container ${isDarkMode ? 'active-dark' : ''}`}>
       {/* <div>Review Photos:</div> */}
       <div onClick={(e) => handleImageClick(e, photoUrls)}>
         {photoElements}
