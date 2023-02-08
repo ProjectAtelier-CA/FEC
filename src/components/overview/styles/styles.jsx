@@ -8,7 +8,7 @@ import { MdCheckCircle } from 'react-icons/md';
 import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Styles({
-  setIndex, styles, currentStyle, setStyle, setStyleObject, setSkus, styleObject, setSku, clickStyle,
+  setIndex, styles, currentStyle, setStyle, clickStyle,
 }) {
   const [indeces, setIndeces] = useState([0]);
   const isDark = useDarkMode();
@@ -23,16 +23,15 @@ export default function Styles({
     setIndeces(indecesArray);
   }, [styles]);
 
-  useEffect(() => {
-    if (styleObject !== undefined) {
-      setSkus(styleObject.skus);
-      setSku(Object.keys(styleObject.skus)[0]);
-    }
-  }, [styleObject]);
+  // useEffect(() => {
+  //   if (styleObject !== undefined) {
+  //     setSkus(styleObject.skus);
+  //     setSku(Object.keys(styleObject.skus)[0]);
+  //   }
+  // }, [styleObject]);
 
   function handleClick(event) {
     setStyle(parseInt(event.target.id, 10));
-    setStyleObject(styles[parseInt(event.target.id, 10)]);
     setIndex(indeces[event.target.id]);
     clickStyle(true);
   }
@@ -73,13 +72,19 @@ export default function Styles({
           styles.map((style, index) => (
             <div key={style.style_id} className="style-container">
               {
-                style === styles[currentStyle] ? (<span className="style-checkmark"><MdCheckCircle className={`checkmark-self ${isDark ? 'dark-mode-check' : 'light-mode-check'}`} /></span>) : null
+                style === styles[currentStyle]
+                  ? (
+                    <span className="style-checkmark">
+                      <MdCheckCircle className={`checkmark-self ${isDark ? 'dark-mode-check' : 'light-mode-check'}`} />
+                    </span>
+                  ) : null
               }
               <img
                 alt="style-thumbnail"
                 key={style.style_id}
                 id={index}
                 onClick={handleClick}
+                // testid={`style-${index}`}
                 className={
                   `style-thumbnail
                   ${iff(style === styles[currentStyle], iff(isDark, 'style-active-dark', 'style-active-light'), '')}

@@ -21,7 +21,7 @@ export default function ProductInfo({
   };
 
   return (
-    <div className="info" key={details.id}>
+    <div className="info">
       <div className="rating" key="rating">
         <StarRating score={appAvgRating} />
         <a href="#" className={`review-link ${isDark ? 'dark-link' : 'light-link'}`} onClick={(e) => handleReviewsClick(e)}>Read reviews...</a>

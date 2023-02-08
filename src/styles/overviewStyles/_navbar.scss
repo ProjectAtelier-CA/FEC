@@ -29,6 +29,39 @@ $darkNav: #242424;
   background-color: $color2;
 }
 
+.logoWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand {
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.link {
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: .8em;
+  transform: translate(0,3%);
+  cursor: pointer;
+}
+
+.link:hover {
+  opacity: .7;
+}
+
+@media only screen and (max-width: 900px) {
+  .link {
+      display: none;
+  }
+}
 
 .logo {
   padding: 0px 5px;
@@ -37,6 +70,7 @@ $darkNav: #242424;
   position: relative;
   transform: translate(0,10%);
   align-self: center;
+  cursor: pointer;
 }
 
 .dark-logo {

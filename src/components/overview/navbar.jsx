@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { MdModeNight } from 'react-icons/md';
@@ -7,35 +10,45 @@ import { useDarkMode } from '../shared/DarkModeProvider';
 // import axios from 'axios';
 
 export default function Nav({ goDark, dark }) {
-  // const [search, setSearch] = useState('');
-  // const [searched, setSearched] = useState(false);
-
-  // useEffect(() => {
-  //   axios.get('http://127.0.0.1:8081/products')
-  //     .then(({ data }) => {
-  //       console.log(data);
-  //       setResults(data);
-  //     });
-  // }, []);
   const isDark = useDarkMode();
-
-  function handleSearch(event) {
-    console.log(event.target.value);
-  }
 
   function setDarkMode() {
     goDark(!dark);
   }
 
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView();
+  }
+
   return (
     <div className={`navBar ${isDark ? 'dark-mode-nav' : 'light-mode-nav'}`}>
-      <div className="logo">
-        { dark
-          ? <GiOctopus className="dark-logo" />
-          : <GiAmericanShield className="light-logo" />}
+      <div className="logoWrapper">
+        <div className="logo" onClick={() => scrollTo('OverviewScroll')}>
+          { dark
+            ? <GiOctopus className="dark-logo" />
+            : <GiAmericanShield className="light-logo" />}
+        </div>
+        <div
+          onClick={() => scrollTo('OverviewScroll')}
+          className={`brand ${isDark ? 'dark-brand' : 'light-brand'}`}
+        >
+          {isDark ? 'Bucky\'s Closet' : 'Steve\'s Closet'}
+        </div>
+        <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
+          <div onClick={() => scrollTo('OverviewScroll')}>Overview</div>
+        </div>
+        <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
+          <div onClick={() => scrollTo('RPScroll')}>Related Products</div>
+        </div>
+        <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
+          <div onClick={() => scrollTo('QAScroll')}>Related Products</div>
+        </div>
+        <div className={`link ${isDark ? 'dark-brand' : 'light-link'}`}>
+          <div onClick={() => scrollTo('RRScroll')}>Reviews</div>
+        </div>
       </div>
       <div className="searchWrapper">
-        <input className={`search ${isDark ? 'dark-mode-search' : 'light-mode-search'}`} type="text" onChange={handleSearch} />
+        <input className={`search ${isDark ? 'dark-mode-search' : 'light-mode-search'}`} type="text" />
         <FaSearch className={`search-icon ${isDark ? 'dark-mode-icon' : 'light-mode-icon'}`} />
         <button type="button" className="night-button" onClick={setDarkMode}>
           <MdModeNight
@@ -46,15 +59,3 @@ export default function Nav({ goDark, dark }) {
     </div>
   );
 }
-
-// {
-//   results.length > 0 && searched
-//     ? (
-//       results.map((product) => (
-//         <div id={product.id} key={product.id}>
-//           <span>{product.name}</span>
-//           <span>{product.default_price}</span>
-//         </div>
-//       ))
-//     ) : null
-// }

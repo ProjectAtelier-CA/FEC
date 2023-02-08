@@ -47,7 +47,6 @@ $blue: #2f5aaa;
 .zoom:hover {
   cursor: crosshair;
   transition: 800ms transform ease-out;
-  // overflow: hidden;
 }
 
 .zoom_clicked:hover {
@@ -58,9 +57,8 @@ $blue: #2f5aaa;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: url('../../../public/zoomOut.png'),auto;
   object-fit: scale-down;
-
-  // overflow: hidden;
 }
 
 .hidden {
@@ -74,14 +72,12 @@ $blue: #2f5aaa;
   width: 100vw;
   height: 60vh;
   position: relative;
-  // transition: width 200ms ease-in-out;
 }
 
 .normal {
   width: 60vw;
   height: 60vh;
   position: relative;
-  // transition: width 200ms ease-in-out;
 }
 
 

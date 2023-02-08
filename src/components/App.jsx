@@ -36,7 +36,7 @@ export default function App() {
       {/* This component provides reference for Star Rating component, don't remove it */}
       <StarReference />
       <Overview
-        data-testid="overview"
+        id="OverviewScroll"
         goDark={goDark}
         dark={dark}
         appAvgRating={appAvgRating}
