@@ -12,7 +12,7 @@ import { BsStarFill, BsStar } from 'react-icons/bs';
 import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Buttons({
-  styles, currentStyle, styleObject, setSkus, skus, isLoading, currentSku, setSku, product_id,
+  styles, currentStyle, setSkus, skus, isLoading, currentSku, setSku, product_id,
 }) {
   const [style, updateStyle] = useState(styles[0]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +25,8 @@ export default function Buttons({
   const [addedToBag, setBagged] = useState(false);
   const [favorite, addFavorite] = useState(false);
   const [favorites, setFavorites] = useState({});
+  const [choice, addChoice] = useState({});
+
   const iff = (condition, then, otherwise) => (condition ? then : otherwise);
   const isDark = useDarkMode();
 
@@ -32,7 +34,7 @@ export default function Buttons({
     setSize('Size');
     setQuantity(0);
     setBagged(false);
-  }, [currentStyle]);
+  }, [currentStyle, product_id]);
 
   useEffect(() => {
     setQuantity(0);
@@ -46,20 +48,6 @@ export default function Buttons({
     }
   }, [addedToBag]);
 
-  useEffect(() => {
-    if (addedToBag) {
-      console.log(`Purchasing SKU ${currentSku} with count ${quantity}`);
-    } else {
-      console.log(`Removed ${currentSku} from bag`);
-    }
-  }, [addedToBag]);
-
-  function selectSize(event) {
-    setSizeStatus(true);
-    setSize(event.target.value);
-    setSku(event.target.id);
-  }
-
   function sizeClick() {
     openSize(!sizeOpened);
   }
@@ -69,7 +57,13 @@ export default function Buttons({
   }
 
   function optionClick(event) {
-    setQuantity(event.target.id);
+    setQuantity(parseInt(event.target.id, 10));
+  }
+
+  function selectSize(event) {
+    setSizeStatus(true);
+    setSize(event.target.value);
+    setSku(event.target.id);
   }
 
   function addToBag() {
@@ -115,17 +109,6 @@ export default function Buttons({
     }
   }, [currentSku]);
 
-  useEffect(() => {
-    setSize('Size');
-    setQuantity(0);
-    setBagged(false);
-  }, [product_id]);
-  useEffect(() => {
-    setSize('Size');
-    setQuantity(0);
-    setBagged(false);
-  }, [product_id]);
-
   if (loading) {
     return (
       <div className="overview-loader" />
@@ -135,7 +118,6 @@ export default function Buttons({
   return (
     <div className="all-buttons">
       <div className="top-buttons">
-        {/* <button type="button" className="button sizeSelect dropdown">Select Size</button> */}
         <div className="dropdown" onClick={sizeClick}>
           <button type="button" className={`size button ${isDark ? 'dark-mode-button' : 'light-mode-button'}`}>
             {sizeOpened

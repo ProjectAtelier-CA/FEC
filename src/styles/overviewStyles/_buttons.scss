@@ -63,6 +63,9 @@ $color7: #32DE8A;
   color: $color1;
   font-weight: bold;
   opacity: 1;
+  min-height: 20px;
+  display: flex;
+  flex-shrink: .2;
 }
 
 

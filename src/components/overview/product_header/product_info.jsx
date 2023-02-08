@@ -15,7 +15,7 @@ export default function ProductInfo({
   const isDark = useDarkMode();
 
   return (
-    <div className="info" key={details.id}>
+    <div className="info">
       <div className="rating" key="rating">
         <StarRating score={appAvgRating} />
         <a href="http://www.google.com/" className={`review-link ${isDark ? 'dark-link' : 'light-link'}`}>Read reviews...</a>

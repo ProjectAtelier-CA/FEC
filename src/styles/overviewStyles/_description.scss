@@ -6,6 +6,26 @@ $color5: #FBFEFB;
 $color6: #FF101F;
 $color7: #32DE8A;
 
+.desc-div {
+  display: flex;
+  flex-shrink: 2;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  transition: 100ms scale;
+  // transition-delay: 200ms;
+}
+
+@media only screen and (max-height: 800px) {
+  .desc-div {
+      scale: .7;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .desc-div {
+      scale: .8;
+  }
+}
 .o-description {
   display: flex;
   flex-flow: row nowrap;
