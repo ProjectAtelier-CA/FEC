@@ -23,7 +23,7 @@ export default function ReviewsSortMenu({
   };
 
   return (
-    <div className="sort-menu-container">
+    <div className="sort-menu-container" data-testid="sort-menu-test">
       {/* <h4>ReviewsSortMenu</h4> */}
       <div className="reviews-sort-menu">
         <div className="number-of-reviews">

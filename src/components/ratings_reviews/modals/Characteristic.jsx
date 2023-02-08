@@ -9,7 +9,7 @@ export default function Characteristic({ handleChange, selectionNames, charType,
   // selectionName should be an array of names for selections
   // handleChange should be the function that will change the state for the selection
   return (
-    <div className="characteristics">
+    <div className="characteristics" data-testid="characteristics-test">
       <div className={`selection-type ${isDarkMode ? 'active-dark' : ''}`}>{charType}</div>
       <label className="selections">
         <span>{selectionNames[0]}</span>

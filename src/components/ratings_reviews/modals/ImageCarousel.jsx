@@ -29,7 +29,7 @@ export default function ImageCarousel({
   let nextIndex = currImageIndex + 1 === modalImagePhotos.length ? 0 : currImageIndex + 1;
 
   return (
-    <div className="image-carousel-modal-container" onClick={onClick}>
+    <div className="image-carousel-modal-container" onClick={onClick} data-testid="image-carousel-test">
       <div className="image-modal-carousel">
         {modalImagePhotos.length > 1 ? (
           <div className="image-carousel-modal-next" onClick={(e) => handlePrevClick(e)}>

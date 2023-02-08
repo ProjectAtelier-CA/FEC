@@ -14,7 +14,7 @@ export default function ReviewCard({
   const shortBodyText = review.body.slice(0, 250); // Don't need state since never changing
 
   return (
-    <div className="review-card">
+    <div className="review-card" data-testid="review-card-test">
       <div className="review-star-user">
         <div>
           <StarRating score={review.rating} />
