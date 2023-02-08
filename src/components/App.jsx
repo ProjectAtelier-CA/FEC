@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { GiAmericanShield } from 'react-icons/gi';
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
@@ -20,6 +20,7 @@ export default function App() {
   const [productDetails, setDetails] = useState({});
   const [styles, setStyles] = useState([]);
   const [overviewLoading, setOverviewLoading] = useState(true);
+  const reviewsRef = useRef(null);
 
   // ----- Data tracking function ----- //
   const trackerData = useMemo(() => ({}), []);
@@ -47,6 +48,7 @@ export default function App() {
         setLoading={setOverviewLoading}
         product_id={id}
         handleTrackClick={handleTrackClick}
+        reviewsRef={reviewsRef}
       />
       {
         overviewLoading
@@ -58,7 +60,13 @@ export default function App() {
               <RelatedProducts id={id} setId={setId} handleTrackClick={handleTrackClick}/>
               <h3 className="testing-header"> Questions and Answers</h3>
               <QuestionsAnswers id={id} productName="A Purty Pink Jacket" handleTrackClick={handleTrackClick}/>
-              <RatingsReviews productID={id} productName={productDetails.name} setAppAvgRating={setAppAvgRating} handleTrackClick={handleTrackClick} />
+              <RatingsReviews
+                productID={id}
+                productName={productDetails.name}
+                setAppAvgRating={setAppAvgRating}
+                handleTrackClick={handleTrackClick}
+                reviewsRef={reviewsRef}
+              />
             </>
           )
       }
