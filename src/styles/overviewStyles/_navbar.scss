@@ -167,6 +167,11 @@ $darkNav: #242424;
   transform: translate(0,10%);
 }
 
+.night-icon:hover {
+  opacity: .7;
+  cursor: pointer;
+}
+
 .dark-mode {
   color: white;
 }
