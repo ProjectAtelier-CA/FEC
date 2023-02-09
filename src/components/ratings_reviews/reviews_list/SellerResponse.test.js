@@ -10,7 +10,7 @@ const response = "Test Reponse"
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if SellerResponse is rendered', async () => {
     render(<SellerResponse response={response} />);
     return expect(screen.getByTestId('seller-reponse-test')).toBeTruthy();
   });

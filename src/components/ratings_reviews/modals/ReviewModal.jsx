@@ -55,7 +55,7 @@ export default function ReviewModal({
       axios.post('/reviews', {
         data: {
           product_id: Number(reviewMetaData.product_id),
-          rating: 5,
+          rating: starRating,
           summary: reviewSummary,
           body: reviewText,
           recommend: recommended,

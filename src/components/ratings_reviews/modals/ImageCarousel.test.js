@@ -10,7 +10,7 @@ const mockFunc = () => {};
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if our ImageCarousel is rendered', async () => {
     render(<ImageCarousel modalImagePhotos={[]} currImageIndex={0} setCurrImageIndex={mockFunc}/>);
     return expect(screen.getByTestId('image-carousel-test')).toBeTruthy();
   });

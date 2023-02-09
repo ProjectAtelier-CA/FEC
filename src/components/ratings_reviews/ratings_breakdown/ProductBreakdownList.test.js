@@ -35,7 +35,7 @@ const mockData = {
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if ProductBreakdownList is rendered', async () => {
     render(<ProductBreakdownList chars={mockData} />);
     return expect(screen.getByTestId('char-bars-test')).toBeTruthy();
   });
