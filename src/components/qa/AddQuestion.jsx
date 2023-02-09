@@ -5,11 +5,16 @@ import Modal from 'react-modal';
 import axios from 'axios';
 
 const questionStyles = {
+  overlay: {
+    position: 'fixed',
+    zIndex: 100,
+  },
   content: {
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
+    position: 'absolute',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#bb9f8c',
@@ -42,7 +47,7 @@ export default function App({ product_id, productName }) {
 
   const submitQuestion = () => {
     if (validateEmail(email) && newQuestion.length !== 0 && nickname.length !== 0) {
-      axios.post('http://localhost:8081/questions', {
+      axios.post('/questions', {
         body: newQuestion,
         name: nickname,
         email,
@@ -56,12 +61,20 @@ export default function App({ product_id, productName }) {
     }
   };
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [open]);
   return (
     <span>
       <button className="add-question-button" type="button" onClick={setOpen}> Add Question +</button>
       <Modal
         isOpen={open}
         onRequestClose={() => setOpen(false)}
+        // className="question-modal"
         style={questionStyles}
       >
         <h2 className="question-modal-title">Ask Your Question </h2>
@@ -81,7 +94,11 @@ export default function App({ product_id, productName }) {
           <br />
           <textarea rows="5" maxLength="1000" value={newQuestion} onChange={questionInformation} className="add-answer-input">.</textarea>
           {/* <input className="add-answer-input" value={newQuestion} onChange={questionInformation} required /> */}
-          <label className="word-limit">Limit: {maxLength}</label>
+          <label className="word-limit">
+            Limit:
+            {' '}
+            {maxLength}
+          </label>
           {' '}
           <br />
           <label> Enter Nickname</label>

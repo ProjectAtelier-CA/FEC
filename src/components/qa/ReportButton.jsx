@@ -5,7 +5,7 @@ export default function ReportButton({ answerId }) {
   const [isClicked, setClicked] = useState(false);
   const sendItAway = () => {
     setClicked(true);
-    axios.post('http://localhost:8081/report', { answerId });
+    axios.post('/report', { answerId });
   };
 
   return (

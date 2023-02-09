@@ -6,6 +6,21 @@ $color5: #FBFEFB;
 $color6: #FF101F;
 $blue: #2f5aaa;
 
+
+@media only screen and (max-width: 768px) {
+  .image-and-info {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 10px;
+
+    flex-shrink: 1;
+    height: fit-content;
+    padding-bottom: 10px;
+  }
+
+
+}
+
 .image-and-info {
   display: flex;
   flex-flow: row nowrap;

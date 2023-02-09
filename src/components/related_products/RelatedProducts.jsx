@@ -74,7 +74,7 @@ export default function RelatedProduct({ id, setId, handleTrackClick }) {
   };
 
   return (
-    <section className='widget__related-product' onClick={(e) => handleTrackClick(e, 'Related Products')}>
+    <section className='widget__related-product' onClick={(e) => handleTrackClick(e, 'Related Products')} id="RPScroll">
       <ProductCarousel title='related product'>
         { relatedCardList }
       </ProductCarousel>

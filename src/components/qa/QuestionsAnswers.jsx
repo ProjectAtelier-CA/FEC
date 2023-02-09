@@ -19,7 +19,7 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
   const activateDark = useDarkMode();
 
   useEffect(() => {
-    axios.get('http://localhost:8081/questions', { params: { id } }).then(({ data }) => {
+    axios.get('/questions', { params: { id } }).then(({ data }) => {
       const result = data.results;
       setLoading(false);
       setQuestions(result);
@@ -34,6 +34,7 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
         </div>
       )
       : (
+        <section id="QAScroll">
         <div onClick={(e) => handleTrackClick(e, 'Questions and Answers')}>
           <div className="master-question">
             {
@@ -43,6 +44,7 @@ export default function QuestionsAnswers({ id, productName, handleTrackClick }) 
          }
           </div>
         </div>
+        </section>
       )
   );
 }

@@ -4,6 +4,7 @@ import ReviewCard from './ReviewCard';
 import ActionButtons from './ActionButtons';
 import ImageModal from '../../shared/ImageModal';
 import ImageCarousel from '../modals/ImageCarousel';
+import { useDarkMode } from '../../shared/DarkModeProvider';
 
 const makeStarFilters = (starFilter) => {
   const filter = [];
@@ -22,18 +23,14 @@ export default function ReviewsCardList({
   const [reviewIndex, setReviewIndex] = useState(2); // Start it off at two reviews
   const [filterBy, setFilterBy] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
   const [modalImageURL, setModalImageURL] = useState(''); // Current modal image
-
   const [currImageIndex, setCurrImageIndex] = useState(''); // Current modal image test
   const [modalImagePhotos, setModalImagePhotos] = useState([]); // Array of modal images
-  // console.log(modalImagePhotos[currImageIndex]);
-  // console.log(modalImagePhotos);
-
   const [moreState, setMoreState] = useState(false); // Current state of more reviews button
 
   const actionButtonsRef = useRef(null);
   const scrollRef = useRef(null);
+  const isDarkMode = useDarkMode();
 
   useEffect(() => {
     setFilterBy(makeStarFilters(starFilter));
@@ -49,7 +46,7 @@ export default function ReviewsCardList({
   };
 
   // ---- Image Modal
-  // Lazy way to doing it is to store data in the alt lol...
+  // Lazy way to doing it is to store data in the alt
   const handleImageClick = (e, photos) => {
     if (e.target.src) {
       setModalImageURL(e.target.src);
@@ -65,7 +62,7 @@ export default function ReviewsCardList({
   };
 
   const handleHelpfulClick = (reviewID) => {
-    axios.put(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
+    axios.put(`/reviews/${reviewID}/helpful`).then(() => {
       console.log('Helpful reqeuest sent');
     }).catch(() => {
       console.log('error occurred sending put request');
@@ -73,7 +70,7 @@ export default function ReviewsCardList({
   };
 
   const handleReportClick = (reviewID) => {
-    axios.put(`http://localhost:8081/reviews/${reviewID}/report`).then(() => {
+    axios.put(`/reviews/${reviewID}/report`).then(() => {
       console.log('Report request sent');
     }).then(() => {
       setRerender([]);
@@ -146,13 +143,6 @@ export default function ReviewsCardList({
         setReviewIndex={setReviewIndex}
         setMoreState={setMoreState}
       />
-      {/* {showModal && (
-        <ImageModal
-          // photos={}
-          url={modalImageURL}
-          onClick={handleModalClick}
-        />
-      )} */}
       {showModal && (
         <ImageCarousel
           currImageIndex={currImageIndex}

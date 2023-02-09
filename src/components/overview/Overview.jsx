@@ -27,12 +27,11 @@ import '../../styles/overviewStyles/_overview.scss';
 import { useDarkMode } from '../shared/DarkModeProvider';
 
 export default function Overview({
-  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick,
+  goDark, dark, appAvgRating, details, setDetails, styles, setStyles, isLoading, setLoading, product_id, handleTrackClick, reviewsRef,
 }) {
   const [imageIndex, setIndex] = useState(0);
   const [currentStyle, setStyle] = useState(0);
   const [imgToStyles, setImgToStyles] = useState([]);
-  const [styleObject, setStyleObject] = useState(null);
   const [skus, setSkus] = useState({});
   const [currentSku, setSku] = useState('');
   const [photos, setPhotos] = useState([]);
@@ -40,7 +39,7 @@ export default function Overview({
 
   function getStyles() {
     let iToS = [];
-    axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
+    axios.get(`/products/${product_id}/styles`)
       .then(({ data }) => {
         data.results.forEach((style, index) => {
           const N = style.photos.length;
@@ -50,7 +49,6 @@ export default function Overview({
       })
       .then((results) => {
         setStyles(results);
-        setStyleObject(results[0]);
         setSkus(results[0].skus);
         setSku(Object.keys(results[0].skus)[0]);
         setPhotos(results.map((style) => style.photos).flat());
@@ -64,7 +62,7 @@ export default function Overview({
   }
 
   function getProduct() {
-    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
+    axios.get(`/products/${product_id}`)
       .then(({ data }) => {
         setDetails(data);
       });
@@ -78,10 +76,10 @@ export default function Overview({
   }, [product_id]);
 
   useEffect(() => {
-    if (Object.keys(skus).length > 0 && photos.length > 0) {
+    if (Object.keys(skus).length > 0 && photos.length > 0 && details !== undefined) {
       setLoading(false);
     }
-  }, [skus]);
+  }, [skus, details]);
 
   if (isLoading) {
     return (
@@ -93,15 +91,15 @@ export default function Overview({
   }
 
   return (
-    <div className="overview" onClick={(e) => handleTrackClick(e, 'Overview')}>
-      <Nav goDark={goDark} dark={dark} />
+    <div className="overview" id="OverviewScroll" onClick={(e) => handleTrackClick(e, 'Overview')} data-testid="overview">
+      <Nav goDark={goDark} dark={dark} data-testid="nav" />
       <div className="spacer">
         <Banner
+          data-testid="banner"
           className="banner-div"
           styles={styles}
           setStyle={setStyle}
           setIndex={setIndex}
-          setStyleObject={setStyleObject}
           clickStyle={clickStyle}
         />
       </div>
@@ -116,8 +114,6 @@ export default function Overview({
           imgToStyle={imgToStyles}
           currentSku={currentSku}
           setSku={setSku}
-          styleObject={styleObject}
-          setStyleObject={setStyleObject}
           currentStyle={currentStyle}
           product_id={product_id}
           photos={photos}
@@ -134,8 +130,6 @@ export default function Overview({
             imgToStyle={imgToStyles}
             currentStyle={currentStyle}
             setStyle={setStyle}
-            styleObject={styleObject}
-            setStyleObject={setStyleObject}
             skus={skus}
             setSkus={setSkus}
             isLoading={isLoading}
@@ -144,15 +138,18 @@ export default function Overview({
             product_id={product_id}
             clickStyle={clickStyle}
             appAvgRating={appAvgRating}
+            reviewsRef={reviewsRef}
             data-testid="info"
           />
         </div>
       </div>
-      <Description
-        product_id={product_id}
-        details={details}
-        data-testid="description"
-      />
+      <div className="desc-div">
+        <Description
+          product_id={product_id}
+          details={details}
+          data-testid="description"
+        />
+      </div>
     </div>
   );
 }

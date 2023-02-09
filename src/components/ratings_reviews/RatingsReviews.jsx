@@ -16,7 +16,7 @@ const initialStarFilterState = {
 
 // Current props needed: productID, productName
 export default function RatingsReviews({
-  productID, productName, setAppAvgRating, handleTrackClick,
+  productID, productName, setAppAvgRating, handleTrackClick, reviewsRef,
 }) {
   const [productReviews, setProductReviews] = useState([]);
   const [reviewMetaData, setReviewMetaData] = useState({});
@@ -29,7 +29,7 @@ export default function RatingsReviews({
 
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews', {
+    axios.get('/reviews', {
       params: {
         product_id: productID,
         sort: sortBy,
@@ -47,7 +47,7 @@ export default function RatingsReviews({
   }, [sortBy, rerender, productID]);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews/meta', {
+    axios.get('/reviews/meta', {
       params: {
         product_id: productID,
       },
@@ -62,7 +62,6 @@ export default function RatingsReviews({
   }, [rerender, productID]);
 
   const handleStarClick = (starType) => {
-    // console.log(starType);
     setStarFilter({ ...starFilter, [starType]: !starFilter[starType] });
   };
 
@@ -87,23 +86,29 @@ export default function RatingsReviews({
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div className="ratings-reviews-container" onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')} >
-          <RatingsBreakdown
-            reviewMetaData={reviewMetaData}
-            handleStarClick={handleStarClick}
-            starFilter={starFilter}
-            setStarFilter={setStarFilter}
-            setAppAvgRating={setAppAvgRating}
-          />
-          <ReviewsList
-            productReviews={productReviews}
-            starFilter={starFilter}
-            handleSortClick={handleSortClick}
-            sortBy={sortBy}
-            reviewMetaData={reviewMetaData}
-            setRerender={setRerender}
-            productName={productName}
-          />
+        <div className='ratings-reviews-master-container' ref={reviewsRef} id="RRScroll">
+          <div
+            className="ratings-reviews-container"
+            onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
+            data-testid='ratings-reviews-test'
+          >
+            <RatingsBreakdown
+              reviewMetaData={reviewMetaData}
+              handleStarClick={handleStarClick}
+              starFilter={starFilter}
+              setStarFilter={setStarFilter}
+              setAppAvgRating={setAppAvgRating}
+            />
+            <ReviewsList
+              productReviews={productReviews}
+              starFilter={starFilter}
+              handleSortClick={handleSortClick}
+              sortBy={sortBy}
+              reviewMetaData={reviewMetaData}
+              setRerender={setRerender}
+              productName={productName}
+            />
+          </div>
         </div>
       ) : null }
     </>

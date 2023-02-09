@@ -11,7 +11,7 @@ import { useDarkMode } from '../../shared/DarkModeProvider';
 export default function ReviewModal({
   setShowReviewModal, reviewMetaData, setRerender, productName,
 }) {
-  console.log(reviewMetaData);
+  // console.log(reviewMetaData);
   const [starRating, setStarRating] = useState(0); // Star rating for product
   const [reviewSummary, setReviewSummary] = useState(''); // Review Summary
   const [reviewText, setReviewText] = useState(''); // Review Body
@@ -52,7 +52,7 @@ export default function ReviewModal({
       setShowErrorMsg(false);
       setShowReviewModal(false);
       console.log('Valid submission');
-      axios.post('http://localhost:8081/reviews', {
+      axios.post('/reviews', {
         data: {
           product_id: Number(reviewMetaData.product_id),
           rating: 5,
@@ -143,6 +143,7 @@ export default function ReviewModal({
       className="review-modal-container"
       onMouseDown={(e) => handleModalOutsideClick(e)}
       ref={outsideModalRef}
+      data-testid="review-modal-test"
     >
       <div className={`review-modal-content ${isDarkMode ? 'active-dark' : ''}`}>
         <div className="review-header">
