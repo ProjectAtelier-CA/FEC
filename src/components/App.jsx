@@ -14,7 +14,7 @@ import { DarkModeProvider } from './shared/DarkModeProvider';
 /* ----------- Set up id state -------------- */
 export default function App() {
   // later this initial id should be passed down from index.jsx as props
-  const [id, setId] = useState(37313);
+  const [id, setId] = useState(37318);
   const [dark, goDark] = useState(false);
   const [appAvgRating, setAppAvgRating] = useState(5);
   const [productDetails, setDetails] = useState({});
