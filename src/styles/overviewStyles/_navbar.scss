@@ -17,16 +17,18 @@ $darkNav: #242424;
   min-height: 50px;
   opacity: 1;
   justify-content: space-between;
-  z-index: 6;
+  z-index: 80;
   margin-bottom: 20px;
 }
 
 .dark-mode-nav {
   background-color: $darkNav;
+  box-shadow: 0px 2px 20px 3px rgba(0, 0, 0,0.1);
 }
 
 .light-mode-nav {
-  background-color: $color2;
+  background-color:  $color4; //whitesmoke; //$color2;
+  box-shadow: 0px 2px 20px 3px rgba(239, 229, 220,0.7);
 }
 
 .logoWrapper {
@@ -83,6 +85,20 @@ $darkNav: #242424;
   cursor: pointer;
 }
 
+// .logo:hover {
+//   transform: translate(0,0%);
+//   animation: rotateY 2s infinite linear;
+
+//   @keyframes rotateY {
+//     from {
+//       transform: rotateY(0deg);
+//     }
+//     to {
+//       transform: rotateY(360deg);
+//     }
+//   }
+// }
+
 .dark-logo {
   color: #bb9f8c;
 }
@@ -108,7 +124,7 @@ $darkNav: #242424;
 }
 
 .light-mode-search {
-  background-color: $color2;
+  background-color: $color4;
   border-bottom: 2px solid $color1;
 }
 
@@ -151,6 +167,11 @@ $darkNav: #242424;
 .night-icon {
   scale: 1.6;
   transform: translate(0,10%);
+}
+
+.night-icon:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .dark-mode {
