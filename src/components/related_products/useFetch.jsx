@@ -29,10 +29,10 @@ export default function useFetch(id) {
     async function fetchData() {
       try {
         const resultsRaw = (await Promise.all([
-          fetch(`http://localhost:8081/products/${id}`),
-          fetch(`http://localhost:8081/products/${id}/styles`),
-          fetch(`http://localhost:8081/products/${id}/related`),
-          fetch(`http://localhost:8081/reviews/meta?product_id=${id}`)
+          fetch(`/products/${id}`),
+          fetch(`/products/${id}/styles`),
+          fetch(`/products/${id}/related`),
+          fetch(`/reviews/meta?product_id=${id}`)
         ])).map(res => res.json());
 
         const results = await Promise.all(resultsRaw);
