@@ -14,7 +14,7 @@ import { DarkModeProvider } from './shared/DarkModeProvider';
 /* ----------- Set up id state -------------- */
 export default function App() {
   // later this initial id should be passed down from index.jsx as props
-  const [id, setId] = useState(37313);
+  const [id, setId] = useState(37318);
   const [dark, goDark] = useState(false);
   const [appAvgRating, setAppAvgRating] = useState(5);
   const [productDetails, setDetails] = useState({});
@@ -30,6 +30,21 @@ export default function App() {
     const trackTime = format(new Date(), 'MMMM dd, yyyy HH mm ss');
     trackerData[trackKey] = { eleClicked, trackTime, module };
   };
+
+  useEffect(() => {
+    history.pushState({ id }, '');
+
+    function setIdByHistory(event) {
+      const state = event.state;
+
+      if (state) setId(state.id);
+    }
+
+    window.addEventListener('popstate', setIdByHistory);
+
+    return () => window.removeEventListener('popstate', setIdByHistory);
+
+  }, [id]);
 
   return (
     <DarkModeProvider dark={dark}>
