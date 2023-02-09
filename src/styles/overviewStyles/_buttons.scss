@@ -19,6 +19,7 @@ $color7: #32DE8A;
   display: flex;
   flex-flow: row nowrap;
   width: 17vw;
+  font-size: 5vw;
   justify-content: flex-start;
   padding: 10px 0px;
   flex-shrink: 1;
@@ -67,6 +68,22 @@ $color7: #32DE8A;
   display: flex;
   flex-shrink: .2;
 }
+
+.favorite:hover {
+  .favorite-star {
+    animation: rotateY 2s infinite linear;
+  }
+
+  @keyframes rotateY {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+
 
 
 .dark-mode-star {

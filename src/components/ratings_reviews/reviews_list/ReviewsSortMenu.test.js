@@ -10,7 +10,7 @@ const mockFunc = () => {};
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if ReviewsSortMenu is rendered', async () => {
     render(<ReviewsSortMenu setDebouncedSearch={mockFunc} setSearchInput={mockFunc} handleSortClick={mockFunc}/>);
     return expect(screen.getByTestId('sort-menu-test')).toBeTruthy();
   });

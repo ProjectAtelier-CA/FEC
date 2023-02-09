@@ -31,6 +31,21 @@ export default function App() {
     trackerData[trackKey] = { eleClicked, trackTime, module };
   };
 
+  useEffect(() => {
+    history.pushState({ id }, '');
+
+    function setIdByHistory(event) {
+      const state = event.state;
+
+      if (state) setId(state.id);
+    }
+
+    window.addEventListener('popstate', setIdByHistory);
+
+    return () => window.removeEventListener('popstate', setIdByHistory);
+
+  }, [id]);
+
   return (
     <DarkModeProvider dark={dark}>
       {/* This component provides reference for Star Rating component, don't remove it */}

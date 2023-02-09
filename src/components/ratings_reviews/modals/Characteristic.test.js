@@ -10,7 +10,7 @@ const sizeSelections = ['A size too small', '1/2 a size too small', 'Perfect', '
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check Characteristic is rendered', async () => {
     render(<Characteristic selectionNames={sizeSelections} charType={"Size"}/>);
     return expect(screen.getByTestId('characteristics-test')).toBeTruthy();
   });
