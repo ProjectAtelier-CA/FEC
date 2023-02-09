@@ -10,7 +10,7 @@ export default function HelpfulButton({ helpfulness, id, type }) {
     setClicked(true);
     setHelp(help + 1);
     setFirst(true);
-    axios.post('http://localhost:8081/helpful', null, { params: { id, type } });
+    axios.post('/helpful', null, { params: { id, type } });
   };
 
   return (
