@@ -32,7 +32,19 @@ export default function Nav({ goDark, dark }) {
           onClick={() => scrollTo('OverviewScroll')}
           className={`brand ${isDark ? 'dark-brand' : 'light-brand'}`}
         >
-          {isDark ? 'Bucky\'s Closet' : 'Steve\'s Closet'}
+          {isDark
+            ? (
+              <div className="brand-title">
+                Bucky&apos;s Closet
+                <div className="annotation">by Steve</div>
+              </div>
+            )
+            : (
+              <div className="brand-title">
+                Cap&apos;s Closet
+                <div className="annotation">by Steve</div>
+              </div>
+            )}
         </div>
         <div className={`link ${isDark ? 'dark-link' : 'light-link'}`}>
           <div onClick={() => scrollTo('OverviewScroll')}>Overview</div>
