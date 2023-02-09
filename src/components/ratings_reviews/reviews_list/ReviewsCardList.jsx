@@ -62,7 +62,7 @@ export default function ReviewsCardList({
   };
 
   const handleHelpfulClick = (reviewID) => {
-    axios.put(`http://localhost:8081/reviews/${reviewID}/helpful`).then(() => {
+    axios.put(`/reviews/${reviewID}/helpful`).then(() => {
       console.log('Helpful reqeuest sent');
     }).catch(() => {
       console.log('error occurred sending put request');
@@ -70,7 +70,7 @@ export default function ReviewsCardList({
   };
 
   const handleReportClick = (reviewID) => {
-    axios.put(`http://localhost:8081/reviews/${reviewID}/report`).then(() => {
+    axios.put(`/reviews/${reviewID}/report`).then(() => {
       console.log('Report request sent');
     }).then(() => {
       setRerender([]);
