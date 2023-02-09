@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { GiAmericanShield } from 'react-icons/gi';
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
@@ -43,7 +43,6 @@ export default function App() {
     window.addEventListener('popstate', setIdByHistory);
 
     return () => window.removeEventListener('popstate', setIdByHistory);
-
   }, [id]);
 
   return (
