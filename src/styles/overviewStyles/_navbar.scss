@@ -19,6 +19,7 @@ $darkNav: #242424;
   justify-content: space-between;
   z-index: 6;
   margin-bottom: 20px;
+  box-shadow: 0px 2px 20px 3px rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode-nav {
@@ -26,7 +27,7 @@ $darkNav: #242424;
 }
 
 .light-mode-nav {
-  background-color: $color2;
+  background-color:  $color4 //whitesmoke; //$color2;
 }
 
 .logoWrapper {
@@ -122,7 +123,7 @@ $darkNav: #242424;
 }
 
 .light-mode-search {
-  background-color: $color2;
+  background-color: $color4;
   border-bottom: 2px solid $color1;
 }
 
@@ -165,6 +166,11 @@ $darkNav: #242424;
 .night-icon {
   scale: 1.6;
   transform: translate(0,10%);
+}
+
+.night-icon:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .dark-mode {
