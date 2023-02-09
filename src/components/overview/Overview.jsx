@@ -36,6 +36,7 @@ export default function Overview({
   const [currentSku, setSku] = useState('');
   const [photos, setPhotos] = useState([]);
   const [styleClick, clickStyle] = useState(false);
+  const [navClick, clickNav] = useState(false);
 
   function getStyles() {
     let iToS = [];
@@ -120,6 +121,8 @@ export default function Overview({
           clickStyle={clickStyle}
           styleClick={styleClick}
           data-testid="carousel"
+          navClick={navClick}
+          clickNav={clickNav}
         />
         <div className="product-info">
           <ProductInfo

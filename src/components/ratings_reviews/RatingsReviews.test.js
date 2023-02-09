@@ -8,7 +8,7 @@ import RatingsReviews from './RatingsReviews';
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if RatingsReviews is rendered', async () => {
     render(<RatingsReviews productID={37331} productName={"test"}/>);
     return waitFor(() => expect(screen.queryByText(/Loading/)).not.toBeInTheDocument())
       .then(() => {

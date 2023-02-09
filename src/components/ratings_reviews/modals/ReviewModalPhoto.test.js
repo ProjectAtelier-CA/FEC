@@ -10,7 +10,7 @@ const photoUrl = 'https://images.unsplash.com/photo-1674592309639-39067f6a8111?i
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if ReviewModalPhoto is rendered', async () => {
     render(<ReviewModalPhoto photoUrl={photoUrl} />);
     return expect(screen.getByTestId('review-modal-photo-test')).toBeTruthy();
   });

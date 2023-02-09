@@ -50,7 +50,7 @@ const mockFunc = () => {};
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if RatingsBreakdown is rendered', async () => {
     render(<RatingsBreakdown reviewMetaData={mockData} starFilter={mockStarFilter} setAppAvgRating={mockFunc}/>);
     return expect(screen.getByTestId('ratings-breakdown-test')).toBeTruthy();
   });
