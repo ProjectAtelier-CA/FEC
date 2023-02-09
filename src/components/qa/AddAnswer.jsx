@@ -50,7 +50,7 @@ export default function App({ question_id, productName, questionBody }) {
 
   const submitQuestion = () => {
     if (validateEmail(email) && newAnswer.length !== 0 && nickname.length !== 0) {
-      axios.post('http://localhost:8081/answers', {
+      axios.post('/answers', {
         question_id,
         body: newAnswer,
         name: nickname,
