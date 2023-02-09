@@ -45,6 +45,16 @@ $darkNav: #242424;
   cursor: pointer;
 }
 
+.brand-title {
+  text-align: left;
+}
+
+.annotation {
+  font-size: .5rem;
+  font-weight: light;
+}
+
+
 .link {
   text-transform: uppercase;
   padding: 10px;
@@ -72,6 +82,20 @@ $darkNav: #242424;
   align-self: center;
   cursor: pointer;
 }
+
+// .logo:hover {
+//   transform: translate(0,0%);
+//   animation: rotateY 2s infinite linear;
+
+//   @keyframes rotateY {
+//     from {
+//       transform: rotateY(0deg);
+//     }
+//     to {
+//       transform: rotateY(360deg);
+//     }
+//   }
+// }
 
 .dark-logo {
   color: #bb9f8c;

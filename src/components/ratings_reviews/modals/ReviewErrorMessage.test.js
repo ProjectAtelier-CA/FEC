@@ -7,7 +7,7 @@ import ReviewErrorMessage from './ReviewErrorMessage';
 describe('Jest', function() {
   const user = userEvent.setup();
 
-  it ('should say all our components', () => {
+  it ('should check if ReviewErrorMessage is rendered', () => {
     render(<ReviewErrorMessage />)
     expect(screen.getByTestId('error-test')).toHaveTextContent('This error will occur if:');
   })

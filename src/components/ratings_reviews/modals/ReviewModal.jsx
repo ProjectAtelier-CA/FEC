@@ -52,10 +52,10 @@ export default function ReviewModal({
       setShowErrorMsg(false);
       setShowReviewModal(false);
       console.log('Valid submission');
-      axios.post('http://localhost:8081/reviews', {
+      axios.post('/reviews', {
         data: {
           product_id: Number(reviewMetaData.product_id),
-          rating: 5,
+          rating: starRating,
           summary: reviewSummary,
           body: reviewText,
           recommend: recommended,

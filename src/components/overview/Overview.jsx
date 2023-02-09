@@ -36,10 +36,11 @@ export default function Overview({
   const [currentSku, setSku] = useState('');
   const [photos, setPhotos] = useState([]);
   const [styleClick, clickStyle] = useState(false);
+  const [navClick, clickNav] = useState(false);
 
   function getStyles() {
     let iToS = [];
-    axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
+    axios.get(`/products/${product_id}/styles`)
       .then(({ data }) => {
         data.results.forEach((style, index) => {
           const N = style.photos.length;
@@ -62,7 +63,7 @@ export default function Overview({
   }
 
   function getProduct() {
-    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
+    axios.get(`/products/${product_id}`)
       .then(({ data }) => {
         setDetails(data);
       });
@@ -120,6 +121,8 @@ export default function Overview({
           clickStyle={clickStyle}
           styleClick={styleClick}
           data-testid="carousel"
+          navClick={navClick}
+          clickNav={clickNav}
         />
         <div className="product-info">
           <ProductInfo

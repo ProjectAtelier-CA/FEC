@@ -10,7 +10,7 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function Thumbnails2({
-  imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus, product_id, photos, N, styleClick, clickStyle,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, currentStyle, setSku, setSkus, product_id, photos, N, styleClick, clickStyle, clickNav, navClick,
 }) {
   // const [displayStart, setStart] = useState(0);
   const [height, setHeight] = useState(0);
@@ -33,23 +33,17 @@ export default function Thumbnails2({
     setScrollDown(6);
   }, [product_id, scrollRef]);
 
-  // useEffect(() => {
-  //   if (styles[currentStyle] !== undefined) {
-  //     setSkus(styles[currentStyle].skus);
-  //     setSku(Object.keys(styles[currentStyle].skus)[0]);
-  //   }
-  // }, [currentStyle]);
-
   useEffect(() => {
     setScrollUp(imageIndex);
     setScrollDown(imageIndex + 6);
-    if (mouseOut || styleClick) {
+    if ((mouseOut && styleClick) || (mouseOut && navClick)) {
       scrollRef.current.children[imageIndex].scrollIntoView({
         top: 0, behavior: 'smooth', inline: 'center', block: 'nearest', alignToTop: 'true',
       });
       clickStyle(false);
+      clickNav(false);
     }
-  }, [currentStyle, imageIndex, styleClick]);
+  }, [currentStyle, imageIndex]);
 
   // ----- Local functions -------//
   function handleScroll() {

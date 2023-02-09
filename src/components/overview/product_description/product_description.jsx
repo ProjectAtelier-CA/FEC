@@ -18,19 +18,13 @@ export default function Description({ product_id, details }) {
     }
   }, [product_id, details]);
 
-  if (loading) {
-    return (
-      null
-    );
-  }
-
   return (
     loading
       ? (<div data-testid="final-load" />)
       : (
         <div className="o-description">
           <div className={`description-content ${isDark ? 'dark-description' : 'light-description'}`}>
-            <h3 className="o-title">{details.slogan}</h3>
+            <h3 className="o-title" data-testid="slogan">{details.slogan}</h3>
             <p className="o-body">{details.description}</p>
           </div>
           <div className="divider" />

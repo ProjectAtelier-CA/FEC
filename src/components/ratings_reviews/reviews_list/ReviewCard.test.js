@@ -34,7 +34,7 @@ const mockReview = {
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if ReviewCard is rendered', async () => {
     render(<ReviewCard review={mockReview} />);
     return expect(screen.getByTestId('review-card-test')).toBeTruthy();
   });

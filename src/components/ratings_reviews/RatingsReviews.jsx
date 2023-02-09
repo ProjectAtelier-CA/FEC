@@ -29,7 +29,7 @@ export default function RatingsReviews({
 
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews', {
+    axios.get('/reviews', {
       params: {
         product_id: productID,
         sort: sortBy,
@@ -47,7 +47,7 @@ export default function RatingsReviews({
   }, [sortBy, rerender, productID]);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/reviews/meta', {
+    axios.get('/reviews/meta', {
       params: {
         product_id: productID,
       },
@@ -86,7 +86,7 @@ export default function RatingsReviews({
       </div>
       )}
       {!loadingMeta && !loadingReviews ? (
-        <div className='ratings-reviews-master-container' ref={reviewsRef}>
+        <div className='ratings-reviews-master-container' ref={reviewsRef} id="RRScroll">
           <div
             className="ratings-reviews-container"
             onClick={(e) => handleTrackClick(e, 'Ratings and Reviews')}
