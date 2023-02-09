@@ -11,7 +11,7 @@ import Thumbnails2 from './thumbnailRefactor';
 import { useDarkMode } from '../../shared/DarkModeProvider';
 
 export default function ImageCarousel({
-  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos, clickStyle, styleClick,
+  imageIndex, setIndex, setStyle, imgToStyle, styles, setSku, setSkus, currentStyle, product_id, photos, clickStyle, styleClick, navClick, clickNav,
 }) {
   const [N, setN] = useState(photos.length);
   const [isExpanded, setExpand] = useState(false);
@@ -87,12 +87,14 @@ export default function ImageCarousel({
     const newIndex = getIndex(imageIndex - 1);
     setIndex(newIndex);
     setStyle(imgToStyle[newIndex]);
+    clickNav(true);
   }
 
   function handleRight() {
     const newIndex = getIndex(parseInt(imageIndex, 10) + 1);
     setIndex(newIndex);
     setStyle(imgToStyle[newIndex]);
+    clickNav(true);
   }
 
   function handleImageClick() {
@@ -112,7 +114,7 @@ export default function ImageCarousel({
 
     <div className="o-carousel-div">
       <section>
-        <div className={isExpanded ? 'expanded' : 'normal'}>
+        <div className={isExpanded ? 'expanded' : 'normal'} data-testid="main-image">
           <div className="o-carousel">
             <Thumbnails2
               imageIndex={imageIndex}
@@ -128,6 +130,9 @@ export default function ImageCarousel({
               N={N}
               clickStyle={clickStyle}
               styleClick={styleClick}
+              navClick={navClick}
+              clickNav={clickNav}
+              data-testid="thumbnails"
             />
             {
               imageIndex > 0
@@ -137,6 +142,7 @@ export default function ImageCarousel({
                     key="leftNav"
                     className={`o-carousel-button carousel-left ${isDark ? 'carousel-button-dark' : 'carousel-button-light'}`}
                     onClick={handleLeft}
+                    data-testid="left-nav"
                   >
                     <MdKeyboardArrowLeft className={`carousel-nav ${isDark ? 'carousel-nav-dark' : 'carousel-nav-light'}`} />
                   </button>
@@ -151,6 +157,7 @@ export default function ImageCarousel({
                     key="rightNav"
                     className={`o-carousel-button carousel-right ${isDark ? 'carousel-button-dark' : 'carousel-button-light'}`}
                     onClick={handleRight}
+                    data-testid="right-nav"
                   >
                     <MdKeyboardArrowRight className={`carousel-nav ${isDark ? 'carousel-nav-dark' : 'carousel-nav-light'}`} />
 
@@ -163,6 +170,7 @@ export default function ImageCarousel({
               key="expand"
               className="o-image-expand"
               onClick={handleExpand}
+              data-testid="expand"
             >
               {
                 isExpanded ? (<MdOutlineFullscreenExit />) : (<MdOutlineFullscreen />)

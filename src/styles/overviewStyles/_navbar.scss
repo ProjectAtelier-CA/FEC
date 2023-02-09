@@ -83,6 +83,20 @@ $darkNav: #242424;
   cursor: pointer;
 }
 
+// .logo:hover {
+//   transform: translate(0,0%);
+//   animation: rotateY 2s infinite linear;
+
+//   @keyframes rotateY {
+//     from {
+//       transform: rotateY(0deg);
+//     }
+//     to {
+//       transform: rotateY(360deg);
+//     }
+//   }
+// }
+
 .dark-logo {
   color: #bb9f8c;
 }
