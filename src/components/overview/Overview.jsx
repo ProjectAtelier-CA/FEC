@@ -39,7 +39,7 @@ export default function Overview({
 
   function getStyles() {
     let iToS = [];
-    axios.get(`http://127.0.0.1:8081/products/${product_id}/styles`)
+    axios.get(`/products/${product_id}/styles`)
       .then(({ data }) => {
         data.results.forEach((style, index) => {
           const N = style.photos.length;
@@ -62,7 +62,7 @@ export default function Overview({
   }
 
   function getProduct() {
-    axios.get(`http://127.0.0.1:8081/products/${product_id}`)
+    axios.get(`/products/${product_id}`)
       .then(({ data }) => {
         setDetails(data);
       });
