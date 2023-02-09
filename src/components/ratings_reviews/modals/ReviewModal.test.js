@@ -51,7 +51,7 @@ const setShowReviewModal = () => {};
 describe('Jest', () => {
   const user = userEvent.setup();
 
-  it('should check if our components are rendered', async () => {
+  it('should check if ReviewModal is rendered', async () => {
     render(<ReviewModal productName={"test product"} reviewMetaData={mockData} setShowReviewModal={setShowReviewModal} />);
     return expect(screen.getByTestId('review-modal-test')).toBeTruthy();
   });
