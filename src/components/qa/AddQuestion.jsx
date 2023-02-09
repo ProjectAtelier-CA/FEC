@@ -47,7 +47,7 @@ export default function App({ product_id, productName }) {
 
   const submitQuestion = () => {
     if (validateEmail(email) && newQuestion.length !== 0 && nickname.length !== 0) {
-      axios.post('http://localhost:8081/questions', {
+      axios.post('/questions', {
         body: newQuestion,
         name: nickname,
         email,

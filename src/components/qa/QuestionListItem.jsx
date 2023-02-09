@@ -11,7 +11,7 @@ export default function QuestionListItem({ q, productName }) {
   const { question_id } = q;
 
   useEffect(() => {
-    axios.get('http://localhost:8081/answers', { params: { question_id } }).then(({ data }) => {
+    axios.get('/answers', { params: { question_id } }).then(({ data }) => {
       const result = data.results;
       setAns(result);
       setLoad(false);
