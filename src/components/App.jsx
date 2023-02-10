@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { GiAmericanShield } from 'react-icons/gi';
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
@@ -30,6 +30,20 @@ export default function App() {
     const trackTime = format(new Date(), 'MMMM dd, yyyy HH mm ss');
     trackerData[trackKey] = { eleClicked, trackTime, module };
   };
+
+  useEffect(() => {
+    history.pushState({ id }, '');
+
+    function setIdByHistory(event) {
+      const state = event.state;
+
+      if (state) setId(state.id);
+    }
+
+    window.addEventListener('popstate', setIdByHistory);
+
+    return () => window.removeEventListener('popstate', setIdByHistory);
+  }, [id]);
 
   return (
     <DarkModeProvider dark={dark}>
