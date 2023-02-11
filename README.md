@@ -54,7 +54,7 @@ In the product overview, site visitors can:
   - The carousel will always scroll to the exact edge at the last card, in both directions
   - The carousel is reponsive to window resize, debounced to prevent unnecessary state change
   - The appearance and hover effect change corresponding to the dark mode
-  
+
 - Interect with any related product
   - The comparison table will show up when the star button at the top right corner of the card is clicked
   - The comparison table juxtapose features between current product and the related product clicked
@@ -72,7 +72,7 @@ In the product overview, site visitors can:
 Questions and Answers provide an interactive way to learn more about a product.
  In the Questions and Answers section, users can :
 
- ![alt text]('http://g.recordit.co/5EZ00wFgWK.gif')
+ ![alt text](QuestionsAnswersGif/first.gif)
 
 
 - Search the question bank and any matching result(s) will render below
@@ -84,12 +84,12 @@ Questions and Answers provide an interactive way to learn more about a product.
 
 
 
-![alt text](http://g.recordit.co/47aO2OAsBK.gif)
+![alt text](QuestionsAnswersGif/secondgif.gif)
 
 - Users can also click on pictures to zoom in
 
 
-![alt text](http://g.recordit.co/VNIlcorHEp.gif)
+![alt text](QuestionsAnswersGif/darkmodeshowcase.gif)
 
 - Users can also report answers and they will be removed from view and be passed on for revision
 - If the website is too bright for the user, they can toggle on dark mode
