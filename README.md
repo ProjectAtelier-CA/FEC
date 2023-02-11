@@ -43,6 +43,10 @@ In the product overview, site visitors can:
 - Favorite an item
 ---
 
+![alt text](http://g.recordit.co/u37ynXMQfC.gif)
+- View the page in dark mode
+---
+
 ### Related Products:
 
 
