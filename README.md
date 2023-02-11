@@ -3,6 +3,13 @@
 ## Related Projects
 
 ## Table of Contents
+* [Usage](#usage)
+* [Requirements](#requirements)
+* [Features](#features)
+  - [Overview](#overview)
+  - [Realated Products](#related-products)
+  - [Questions and Answers](#questions-and-answers)
+  - [Ratings and Reviews](#ratings-and-reviews)
 
 ## Usage
 
@@ -25,3 +32,11 @@ In the product overview, site visitors can:
 - Checkout by choosing a size and quantity of items 
   - all size and quantity options are specific to the selected item
 - Favorite an item 
+
+### Related Products: 
+
+
+### Questions and Answers: 
+
+
+### Ratings and Reviews: 
