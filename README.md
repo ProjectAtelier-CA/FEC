@@ -41,6 +41,9 @@ In the product overview, site visitors can:
 Questions and Answers provide an interactive way to learn more about a product.
  In the Questions and Answers section, users can :
 
+ ![alt text]('https://github.com/Soniapotato/FEC/blob/main/QuestionsAnswersGif/firstgif.gif')
+
+
 - Search the question bank and any matching result(s) will render below
     - if there are no matches, the user will be given a message that there are no results and they can add their own question
 - Users can add questions using the Add Question button which will open a modal and once submitted, on refresh the         question will be added
@@ -49,17 +52,18 @@ Questions and Answers provide an interactive way to learn more about a product.
 - If a seller responds to a question, this answer will be at the top and seller will be bold to let the user know that the information is accurate
 
 
-![alt text](http://g.recordit.co/5EZ00wFgWK.gif)
 
+![alt text](http://g.recordit.co/47aO2OAsBK.gif)
 
 - Users can also click on pictures to zoom in
 
-![alt text](http://g.recordit.co/47aO2OAsBK.gif)
+
+![alt text](http://g.recordit.co/VNIlcorHEp.gif)
 
 - Users can also report answers and they will be removed from view and be passed on for revision
 - If the website is too bright for the user, they can toggle on dark mode
 - In dark mode the questions and answers have a barely visible outline that the naked eye can't see but it creates a contrast that is less strenuous on the eyes and brings out the question and answer on the darker background
 
-![alt text](http://g.recordit.co/VNIlcorHEp.gif)
+
 
 ### Ratings and Reviews:
