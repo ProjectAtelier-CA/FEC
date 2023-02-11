@@ -41,7 +41,7 @@ In the product overview, site visitors can:
 
 ### Ratings and Reviews:
 
-![alt text](http://g.recordit.co/LP3xPC5DWt.gif)
+![alt text](http://g.recordit.co/LP3xPC5DWt.gif);
 
 In the 'Ratings and Reviews' section, site visitors can:
 - Filter and/or sort reviews
@@ -57,7 +57,7 @@ In the 'Ratings and Reviews' section, site visitors can:
 - Expand and navigate reviews
   - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
 
-![alt text](http://g.recordit.co/HzIGp9Eh6s.gif)
+![alt text](http://g.recordit.co/HzIGp9Eh6s.gif);
 
 - Expand and view photos
   - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
