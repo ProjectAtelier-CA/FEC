@@ -72,8 +72,7 @@ In the product overview, site visitors can:
 
 ### Ratings and Reviews:
 
-<!-- ![alt text](gifs/reviewGifs/reviewslistgif.gif) -->
-<img src="http://g.recordit.co/LP3xPC5DWt.gif">
+![alt text](gifs/reviewGifs/reviewslistgif.gif)
 
 In the 'Ratings and Reviews' section, site visitors can:
 - Filter and/or sort reviews
@@ -89,10 +88,7 @@ In the 'Ratings and Reviews' section, site visitors can:
 - Expand and navigate reviews
   - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
 
-<!-- ![alt text](gifs/reviewGifs/photomodalgif.gif) -->
-<p>
-  <img src="https://recordit.co/gi7ODBHh4V">
-</p>
+![alt text](gifs/reviewGifs/photomodalgif.gif)
 
 - Expand and view photos
   - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
@@ -101,7 +97,6 @@ In the 'Ratings and Reviews' section, site visitors can:
   - Added images may be removed by clicking on them
   - A final validation check will run upon submit to ensure all mandatory requirements have been met
 
-<!-- ![alt text](gifs/reviewGifs/darkmodegif.gif) -->
-<img src="http://g.recordit.co/kctrbGlx6j.gif">
+![alt text](gifs/reviewGifs/darkmodegif.gif)
 
 - Dark mode implementation
