@@ -22,9 +22,9 @@
 In the product overview, site visitors can:
 
 ![alt text](http://g.recordit.co/r51lX8Ejfv.gif)
-- Navigate through multiple images via an image carousel
-- View and zoom in on images of different clothing items
-  - In the expanded view, zooming will follow mouse movement
+> - Navigate through multiple images via an image carousel
+> - View and zoom in on images of different clothing items
+>   - In the expanded view, zooming will follow mouse movement
 
 ![alt text](http://g.recordit.co/7x1okh0f2e.gif)
 - Preview images in the carousel with scrollable thumbnails
