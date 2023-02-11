@@ -7,7 +7,7 @@
 * [Requirements](#requirements)
 * [Features](#features)
   - [Overview](#overview)
-  - [Realated Products](#related-products)
+  - [Related Products](#related-products)
   - [Questions and Answers](#questions-and-answers)
   - [Ratings and Reviews](#ratings-and-reviews)
 
