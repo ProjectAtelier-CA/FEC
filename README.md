@@ -25,7 +25,7 @@ In the product overview, site visitors can:
 - Navigate through multiple images via an image carousel
 - View and zoom in on images of different clothing items
   - In the expanded view, zooming will follow mouse movement
----
+
 
 ![alt text](https://github.com/gbb1/FEC/blob/main/overviewGifs/thumbnailGif.gif)
 - Preview images in the carousel with scrollable thumbnails
@@ -34,21 +34,21 @@ In the product overview, site visitors can:
 - Explore different styles, and see which items are on sale
 - Checkout by choosing a size and quantity of items
   - Thumbnail scroll will track the user's most relevant recent interaction, whether it's with the style options, image carousel, or other thumbnails
----
+
 
 ![alt text](http://g.recordit.co/cdWYH2w1cs.gif)
 - Explore different styles, and see which items are on sale
----
+
 
 ![alt text](http://g.recordit.co/pwhRT0bewT.gif)
 - Checkout by choosing a size and quantity of items
   - all size and quantity options are specific to the selected item
 - Favorite an item
----
+
 
 ![alt text](http://g.recordit.co/u37ynXMQfC.gif)
 - View the page in dark mode
----
+
 
 ### Related Products:
 
