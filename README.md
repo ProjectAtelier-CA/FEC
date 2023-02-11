@@ -58,7 +58,7 @@ In the product overview, site visitors can:
 Questions and Answers provide an interactive way to learn more about a product.
  In the Questions and Answers section, users can :
 
- ![alt text]('https://github.com/Soniapotato/FEC/blob/main/QuestionsAnswersGif/firstgif.gif')
+ ![alt text]('http://g.recordit.co/5EZ00wFgWK.gif')
 
 
 - Search the question bank and any matching result(s) will render below
