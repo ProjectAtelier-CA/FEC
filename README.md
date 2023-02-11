@@ -41,8 +41,9 @@ In the product overview, site visitors can:
 
 ### Ratings and Reviews:
 
-In the 'Ratings and Reviews' section, site visitors can:
+![alt text](http://g.recordit.co/LP3xPC5DWt.gif)
 
+In the 'Ratings and Reviews' section, site visitors can:
 - Filter and/or sort reviews
   - Filter reviews by star rating
     - Icons will indicate current active filters
