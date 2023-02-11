@@ -1,4 +1,4 @@
-# FEC 
+# FEC
 
 ## Related Projects
 
@@ -17,7 +17,7 @@
 
 ## Features
 
-### Overview: 
+### Overview:
 
 ![alt text](https://i.ibb.co/Lz275XB/Screenshot-2023-02-11-at-9-26-51-AM.png)
 
@@ -27,16 +27,16 @@ In the product overview, site visitors can:
   - In the expanded view, zooming will follow mouse movement
 - Navigate through multiple images via an image carousel or thumbnail scroll
   - Buttons will dynamically render that allow users to scroll up and down through the thumbnails
-  - Thumbnail scroll will track the user's most relevant recent interaction, whether with the style options, image carousel, or other thumbnails 
-- Explore different styles, and see which items are on sale 
-- Checkout by choosing a size and quantity of items 
+  - Thumbnail scroll will track the user's most relevant recent interaction, whether with the style options, image carousel, or other thumbnails
+- Explore different styles, and see which items are on sale
+- Checkout by choosing a size and quantity of items
   - all size and quantity options are specific to the selected item
-- Favorite an item 
+- Favorite an item
 
-### Related Products: 
-
-
-### Questions and Answers: 
+### Related Products:
 
 
-### Ratings and Reviews: 
+### Questions and Answers:
+![alt text](http://g.recordit.co/5EZ00wFgWK.gif)
+
+### Ratings and Reviews:
