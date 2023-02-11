@@ -91,7 +91,7 @@ In the 'Ratings and Reviews' section, site visitors can:
 
 <!-- ![alt text](gifs/reviewGifs/photomodalgif.gif) -->
 <p>
-  <img src="http://g.recordit.co/gi7ODBHh4V.gif">
+  <img src="https://recordit.co/gi7ODBHh4V">
 </p>
 
 - Expand and view photos
