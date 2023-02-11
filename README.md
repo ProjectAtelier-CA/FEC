@@ -80,4 +80,6 @@ In the 'Ratings and Reviews' section, site visitors can:
   - Added images may be removed by clicking on them
   - A final validation check will run upon submit to ensure all mandatory requirements have been met
 
+![alt text](gifs/reviewGifs/darkmodegif.gif)
 
+- Dark mode implementation
