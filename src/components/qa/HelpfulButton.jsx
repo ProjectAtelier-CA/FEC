@@ -9,7 +9,6 @@ export default function HelpfulButton({ helpfulness, id, type }) {
   const upVote = () => {
     setClicked(true);
     setHelp(help + 1);
-    setFirst(true);
     axios.post('/helpful', null, { params: { id, type } });
   };
 
