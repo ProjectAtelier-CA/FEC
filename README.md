@@ -60,5 +60,6 @@ Questions and Answers provide an interactive way to learn more about a product.
 - If the website is too bright for the user, they can toggle on dark mode
 - In dark mode the questions and answers have a barely visible outline that the naked eye can't see but it creates a contrast that is less strenuous on the eyes and brings out the question and answer on the darker background
 
-![alt text](http://g.recordit.co/z3i50fep0h.gif)
+![alt text](http://g.recordit.co/VNIlcorHEp.gif)
+
 ### Ratings and Reviews:
