@@ -21,13 +21,13 @@
 
 In the product overview, site visitors can:
 
-![alt text](http://g.recordit.co/r51lX8Ejfv.gif)
+![alt text](https://github.com/gbb1/FEC/blob/main/overviewGifs/ImagesGif.gif)
 - Navigate through multiple images via an image carousel
 - View and zoom in on images of different clothing items
   - In the expanded view, zooming will follow mouse movement
 ---
 
-![alt text](http://g.recordit.co/7x1okh0f2e.gif)
+![alt text](https://github.com/gbb1/FEC/blob/main/overviewGifs/thumbnailGif.gif)
 - Preview images in the carousel with scrollable thumbnails
   - Buttons will dynamically render that allow users to scroll up and down through the thumbnails
   - Thumbnail scroll will track the user's most relevant recent interaction, whether it's with the style options, image carousel, or other thumbnails
