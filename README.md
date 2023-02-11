@@ -87,12 +87,12 @@ Questions and Answers provide an interactive way to learn more about a product.
 
 
 
-![alt text](http://g.recordit.co/47aO2OAsBK.gif)
+![alt text](QuestionsAnswersGif/secondgif.gif)
 
 - Users can also click on pictures to zoom in
 
 
-![alt text](http://g.recordit.co/VNIlcorHEp.gif)
+![alt text](QuestionsAnswersGif/darkmodeshowcase.gif)
 
 - Users can also report answers and they will be removed from view and be passed on for revision
 - If the website is too bright for the user, they can toggle on dark mode
