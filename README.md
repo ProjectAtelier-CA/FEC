@@ -53,13 +53,13 @@ In the 'Ratings and Reviews' section, site visitors can:
     - Sort reviews via a drop down menu
       - Sort by relevance, date created (newest), or helpfulness
       - Upon switching sort mode, the reviews list will automatically scroll to the top
-  - Expand reviews
-    - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
-  - Expand photos
-    - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
-  - Add a review
-    - Upon click, a form modal will appear allowing the user to submit a review
-    - Added images may be removed by clicking on them
-    - A final validation check will run upon submit to ensure all mandatory requirements have been met
+- Expand reviews
+  - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
+- Expand photos
+  - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
+- Add a review
+  - Upon click, a form modal will appear allowing the user to submit a review
+  - Added images may be removed by clicking on them
+  - A final validation check will run upon submit to ensure all mandatory requirements have been met
 
 
