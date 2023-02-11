@@ -90,7 +90,9 @@ In the 'Ratings and Reviews' section, site visitors can:
   - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
 
 <!-- ![alt text](gifs/reviewGifs/photomodalgif.gif) -->
-<img src="http://g.recordit.co/gi7ODBHh4V.gif">
+<p>
+  <img src="http://g.recordit.co/gi7ODBHh4V.gif">
+</p>
 
 - Expand and view photos
   - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
