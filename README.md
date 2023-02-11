@@ -56,6 +56,9 @@ In the 'Ratings and Reviews' section, site visitors can:
       - Upon switching sort mode, the reviews list will automatically scroll to the top
 - Expand and navigate reviews
   - Upon click, the list will expand will expand to its maximum size and enable an infinite scroll feature
+
+![alt text](http://g.recordit.co/HzIGp9Eh6s.gif)
+
 - Expand and view photos
   - Upon image click, an image carousel will appear where the user can navigate through the photos attached to the review
 - Add a review
