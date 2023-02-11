@@ -27,17 +27,17 @@ In the product overview, site visitors can:
 >   - In the expanded view, zooming will follow mouse movement
 
 ![alt text](http://g.recordit.co/7x1okh0f2e.gif)
-- Preview images in the carousel with scrollable thumbnails
-  - Buttons will dynamically render that allow users to scroll up and down through the thumbnails
-  - Thumbnail scroll will track the user's most relevant recent interaction, whether it's with the style options, image carousel, or other thumbnails
+> - Preview images in the carousel with scrollable thumbnails
+>   - Buttons will dynamically render that allow users to scroll up and down through the thumbnails
+>   - Thumbnail scroll will track the user's most relevant recent interaction, whether it's with the style options, image carousel, or other thumbnails
 
 ![alt text](http://g.recordit.co/cdWYH2w1cs.gif)
-- Explore different styles, and see which items are on sale
+> - Explore different styles, and see which items are on sale
 
 ![alt text](http://g.recordit.co/pwhRT0bewT.gif)
-- Checkout by choosing a size and quantity of items
-  - all size and quantity options are specific to the selected item
-- Favorite an item
+> - Checkout by choosing a size and quantity of items
+>   - all size and quantity options are specific to the selected item
+> - Favorite an item
 
 ### Related Products:
 
