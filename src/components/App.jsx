@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { GiAmericanShield } from 'react-icons/gi';
 import { format } from 'date-fns';
 import RelatedProducts from './related_products/RelatedProducts';
@@ -14,7 +14,7 @@ import { DarkModeProvider } from './shared/DarkModeProvider';
 /* ----------- Set up id state -------------- */
 export default function App() {
   // later this initial id should be passed down from index.jsx as props
-  const [id, setId] = useState(37313);
+  const [id, setId] = useState(37318);
   const [dark, goDark] = useState(false);
   const [appAvgRating, setAppAvgRating] = useState(5);
   const [productDetails, setDetails] = useState({});
@@ -43,7 +43,6 @@ export default function App() {
     window.addEventListener('popstate', setIdByHistory);
 
     return () => window.removeEventListener('popstate', setIdByHistory);
-
   }, [id]);
 
   return (
