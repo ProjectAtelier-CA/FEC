@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCarousel from './ProductCarousel';
 import ProductModal from './ProductModal';
 import ProductCard from './ProductCard';
@@ -6,7 +6,16 @@ import useFetch from './useFetch';
 
 export default function RelatedProduct({ id, setId, handleTrackClick }) {
   const [modal, setModal] = useState({ show: false, onClickProduct: null })
-  const [outfits, setOutfits] = useState(new Set([-1]));
+  const initialOutfits = localStorage.getItem('outfits')
+    ? JSON.parse(localStorage.getItem('outfits'))
+    : [];
+  const [outfits, setOutfits] = useState(new Set(initialOutfits));
+
+  useEffect(() => {
+    const newOutfits = JSON.stringify([...outfits]);
+    localStorage.setItem('outfits', newOutfits);
+  }, [outfits]);
+
   const { data: currentProduct, loading, error } = useFetch(id);
 
   // this can be decorated or refactored
@@ -25,9 +34,12 @@ export default function RelatedProduct({ id, setId, handleTrackClick }) {
     setOutfits(new Set([...outfits, id]));
   }
 
-  function removeOutfit(event) {
+  function removeOutfit(id) {
     setOutfits(new Set([...outfits].filter(o_id => o_id !== id)));
   }
+
+
+
 
   // ## Three kinds of card: (1)related (2)outfit (3)add
   // RELATED PRODUCT card list
@@ -44,7 +56,7 @@ export default function RelatedProduct({ id, setId, handleTrackClick }) {
   });
 
   // YOUR OUTFIT card list
-  const outfitCardList = [...outfits].map(productId => {
+  const outfitCardList = [-1, ...outfits].map(productId => {
     // The 1st card is an Adder Card
     if (productId === -1) {
       const adderCardProps = {
@@ -61,7 +73,7 @@ export default function RelatedProduct({ id, setId, handleTrackClick }) {
       key: productId,
       id: productId,
       cardCallback: () => setId(productId),
-      buttonCallback: removeOutfit
+      buttonCallback: () => removeOutfit(productId)
     };
 
     return <ProductCard { ...outfitCardProps } />;

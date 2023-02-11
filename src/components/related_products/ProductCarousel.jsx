@@ -15,11 +15,17 @@ export default function ProductCarousel({ children, title }) {
   // when browser resize, update containerWidth
   useEffect(() => {
     const updateContainerWidth = () => {
-      setContainerWidth(containerRef.current.clientWidth / rootFontSizeRef.current);
+      clearTimeout(debounceId);
+
+      setTimeout(() => {
+        setContainerWidth(containerRef.current.clientWidth / rootFontSizeRef.current);
+      }, 300);
     };
 
+    let debounceId;
     window.addEventListener('resize', updateContainerWidth);
-    updateContainerWidth(); // incase browser never resize;
+    setContainerWidth(containerRef.current.clientWidth / rootFontSizeRef.current);
+    console.log('component repaint')
 
     return () => {
       window.removeEventListener('resize', updateContainerWidth);
@@ -57,6 +63,11 @@ export default function ProductCarousel({ children, title }) {
       : (null)
   };
 
+  function resetPosition() {
+    setShiftedWidth(0);
+    window.scroll(0, 0);
+  }
+
   // may want to refactor the button into svg or other icon?
   return (
     <div className='product__carousel'>
@@ -64,7 +75,7 @@ export default function ProductCarousel({ children, title }) {
       <button { ...leftButtonProps }>{'<'}</button>
       <section className='product__carousel__container' ref={containerRef}>
         <div { ...scrollerProps }>
-          <PropsProvider resetPosition= { () => setShiftedWidth(0) }>
+          <PropsProvider resetPosition= { resetPosition }>
             { children }
           </PropsProvider>
         </div>
