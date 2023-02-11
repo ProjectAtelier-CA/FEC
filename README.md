@@ -52,6 +52,23 @@ In the product overview, site visitors can:
 
 ### Related Products:
 
+- View and navigate related products and their outfits
+  - All products are designed as card, and contained in a carousel
+  - The carousel will always scroll to the exact edge at the last card, in both directions
+  - The carousel is reponsive to window resize, debounced to prevent unnecessary state change
+  - The appearance and hover effect change corresponding to the dark mode
+  
+- Interect with any related product
+  - The comparison table will show up when the star button at the top right corner of the card is clicked
+  - The comparison table juxtapose features between current product and the related product clicked
+  - The comparison table will close when mouse clicked on anywhere besides it
+  - When any product card is clicked, the carousel will reset position and webpage will re-render correspondingly
+  - Comparison table change its look corresponding to the dark mode
+
+- Manipulate the "My Outfit" section
+  - User may add the current product by pressing the first unique "Add to Outfit" card
+  - User may remove any previously added product by click the "X" button at the top right corner of the card
+  - "My outfit" is synced to each user's LocalStorage, so upon refresh or browser restart, data will persist
 
 ### Questions and Answers:
 
