@@ -31,9 +31,6 @@ In the product overview, site visitors can:
 - Preview images in the carousel with scrollable thumbnails
   - Buttons will dynamically render that allow users to scroll up and down through the thumbnails
   - Thumbnail scroll will track the user's most relevant recent interaction, whether with the style options, image carousel, or other thumbnails
-- Explore different styles, and see which items are on sale
-- Checkout by choosing a size and quantity of items
-  - Thumbnail scroll will track the user's most relevant recent interaction, whether it's with the style options, image carousel, or other thumbnails
 
 
 ![alt text](http://g.recordit.co/cdWYH2w1cs.gif)
