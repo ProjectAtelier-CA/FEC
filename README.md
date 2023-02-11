@@ -57,7 +57,7 @@ In the product overview, site visitors can:
   - The carousel will always scroll to the exact edge at the last card, in both directions
   - The carousel is reponsive to window resize, debounced to prevent unnecessary state change
   - The appearance and hover effect change corresponding to the dark mode
-  
+
 - Interect with any related product
   - The comparison table will show up when the star button at the top right corner of the card is clicked
   - The comparison table juxtapose features between current product and the related product clicked
@@ -75,7 +75,7 @@ In the product overview, site visitors can:
 Questions and Answers provide an interactive way to learn more about a product.
  In the Questions and Answers section, users can :
 
- ![alt text]('http://g.recordit.co/5EZ00wFgWK.gif')
+ ![alt text](QuestionsAnswersGif/first.gif)
 
 
 - Search the question bank and any matching result(s) will render below
