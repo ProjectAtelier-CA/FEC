@@ -64,12 +64,9 @@ https://user-images.githubusercontent.com/105718650/218283700-2f1b82a3-0701-4fdf
   - The carousel is reponsive to window resize, debounced to prevent unnecessary state change
   - The appearance and hover effect change corresponding to the dark mode
 
-<<<<<<< HEAD
-=======
 
 https://user-images.githubusercontent.com/105718650/218283716-0652efec-40c9-4843-834b-6d0907bdd1f3.mp4
 
->>>>>>> 25608beeb2adbcc0a5185c92e7b3779442ea5de4
 - Interect with any related product
   - The comparison table will show up when the star button at the top right corner of the card is clicked
   - The comparison table juxtapose features between current product and the related product clicked
