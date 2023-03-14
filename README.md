@@ -1,4 +1,5 @@
-# FEC
+# Cap's Closet E-Commerce
+Shop products, see multiple styles and similar items, plus questions, answers, and reviews from other customers.
 
 ## Tech Stack
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
